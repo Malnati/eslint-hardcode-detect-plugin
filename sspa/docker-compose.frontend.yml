@@ -1,0 +1,183 @@
+# core/sspa/docker-compose.frontend.yml
+# MFEs e SSPA (Caddy e ngrok: caddy/docker-compose.yml e ngrok/docker-compose.yml). Agregado em docker-compose.yml (raiz).
+services:
+  sspa:
+    profiles:
+      - sspa
+      - apps
+      - full
+    image: rating-sspa-orchestrator:latest
+    build:
+      context: .
+      dockerfile: core/sspa/Dockerfile
+    container_name: rating-sspa-orchestrator
+    environment:
+      SSPA_SKIP_AUTH: ${SSPA_SKIP_AUTH:-true}
+    networks:
+      - rating_default
+  mfe-account:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-account:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-account/Dockerfile
+    container_name: rating-mfe-account
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  mfe-config:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-config:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-config/Dockerfile
+    container_name: rating-mfe-config
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  mfe-login:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-login:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-login/Dockerfile
+    container_name: rating-mfe-login
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  mfe-authtorization:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-authtorization:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-authtorization/Dockerfile
+    container_name: rating-mfe-authtorization
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  mfe-navigation:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-navigation:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-navigation/Dockerfile
+    container_name: rating-mfe-navigation
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  mfe-design-system:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-design-system:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-design-system/Dockerfile
+    container_name: rating-mfe-design-system
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+  mfe-api:
+    profiles:
+      - mfe
+      - apps
+      - full
+    image: rating-mfe-api:latest
+    build:
+      context: .
+      dockerfile: core/sspa/mfe-api-helpers/Dockerfile
+    container_name: rating-mfe-api
+    restart: unless-stopped
+    networks:
+      - rating_default
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - -qO-
+        - http://127.0.0.1/spa.js
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+networks:
+  rating_default:
+    name: rating_default
+    driver: bridge

@@ -1,0 +1,3 @@
+# core/sspa/docker-compose.backend.yml
+# Pacote SSPA/MFEs: sem serviços de API backend aqui (APIs em core/apis/docker-compose.backend.yml). Agregado em docker-compose.yml (raiz) não inclui este ficheiro.
+services: {}

@@ -1,0 +1,24 @@
+{
+  "name": "@mfe/design-system",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "rotate-build-number": "node ./scripts/rotate-build-number.cjs",
+    "copy-build-number": "cp build-number.json ./output/build-number.json",
+    "build": "npm run rotate-build-number && tsc -p tsconfig.json && vite build && npm run copy-build-number"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "tailwindcss": "^4.1.0",
+    "typescript": "^5.9.2",
+    "vite": "^5.0.8"
+  }
+}
