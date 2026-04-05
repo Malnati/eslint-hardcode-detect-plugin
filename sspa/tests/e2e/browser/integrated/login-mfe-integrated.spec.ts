@@ -14,7 +14,7 @@ const REQUIRED_MFES = [
   { name: '@mfe/config', path: '/mfe/config/spa.js' },
   { name: '@mfe/key', path: '/mfe/key/spa.js' },
   { name: '@mfe/login', path: '/api/login/mfe-app/spa.js' },
-  { name: '@mfe/rating', path: '/mfe/rating/spa.js' },
+  { name: '@mfe/proxy', path: '/mfe/proxy/spa.js' },
   { name: '@mfe/usage', path: '/mfe/usage/spa.js' },
   { name: '@mfe/profile', path: '/mfe/profile/spa.js' },
   { name: '@mfe/design-system', path: '/mfe/design-system/spa.js' },
@@ -573,7 +573,7 @@ test.describe('Login MFE — integrated (CSS, import map, SystemJS)', () => {
       const mfeUrls = body.mfeUrls as Record<string, string> | undefined;
       expect(mfeUrls).toBeDefined();
 
-      const requiredKeys = ['account', 'authtorization', 'config', 'key', 'login', 'rating', 'usage', 'profile', 'designSystem', 'api'];
+      const requiredKeys = ['account', 'authtorization', 'config', 'key', 'login', 'proxy', 'usage', 'profile', 'designSystem', 'api'];
       for (const key of requiredKeys) {
         expect(mfeUrls?.[key], `runtime-config should declare mfeUrls.${key}`).toBeTruthy();
         expect(mfeUrls?.[key]?.length).toBeGreaterThan(1);

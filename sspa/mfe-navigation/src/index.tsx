@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client';
 const NAV_ITEMS = [
   { path: '/account', label: 'Account', icon: '👤' },
   { path: '/key', label: 'Key', icon: '🔑' },
-  { path: '/rating', label: 'Rating', icon: '⭐' },
+  { path: '/proxy', label: 'Proxy', icon: '⭐' },
   { path: '/usage', label: 'Usage', icon: '📊' },
 ];
 

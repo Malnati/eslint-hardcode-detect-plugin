@@ -3,9 +3,9 @@
 
 Orquestrador de Micro-Frontends (MFEs) utilizando Single-SPA para composição de aplicações modulares.
 
-## Sincronização com o repositório `rating-sspa` (git subtree)
+## Sincronização com o repositório `sspa` (git subtree)
 
-O código deste pacote (`core/sspa/`) pode ser espelhado em **`https://github.com/tookyn/rating-sspa.git`** sem submodule: ver **[docs/sspa-subtree.md](../../docs/sspa-subtree.md)** e **[docs/sspa-subtree-spec.md](../../docs/sspa-subtree-spec.md)**. Alvos: `make sspa-subtree-help`, `make sspa-subtree-push`, `make sspa-subtree-pull` (`RATING_SSPA_REMOTE`, `RATING_SSPA_BRANCH`). O compose em `core/sspa/docker-compose.frontend.yml` permanece no monorepo (agregado em `docker-compose.yml` na raiz).
+O código deste pacote (`core/sspa/`) pode ser espelhado em **`https://github.com/tookyn/sspa.git`** sem submodule: ver **[docs/sspa-subtree.md](../../docs/sspa-subtree.md)** e **[docs/sspa-subtree-spec.md](../../docs/sspa-subtree-spec.md)**. Alvos: `make sspa-subtree-help`, `make sspa-subtree-push`, `make sspa-subtree-pull` (`SSPA_REMOTE`, `SSPA_BRANCH`). O compose em `core/sspa/docker-compose.frontend.yml` permanece no monorepo (agregado em `docker-compose.yml` na raiz).
 
 ## Estrutura
 
@@ -24,7 +24,7 @@ mfe/                    # MFEs adicionais (fora do pacote core/sspa)
 ├── mfe-chatbot/
 ├── mfe-key/
 ├── mfe-profile/
-├── mfe-rating/
+├── mfe-proxy/
 └── mfe-usage/
 ```
 
@@ -36,7 +36,7 @@ O SSPA é construído via o Docker Compose em `core/sspa/docker-compose.frontend
 
 ```bash
 # A partir da raiz do projeto
-docker build -f core/sspa/Dockerfile -t rating-sspa-orchestrator:latest .
+docker build -f core/sspa/Dockerfile -t sspa-orchestrator:latest .
 ```
 
 Ou utilize o docker-compose que constrói automaticamente:
@@ -75,7 +75,7 @@ make mfe-up
 - `VITE_MFE_ACCOUNT_URL` - URL do MFE de contas
 - `VITE_MFE_KEY_URL` - URL do MFE de chaves
 - `VITE_MFE_LOGIN_URL` - URL do MFE de login
-- `VITE_MFE_RATING_URL` - URL do MFE de rating
+- `VITE_MFE_PROXY_URL` - URL do MFE de proxy
 - `VITE_MFE_USAGE_URL` - URL do MFE de uso
 
 ## MFEs disponíveis
@@ -87,7 +87,7 @@ make mfe-up
 | `mfe-config` | `/config` | `api-config:3010` |
 | `mfe-key` | `/keys` | `api-key:3003` |
 | `mfe-login` | `/login` | `api-login:3011` |
-| `mfe-rating` | `/rating` | `api-rating:3002` |
+| `mfe-proxy` | `/proxy` | `api-proxy:3002` |
 | `mfe-usage` | `/usage` | `api-usage:3004` |
 | `mfe-design-system` | (compartilhado) | N/A |
 

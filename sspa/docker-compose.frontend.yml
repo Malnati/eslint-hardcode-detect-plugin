@@ -6,34 +6,34 @@ services:
       - sspa
       - apps
       - full
-    image: rating-sspa-orchestrator:latest
+    image: sspa-orchestrator:latest
     build:
       context: .
       dockerfile: core/sspa/Dockerfile
-    container_name: rating-sspa-orchestrator
+    container_name: sspa-orchestrator
     environment:
       SSPA_SKIP_AUTH: ${SSPA_SKIP_AUTH:-true}
     networks:
-      - rating_default
+      - sspa-network
   mfe-account:
     profiles:
       - mfe
       - apps
       - full
-    image: rating-mfe-account:latest
+    image: sspa-mfe-account:latest
   mfe-navigation:
     profiles:
       - mfe
       - apps
       - full
-    image: rating-mfe-navigation:latest
+    image: sspa-mfe-navigation:latest
     build:
       context: .
       dockerfile: core/sspa/mfe-navigation/Dockerfile
-    container_name: rating-mfe-navigation
+    container_name: sspa-mfe-navigation
     restart: unless-stopped
     networks:
-      - rating_default
+      - sspa-network
     healthcheck:
       test:
         - CMD
@@ -49,14 +49,14 @@ services:
       - mfe
       - apps
       - full
-    image: rating-mfe-design-system:latest
+    image: sspa-mfe-design-system:latest
     build:
       context: .
       dockerfile: core/sspa/mfe-design-system/Dockerfile
-    container_name: rating-mfe-design-system
+    container_name: sspa-mfe-design-system
     restart: unless-stopped
     networks:
-      - rating_default
+      - sspa-network
     healthcheck:
       test:
         - CMD
@@ -72,14 +72,14 @@ services:
       - mfe
       - apps
       - full
-    image: rating-mfe-api:latest
+    image: sspa-mfe-api:latest
     build:
       context: .
       dockerfile: core/sspa/mfe-api-helpers/Dockerfile
-    container_name: rating-mfe-api
+    container_name: sspa-mfe-api
     restart: unless-stopped
     networks:
-      - rating_default
+      - sspa-network
     healthcheck:
       test:
         - CMD
@@ -92,6 +92,6 @@ services:
       start_period: 5s
 
 networks:
-  rating_default:
-    name: rating_default
+  sspa-network:
+    name: sspa-network
     driver: bridge

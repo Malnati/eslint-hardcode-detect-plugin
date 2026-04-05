@@ -75,7 +75,7 @@ export type OpenShellIntegratedRouteOptions = {
 };
 
 /**
- * Abre o shell SSPA numa rota integrada (ex. /login, futuramente /rating).
+ * Abre o shell SSPA numa rota integrada (ex. /login, futuramente /proxy).
  * Limpa auth_db para evitar redirect com sessão antiga.
  */
 export async function openShellIntegratedRoute(

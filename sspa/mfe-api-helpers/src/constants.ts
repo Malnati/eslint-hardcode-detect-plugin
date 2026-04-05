@@ -23,7 +23,7 @@ export function getApiUrl(service: string): string {
 export const API_URLS = {
   account: getApiUrl('account'),
   key: getApiUrl('key'),
-  rating: getApiUrl('rating'),
+  proxy: getApiUrl('proxy'),
   usage: getApiUrl('usage'),
   login: getApiUrl('login'),
 };

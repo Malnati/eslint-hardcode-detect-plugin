@@ -14,7 +14,7 @@ const THEME_CLASS_NAME = 'dark';
 const DEFAULT_THEME: ThemeMode = 'light';
 const DEFAULT_LOCALE: LocaleCode = 'pt-BR';
 
-const navRoutes = ['/account', '/authtorization', '/config', '/key', '/profile', '/rating', '/usage'];
+const navRoutes = ['/account', '/authtorization', '/config', '/key', '/profile', '/proxy', '/usage'];
 
 const copyByLocale: Record<LocaleCode, Record<string, string>> = {
   'pt-BR': {
@@ -33,8 +33,8 @@ const copyByLocale: Record<LocaleCode, Record<string, string>> = {
     authtorizationEmbeddedDescription: 'Micro-frontend de autorizacao montado dentro do shell do dashboard.',
     usageEmbeddedTitle: 'Usage',
     usageEmbeddedDescription: 'Micro-frontend de uso de API montado dentro do shell do dashboard.',
-    ratingEmbeddedTitle: 'Ratings',
-    ratingEmbeddedDescription: 'Micro-frontend de ratings montado dentro do shell do dashboard.',
+    proxyEmbeddedTitle: 'Proxys',
+    proxyEmbeddedDescription: 'Micro-frontend de proxy montado dentro do shell do dashboard.',
     profileEmbeddedTitle: 'Profile',
     profileEmbeddedDescription: 'Micro-frontend de perfil montado dentro do shell do dashboard.',
   },
@@ -54,8 +54,8 @@ const copyByLocale: Record<LocaleCode, Record<string, string>> = {
     authtorizationEmbeddedDescription: 'Authorization micro-frontend mounted inside the dashboard shell.',
     usageEmbeddedTitle: 'Usage',
     usageEmbeddedDescription: 'API usage micro-frontend mounted inside the dashboard shell.',
-    ratingEmbeddedTitle: 'Ratings',
-    ratingEmbeddedDescription: 'Rating micro-frontend mounted inside the dashboard shell.',
+    proxyEmbeddedTitle: 'Proxys',
+    proxyEmbeddedDescription: 'Proxy micro-frontend mounted inside the dashboard shell.',
     profileEmbeddedTitle: 'Profile',
     profileEmbeddedDescription: 'Profile micro-frontend mounted inside the dashboard shell.',
   },
@@ -89,8 +89,8 @@ function isHomeRoute(pathname: string): boolean {
   return pathname === '/';
 }
 
-function isRatingRoute(pathname: string): boolean {
-  return pathname.startsWith('/rating');
+function isProxyRoute(pathname: string): boolean {
+  return pathname.startsWith('/proxy');
 }
 
 function isAuthtorizationRoute(pathname: string): boolean {
@@ -117,7 +117,7 @@ export function Dashboard(): JSX.Element {
   const isPublicRoute = pathname.startsWith('/login');
   const isHome = isHomeRoute(pathname);
   const isAuthtorization = isAuthtorizationRoute(pathname);
-  const isRating = isRatingRoute(pathname);
+  const isProxy = isProxyRoute(pathname);
   const isUsage = isUsageRoute(pathname);
   const isProfile = isProfileRoute(pathname);
   const copy = copyByLocale[locale];
@@ -313,10 +313,10 @@ export function Dashboard(): JSX.Element {
               </section>
             ) : (
               <section className={mountClass}>
-                {isRating ? (
+                {isProxy ? (
                   <div className={panelClass}>
-                    <h2>{copy.ratingEmbeddedTitle}</h2>
-                    <p>{copy.ratingEmbeddedDescription}</p>
+                    <h2>{copy.proxyEmbeddedTitle}</h2>
+                    <p>{copy.proxyEmbeddedDescription}</p>
                   </div>
                 ) : null}
                 {isAuthtorization ? (

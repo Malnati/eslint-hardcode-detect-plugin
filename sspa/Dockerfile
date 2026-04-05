@@ -12,8 +12,10 @@ COPY core/sspa/build-number.json ./build-number.json
 RUN npm run build
 
 FROM nginx:alpine
-COPY --from=dashboard-build /app/dist /usr/share/nginx/html
-COPY --from=dashboard-build /app/build-number.json /usr/share/nginx/html/build-number.json
+RUN addgroup -g 101 -S app && adduser -S app -u 101
+COPY --chown=app:app --from=dashboard-build /app/dist /usr/share/nginx/html
+COPY --chown=app:app --from=dashboard-build /app/build-number.json /usr/share/nginx/html/build-number.json
 COPY core/sspa/dynamic.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
+USER app
 CMD ["nginx", "-g", "daemon off;"]

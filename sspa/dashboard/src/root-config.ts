@@ -45,7 +45,7 @@ type RuntimeMfeUrls = {
   key: string;
   login: string;
   profile: string;
-  rating: string;
+  proxy: string;
   usage: string;
 };
 
@@ -98,7 +98,7 @@ type AccountMountProps = {
   showTitle: boolean;
 };
 
-type RatingMountProps = {
+type ProxyMountProps = {
   mode: 'embedded';
   title: string;
   showTitle: boolean;
@@ -176,13 +176,13 @@ const STATIC_APPLICATIONS: StaticApplication[] = [
     mfeKey: 'login',
   },
   {
-    name: '@mfe/rating',
-    module: '@mfe/rating',
-    route: '/rating',
-    title: 'Rating',
-    description: 'API Rating + MFE',
-    importUrl: '/mfe/rating/spa.js',
-    mfeKey: 'rating',
+    name: '@mfe/proxy',
+    module: '@mfe/proxy',
+    route: '/proxy',
+    title: 'Proxy',
+    description: 'API Proxy + MFE',
+    importUrl: '/mfe/proxy/spa.js',
+    mfeKey: 'proxy',
   },
   {
     name: '@mfe/usage',
@@ -372,12 +372,12 @@ export async function setupDynamicApplications(): Promise<void> {
                 showTitle: false,
                 onRulesChange: () => undefined,
               } satisfies AuthtorizationMountProps
-          : application.name === '@mfe/rating'
+          : application.name === '@mfe/proxy'
             ? {
                 mode: 'embedded' as const,
-                title: 'Ratings',
+                title: 'Proxys',
                 showTitle: false,
-              } satisfies RatingMountProps
+              } satisfies ProxyMountProps
             : application.name === '@mfe/profile'
               ? {
                   ...authProps,
@@ -393,7 +393,7 @@ export async function setupDynamicApplications(): Promise<void> {
       activeWhen: (location) =>
         application.name === '@mfe/account'
           ? location.pathname === '/' || location.pathname.startsWith(application.route)
-          : application.name === '@mfe/rating'
+          : application.name === '@mfe/proxy'
             ? location.pathname.startsWith(application.route)
           : location.pathname.startsWith(application.route),
       customProps,
