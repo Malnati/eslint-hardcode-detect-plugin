@@ -1,3 +1,2 @@
-# core/sspa/docker-compose.e2e.yml
-# E2E das APIs em core/apis/docker-compose.e2e.yml; sem serviços E2E adicionais no pacote SSPA neste repositório.
+# sspa/docker-compose.e2e.yml
 services: {}

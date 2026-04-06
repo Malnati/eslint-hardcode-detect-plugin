@@ -3,11 +3,10 @@ FROM node:22-alpine AS build
 
 WORKDIR /app
 
-COPY core/sspa/mfe-navigation/package*.json ./
-COPY core/sspa/mfe-navigation/scripts ./scripts/
+COPY sspa/mfe-navigation/package*.json ./
 RUN npm install --no-audit --no-fund
 
-COPY core/sspa/mfe-navigation/ ./
+COPY sspa/mfe-navigation/ ./
 RUN npm run build
 
 FROM nginx:alpine

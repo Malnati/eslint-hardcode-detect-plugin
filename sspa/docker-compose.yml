@@ -1,4 +1,4 @@
-# core/sspa/docker-compose.frontend.yml
+# sspa/docker-compose.frontend.yml
 # MFEs e SSPA (Caddy e ngrok: caddy/docker-compose.yml e ngrok/docker-compose.yml). Agregado em docker-compose.yml (raiz).
 services:
   sspa:
@@ -9,7 +9,7 @@ services:
     image: sspa-orchestrator:latest
     build:
       context: .
-      dockerfile: core/sspa/Dockerfile
+      dockerfile: Dockerfile
     container_name: sspa-orchestrator
     environment:
       SSPA_SKIP_AUTH: ${SSPA_SKIP_AUTH:-true}
@@ -29,7 +29,7 @@ services:
     image: sspa-mfe-navigation:latest
     build:
       context: .
-      dockerfile: core/sspa/mfe-navigation/Dockerfile
+      dockerfile: mfe-navigation/Dockerfile
     container_name: sspa-mfe-navigation
     restart: unless-stopped
     networks:
@@ -52,7 +52,7 @@ services:
     image: sspa-mfe-design-system:latest
     build:
       context: .
-      dockerfile: core/sspa/mfe-design-system/Dockerfile
+      dockerfile: mfe-design-system/Dockerfile
     container_name: sspa-mfe-design-system
     restart: unless-stopped
     networks:
@@ -75,7 +75,7 @@ services:
     image: sspa-mfe-api:latest
     build:
       context: .
-      dockerfile: core/sspa/mfe-api-helpers/Dockerfile
+      dockerfile: mfe-api-helpers/Dockerfile
     container_name: sspa-mfe-api
     restart: unless-stopped
     networks:

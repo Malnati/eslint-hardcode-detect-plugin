@@ -1,4 +1,4 @@
-// core/sspa/tests/e2e/browser/standalone/mfe-standalone-css.spec.ts
+// sspa/tests/e2e/browser/standalone/mfe-standalone-css.spec.ts
 import { test, expect } from '@playwright/test';
 import {
   assertLoginStandaloneE2eEnv,

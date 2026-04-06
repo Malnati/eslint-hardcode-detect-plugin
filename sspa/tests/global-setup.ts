@@ -1,4 +1,4 @@
-// core/sspa/tests/global-setup.ts
+// sspa/tests/global-setup.ts
 import { chromium, type FullConfig } from '@playwright/test';
 import { assertNoNipioBrowserBaseUrlOnDarwin, requireNonEmptyEnv } from './e2e/utils/e2eEnv';
 import { checkBuildNumber } from './e2e/utils/buildNumberCheck';
@@ -6,7 +6,7 @@ import { authorizationHeaderBasic, resolveKongCredentialsForE2E } from './e2e/ut
 
 /**
  * Toda a suíte E2E depende desta verificação: o ambiente em execução deve expor
- * o mesmo `build` que o build-number.json local (por defeito core/sspa/build-number.json).
+ * o mesmo `build` que o build-number.json local (por defeito sspa/build-number.json).
  */
 export default async function globalSetup(config: FullConfig): Promise<void> {
   const skip =

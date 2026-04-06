@@ -5,7 +5,7 @@ import path from 'path';
 import { Page, APIRequestContext } from '@playwright/test';
 import { e2eConfigError, getEnvOrDefault, requireNonEmptyEnv } from './e2eEnv';
 
-/** Raiz do monorepo (core/sspa/tests/e2e/utils → ../../../../..) */
+/** Raiz do monorepo (sspa/tests/e2e/utils → ../../../../..) */
 const REPO_ROOT = path.resolve(__dirname, '../../../../..');
 
 const ORIENTACAO_DEV = [
@@ -21,7 +21,7 @@ const ORIENTACAO_DEV = [
 function resolveExpectedBuild(): { build: number; jsonPath: string } {
   const rel = getEnvOrDefault(
     'E2E_EXPECTED_BUILD_NUMBER_JSON',
-    'core/sspa/build-number.json',
+    'sspa/build-number.json',
   );
   const jsonPath = path.isAbsolute(rel) ? rel : path.join(REPO_ROOT, rel);
   const raw = JSON.parse(fs.readFileSync(jsonPath, 'utf8')) as { build?: unknown };

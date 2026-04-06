@@ -1,4 +1,4 @@
-// core/sspa/tests/playwright.config.ts
+// sspa/tests/playwright.config.ts
 import { defineConfig, devices } from '@playwright/test';
 import { assertNoNipioBrowserBaseUrlOnDarwin, requireNonEmptyEnv } from './e2e/utils/e2eEnv';
 import { authorizationHeaderBasic, resolveKongCredentialsForE2E } from './e2e/utils/kongSecrets';

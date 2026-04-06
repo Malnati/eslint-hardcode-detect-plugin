@@ -1,4 +1,4 @@
-// core/sspa/tests/e2e/browser/integrated/login-mfe-integrated.spec.ts
+// sspa/tests/e2e/browser/integrated/login-mfe-integrated.spec.ts
 import { test, expect } from '@playwright/test';
 import { assertBaseUrlE2eEnv, requireNonEmptyEnv } from '../../utils/e2eEnv';
 

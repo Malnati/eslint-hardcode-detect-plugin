@@ -1,4 +1,4 @@
-// core/sspa/tests/e2e/browser/standalone/import-map-error-standalone.spec.ts
+// sspa/tests/e2e/browser/standalone/import-map-error-standalone.spec.ts
 import { test, expect } from '@playwright/test';
 import { assertLoginStandaloneE2eEnv, requireNonEmptyEnv } from '../../utils/e2eEnv';
 import { applyBasicAuthToPage } from '../../utils/mfeHybridE2e';

@@ -1,4 +1,4 @@
-// core/sspa/tests/e2e/browser/integrated/design-system-browser.spec.ts
+// sspa/tests/e2e/browser/integrated/design-system-browser.spec.ts
 import { test, expect } from '@playwright/test';
 import { assertShellE2eEnv } from '../../utils/e2eEnv';
 

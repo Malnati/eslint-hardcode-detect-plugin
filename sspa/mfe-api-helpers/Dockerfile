@@ -3,11 +3,10 @@ FROM node:22-alpine AS build
 
 WORKDIR /app
 
-COPY core/sspa/mfe-api-helpers/package*.json ./
-COPY core/sspa/mfe-api-helpers/scripts ./scripts/
+COPY sspa/mfe-api-helpers/package*.json ./
 RUN npm install --no-audit --no-fund
 
-COPY core/sspa/mfe-api-helpers/ ./
+COPY sspa/mfe-api-helpers/ ./
 RUN npm run build
 
 FROM nginx:alpine
