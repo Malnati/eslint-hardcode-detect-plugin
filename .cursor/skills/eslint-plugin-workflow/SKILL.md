@@ -22,9 +22,18 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 
 ## Testes
 
-1. Adicione casos em `packages/eslint-plugin-hardcode-detect/tests/` com **`RuleTester`** do ESLint (API estável; ver Clippings [Node.js API](../../../reference/Clippings/dev/javascript/eslint/Node.js%20API%20Reference%20-%20ESLint%20-%20Pluggable%20JavaScript%20Linter.md)) e o runner `node --test` definido no `package.json`.
-2. Cubra mensagens de erro listadas no spec e limites (ex.: strings curtas ignoradas em `no-hardcoded-strings`).
-3. Depois de editar regras ou o entrypoint, rode `npm run lint` e `npm test` no pacote (Node **≥ 22** conforme `engines` do pacote).
+### RuleTester vs e2e (fumaça)
+
+- **`tests/` + RuleTester**: valida o **comportamento da regra** isoladamente (casos válidos/inválidos). Fonte: documentação [Custom Rules](https://eslint.org/docs/latest/extend/custom-rules) e Clippings [Node.js API (RuleTester)](../../../reference/Clippings/dev/javascript/eslint/Node.js%20API%20Reference%20-%20ESLint%20-%20Pluggable%20JavaScript%20Linter.md).
+- **`e2e/`**: fumaça de **integração** — motor ESLint 9, flat config e plugin carregado como em um projeto consumidor, via classe `ESLint` e `lintFiles` (Clippings [Node.js API](../../../reference/Clippings/dev/javascript/eslint/Node.js%20API%20Reference%20-%20ESLint%20-%20Pluggable%20JavaScript%20Linter.md); config em [Extend ESLint](https://eslint.org/docs/latest/extend/eslint)). Os fixtures ficam em `e2e/fixtures/`; o `eslint.config.mjs` do pacote ignora esses diretórios no lint do próprio plugin.
+- **`eslint-plugin-eslint-plugin`** e **`eslint-plugin-n`** no [`eslint.config.mjs`](../../../packages/eslint-plugin-hardcode-detect/eslint.config.mjs) aplicam-se ao **código-fonte do plugin** (`src/`, runners em `tests/` e `e2e/`), não aos arquivos de fixture tratados como projeto de terceiros.
+
+### Procedimento
+
+1. Adicione casos em `packages/eslint-plugin-hardcode-detect/tests/` com **`RuleTester`** e o runner `node --test` definido no `package.json`.
+2. Para mudanças que afetem carregamento do plugin ou resolução de config, estenda ou ajuste os testes em `e2e/` quando fizer sentido (mantendo o Hello World como baseline).
+3. Cubra mensagens de erro listadas no spec e limites (ex.: strings curtas ignoradas em `no-hardcoded-strings`).
+4. Depois de editar regras ou o entrypoint, rode `npm run lint` e `npm test` no pacote (Node **≥ 22** conforme `engines` do pacote).
 
 ## Checklist
 

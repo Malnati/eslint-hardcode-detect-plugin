@@ -9,7 +9,7 @@ const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
 
 /** ESLint 9 flat config: `eslint-plugin-eslint-plugin` v7 usa `configs.recommended` (objeto único). */
 export default tseslint.config(
-  { ignores: ["dist/**"] },
+  { ignores: ["dist/**", "e2e/fixtures/**"] },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -24,7 +24,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ["tests/**/*.mjs", "eslint.config.mjs"],
+    files: ["tests/**/*.mjs", "e2e/**/*.mjs", "eslint.config.mjs"],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
@@ -32,6 +32,11 @@ export default tseslint.config(
   },
   {
     ...n.configs["flat/recommended-module"],
-    files: ["src/**/*.ts", "tests/**/*.mjs", "eslint.config.mjs"],
+    files: [
+      "src/**/*.ts",
+      "tests/**/*.mjs",
+      "e2e/**/*.mjs",
+      "eslint.config.mjs",
+    ],
   },
 );

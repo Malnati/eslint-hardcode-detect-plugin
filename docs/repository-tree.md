@@ -37,6 +37,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── packages/
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
 │       ├── docs/rules/                 # Documentação de regras (ex.: hello-world)
+│       ├── e2e/                        # Fumaça e2e (ESLint API + fixtures consumidor)
+│       │   └── fixtures/hello-world/   # Flat config mínimo + amostra
 │       ├── src/rules/                  # Implementação das regras ESLint
 │       ├── tests/                      # RuleTester + node:test
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)

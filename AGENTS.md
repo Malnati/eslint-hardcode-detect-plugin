@@ -70,6 +70,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 ## Testes
 
 - Comando alvo: `npm test` no pacote (ver [`packages/eslint-plugin-hardcode-detect/package.json`](packages/eslint-plugin-hardcode-detect/package.json)).
+- O mesmo comando executa, em sequência: build (`tsc`), testes com **RuleTester** em `tests/` e fumaça **e2e** em `e2e/` (API `ESLint` + fixture com flat config).
 - Na raiz, workspaces npm: `npm test --workspace eslint-plugin-hardcode-detect` após instalação na raiz.
 
 ## Automação no Cursor / CLI

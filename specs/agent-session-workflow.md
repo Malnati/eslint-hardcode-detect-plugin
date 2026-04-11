@@ -29,6 +29,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | Categoria | Exemplos | Ação obrigatória relacionada a Clippings |
 |-----------|----------|-------------------------------------------|
 | **Ecossistema ESLint / plugin / RuleTester / flat ou legacy config** | Nova regra, mudança de API do ESLint no código, ajuste de `eslint.config` do pacote | Consultar **primeiro** `reference/Clippings/` no tópico; ver [`specs/agent-reference-clippings.md`](agent-reference-clippings.md). |
+| **Testes e2e / fixtures de consumidor** | `e2e/`, `e2e/fixtures/`, runners com `ESLint` / `lintFiles` | Idem (Clippings: Node.js API, Extend ESLint); atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) se a árvore sob `e2e/` mudar. |
 | **Empacotamento npm / metadados do pacote** | `package.json`, exports, build do plugin | Idem quando a decisão depender de documentação oficial (npm, Node). |
 | **CI** que interpreta ESLint, Node ou npm | Workflows que rodam o linter ou publicam o pacote | Consultar Clippings ou doc oficial quando a semântica do toolchain não for óbvia no repo. |
 | **Somente Markdown / specs / governança** sem tocar em API ESLint | README, `docs/`, rules do Cursor | Clippings **não** é obrigatório salvo o texto **altere** contratos que citam ESLint ou exija validar citação contra fonte oficial. |
@@ -75,6 +76,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Versão do documento
 
+- **1.3.0** — tabela de escopo: linha para testes e2e e fixtures do plugin.
 - **1.2.0** — Fase D: remissão explícita a mensagens Conventional Commits em [`agent-git-workflow.md`](agent-git-workflow.md).
 - **1.1.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md), tabela de hierarquia ajustada, comandos Cursor.
 - **1.0.0** — contrato de sessão por prompt: fases A–D, tabela de escopo e ligação a Clippings, grafo e Git.

@@ -23,13 +23,13 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 ## Comandos úteis (raiz do monorepo)
 
 - `npm run lint` — ESLint do código do plugin (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`).
-- `npm test` — build + testes do workspace `eslint-plugin-hardcode-detect`.
+- `npm test` — build + RuleTester (`tests/`) + fumaça e2e (`e2e/`) do workspace `eslint-plugin-hardcode-detect`.
 
 ## Estrutura
 
 | Caminho | Conteúdo |
 |---------|----------|
-| [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) | Código-fonte npm do plugin. |
+| [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) | Código-fonte npm do plugin (`tests/`, `e2e/`). |
 | [`reference/Clippings`](reference/Clippings) | Recortes da documentação oficial (consulta obrigatória em escopo ESLint/npm). |
 | [`reference/legacy-snapshot`](reference/legacy-snapshot) | Snapshot histórico (somente referência; não é dependência). |
 | [`.github/actions/ops-eslint`](.github/actions/ops-eslint) | Composite GitHub Action para rodar ESLint em container. |

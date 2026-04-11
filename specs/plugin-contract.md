@@ -64,8 +64,10 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 - Implementação em TypeScript ou JavaScript ES modules, alinhada à API de regras do ESLint 9.
 - Testes automatizados devem cobrir casos positivos e negativos por regra (ver skill em `.cursor/skills/eslint-plugin-workflow`).
+- **Fumaça e2e**: além do RuleTester, o pacote mantém um teste de integração mínimo em `e2e/` que usa a API Node.js do ESLint (`ESLint`, `lintFiles`) contra um fixture com flat config e o plugin carregado a partir de `dist/`. Esse fluxo valida o “Hello World” de ponta a ponta e **não substitui** os testes por regra com RuleTester.
 
 ## Versão do documento
 
+- **0.3.0** — fumaça e2e (motor + flat config + plugin) descrita; RuleTester permanece o contrato principal por regra.
 - **0.2.0** — regras `hello-world` (demo) e `no-hardcoded-strings` (primeira regra de produto) descritas e implementáveis no pacote.
 - **0.1.0** — alinhado ao snapshot legado em `reference/legacy-snapshot/*.mjs`.

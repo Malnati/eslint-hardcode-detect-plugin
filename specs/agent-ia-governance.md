@@ -26,7 +26,7 @@ Garantir que:
 ## Checklist — abertura do prompt (antes de implementar)
 
 - [ ] **Objetivo e escopo** extraídos do pedido; classificação conforme tabela em [`agent-session-workflow.md`](agent-session-workflow.md) (ESLint/plugin/npm/CI vs só docs vs estrutura).
-- [ ] Se o escopo for **ESLint / npm do pacote / CI relacionada**: **listar e abrir** recortes relevantes em [`reference/Clippings/`](../reference/Clippings/) (índice: [`reference/Clippings/README.md`](../reference/Clippings/README.md)); se faltar ou estiver desatualizado, consultar fonte **oficial** e **registrar** clipping conforme [`agent-reference-clippings.md`](agent-reference-clippings.md).
+- [ ] Se o escopo for **ESLint / npm do pacote / CI relacionada** (inclui **e2e** do plugin, fixtures e API `ESLint`): **listar e abrir** recortes relevantes em [`reference/Clippings/`](../reference/Clippings/) (índice: [`reference/Clippings/README.md`](../reference/Clippings/README.md)); se faltar ou estiver desatualizado, consultar fonte **oficial** e **registrar** clipping conforme [`agent-reference-clippings.md`](agent-reference-clippings.md).
 - [ ] Se o pedido puder **alterar limites ou escopo do produto**: reler [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md).
 - [ ] Se houver mudança de **comportamento público**: [`specs/plugin-contract.md`](plugin-contract.md) atualizado **antes** ou **junto** do código.
 
@@ -70,5 +70,6 @@ Garantir que:
 
 ## Versão do documento
 
+- **1.2.0** — checklist de abertura: escopo explícito para testes e2e e fixtures do plugin.
 - **1.1.0** — fechamento e boas práticas: mensagens de commit Conventional Commits conforme [`agent-git-workflow.md`](agent-git-workflow.md).
 - **1.0.0** — governança consolidada para agentes de IA: checklists, mapa de artefatos e boas práticas OSS.
