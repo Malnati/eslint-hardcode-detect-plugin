@@ -15,8 +15,8 @@ Este projeto aceita contribuições humanas e fluxos automatizados por agentes d
 1. Implementar ou editar em [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect).
 2. Rodar testes (`npm test` no pacote ou via workspace na raiz).
 3. Atualizar specs e Markdown conforme [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md).
-4. Commit e push seguindo [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md).
+4. Commit e push seguindo [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md), incluindo mensagens no formato **Conventional Commits** descrito nesse spec.
 
 ## Conduta
 
-Mantenha mensagens de commit claras e evite incluir dados sensíveis. Dúvidas sobre limites: [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md).
+Mantenha mensagens de commit no formato **Conventional Commits** (ver [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md)) e evite incluir dados sensíveis. Dúvidas sobre limites: [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md).

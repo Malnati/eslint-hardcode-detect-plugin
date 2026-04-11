@@ -29,10 +29,11 @@ Quando o prompt tratar de API ESLint, regras, config ou empacotamento do plugin,
 
 ## Relação com versionamento Git
 
-Alterações de documentação entram nos mesmos commits que o trabalho correspondente (preferencialmente) ou em commit subsequente na mesma sessão, seguindo [`specs/agent-git-workflow.md`](agent-git-workflow.md).
+Alterações de documentação entram nos mesmos commits que o trabalho correspondente (preferencialmente) ou em commit subsequente na mesma sessão, seguindo [`specs/agent-git-workflow.md`](agent-git-workflow.md), incluindo o formato **Conventional Commits** para a mensagem.
 
 ## Versão do documento
 
+- **1.4.0** — remissão explícita a Conventional Commits na relação com versionamento Git.
 - **1.3.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md) para checklists de abertura e fechamento.
 - **1.2.0** — referência explícita a [`agent-session-workflow.md`](agent-session-workflow.md) como orquestração da sessão.
 - **1.1.0** — referência ao contrato de `reference/Clippings` e consulta em escopo ESLint/npm.

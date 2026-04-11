@@ -42,7 +42,7 @@ Garantir que:
 - [ ] [`reference/Clippings/README.md`](../reference/Clippings/README.md) coerente se arquivos de Clippings foram adicionados, renomeados ou removidos.
 - [ ] Demais documentos impactados conforme [`agent-documentation-workflow.md`](agent-documentation-workflow.md); [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) ou visão se limites mudaram.
 - [ ] Na **resposta ao usuário**: listar arquivos de documentação alterados **ou** declarar explicitamente que **nenhuma** atualização foi necessária.
-- [ ] Se houver alterações locais rastreadas: [`specs/agent-git-workflow.md`](agent-git-workflow.md) (commit e push na branch atual, salvo working tree vazia).
+- [ ] Se houver alterações locais rastreadas: [`specs/agent-git-workflow.md`](agent-git-workflow.md) (commit e push na branch atual, salvo working tree vazia), com **mensagem no formato Conventional Commits** definido nesse spec.
 
 ## Mapa de artefatos para agentes
 
@@ -65,9 +65,10 @@ Garantir que:
 - **Contrato explícito**: mudanças de comportamento refletidas em `specs/plugin-contract.md` e testes (ex.: RuleTester) quando aplicável.
 - **Proveniência**: Clippings com URL oficial, data e contexto; trechos mínimos necessários (ver [`agent-reference-clippings.md`](agent-reference-clippings.md)).
 - **Separação de concerns**: código publicável isolado em `packages/`; referência histórica não misturada com release.
-- **Rastreabilidade**: commits e mensagens claras; documentação e grafo atualizados no mesmo ciclo que a mudança estrutural.
+- **Rastreabilidade**: commits com mensagens **Conventional Commits** (ver [`agent-git-workflow.md`](agent-git-workflow.md)); documentação e grafo atualizados no mesmo ciclo que a mudança estrutural.
 - **Segurança**: não commitar segredos; respeitar `.gitignore` e políticas do repositório.
 
 ## Versão do documento
 
+- **1.1.0** — fechamento e boas práticas: mensagens de commit Conventional Commits conforme [`agent-git-workflow.md`](agent-git-workflow.md).
 - **1.0.0** — governança consolidada para agentes de IA: checklists, mapa de artefatos e boas práticas OSS.

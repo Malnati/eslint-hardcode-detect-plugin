@@ -29,7 +29,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 Ao **finalizar** o trabalho solicitado, depois de implementar ou documentar:
 
 1. Siga o contrato em [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) e a skill [`.cursor/skills/git-agent-workflow/SKILL.md`](.cursor/skills/git-agent-workflow/SKILL.md).
-2. Se houver mudanças locais: `git status` → `git add` (seletivo) → `git commit` com mensagem clara → `git push` para o remoto na branch atual.
+2. Se houver mudanças locais: `git status` → `git add` (seletivo) → `git commit` com mensagem no formato **Conventional Commits** (ver [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md)) → `git push` para o remoto na branch atual.
 3. Se não houver nada a commitar, declare explicitamente.
 4. Se o push falhar (rede, permissões, branch protegida), relate o erro e deixe o commit local disponível.
 

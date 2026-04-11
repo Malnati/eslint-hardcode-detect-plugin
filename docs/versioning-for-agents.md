@@ -8,14 +8,15 @@ Garantir que cada sessão de trabalho concluída por um agente deixe o históric
 
 1. Trabalho concluído (código, testes, docs, configs).
 2. Revisar `git status`.
-3. `git add` seletivo → `git commit` com mensagem clara → `git push`.
+3. `git add` seletivo → `git commit` com mensagem no formato **Conventional Commits** → `git push`.
 
-Detalhes normativos: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md). Antes do commit, atualize a documentação conforme [`specs/agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md).
+Detalhes normativos: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md) (inclui tipos, escopos recomendados e exemplos). Antes do commit, atualize a documentação conforme [`specs/agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md).
 
 ## Mensagens de commit
 
-- Primeira linha: até ~72 caracteres; modo imperativo (“Adiciona…”, “Corrige…”).
-- Opcional: linha em branco e parágrafo com motivação ou referência a issue/spec.
+- **Formato obrigatório:** Conventional Commits (`<type>[optional scope]: <description>` na primeira linha), conforme [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md) e o recorte de referência [`reference/Clippings/standards/Conventional Commits.md`](../reference/Clippings/standards/Conventional%20Commits.md).
+- Primeira linha: preferir até ~72 caracteres; descrição no modo imperativo.
+- Opcional: linha em branco e parágrafo com motivação ou referência a issue/spec; rodapés estilo trailer quando útil.
 
 ## Ferramentas
 

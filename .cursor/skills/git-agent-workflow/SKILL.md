@@ -16,7 +16,7 @@ Ao terminar tarefas que modificam este repositório (código, testes, documenta�
 2. Se não houver alterações: informe "Nada a commitar" e encerre.
 3. Se houver alterações:
    - `git add` com caminhos específicos (respeitar `.gitignore`).
-   - `git commit -m "..."` com mensagem imperativa e escopo claro.
+   - `git commit -m "..."` com mensagem **Conventional Commits** (`<type>[optional scope]: <description>`), por exemplo `feat(plugin): add option for ignored paths` ou `docs(cursor): document commit format in git skill`.
    - `git push origin "$(git branch --show-current)"` ou equivalente na branch atual.
 4. Se `git push` falhar, copie a mensagem de erro para o usuário e sugira verificar credenciais ou branch protegida.
 

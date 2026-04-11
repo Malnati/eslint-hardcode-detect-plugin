@@ -59,7 +59,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
    - Ajustar `README.md`, `CONTRIBUTING.md` ou `docs/` conforme impacto.
 2. Garantir que o **índice** em [`reference/Clippings/README.md`](../reference/Clippings/README.md) liste arquivos recortados relevantes quando arquivos forem adicionados, renomeados ou removidos.
 3. Na **resposta ao usuário**, listar documentação alterada ou declarar explicitamente que **nenhuma** atualização foi necessária (e por quê).
-4. Se houver alterações locais rastreadas: seguir [`specs/agent-git-workflow.md`](agent-git-workflow.md) (commit e push na branch atual, salvo working tree vazia — então declarar “nada a commitar”).
+4. Se houver alterações locais rastreadas: seguir [`specs/agent-git-workflow.md`](agent-git-workflow.md) (commit com mensagem **Conventional Commits** e push na branch atual, salvo working tree vazia — então declarar “nada a commitar”).
 
 ## Skills e rules do repositório
 
@@ -75,5 +75,6 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Versão do documento
 
+- **1.2.0** — Fase D: remissão explícita a mensagens Conventional Commits em [`agent-git-workflow.md`](agent-git-workflow.md).
 - **1.1.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md), tabela de hierarquia ajustada, comandos Cursor.
 - **1.0.0** — contrato de sessão por prompt: fases A–D, tabela de escopo e ligação a Clippings, grafo e Git.
