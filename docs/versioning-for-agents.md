@@ -10,7 +10,7 @@ Garantir que cada sessão de trabalho concluída por um agente deixe o históric
 2. Revisar `git status`.
 3. `git add` seletivo → `git commit` com mensagem clara → `git push`.
 
-Detalhes normativos: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md).
+Detalhes normativos: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md). Antes do commit, atualize a documentação conforme [`specs/agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md).
 
 ## Mensagens de commit
 

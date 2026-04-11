@@ -5,10 +5,12 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 ## Hierarquia de fontes
 
 1. [`specs/plugin-contract.md`](specs/plugin-contract.md) — contrato funcional das regras ESLint e opções públicas.
-2. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
-3. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
-4. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura e uso.
-5. [`reference/`](reference/) — somente leitura; não é dependência de build nem de runtime.
+2. [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — visão e roadmap (hardcode multi-nível: arquivo, dependências, classificação, ordenação, níveis).
+3. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
+4. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
+5. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
+6. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
+7. [`reference/`](reference/) — somente leitura; não é dependência de build nem de runtime.
 
 ## Regras obrigatórias
 
@@ -29,23 +31,35 @@ Ao **finalizar** o trabalho solicitado, depois de implementar ou documentar:
 
 Neste repositório, esta política **prevalece** sobre instruções genéricas de não usar `git commit`/`git push` fora de container.
 
+## Documentação Markdown (obrigatória ao concluir o prompt)
+
+Ao **finalizar** o trabalho (código, specs, CI ou governança):
+
+1. Siga [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) e a skill [`.cursor/skills/github-markdown-docs/SKILL.md`](.cursor/skills/github-markdown-docs/SKILL.md).
+2. Mantenha [`docs/repository-tree.md`](docs/repository-tree.md) alinhado à árvore real sempre que diretórios ou artefatos normativos mudarem.
+3. Aplique [`docs/documentation-policy.md`](docs/documentation-policy.md) (links relativos, estrutura de títulos, cercas de código).
+4. Atualize [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) ou [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) quando limites ou visão de produto mudarem.
+5. Na resposta ao usuário, **liste** os arquivos de documentação alterados ou indique explicitamente que nenhuma atualização foi necessária.
+
 ## Mapa de diretórios
 
 | Caminho | Responsabilidade |
 |---------|------------------|
+| `README.md`, `CONTRIBUTING.md` | Entrada GitHub e guia de contribuição. |
 | `packages/eslint-plugin-hardcode-detect/` | Código e testes do plugin npm. |
-| `specs/` | Contrato e requisitos formais. |
-| `docs/` | Arquitetura e documentação suplementar. |
+| `specs/` | Contrato, visão e fluxos normativos (incl. agentes). |
+| `docs/` | Políticas, grafo do repositório e arquitetura. |
 | `reference/legacy-snapshot/` | Snapshot histórico; não usar como código vivo. |
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
 | `.cursor/rules/` | Regras de contexto do Cursor para este repo. |
-| `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (inclui `git-agent-workflow`). |
+| `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`). |
 
 ## Fluxo sugerido de PR
 
 1. Descrever mudança no spec (se aplicável).
 2. Implementar e testar em `packages/`.
-3. Atualizar `README.md` / `docs/` se o uso público mudar.
+3. Atualizar documentação (`README.md`, `docs/`, `docs/repository-tree.md` se a árvore mudar) conforme [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md).
+4. Versionar com Git conforme [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md).
 
 ## Testes
 

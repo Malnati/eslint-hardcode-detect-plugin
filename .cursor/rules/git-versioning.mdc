@@ -5,6 +5,7 @@ alwaysApply: true
 
 # Versionamento Git (agentes)
 
+- Antes do commit, cumpra a documentação em [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md) e a rule `documentation.mdc` (incluindo [`docs/repository-tree.md`](../../docs/repository-tree.md) se a árvore mudou).
 - Ao **concluir** o trabalho solicitado em um prompt, se existirem alterações locais no repositório, execute o fluxo em [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md): `git status` → `git add` (apropriado) → `git commit` → `git push` para `origin` na branch atual.
 - Se não houver mudanças a commitar, declare isso explicitamente.
 - Não use `git push --force` em branches padrão (`main`/`master`) sem instrução explícita.

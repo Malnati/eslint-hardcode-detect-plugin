@@ -21,6 +21,10 @@ Este repositório separa três preocupações:
 ## Versionamento (agentes)
 
 Fluxo normativo: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md) e [`docs/versioning-for-agents.md`](versioning-for-agents.md). Agentes devem fazer commit e push ao concluir trabalho com alterações locais, salvo ausência de mudanças ou falha de push documentada.
+
+## Documentação (agentes)
+
+Fluxo normativo: [`specs/agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md), política em [`documentation-policy.md`](documentation-policy.md) e grafo em [`repository-tree.md`](repository-tree.md). Qualquer mudança estrutural exige atualização do grafo e coerência com [`limitations-and-scope.md`](limitations-and-scope.md) e [`specs/vision-hardcode-plugin.md`](../specs/vision-hardcode-plugin.md) quando o escopo evoluir.
 </think>
 
 

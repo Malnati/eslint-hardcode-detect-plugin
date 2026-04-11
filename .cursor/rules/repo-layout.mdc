@@ -11,4 +11,4 @@ alwaysApply: true
 - Comportamento público das regras e opções: documentar em `specs/plugin-contract.md` **antes** ou junto com mudanças de implementação; o spec tem precedência sobre o código legado em `reference/`.
 - Composite Action oficial: `.github/actions/ops-eslint/` (script em `assets/run.sh`).
 - Consulte `AGENTS.md` na raiz para o fluxo completo.
-- Ao concluir alterações, versionamento Git conforme [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md) e a rule `git-versioning.mdc`.
+- Ao concluir alterações, documentação conforme [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md) e rule `documentation.mdc`; em seguida versionamento Git conforme [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md) e a rule `git-versioning.mdc`.

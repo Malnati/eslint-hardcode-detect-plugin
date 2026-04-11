@@ -1,6 +1,6 @@
 # eslint-plugin-hardcode-detect
 
-Implementação oficial do plugin (em construção). O contrato das regras está em [`specs/plugin-contract.md`](../../specs/plugin-contract.md).
+Implementação oficial do plugin (em construção). O contrato das regras está em [`specs/plugin-contract.md`](../../specs/plugin-contract.md); a visão multi-nível em [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
 
 ## Desenvolvimento
 

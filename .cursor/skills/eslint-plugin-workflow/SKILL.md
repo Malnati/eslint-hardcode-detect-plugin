@@ -25,7 +25,8 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 
 ## Checklist
 
-- [ ] Comportamento documentado em `specs/plugin-contract.md`
+- [ ] Comportamento documentado em `specs/plugin-contract.md` e visão atualizada se necessário em `specs/vision-hardcode-plugin.md`
 - [ ] Nenhum import de `reference/`
 - [ ] Testes passando (`npm test` no pacote)
-- [ ] Ao finalizar: seguir [`specs/agent-git-workflow.md`](../../../specs/agent-git-workflow.md) (commit e push se houver mudanças)
+- [ ] Ao finalizar: [`specs/agent-documentation-workflow.md`](../../../specs/agent-documentation-workflow.md) e `docs/repository-tree.md` se a árvore mudou
+- [ ] Ao finalizar: [`specs/agent-git-workflow.md`](../../../specs/agent-git-workflow.md) (commit e push se houver mudanças)

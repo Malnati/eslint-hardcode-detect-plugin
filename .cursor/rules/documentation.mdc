@@ -1,0 +1,13 @@
+---
+description: Atualização obrigatória de documentação Markdown e grafo do repositório ao concluir trabalho
+alwaysApply: true
+---
+
+# Documentação (GitHub / Markdown)
+
+- Ao **finalizar** um prompt que altere código, estrutura de pastas, specs ou políticas, cumpra [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md).
+- Se a **árvore de diretórios** mudar, atualize [`docs/repository-tree.md`](../../docs/repository-tree.md) no mesmo ciclo.
+- Siga [`docs/documentation-policy.md`](../../docs/documentation-policy.md) para formato (cabeçalhos, links relativos, cercas de código).
+- Restrições e escopo do projeto: [`docs/limitations-and-scope.md`](../../docs/limitations-and-scope.md). Visão do plugin (hardcode multi-nível): [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
+- Liste na resposta ao usuário quais arquivos de documentação foram atualizados ou confirme que não houve necessidade.
+- Skill: `.cursor/skills/github-markdown-docs/SKILL.md`.
