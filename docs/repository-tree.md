@@ -33,6 +33,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md
+│   ├── hardcoded-check.yml   # Workflow de exemplo (referência; não em .github/workflows/)
 │   └── legacy-snapshot/      # Snapshot histórico (ESLint local, action de exemplo)
 └── specs/                    # Contratos e visão
     ├── agent-documentation-workflow.md
