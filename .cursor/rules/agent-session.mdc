@@ -1,0 +1,15 @@
+---
+description: Fluxo por prompt — consulta a Clippings, grafo do repo, limites e fechamento (docs + Git)
+alwaysApply: true
+---
+
+# Sessão do agente (cada prompt)
+
+Em **cada** prompt que envolva este repositório, siga o contrato em [`specs/agent-session-workflow.md`](../../specs/agent-session-workflow.md):
+
+1. **Classificar o escopo** (ESLint/plugin/npm/CI vs só docs vs estrutura).
+2. Se o trabalho for de **ecossistema ESLint/npm** ou **CI** relacionada: **consultar primeiro** [`reference/Clippings/`](../../reference/Clippings/) e [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md); registrar recortes novos quando a decisão depender de documentação oficial.
+3. Respeitar [`docs/limitations-and-scope.md`](../../docs/limitations-and-scope.md), [`AGENTS.md`](../../AGENTS.md) e [`specs/plugin-contract.md`](../../specs/plugin-contract.md).
+4. Ao **finalizar**: manter [`docs/repository-tree.md`](../../docs/repository-tree.md) alinhado à árvore real; cumprir [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md) e [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md).
+
+Skill de orquestração: leia as skills em [`.cursor/skills/`](../../.cursor/skills/) conforme o tipo de tarefa (`reference-clippings-workflow`, `eslint-plugin-workflow`, `github-markdown-docs`, `git-agent-workflow`).

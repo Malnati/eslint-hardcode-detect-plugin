@@ -12,16 +12,19 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── .gitignore
 ├── .cursor/
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
+│   │   ├── agent-session.mdc
+│   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
 │   │   ├── git-versioning.mdc
 │   │   └── repo-layout.mdc
 │   └── skills/               # Skills reutilizáveis pelos agentes
 │       ├── eslint-plugin-workflow/
 │       ├── git-agent-workflow/
-│       └── github-markdown-docs/
+│       ├── github-markdown-docs/
+│       └── reference-clippings-workflow/
 ├── .github/
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
-│   └── workflows/          # CI (ex.: ci.yml)
+│   └── workflows/            # CI (ex.: ci.yml)
 ├── docs/                     # Documentação complementar
 │   ├── README.md             # Índice dos guias em docs/
 │   ├── architecture.md
@@ -33,11 +36,20 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md
+│   ├── Clippings/            # Trechos da documentação oficial (ESLint, npm, etc.)
+│   │   ├── README.md
+│   │   ├── dev/
+│   │   │   └── javascript/
+│   │   │       ├── eslint/   # Recortes ESLint (API, regras, plugins, etc.)
+│   │   │       └── npm/      # Recortes npm
+│   │   └── standards/        # Padrões (ex.: Conventional Commits)
 │   ├── hardcoded-check.yml   # Workflow de exemplo (referência; não em .github/workflows/)
 │   └── legacy-snapshot/      # Snapshot histórico (ESLint local, action de exemplo)
 └── specs/                    # Contratos e visão
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
+    ├── agent-reference-clippings.md
+    ├── agent-session-workflow.md
     ├── plugin-contract.md
     └── vision-hardcode-plugin.md
 ```
@@ -46,7 +58,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 
 - **Implementação**: `packages/eslint-plugin-hardcode-detect/`.
 - **Normas de produto e agente**: `specs/` + `AGENTS.md` + `.cursor/rules/`.
-- **Referência histórica**: `reference/` (somente leitura para evolução do plugin).
+- **Referência**: `reference/Clippings/` (documentação oficial espelhada), `reference/legacy-snapshot/` (histórico); somente leitura para código em `packages/`.
 
 ## Diagrama (visão lógica)
 

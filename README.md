@@ -5,11 +5,13 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 ## Documentação
 
 - [`AGENTS.md`](AGENTS.md) — instruções para agentes de IA e colaboradores (prioridades e fluxos obrigatórios).
+- [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md) — fluxo por prompt (escopo, Clippings, grafo, fechamento).
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — como contribuir (inclui agentes).
 - [`docs/README.md`](docs/README.md) — índice dos guias em `docs/`.
 - [`specs/plugin-contract.md`](specs/plugin-contract.md) — contrato funcional das regras.
 - [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — visão e roadmap (multi-nível).
 - [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — atualização de documentação ao concluir trabalho.
+- [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — consulta e manutenção de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/).
 - [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — commit e push ao concluir trabalho.
 - [`docs/repository-tree.md`](docs/repository-tree.md) — grafo de arquivos e diretórios.
 - [`docs/documentation-policy.md`](docs/documentation-policy.md) — boas práticas Markdown no GitHub.
@@ -22,6 +24,7 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 | Caminho | Conteúdo |
 |---------|----------|
 | [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) | Código-fonte npm do plugin. |
+| [`reference/Clippings`](reference/Clippings) | Recortes da documentação oficial (consulta obrigatória em escopo ESLint/npm). |
 | [`reference/legacy-snapshot`](reference/legacy-snapshot) | Snapshot histórico (somente referência; não é dependência). |
 | [`.github/actions/ops-eslint`](.github/actions/ops-eslint) | Composite GitHub Action para rodar ESLint em container. |
 | [`.cursor/rules`](.cursor/rules) | Regras do Cursor para este projeto. |

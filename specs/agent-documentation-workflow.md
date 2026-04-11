@@ -1,6 +1,6 @@
 # Contrato de documentação para agentes (Markdown / GitHub)
 
-Este repositório é documentado para leitura em **GitHub** (README, guias em `docs/`, `CONTRIBUTING.md`, specs). Agentes de IA **devem** manter a documentação coerente com o código e com a árvore de diretórios ao **finalizar** cada prompt que produza ou exija mudanças relevantes.
+Este repositório é documentado para leitura em **GitHub** (README, guias em `docs/`, `CONTRIBUTING.md`, specs). Agentes de IA **devem** manter a documentação coerente com o código e com a árvore de diretórios ao **finalizar** cada prompt que produza ou exija mudanças relevantes. O encadeamento com abertura do prompt (escopo, Clippings, limites) está em [`agent-session-workflow.md`](agent-session-workflow.md).
 
 ## Quando aplicar
 
@@ -23,10 +23,16 @@ Este repositório é documentado para leitura em **GitHub** (README, guias em `d
 
 A fonte normativa da árvore para humanos e agentes é [`docs/repository-tree.md`](../docs/repository-tree.md). Mudanças estruturais sem atualização desse arquivo são **incompletas**.
 
+## Documentação oficial espelhada (`reference/Clippings`)
+
+Quando o prompt tratar de API ESLint, regras, config ou empacotamento do plugin, os agentes devem seguir também [`agent-reference-clippings.md`](agent-reference-clippings.md): consultar `reference/Clippings/` no início e manter o índice/arquivos quando recortes novos forem necessários.
+
 ## Relação com versionamento Git
 
 Alterações de documentação entram nos mesmos commits que o trabalho correspondente (preferencialmente) ou em commit subsequente na mesma sessão, seguindo [`specs/agent-git-workflow.md`](agent-git-workflow.md).
 
 ## Versão do documento
 
+- **1.2.0** — referência explícita a [`agent-session-workflow.md`](agent-session-workflow.md) como orquestração da sessão.
+- **1.1.0** — referência ao contrato de `reference/Clippings` e consulta em escopo ESLint/npm.
 - **1.0.0** — introdução do contrato de documentação para agentes.

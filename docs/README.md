@@ -10,4 +10,4 @@
 | [repository-tree.md](repository-tree.md) | Grafo de arquivos e diretórios |
 | [versioning-for-agents.md](versioning-for-agents.md) | Fluxo Git para agentes |
 
-Especificações relacionadas: [`../specs/`](../specs/). Instruções para agentes: [`../AGENTS.md`](../AGENTS.md).
+Especificações relacionadas: [`../specs/`](../specs/) — em especial [`agent-session-workflow.md`](../specs/agent-session-workflow.md) (fluxo por prompt), [`agent-reference-clippings.md`](../specs/agent-reference-clippings.md) (`reference/Clippings/`) e [`agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md). Instruções para agentes: [`../AGENTS.md`](../AGENTS.md).

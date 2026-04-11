@@ -9,7 +9,7 @@ Este repositório é desenvolvido e mantido por agentes de IA (Cursor / Cursor C
 
 ## Procedimento obrigatório
 
-1. Cumprir [`agent-documentation-workflow.md`](agent-documentation-workflow.md) antes de commitar (README, `docs/`, `specs/`, [`docs/repository-tree.md`](../docs/repository-tree.md) se a árvore mudou).
+1. Cumprir a Fase D de [`agent-session-workflow.md`](agent-session-workflow.md) e, em seguida, [`agent-documentation-workflow.md`](agent-documentation-workflow.md) antes de commitar (README, `docs/`, `specs/`, [`docs/repository-tree.md`](../docs/repository-tree.md) se a árvore mudou).
 2. `git status` — verificar o que mudou.
 3. Se não houver mudanças relevantes para commitar (working tree limpa), informar explicitamente que não há nada a versionar.
 4. Se houver mudanças:
@@ -29,5 +29,6 @@ Instruções neste repositório (`AGENTS.md`, esta spec, rules do Cursor) **prev
 
 ## Versão do documento
 
-- **1.0.0** — introdução do contrato de Git para agentes.
+- **1.2.0** — passo 1 do procedimento alinhado à Fase D de `agent-session-workflow.md`.
 - **1.1.0** — integração obrigatória com documentação (`agent-documentation-workflow`) antes do commit.
+- **1.0.0** — introdução do contrato de Git para agentes.

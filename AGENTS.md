@@ -4,18 +4,21 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 
 ## Hierarquia de fontes
 
+0. [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md) — **orquestração por prompt**: classificar escopo, consultar Clippings e limites antes de implementar, atualizar grafo e fechar com documentação + Git.
 1. [`specs/plugin-contract.md`](specs/plugin-contract.md) — contrato funcional das regras ESLint e opções públicas.
 2. [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — visão e roadmap (hardcode multi-nível: arquivo, dependências, classificação, ordenação, níveis).
-3. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
-4. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
-5. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
-6. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
-7. [`reference/`](reference/) — somente leitura; não é dependência de build nem de runtime.
+3. [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — **consulta e manutenção** de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/) (por prompt, quando o escopo for relevante).
+4. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
+5. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
+6. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
+7. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
+8. [`reference/`](reference/) — somente leitura para código publicável; não é dependência de build nem de runtime. Subpastas: [`reference/Clippings/`](reference/Clippings/) (recortes oficiais), [`reference/legacy-snapshot/`](reference/legacy-snapshot/) (snapshot histórico).
 
 ## Regras obrigatórias
 
 - **Não** importar, reexportar nem referenciar arquivos em `reference/` a partir de `packages/`, `eslint.config.*` de produção ou testes do pacote.
-- **Não** alterar `reference/` exceto em PR explícito de “atualização de snapshot” (título/descrição claros).
+- **`reference/legacy-snapshot/`**: não alterar exceto em PR explícito de “atualização de snapshot” (título/descrição claros).
+- **`reference/Clippings/`**: trechos da documentação oficial; adicionar ou atualizar em commits explícitos quando o trabalho depender dessa fonte (ver [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md)).
 - Novas regras ou mudanças de comportamento: atualizar **primeiro** `specs/plugin-contract.md`, depois implementar em `packages/`.
 - Preferir imports relativos dentro de `packages/eslint-plugin-hardcode-detect` conforme convenção do projeto.
 - Após edições que afetem estilo ou tipos, corrija lints conforme configuração do pacote (quando existir).
@@ -47,12 +50,13 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 |---------|------------------|
 | `README.md`, `CONTRIBUTING.md` | Entrada GitHub e guia de contribuição. |
 | `packages/eslint-plugin-hardcode-detect/` | Código e testes do plugin npm. |
-| `specs/` | Contrato, visão e fluxos normativos (incl. agentes). |
+| `specs/` | Contrato, visão e fluxos normativos (incl. `agent-session-workflow.md` e demais contratos de agente). |
 | `docs/` | Políticas, grafo do repositório e arquitetura. |
+| `reference/Clippings/` | Recortes da documentação oficial (ESLint, npm, etc.); consulta obrigatória em escopo relevante. |
 | `reference/legacy-snapshot/` | Snapshot histórico; não usar como código vivo. |
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
-| `.cursor/rules/` | Regras de contexto do Cursor para este repo. |
-| `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`). |
+| `.cursor/rules/` | Regras Cursor (`alwaysApply`): sessão do agente, Clippings, documentação, Git, layout do repo. |
+| `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`). |
 
 ## Fluxo sugerido de PR
 
@@ -65,3 +69,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 
 - Comando alvo: `npm test` no pacote (ver [`packages/eslint-plugin-hardcode-detect/package.json`](packages/eslint-plugin-hardcode-detect/package.json)).
 - Na raiz, workspaces npm: `npm test --workspace eslint-plugin-hardcode-detect` após instalação na raiz.
+
+## Automação no Cursor / CLI
+
+Neste repositório, “agente” não depende de um único arquivo de produto: a governança está em **`AGENTS.md`**, em **`specs/`** (contratos por tema), em **`.cursor/rules/`** (regras com `alwaysApply` carregadas pelo Cursor) e em **`.cursor/skills/`** (procedimentos reutilizáveis). O fio condutor por prompt é [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md). Ao criar novas regras ou skills, mantenha links relativos e atualize [`docs/repository-tree.md`](docs/repository-tree.md) se a árvore normativa mudar.

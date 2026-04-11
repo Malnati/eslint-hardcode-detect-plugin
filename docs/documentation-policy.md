@@ -23,4 +23,4 @@ Boas práticas alinhadas a repositórios públicos no GitHub e leitura em web e 
 
 ## Manutenção por agentes
 
-Ao alterar estrutura de pastas ou responsabilidades, atualizar [`repository-tree.md`](repository-tree.md) e, se aplicável, [`limitations-and-scope.md`](limitations-and-scope.md).
+Ao alterar estrutura de pastas ou responsabilidades, atualizar [`repository-tree.md`](repository-tree.md) e, se aplicável, [`limitations-and-scope.md`](limitations-and-scope.md). O ciclo completo por prompt (escopo, Clippings, fechamento com grafo e Git) está em [`../specs/agent-session-workflow.md`](../specs/agent-session-workflow.md).

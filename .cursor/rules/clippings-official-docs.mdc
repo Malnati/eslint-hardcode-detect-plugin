@@ -1,0 +1,13 @@
+---
+description: Consulta obrigatória a reference/Clippings e documentação oficial para trabalho ESLint/npm
+alwaysApply: true
+---
+
+# Clippings e documentação oficial
+
+- O enquadramento por prompt (quando consultar Clippings, grafo, fechamento) está em [`specs/agent-session-workflow.md`](../../specs/agent-session-workflow.md).
+- Para tarefas que envolvam **API do ESLint**, **regras customizadas**, **RuleTester**, **config flat/legacy**, **empacotamento npm** do plugin ou **CI** ligada a esses temas: **consulte primeiro** [`reference/Clippings/`](../../reference/Clippings/) e siga [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md).
+- Se não existir recorte adequado, use documentação **oficial** atual (ex.: MCP de documentação) e **registre** o trecho em `reference/Clippings/` quando a decisão depender desse conteúdo (commit no mesmo ciclo ou imediatamente após, com mensagem clara).
+- **Não** importe arquivos de `reference/` em `packages/`; Clippings é só leitura para decisão e revisão.
+- Mantenha [`docs/repository-tree.md`](../../docs/repository-tree.md) atualizado se a árvore sob `reference/Clippings/` mudar.
+- Skill: [`.cursor/skills/reference-clippings-workflow/SKILL.md`](../skills/reference-clippings-workflow/SKILL.md).
