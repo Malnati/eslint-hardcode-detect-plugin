@@ -123,7 +123,13 @@ if [ -z "$SCAN_PATH" ] || [ -z "$REPORT_FILE" ]; then
 fi
 
 script_dir=$(cd "$(dirname "$0")" && pwd)
-repo_root=$(cd "$script_dir/.." && pwd)
+if [ -n "${GITHUB_WORKSPACE:-}" ]; then
+  repo_root=$(cd "$GITHUB_WORKSPACE" && pwd)
+elif git -C "$script_dir" rev-parse --show-toplevel >/dev/null 2>&1; then
+  repo_root=$(git -C "$script_dir" rev-parse --show-toplevel)
+else
+  repo_root=$(cd "$script_dir/.." && pwd)
+fi
 workspace="${GITHUB_WORKSPACE:-$repo_root}"
 
 if [[ "$SCAN_PATH" = /* ]]; then

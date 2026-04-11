@@ -1,0 +1,13 @@
+---
+description: Obrigatoriedade de commit e push ao finalizar trabalho com alterações no repo
+alwaysApply: true
+---
+
+# Versionamento Git (agentes)
+
+- Ao **concluir** o trabalho solicitado em um prompt, se existirem alterações locais no repositório, execute o fluxo em [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md): `git status` → `git add` (apropriado) → `git commit` → `git push` para `origin` na branch atual.
+- Se não houver mudanças a commitar, declare isso explicitamente.
+- Não use `git push --force` em branches padrão (`main`/`master`) sem instrução explícita.
+- Mensagens de commit claras e alinhadas ao que foi feito.
+- Falha de push: reporte o erro; mantenha o commit local.
+- Leia também [`AGENTS.md`](../../AGENTS.md) e use a skill `git-agent-workflow` em `.cursor/skills/`.

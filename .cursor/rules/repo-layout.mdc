@@ -1,0 +1,14 @@
+---
+description: Organização do monorepo, zona reference e contrato em specs
+alwaysApply: true
+---
+
+# Regras do repositório
+
+- O código-fonte do plugin ESLint publicável fica **somente** em `packages/eslint-plugin-hardcode-detect/`.
+- A pasta `reference/` (incluindo `reference/legacy-snapshot/`) é **somente referência**: não importar daqui, não apontar `eslint.config` para aqui, não tratar como dependência.
+- Alterar `reference/` apenas em mudanças **explícitas** de snapshot (PR dedicado), nunca como refatoração acidental.
+- Comportamento público das regras e opções: documentar em `specs/plugin-contract.md` **antes** ou junto com mudanças de implementação; o spec tem precedência sobre o código legado em `reference/`.
+- Composite Action oficial: `.github/actions/ops-eslint/` (script em `assets/run.sh`).
+- Consulte `AGENTS.md` na raiz para o fluxo completo.
+- Ao concluir alterações, versionamento Git conforme [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md) e a rule `git-versioning.mdc`.

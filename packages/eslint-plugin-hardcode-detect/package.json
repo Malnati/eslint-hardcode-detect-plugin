@@ -1,0 +1,35 @@
+{
+  "name": "eslint-plugin-hardcode-detect",
+  "version": "0.0.0",
+  "description": "ESLint plugin: detecção de hardcodes e padronização de mensagens de erro (implementação em andamento).",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test tests/index.test.mjs"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "hardcode",
+    "i18n"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

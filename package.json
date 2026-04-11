@@ -1,0 +1,10 @@
+{
+  "name": "eslint-hardcode-detect-plugin",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm test -w eslint-plugin-hardcode-detect"
+  }
+}
