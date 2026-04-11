@@ -13,7 +13,7 @@ Este projeto aceita contribuições humanas e fluxos automatizados por agentes d
 ## Fluxo recomendado
 
 1. Implementar ou editar em [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect).
-2. Rodar testes (`npm test` no pacote ou via workspace na raiz).
+2. Rodar lint e testes (`npm run lint` e `npm test` na raiz do monorepo, ou os equivalentes no diretório do pacote).
 3. Atualizar specs e Markdown conforme [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md).
 4. Commit e push seguindo [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md), incluindo mensagens no formato **Conventional Commits** descrito nesse spec.
 

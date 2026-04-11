@@ -36,6 +36,10 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   └── versioning-for-agents.md
 ├── packages/
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
+│       ├── docs/rules/                 # Documentação de regras (ex.: hello-world)
+│       ├── src/rules/                  # Implementação das regras ESLint
+│       ├── tests/                      # RuleTester + node:test
+│       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md
 │   ├── Clippings/            # Trechos da documentação oficial (ESLint, npm, etc.)

@@ -16,14 +16,15 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 
 ## Implementação
 
-1. Coloque regras e helpers em `packages/eslint-plugin-hardcode-detect/src/` (estrutura interna do pacote; raiz do repositório).
-2. Exporte o plugin no ponto de entrada do pacote (`src/index.ts`) com nomes de regras estáveis.
+1. Coloque regras e helpers em `packages/eslint-plugin-hardcode-detect/src/` (por exemplo `src/rules/<id>.ts`), com regras no formato **objeto** (`meta` + `create`), `messageId` em `meta.messages` e `meta.schema` quando aplicável — alinhado a [Custom Rules](https://eslint.org/docs/latest/extend/custom-rules) e a [`eslint-plugin-eslint-plugin`](../../../reference/Clippings/dev/javascript/eslint/eslint-plugin-eslint-plugin.md) (lint local via `npm run lint` no pacote).
+2. No ponto de entrada (`src/index.ts`), exporte `meta` (nome/versão do `package.json` e `namespace` coerente com o prefixo do pacote), `rules`, e `configs` com `Object.assign` quando precisar referenciar o próprio plugin (padrão da documentação [Create Plugins](https://eslint.org/docs/latest/extend/plugins)).
 3. **Não** copie arquivos de `reference/legacy-snapshot/` como dependência; use apenas como leitura comparativa se necessário.
 
 ## Testes
 
-1. Adicione casos em `packages/eslint-plugin-hardcode-detect/tests/` usando o runner configurado no `package.json` (ex.: `RuleTester` do ESLint quando a suíte estiver configurada).
+1. Adicione casos em `packages/eslint-plugin-hardcode-detect/tests/` com **`RuleTester`** do ESLint (API estável; ver Clippings [Node.js API](../../../reference/Clippings/dev/javascript/eslint/Node.js%20API%20Reference%20-%20ESLint%20-%20Pluggable%20JavaScript%20Linter.md)) e o runner `node --test` definido no `package.json`.
 2. Cubra mensagens de erro listadas no spec e limites (ex.: strings curtas ignoradas em `no-hardcoded-strings`).
+3. Depois de editar regras ou o entrypoint, rode `npm run lint` e `npm test` no pacote (Node **≥ 22** conforme `engines` do pacote).
 
 ## Checklist
 

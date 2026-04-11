@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "lint": "npm run lint -w eslint-plugin-hardcode-detect",
     "test": "npm test -w eslint-plugin-hardcode-detect"
   }
 }

@@ -20,6 +20,11 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 - [`docs/architecture.md`](docs/architecture.md) — arquitetura do repositório.
 - [`docs/versioning-for-agents.md`](docs/versioning-for-agents.md) — versionamento Git para agentes.
 
+## Comandos úteis (raiz do monorepo)
+
+- `npm run lint` — ESLint do código do plugin (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`).
+- `npm test` — build + testes do workspace `eslint-plugin-hardcode-detect`.
+
 ## Estrutura
 
 | Caminho | Conteúdo |

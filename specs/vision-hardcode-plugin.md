@@ -18,8 +18,9 @@ Reduzir strings e valores fixos inadequados no código, com relatórios **classi
 
 ## Relação com o contrato atual
 
-As regras `no-hardcoded-strings` e `standardize-error-messages` são a **base**. Novas regras ou opções devem atualizar `plugin-contract.md` e este documento quando afetarem a visão macro.
+As regras `no-hardcoded-strings` e `standardize-error-messages` são a **base**. A regra `hello-world` é apenas **demonstração** para validar o carregamento do plugin; não entra no roadmap funcional de hardcode. Novas regras ou opções devem atualizar `plugin-contract.md` e este documento quando afetarem a visão macro.
 
 ## Versão
 
+- **0.2.0** — distinção explícita da regra de demonstração `hello-world` em relação à base de produto.
 - **0.1.0** — primeira definição da visão multi-nível.

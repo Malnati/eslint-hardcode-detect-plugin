@@ -9,6 +9,15 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 ## Regras
 
+### `hello-world`
+
+- **ID no plugin**: `hello-world` (ex.: `hardcode-detect/hello-world`).
+- **Tipo**: `suggestion`.
+- **Descrição**: regra de **demonstração** (“Hello World”): emite um único relatório por arquivo na visita ao nó `Program`, com `messageId` `hello`, para validar que o plugin foi carregado. **Não** faz parte do conjunto `recommended` (evita ruído em projetos reais).
+- **Comportamento**: sempre que a regra estiver habilitada, reporta uma vez por arquivo.
+- **Schema**: vazio (`[]`).
+- **Mensagens**: `hello` — texto fixo confirmando que o plugin está ativo.
+
 ### `no-hardcoded-strings`
 
 - **ID sugerido no plugin**: `no-hardcoded-strings` (namespace do plugin conforme nome publicado, ex.: `hardcode-detect/no-hardcoded-strings`).
@@ -58,4 +67,5 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 ## Versão do documento
 
+- **0.2.0** — regras `hello-world` (demo) e `no-hardcoded-strings` (primeira regra de produto) descritas e implementáveis no pacote.
 - **0.1.0** — alinhado ao snapshot legado em `reference/legacy-snapshot/*.mjs`.
