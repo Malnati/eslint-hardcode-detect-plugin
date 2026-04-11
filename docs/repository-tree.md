@@ -11,12 +11,13 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── package.json              # Monorepo npm (workspaces)
 ├── .gitignore
 ├── .cursor/
-│   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente)
+│   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
 │   │   ├── agent-ia-governance.mdc
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
+│   │   ├── e2e-nest-fixture.mdc
 │   │   ├── git-versioning.mdc
 │   │   └── repo-layout.mdc
 │   └── skills/               # Skills reutilizáveis pelos agentes
@@ -35,10 +36,15 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
 ├── packages/
+│   ├── e2e-fixture-nest/               # Workspace NestJS: massa e2e (não publicável como plugin)
+│   │   ├── src/fixture-hardcodes/      # Literais fixos com contagens no e2e
+│   │   └── eslint.config.mjs           # Flat config + plugin via dist do pacote irmão
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
 │       ├── docs/rules/                 # Documentação de regras (ex.: hello-world)
 │       ├── e2e/                        # Fumaça e2e (ESLint API + fixtures consumidor)
-│       │   └── fixtures/hello-world/   # Flat config mínimo + amostra
+│       │   ├── fixtures/hello-world/   # Flat config mínimo + amostra
+│       │   ├── hello-world.e2e.mjs
+│       │   └── nest-workspace.e2e.mjs  # Massa Nest (cwd no workspace irmão)
 │       ├── src/rules/                  # Implementação das regras ESLint
 │       ├── tests/                      # RuleTester + node:test
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
@@ -59,6 +65,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
     ├── agent-ia-governance.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md
+    ├── e2e-fixture-nest.md     # Massa e2e NestJS (workspace auxiliar)
     ├── plugin-contract.md
     └── vision-hardcode-plugin.md
 ```
@@ -66,6 +73,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ## Relações
 
 - **Implementação**: `packages/eslint-plugin-hardcode-detect/`.
+- **Massa e2e Nest**: `packages/e2e-fixture-nest/` (ver [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md)).
 - **Normas de produto e agente**: `specs/` + `AGENTS.md` + `.cursor/rules/`.
 - **Referência**: `reference/Clippings/` (documentação oficial espelhada), `reference/legacy-snapshot/` (histórico); somente leitura para código em `packages/`.
 
@@ -75,6 +83,9 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 flowchart LR
   subgraph public [Publicavel]
     pkg[packages/eslint-plugin-hardcode-detect]
+  end
+  subgraph e2eNest [Massa e2e]
+    nest[packages/e2e-fixture-nest]
   end
   subgraph norms [Normativo]
     sp[specs]
@@ -88,6 +99,7 @@ flowchart LR
   end
   pkg --> sp
   agents --> pkg
+  nest --> pkg
   ref -.->|inspiracao| pkg
   gh --> pkg
 ```

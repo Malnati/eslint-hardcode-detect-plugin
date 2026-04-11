@@ -40,7 +40,11 @@ O plugin expõe `meta.name`, `meta.version` e `meta.namespace` (`hardcode-detect
 
 - `npm run build` — compila `src/` para `dist/`.
 - `npm run lint` — ESLint no código do plugin (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`, `typescript-eslint`).
-- `npm test` — compila e executa testes com `RuleTester` + `node:test`.
+- `npm test` — compila e executa testes com `RuleTester` + `node:test` + fumaça e2e (`e2e/hello-world.e2e.mjs`, `e2e/nest-workspace.e2e.mjs`).
+
+### Fumaça e2e (Nest)
+
+O teste `nest-workspace.e2e.mjs` usa `cwd` no workspace [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) e linta `src/fixture-hardcodes/**/*.ts` com o plugin carregado a partir de `dist/`. Contagens fixas e normas: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
 
 Requer **Node.js ≥ 22** (alinhado ao CI e ao campo `engines` do pacote).
 

@@ -12,6 +12,7 @@
 | `reference/Clippings/` | Recortes da documentação **oficial** externa; consulta obrigatória em escopo relevante; ver [`specs/agent-reference-clippings.md`](../specs/agent-reference-clippings.md). |
 | `reference/legacy-snapshot/` | Snapshot histórico; não tratar como fonte normativa do contrato atual. |
 | Código publicável | Somente sob `packages/eslint-plugin-hardcode-detect/`. |
+| Workspace e2e Nest | [`packages/e2e-fixture-nest/`](../packages/e2e-fixture-nest/) é auxiliar (massa de testes); não substitui o pacote do plugin. Ver [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md). |
 | Contrato antes do código | Mudanças de comportamento público exigem atualização de `specs/plugin-contract.md` (e visão, se macro). |
 | Segredos | Não commitar credenciais; variáveis de ambiente e artefatos ignorados. |
 

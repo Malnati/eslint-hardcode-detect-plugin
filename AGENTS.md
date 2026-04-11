@@ -12,8 +12,9 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 5. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
 6. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
 7. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
-8. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
-9. [`reference/`](reference/) — somente leitura para código publicável; não é dependência de build nem de runtime. Subpastas: [`reference/Clippings/`](reference/Clippings/) (recortes oficiais), [`reference/legacy-snapshot/`](reference/legacy-snapshot/) (snapshot histórico).
+8. [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md) — massa de testes e2e NestJS (workspace auxiliar [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest); não publicável como o plugin).
+9. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
+10. [`reference/`](reference/) — somente leitura para código publicável; não é dependência de build nem de runtime. Subpastas: [`reference/Clippings/`](reference/Clippings/) (recortes oficiais), [`reference/legacy-snapshot/`](reference/legacy-snapshot/) (snapshot histórico).
 
 ## Regras obrigatórias
 
@@ -51,6 +52,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 |---------|------------------|
 | `README.md`, `CONTRIBUTING.md` | Entrada GitHub e guia de contribuição. |
 | `packages/eslint-plugin-hardcode-detect/` | Código e testes do plugin npm. |
+| `packages/e2e-fixture-nest/` | Workspace NestJS **somente** para massa e2e (ver [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md)); não é o pacote publicável do plugin. |
 | `specs/` | Contrato, visão e fluxos normativos (incl. `agent-session-workflow.md` e demais contratos de agente). |
 | `docs/` | Políticas, grafo do repositório e arquitetura. |
 | `reference/Clippings/` | Recortes da documentação oficial (ESLint, npm, etc.); consulta obrigatória em escopo relevante. |
@@ -58,7 +60,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
 | `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo. |
 | `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`). |
-| `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`) para checklist de sessão. |
+| `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
 
 ## Fluxo sugerido de PR
 

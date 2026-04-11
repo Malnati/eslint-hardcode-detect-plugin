@@ -5,7 +5,8 @@ alwaysApply: true
 
 # Regras do repositório
 
-- O código-fonte do plugin ESLint publicável fica **somente** em `packages/eslint-plugin-hardcode-detect/` (inclui `tests/` com RuleTester e `e2e/` com fumaça de integração e fixtures; não dispersar testes e2e fora do pacote).
+- O código-fonte do plugin ESLint publicável fica **somente** em `packages/eslint-plugin-hardcode-detect/` (inclui `tests/` com RuleTester e `e2e/` com fumaça de integração e fixtures).
+- **Exceção**: existe um workspace auxiliar **`packages/e2e-fixture-nest/`** (NestJS com dependências reais) usado **apenas** como massa de testes e2e; não é o pacote publicável do plugin. Ver [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
 - A pasta `reference/` é **somente referência**: não importar daqui, não apontar `eslint.config` para aqui, não tratar como dependência.
 - `reference/legacy-snapshot/`: alterar apenas em mudanças **explícitas** de snapshot (PR dedicado), nunca como refatoração acidental.
 - `reference/Clippings/`: trechos da **documentação oficial** externa; podem ser adicionados ou atualizados em commits explícitos de sincronização (ver [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md)), sem misturar com código em `packages/`.

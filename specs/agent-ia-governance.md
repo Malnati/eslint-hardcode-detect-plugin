@@ -18,10 +18,11 @@ Garantir que:
 | 1 | [`AGENTS.md`](../AGENTS.md) | Prioridades e mapa do repositório |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
-| 4 | [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) | Visão multi-nível (arquivo, dependências, classificação, etc.) |
-| 5 | [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) | Clippings e documentação oficial |
-| 6 | [`specs/agent-documentation-workflow.md`](agent-documentation-workflow.md) | Documentação e grafo ao finalizar |
-| 7 | [`specs/agent-git-workflow.md`](agent-git-workflow.md) | Versionamento ao finalizar |
+| 4 | [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md) | Massa e2e NestJS (workspace auxiliar; contagens da fumaça) |
+| 5 | [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) | Visão multi-nível (arquivo, dependências, classificação, etc.) |
+| 6 | [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) | Clippings e documentação oficial |
+| 7 | [`specs/agent-documentation-workflow.md`](agent-documentation-workflow.md) | Documentação e grafo ao finalizar |
+| 8 | [`specs/agent-git-workflow.md`](agent-git-workflow.md) | Versionamento ao finalizar |
 
 ## Checklist — abertura do prompt (antes de implementar)
 
@@ -54,11 +55,12 @@ Garantir que:
 | Regra Cursor | [`.cursor/rules/documentation.mdc`](../.cursor/rules/documentation.mdc) | Política Markdown |
 | Regra Cursor | [`.cursor/rules/git-versioning.mdc`](../.cursor/rules/git-versioning.mdc) | Git ao concluir |
 | Regra Cursor | [`.cursor/rules/repo-layout.mdc`](../.cursor/rules/repo-layout.mdc) | Layout do repositório |
+| Regra Cursor | [`.cursor/rules/e2e-nest-fixture.mdc`](../.cursor/rules/e2e-nest-fixture.mdc) | Massa e2e Nest (globs do fixture e e2e) |
 | Skill | [`.cursor/skills/reference-clippings-workflow/SKILL.md`](../.cursor/skills/reference-clippings-workflow/SKILL.md) | Manutenção de Clippings |
 | Skill | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | Skill | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Docs e grafo |
 | Skill | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
-| Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist |
+| Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist (ex.: `/fechar-e2e-nest-fixture`) |
 
 ## Boas práticas de mercado (OSS e plugins ESLint)
 
@@ -70,6 +72,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **1.3.0** — hierarquia: `specs/e2e-fixture-nest.md` para massa Nest e fumaça e2e.
 - **1.2.0** — checklist de abertura: escopo explícito para testes e2e e fixtures do plugin.
 - **1.1.0** — fechamento e boas práticas: mensagens de commit Conventional Commits conforme [`agent-git-workflow.md`](agent-git-workflow.md).
 - **1.0.0** — governança consolidada para agentes de IA: checklists, mapa de artefatos e boas práticas OSS.

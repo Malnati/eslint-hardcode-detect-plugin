@@ -29,7 +29,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | Categoria | Exemplos | Ação obrigatória relacionada a Clippings |
 |-----------|----------|-------------------------------------------|
 | **Ecossistema ESLint / plugin / RuleTester / flat ou legacy config** | Nova regra, mudança de API do ESLint no código, ajuste de `eslint.config` do pacote | Consultar **primeiro** `reference/Clippings/` no tópico; ver [`specs/agent-reference-clippings.md`](agent-reference-clippings.md). |
-| **Testes e2e / fixtures de consumidor** | `e2e/`, `e2e/fixtures/`, runners com `ESLint` / `lintFiles` | Idem (Clippings: Node.js API, Extend ESLint); atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) se a árvore sob `e2e/` mudar. |
+| **Testes e2e / fixtures de consumidor** | `e2e/`, `e2e/fixtures/`, [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/), runners com `ESLint` / `lintFiles` | Idem (Clippings: Node.js API, Extend ESLint); seguir [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md) para a massa Nest; atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) se a árvore sob `e2e/` ou o workspace auxiliar mudar. |
 | **Empacotamento npm / metadados do pacote** | `package.json`, exports, build do plugin | Idem quando a decisão depender de documentação oficial (npm, Node). |
 | **CI** que interpreta ESLint, Node ou npm | Workflows que rodam o linter ou publicam o pacote | Consultar Clippings ou doc oficial quando a semântica do toolchain não for óbvia no repo. |
 | **Somente Markdown / specs / governança** sem tocar em API ESLint | README, `docs/`, rules do Cursor | Clippings **não** é obrigatório salvo o texto **altere** contratos que citam ESLint ou exija validar citação contra fonte oficial. |
@@ -47,7 +47,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Fase C — Executar o trabalho
 
-1. Manter **todo** código publicável somente em [`packages/eslint-plugin-hardcode-detect/`](../packages/eslint-plugin-hardcode-detect/); **nunca** importar `reference/` desde `packages/`.
+1. Manter **todo** código publicável do plugin somente em [`packages/eslint-plugin-hardcode-detect/`](../packages/eslint-plugin-hardcode-detect/); o workspace auxiliar [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/) existe só como massa e2e (não é pacote publicável do plugin), conforme [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md). **Nunca** importar `reference/` desde `packages/` publicáveis.
 2. Não alterar [`reference/legacy-snapshot/`](../reference/legacy-snapshot/) exceto em mudança **explícita** de snapshot (PR ou prompt dedicado).
 3. Preferir imports **relativos** dentro do pacote, conforme [`AGENTS.md`](../AGENTS.md).
 4. Após edições que afetem estilo ou tipos no pacote, corrigir lints conforme a configuração do pacote.
@@ -76,6 +76,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Versão do documento
 
+- **1.4.0** — escopo e2e: workspace Nest auxiliar e remissão a `specs/e2e-fixture-nest.md`; Fase C: exceção explícita para `packages/e2e-fixture-nest`.
 - **1.3.0** — tabela de escopo: linha para testes e2e e fixtures do plugin.
 - **1.2.0** — Fase D: remissão explícita a mensagens Conventional Commits em [`agent-git-workflow.md`](agent-git-workflow.md).
 - **1.1.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md), tabela de hierarquia ajustada, comandos Cursor.

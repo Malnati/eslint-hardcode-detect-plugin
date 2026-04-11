@@ -10,6 +10,7 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — como contribuir (inclui agentes).
 - [`docs/README.md`](docs/README.md) — índice dos guias em `docs/`.
 - [`specs/plugin-contract.md`](specs/plugin-contract.md) — contrato funcional das regras.
+- [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md) — massa e2e NestJS (workspace auxiliar).
 - [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — visão e roadmap (multi-nível).
 - [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — atualização de documentação ao concluir trabalho.
 - [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — consulta e manutenção de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/).
@@ -30,6 +31,7 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 | Caminho | Conteúdo |
 |---------|----------|
 | [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) | Código-fonte npm do plugin (`tests/`, `e2e/`). |
+| [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest) | Workspace NestJS para fumaça e2e (massa controlada; ver spec). |
 | [`reference/Clippings`](reference/Clippings) | Recortes da documentação oficial (consulta obrigatória em escopo ESLint/npm). |
 | [`reference/legacy-snapshot`](reference/legacy-snapshot) | Snapshot histórico (somente referência; não é dependência). |
 | [`.github/actions/ops-eslint`](.github/actions/ops-eslint) | Composite GitHub Action para rodar ESLint em container. |

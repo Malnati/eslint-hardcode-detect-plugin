@@ -64,10 +64,14 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 - Implementação em TypeScript ou JavaScript ES modules, alinhada à API de regras do ESLint 9.
 - Testes automatizados devem cobrir casos positivos e negativos por regra (ver skill em `.cursor/skills/eslint-plugin-workflow`).
-- **Fumaça e2e**: além do RuleTester, o pacote mantém um teste de integração mínimo em `e2e/` que usa a API Node.js do ESLint (`ESLint`, `lintFiles`) contra um fixture com flat config e o plugin carregado a partir de `dist/`. Esse fluxo valida o “Hello World” de ponta a ponta e **não substitui** os testes por regra com RuleTester.
+- **Fumaça e2e**: além do RuleTester, o pacote mantém testes de integração em `e2e/` que usam a API Node.js do ESLint (`ESLint`, `lintFiles`) contra fixtures com flat config e o plugin carregado a partir de `dist/`:
+  - **Hello World mínimo** (`e2e/fixtures/hello-world/`): valida carregamento do plugin e a regra `hello-world`.
+  - **Massa NestJS** (workspace auxiliar [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/), ver [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md)): aplicação Nest real; o e2e `nest-workspace.e2e.mjs` linta `src/fixture-hardcodes/**/*.ts` e fixa contagens de `hello-world` e `no-hardcoded-strings` como fumaça adicional. Alterar essa massa exige atualizar o e2e e o spec.
+- Esses fluxos **não substituem** os testes por regra com RuleTester.
 
 ## Versão do documento
 
+- **0.4.0** — e2e com massa Nest (`e2e-fixture-nest` + contagens fixas); detalhes em [`e2e-fixture-nest.md`](e2e-fixture-nest.md).
 - **0.3.0** — fumaça e2e (motor + flat config + plugin) descrita; RuleTester permanece o contrato principal por regra.
 - **0.2.0** — regras `hello-world` (demo) e `no-hardcoded-strings` (primeira regra de produto) descritas e implementáveis no pacote.
 - **0.1.0** — alinhado ao snapshot legado em `reference/legacy-snapshot/*.mjs`.
