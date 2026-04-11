@@ -1,6 +1,6 @@
 # Contrato de documentação para agentes (Markdown / GitHub)
 
-Este repositório é documentado para leitura em **GitHub** (README, guias em `docs/`, `CONTRIBUTING.md`, specs). Agentes de IA **devem** manter a documentação coerente com o código e com a árvore de diretórios ao **finalizar** cada prompt que produza ou exija mudanças relevantes. O encadeamento com abertura do prompt (escopo, Clippings, limites) está em [`agent-session-workflow.md`](agent-session-workflow.md).
+Este repositório é documentado para leitura em **GitHub** (README, guias em `docs/`, `CONTRIBUTING.md`, specs). Agentes de IA **devem** manter a documentação coerente com o código e com a árvore de diretórios ao **finalizar** cada prompt que produza ou exija mudanças relevantes. O encadeamento com abertura do prompt (escopo, Clippings, limites) está em [`agent-session-workflow.md`](agent-session-workflow.md) e nos checklists de [`agent-ia-governance.md`](agent-ia-governance.md).
 
 ## Quando aplicar
 
@@ -33,6 +33,7 @@ Alterações de documentação entram nos mesmos commits que o trabalho correspo
 
 ## Versão do documento
 
+- **1.3.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md) para checklists de abertura e fechamento.
 - **1.2.0** — referência explícita a [`agent-session-workflow.md`](agent-session-workflow.md) como orquestração da sessão.
 - **1.1.0** — referência ao contrato de `reference/Clippings` e consulta em escopo ESLint/npm.
 - **1.0.0** — introdução do contrato de documentação para agentes.

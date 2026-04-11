@@ -5,6 +5,7 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 ## Documentação
 
 - [`AGENTS.md`](AGENTS.md) — instruções para agentes de IA e colaboradores (prioridades e fluxos obrigatórios).
+- [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md) — governança consolidada para agentes de IA (checklists, grafo, Clippings, fechamento).
 - [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md) — fluxo por prompt (escopo, Clippings, grafo, fechamento).
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — como contribuir (inclui agentes).
 - [`docs/README.md`](docs/README.md) — índice dos guias em `docs/`.
@@ -27,7 +28,9 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 | [`reference/Clippings`](reference/Clippings) | Recortes da documentação oficial (consulta obrigatória em escopo ESLint/npm). |
 | [`reference/legacy-snapshot`](reference/legacy-snapshot) | Snapshot histórico (somente referência; não é dependência). |
 | [`.github/actions/ops-eslint`](.github/actions/ops-eslint) | Composite GitHub Action para rodar ESLint em container. |
-| [`.cursor/rules`](.cursor/rules) | Regras do Cursor para este projeto. |
+| [`.cursor/rules`](.cursor/rules) | Regras do Cursor para este projeto (`alwaysApply`). |
+| [`.cursor/commands`](.cursor/commands) | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`). |
+| [`.cursor/skills`](.cursor/skills) | Skills reutilizáveis (workflow do plugin, docs, Git, Clippings). |
 
 ## Licença
 

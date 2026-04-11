@@ -11,7 +11,9 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── package.json              # Monorepo npm (workspaces)
 ├── .gitignore
 ├── .cursor/
+│   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente)
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
+│   │   ├── agent-ia-governance.mdc
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
@@ -48,6 +50,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 └── specs/                    # Contratos e visão
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
+    ├── agent-ia-governance.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md
     ├── plugin-contract.md

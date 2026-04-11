@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Sessão do agente (cada prompt)
 
-Em **cada** prompt que envolva este repositório, siga o contrato em [`specs/agent-session-workflow.md`](../../specs/agent-session-workflow.md):
+Em **cada** prompt que envolva este repositório, siga o contrato em [`specs/agent-session-workflow.md`](../../specs/agent-session-workflow.md) e o checklist em [`specs/agent-ia-governance.md`](../../specs/agent-ia-governance.md):
 
 1. **Classificar o escopo** (ESLint/plugin/npm/CI vs só docs vs estrutura).
 2. Se o trabalho for de **ecossistema ESLint/npm** ou **CI** relacionada: **consultar primeiro** [`reference/Clippings/`](../../reference/Clippings/) e [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md); registrar recortes novos quando a decisão depender de documentação oficial.

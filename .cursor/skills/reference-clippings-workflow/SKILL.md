@@ -11,7 +11,7 @@ No **início** ou durante trabalho que toque ESLint (regras, plugin API, config)
 
 ## Início do prompt (escopo ESLint / npm / CI relacionada)
 
-1. Ler [`specs/agent-session-workflow.md`](../../../specs/agent-session-workflow.md) (Fases A–B) para classificar se este skill é obrigatório.
+1. Ler [`specs/agent-ia-governance.md`](../../../specs/agent-ia-governance.md) e [`specs/agent-session-workflow.md`](../../../specs/agent-session-workflow.md) (Fases A–B) para classificar se este skill é obrigatório.
 2. Se obrigatório: seguir a seção **Procedimento** abaixo **antes** de alterar código em `packages/`.
 
 ## Procedimento

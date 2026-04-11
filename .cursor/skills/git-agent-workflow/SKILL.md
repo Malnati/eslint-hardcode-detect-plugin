@@ -11,7 +11,7 @@ Ao terminar tarefas que modificam este repositório (código, testes, documenta�
 
 ## Passos
 
-0. Garanta que o fechamento do prompt segue a Fase D de [`specs/agent-session-workflow.md`](../../../specs/agent-session-workflow.md); em seguida documentação atualizada conforme [`specs/agent-documentation-workflow.md`](../../../specs/agent-documentation-workflow.md) (em especial `docs/repository-tree.md` se a árvore mudou).
+0. Garanta que o fechamento do prompt segue a Fase D de [`specs/agent-session-workflow.md`](../../../specs/agent-session-workflow.md) e o checklist de [`specs/agent-ia-governance.md`](../../../specs/agent-ia-governance.md); em seguida documentação atualizada conforme [`specs/agent-documentation-workflow.md`](../../../specs/agent-documentation-workflow.md) (em especial `docs/repository-tree.md` se a árvore mudou).
 1. Rode `git status` e inspecione diffs se necessário.
 2. Se não houver alterações: informe "Nada a commitar" e encerre.
 3. Se houver alterações:

@@ -1,6 +1,8 @@
 # Contrato: fluxo por execução de prompt (sessão do agente)
 
-Este documento define o **ciclo completo** que agentes de IA (Cursor / Cursor CLI) **devem** seguir em **cada prompt** que altere ou dependa do repositório, para que:
+Este documento define o **ciclo completo** que agentes de IA (Cursor / Cursor CLI) **devem** seguir em **cada prompt** que altere ou dependa do repositório. O **checklist consolidado** (abertura, execução, fechamento) e o mapa de artefatos estão em [`agent-ia-governance.md`](agent-ia-governance.md). Este arquivo detalha as **fases A–D** e a classificação de escopo.
+
+Objetivos do ciclo:
 
 - [`reference/Clippings/`](../reference/Clippings/) seja consultado e mantido quando o escopo exigir;
 - o **grafo** documentado em [`docs/repository-tree.md`](../docs/repository-tree.md) permaneça fiel à árvore real;
@@ -12,11 +14,12 @@ Este documento define o **ciclo completo** que agentes de IA (Cursor / Cursor CL
 Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que fazer neste prompt”, prevalece a ordem abaixo:
 
 1. [`AGENTS.md`](../AGENTS.md) — prioridades e mapa do repositório.
-2. Este arquivo — abertura e fechamento da sessão.
-3. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
-4. [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) — Clippings e documentação oficial.
-5. [`specs/agent-documentation-workflow.md`](agent-documentation-workflow.md) — documentação e grafo ao finalizar.
-6. [`specs/agent-git-workflow.md`](agent-git-workflow.md) — versionamento ao finalizar.
+2. [`agent-ia-governance.md`](agent-ia-governance.md) — checklists e mapa de rules/skills/comandos para agentes de IA.
+3. Este arquivo — abertura e fechamento da sessão (fases A–D).
+4. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
+5. [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) — Clippings e documentação oficial.
+6. [`specs/agent-documentation-workflow.md`](agent-documentation-workflow.md) — documentação e grafo ao finalizar.
+7. [`specs/agent-git-workflow.md`](agent-git-workflow.md) — versionamento ao finalizar.
 
 ## Fase A — Entender o pedido e classificar o escopo
 
@@ -67,7 +70,10 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Documentação e grafo |
 | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
+| [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
+| [`.cursor/commands/`](../.cursor/commands/) | Comandos `/abrir-prompt-agente` e `/fechar-prompt-agente` (opcional) |
 
 ## Versão do documento
 
+- **1.1.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md), tabela de hierarquia ajustada, comandos Cursor.
 - **1.0.0** — contrato de sessão por prompt: fases A–D, tabela de escopo e ligação a Clippings, grafo e Git.
