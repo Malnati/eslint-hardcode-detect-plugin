@@ -20,6 +20,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
 │   │   ├── agent-ia-governance.mdc
+│   │   ├── agent-integration-testing-policy.mdc
 │   │   ├── agent-reference-agents.mdc
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
@@ -106,6 +107,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md
+    ├── agent-integration-testing-policy.md  # Integrações: sandboxes; sem mocks no repo
     ├── agent-reference-agents.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md

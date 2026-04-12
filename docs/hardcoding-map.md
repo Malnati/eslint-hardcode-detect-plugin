@@ -106,7 +106,7 @@ Colunas: **ID**, **Domínio / subtipo**, **Onde aparece**, **Como detectar**, **
 | ID | Domínio / subtipo | Onde aparece | Como detectar | Classificação | Nível | Notas |
 |----|-------------------|--------------|---------------|---------------|-------|-------|
 | HC-PRF-01 | Defaults de UI (idioma, tema) | Cliente | Literais e defaults | Preferência embutida | L3 | Deve alinhar com persistência e conta |
-| HC-PRF-02 | Valores de “settings” simulados | Código | Constantes em módulo | Estado inicial | L3 | Evitar divergência com backend |
+| HC-PRF-02 | Valores de settings locais ou de desenvolvimento (placeholder no cliente) | Código | Constantes em módulo | Estado inicial | L3 | Evitar divergência com backend |
 
 ### 6.4 Internacionalização e conteúdo
 

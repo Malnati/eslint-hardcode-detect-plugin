@@ -16,6 +16,7 @@ Você trabalha no repositório do plugin **eslint-plugin-hardcode-detect**. A au
 3. [`specs/plugin-contract.md`](../../specs/plugin-contract.md)
 4. [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md) — visão multi-nível (arquivo, dependências, classificação, ordenação, níveis)
 5. Se ambiguidade entre Cursor e GitHub Copilot: [`specs/agent-tooling-ecosystem-map.md`](../../specs/agent-tooling-ecosystem-map.md)
+6. Integrações externas (registry, publicação, MCP): [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.
 
 ## Implementação
 

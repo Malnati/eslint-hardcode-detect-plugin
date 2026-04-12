@@ -9,4 +9,6 @@ Arquivos em [`reference/agents-ref/`](../../reference/agents-ref/) são **portf�
 
 **Fonte normativa:** [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md) — tabela de aplicabilidade, substituições para este repo e hierarquia sobre os arquivos de referência.
 
+**Integrações / mocks:** substituições sobre serviços externos → [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md).
+
 Em dúvida, prevalecem [`AGENTS.md`](../../AGENTS.md) e os specs em [`specs/`](../../specs/).

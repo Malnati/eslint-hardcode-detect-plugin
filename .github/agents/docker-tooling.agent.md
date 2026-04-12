@@ -14,6 +14,7 @@ Trabalho focado em **containerização de tooling** deste monorepo. A autoridade
 1. [`specs/agent-docker-compose.md`](../../specs/agent-docker-compose.md) — perfis `dev`, `e2e`, `prod` e imagem `malnati-ops-eslint:local`.
 2. [`docs/architecture.md`](../../docs/architecture.md) — papel da Composite Action [`ops-eslint`](../actions/ops-eslint/action.yml).
 3. [`AGENTS.md`](../../AGENTS.md) — hierarquia geral e fechamento (docs + Git).
+4. Se o trabalho envolver **registry, credenciais ou pipelines** que publiquem imagens/pacotes: [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — usar sandboxes oficiais; não mocks de serviço no repo.
 
 ## Escopo
 

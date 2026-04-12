@@ -12,6 +12,7 @@
 | [`solution-distribution-channels.md`](solution-distribution-channels.md) | **Por onde** a solução circula (npm, CI, Docker, IDE, agentes). Lista canais diretos e indiretos em relação ao pacote ESLint. |
 | [`specs/plugin-contract.md`](../specs/plugin-contract.md) | **Comportamento normativo** das regras e opções públicas do plugin; precedência sobre interpretações genéricas. |
 | [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md) | **Roadmap macro** por trilha de validação e2e, diagramas, ciclo de vida e marcos em PRs (planejamento; nem todo item está implementado). |
+| [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md) | **Integrações externas** (registry, publicação, MCP, etc.): sem mocks no repositório; usar sandboxes ou ambientes de teste oficiais dos provedores. |
 
 ## Canais de distribuição e artefatos indiretos
 

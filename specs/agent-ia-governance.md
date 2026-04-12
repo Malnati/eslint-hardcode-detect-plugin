@@ -20,6 +20,7 @@ Garantir que:
 | 1b | [`specs/agent-reference-agents.md`](agent-reference-agents.md) | Quando houver remissão a [`reference/agents-ref/`](../reference/agents-ref/): aplicabilidade do portfólio e substituições de caminhos |
 | 1c | [`specs/agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) | Copilot / Awesome vs Cursor; pontes `.github/`; precedência de instruções |
 | 1d | [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Docker Compose (perfis dev/e2e/prod), `.docker/Dockerfile` e relação com `ops-eslint` |
+| 1e | [`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md) | Integrações externas: sem mocks no repo; sandboxes ou ambientes de teste dos provedores |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
 | 4 | [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md) | Massa e2e NestJS (workspace auxiliar; contagens da fumaça) |
@@ -35,6 +36,7 @@ Garantir que:
 - [ ] Se o escopo for **ESLint / npm do pacote / CI relacionada** (inclui **e2e** do plugin, fixtures e API `ESLint`): **listar e abrir** recortes relevantes em [`reference/Clippings/`](../reference/Clippings/) (índice: [`reference/Clippings/README.md`](../reference/Clippings/README.md)); se faltar ou estiver desatualizado, consultar fonte **oficial** e **registrar** clipping conforme [`agent-reference-clippings.md`](agent-reference-clippings.md).
 - [ ] Se o pedido puder **alterar limites ou escopo do produto**: reler [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md).
 - [ ] Se houver mudança de **comportamento público**: [`specs/plugin-contract.md`](plugin-contract.md) atualizado **antes** ou **junto** do código.
+- [ ] Se o escopo envolver **integração externa** (registry npm, publicação de pacote, MCP, OAuth, webhooks, credenciais de CI): seguir [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) (sandboxes dos provedores; sem mocks de serviço no repositório).
 
 ## Checklist — execução
 
@@ -42,6 +44,7 @@ Garantir que:
 - [ ] Não alterar [`reference/legacy-snapshot/`](../reference/legacy-snapshot/) exceto em prompt/PR **dedicado** a snapshot.
 - [ ] Imports **relativos** no pacote, conforme convenção; corrigir lints após edições relevantes.
 - [ ] Ao citar ficheiros ou pastas **deste** repo (mensagens, relatórios, sub-agentes): **caminhos relativos à raiz**, conforme [`docs/documentation-policy.md`](../docs/documentation-policy.md) (exceções: Clippings literais, semântica de API).
+- [ ] Sem **mocks, stubs ou fakes** de serviços externos para “integração”; quando necessário, documentar ou usar **sandbox** conforme [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md).
 
 ## Checklist — fechamento do prompt (antes de encerrar a resposta)
 
@@ -65,6 +68,7 @@ Garantir que:
 | Regra Cursor | [`.cursor/rules/agent-reference-agents.mdc`](../.cursor/rules/agent-reference-agents.mdc) | Ponte para [`agent-reference-agents.md`](agent-reference-agents.md) |
 | Regra Cursor | [`.cursor/rules/e2e-nest-fixture.mdc`](../.cursor/rules/e2e-nest-fixture.mdc) | Massa e2e Nest (globs do fixture e e2e) |
 | Regra Cursor | [`.cursor/rules/docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc) | Docker Compose e `.docker/` (globs) |
+| Regra Cursor | [`.cursor/rules/agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc) | Integrações: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) |
 | Skill | [`.cursor/skills/reference-clippings-workflow/SKILL.md`](../.cursor/skills/reference-clippings-workflow/SKILL.md) | Manutenção de Clippings |
 | Skill | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | Skill | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Docs e grafo |
@@ -87,6 +91,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **1.8.0** — hierarquia e checklists: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md); mapa: rule [`agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc).
 - **1.7.0** — objetivo e checklists: citação de ficheiros com caminhos relativos à raiz; mapa: rule [`repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc).
 - **1.6.0** — mapa de artefatos: [`agent-docker-compose.md`](agent-docker-compose.md), rule [`docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc), skill `docker-compose-workflow`, pontes Copilot `docker-tooling` e instruções `docker-compose`.
 - **1.5.0** — remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md); mapa de artefatos: pontes `.github/agents/` e `.github/instructions/`.

@@ -59,6 +59,7 @@ O planejamento macro (trilhas T1–T6, rastreabilidade canal a canal, propostas 
 - O plugin **não** empacota por si só todos os canais da tabela: muitos são **política de projeto** (hooks, CI, Docker).
 - Restrições de escopo do repositório e do produto: [`limitations-and-scope.md`](limitations-and-scope.md).
 - `reference/Clippings/` é **somente referência**; não é importada por `packages/` (ver mesmas limitações).
+- Integrações com serviços externos (registry, MCP, publicação): sem mocks ad hoc no repositório; seguir [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md).
 
 ## Referências
 
@@ -72,6 +73,7 @@ O planejamento macro (trilhas T1–T6, rastreabilidade canal a canal, propostas 
 | Docker Compose e ops-eslint | [`../specs/agent-docker-compose.md`](../specs/agent-docker-compose.md) |
 | Manutenção de Clippings | [`../specs/agent-reference-clippings.md`](../specs/agent-reference-clippings.md) |
 | Instruções para agentes | [`../AGENTS.md`](../AGENTS.md) |
+| Política de integração (sandboxes; sem mocks) | [`../specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md) |
 | Recortes npm (workspaces, `bin`, publish) | [`../reference/Clippings/dev/javascript/npm/npm Docs.md`](../reference/Clippings/dev/javascript/npm/npm%20Docs.md) |
 | Cursor Marketplace (plugin) | [`../reference/Clippings/dev/cursor/plugins/Publish a Cursor Marketplace Plugin.md`](../reference/Clippings/dev/cursor/plugins/Publish%20a%20Cursor%20Marketplace%20Plugin.md) |
 | Cursor Hooks | [`../reference/Clippings/dev/cursor/docs/Cursor Docs.md`](../reference/Clippings/dev/cursor/docs/Cursor%20Docs.md) |

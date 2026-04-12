@@ -151,7 +151,7 @@ if (status === HTTP_STATUS_NOT_FOUND) {
 - ✅ Evita duplicações e inconsistências
 - ✅ Melhora legibilidade (nomes descritivos)
 - ✅ Suporta refatorações automatizadas
-- ✅ Facilita testes (mock de constantes)
+- ✅ Facilita testes (valores estáveis e previsíveis para asserções)
 
 ## Referências
 

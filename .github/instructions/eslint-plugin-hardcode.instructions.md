@@ -13,3 +13,4 @@ Estas instruções são uma **ponte**: a fonte normativa completa está em [`AGE
 4. Mudanças de comportamento público: atualize [`specs/plugin-contract.md`](../../specs/plugin-contract.md) antes ou junto do código.
 5. Visão de produto (hardcode multi-nível): [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
 6. Ao citar ficheiros deste repositório em texto ou exemplos, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).
+7. Integrações (registry, publicação, MCP): [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.

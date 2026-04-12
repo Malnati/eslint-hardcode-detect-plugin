@@ -19,7 +19,8 @@ description: >-
 3. Aplicar **substituições normativas**:
    - documentação: [`docs/documentation-policy.md`](../../../docs/documentation-policy.md), [`specs/agent-documentation-workflow.md`](../../../specs/agent-documentation-workflow.md);
    - código do plugin: [`specs/plugin-contract.md`](../../../specs/plugin-contract.md) + skill [`eslint-plugin-workflow`](../eslint-plugin-workflow/SKILL.md);
-   - constantes compartilhadas: dentro de [`packages/eslint-plugin-hardcode-detect/`](../../../packages/eslint-plugin-hardcode-detect/), não um `shared/` obrigatório definido pelos agentes de referência genéricos.
+   - constantes compartilhadas: dentro de [`packages/eslint-plugin-hardcode-detect/`](../../../packages/eslint-plugin-hardcode-detect/), não um `shared/` obrigatório definido pelos agentes de referência genéricos;
+   - integrações (registry, MCP, mocks sugeridos no portfólio): prevalece [`specs/agent-integration-testing-policy.md`](../../../specs/agent-integration-testing-policy.md).
 4. Para o tema **hardcode** neste produto: priorizar a **visão multi-nível** em [`specs/vision-hardcode-plugin.md`](../../../specs/vision-hardcode-plugin.md) e regras ESLint testáveis, em vez de relatórios em `docs/review/` como padrão.
 5. Fechamento: [`specs/agent-ia-governance.md`](../../../specs/agent-ia-governance.md), grafo em [`docs/repository-tree.md`](../../../docs/repository-tree.md) e Git em [`specs/agent-git-workflow.md`](../../../specs/agent-git-workflow.md) quando houver entrega.
 
@@ -27,3 +28,4 @@ description: >-
 
 - Criar `docs/rup/`, exigir pares `.md`/`-spec.md` RUP ou seguir `my-agent.md` da referência como se fosse este repositório.
 - Tratar `agent-engineering-hardcoded.md` como ordem para criar `shared/constants.*` ou `docs/review/NNNN-report-hard-coded.md` aqui sem adaptação ao spec.
+- Propor **mocks ou stubs** de serviços externos para integração; usar [`specs/agent-integration-testing-policy.md`](../../../specs/agent-integration-testing-policy.md) (sandboxes dos provedores).

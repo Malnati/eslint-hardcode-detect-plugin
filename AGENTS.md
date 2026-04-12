@@ -13,6 +13,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 5. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
 6. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
 6b. [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) — **Docker Compose** (perfis dev/e2e/prod), [`.docker/Dockerfile`](.docker/Dockerfile) e relação com a action `ops-eslint`.
+6c. [`specs/agent-integration-testing-policy.md`](specs/agent-integration-testing-policy.md) — **integrações externas** (registry, publicação, MCP, etc.): sem mocks no repositório; usar **sandboxes** ou ambientes de teste oficiais dos provedores.
 7. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
 8. [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md) — massa de testes e2e NestJS (workspace auxiliar [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest); não publicável como o plugin).
 9. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
@@ -27,6 +28,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 - Preferir imports relativos dentro de `packages/eslint-plugin-hardcode-detect` conforme convenção do projeto.
 - Ao citar ficheiros ou pastas **deste** repositório (respostas, documentação, prompts de delegação), usar **caminhos relativos à raiz do clone**, conforme [`docs/documentation-policy.md`](docs/documentation-policy.md) (princípio 5b e exceções).
 - Após edições que afetem estilo ou tipos, corrija lints conforme configuração do pacote (quando existir).
+- **Integrações** (npm/registry, publicação, MCP, credenciais de terceiros): seguir [`specs/agent-integration-testing-policy.md`](specs/agent-integration-testing-policy.md) — **não** introduzir mocks ou stubs de serviços externos; validar com **sandbox** ou documentação oficial do provedor.
 
 ## Versionamento Git (obrigatório ao concluir o prompt)
 
@@ -61,7 +63,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `reference/Clippings/` | Recortes da documentação oficial (ESLint, npm, etc.); consulta obrigatória em escopo relevante. |
 | `reference/legacy-snapshot/` | Snapshot histórico; não usar como código vivo. |
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
-| `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo, caminhos relativos ao citar o repo (`repo-relative-paths.mdc`). |
+| `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo, integrações sem mocks (`agent-integration-testing-policy.mdc`), caminhos relativos ao citar o repo (`repo-relative-paths.mdc`). |
 | `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `reference-agents-portfolio`, `docker-compose-workflow`). |
 | `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
 | `docker-compose.yml`, `.docker/` | Compose com perfis dev/e2e/prod; imagem ESLint para `ops-eslint` (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |

@@ -17,6 +17,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 2. [`agent-ia-governance.md`](agent-ia-governance.md) — checklists e mapa de rules/skills/comandos para agentes de IA.
 2b. [`agent-reference-agents.md`](agent-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
 2c. [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) — quando houver ambiguidade entre Cursor, GitHub Copilot ou coleções estilo Awesome: equivalências e precedência.
+2d. [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) — quando o trabalho envolver integrações externas (registry, publicação, MCP, credenciais): sandboxes dos provedores; sem mocks no repositório.
 3. Este arquivo — abertura e fechamento da sessão (fases A–D).
 4. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
 5. [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) — Clippings e documentação oficial.
@@ -48,6 +49,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
    - Listar e abrir arquivos em [`reference/Clippings/`](../reference/Clippings/) (índice em [`reference/Clippings/README.md`](../reference/Clippings/README.md)).
    - Se não houver recorte adequado ou estiver desatualizado: consultar documentação **oficial** atual (MCP de documentação do projeto, quando existir; senão fonte canônica na Web) e **registrar** trecho em `reference/Clippings/` conforme [`specs/agent-reference-clippings.md`](agent-reference-clippings.md).
 4. Para mudanças de **comportamento** do plugin: garantir alinhamento com [`specs/plugin-contract.md`](plugin-contract.md) **antes** ou **junto** com o código (o spec tem precedência sobre implementação legada em `reference/`, exceto `legacy-snapshot` que não é contrato).
+5. Se o pedido envolver **integração externa** (publicação npm, registry privado, MCP, pipelines que exijam credenciais de terceiros): aplicar [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) — validação com **sandbox** ou documentação oficial do provedor; **não** propor mocks ou stubs de serviço no código nem em roadmap/CI planejado deste repo.
 
 ## Fase C — Executar o trabalho
 
@@ -79,6 +81,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose e imagem `.docker/` |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
+| [`.cursor/rules/agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc) | Integrações: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) |
 | [`.cursor/rules/repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc) | Caminhos relativos à raiz ao citar ficheiros do repo |
 | [`.cursor/commands/`](../.cursor/commands/) | Comandos `/abrir-prompt-agente` e `/fechar-prompt-agente` (opcional) |
 | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Ponte GitHub Copilot (opcional) |
@@ -88,6 +91,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Versão do documento
 
+- **1.9.0** — Hierarquia 2d e Fase B item 5: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md); tabela: rule [`agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc).
 - **1.8.0** — Fase C: delegação e relatórios com caminhos relativos à raiz; remissão a [`docs/documentation-policy.md`](../docs/documentation-policy.md); tabela de artefatos: [`.cursor/rules/repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc).
 - **1.7.0** — Escopo e tabela de skills: Docker Compose, [`specs/agent-docker-compose.md`](agent-docker-compose.md), pontes Copilot `docker-tooling` e `docker-compose.instructions`.
 - **1.6.0** — Hierarquia: remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) para Copilot/Cursor e coleções externas.

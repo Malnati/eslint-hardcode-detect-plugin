@@ -28,6 +28,7 @@ Este documento define como os arquivos em [`reference/agents-ref/`](../reference
 | Relatórios de hardcoded em `docs/review/NNNN-report-hard-coded.md` | **Não** é padrão aqui. Para auditorias: descrever achados na **PR**, em **issue** ou em doc em [`docs/`](../docs/)/`specs/` se o mantenedor pedir; evitar criar árvores novas sem atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) |
 | Detecção genérica de hardcoded “no produto” | Para **código do plugin**: seguir [`specs/plugin-contract.md`](plugin-contract.md), [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) e a skill [`eslint-plugin-workflow`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) |
 | CHANGELOG obrigatório por mudança (formato externo rígido) | Alinhar a [`specs/agent-git-workflow.md`](agent-git-workflow.md) e convenções do projeto; [`CHANGELOG.md`](../CHANGELOG.md) existe na raiz — atualizar quando releases/entradas forem esperadas pelo fluxo do repo |
+| Mocks, stubs ou servidores falsos para integrações (registry, MCP, publicação) | [`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md): **sandboxes** ou ambientes de teste oficiais dos provedores; sem mocks de serviço no repositório |
 
 ## Tabela de aplicabilidade por arquivo em `reference/agents-ref/`
 
@@ -68,5 +69,6 @@ Ao usar ideias de `reference/agents-ref/`:
 
 ## Versão do documento
 
+- **1.2.0** — substituição normativa: integrações sem mocks; [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md).
 - **1.1.0** — nomenclatura neutra; remoção de menções a entidade externa no texto normativo.
 - **1.0.0** — contrato inicial: mapeamento portfólio de referência ↔ repositório eslint-plugin-hardcode-detect.

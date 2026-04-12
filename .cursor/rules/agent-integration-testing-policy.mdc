@@ -1,0 +1,12 @@
+---
+description: Integrações externas — sem mocks no repo; sandboxes dos provedores (registry, MCP, publicação)
+alwaysApply: true
+---
+
+# Política de integração (sem mocks)
+
+Contrato completo: [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md).
+
+**Resumo:** não implementar nem planear **mocks, stubs ou fakes** de serviços externos (npm/registry, publicação, MCP, OAuth, etc.) neste repositório. Para validar integrações, usar **sandbox**, **staging** ou fluxos oficiais documentados pelo **provedor**. RuleTester, API `ESLint` e e2e com motor real **não** são mocks de integração. Clippings em `reference/Clippings/` podem conter exemplos de terceiros; não os copie como política de mock para este projeto.
+
+Substituições vs portfólio: [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md).
