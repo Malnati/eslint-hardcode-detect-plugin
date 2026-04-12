@@ -43,6 +43,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── architecture.md
 │   ├── documentation-policy.md
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
+│   ├── solution-distribution-channels.md  # Canais npm/CI/Docker/IDE/agentes
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
