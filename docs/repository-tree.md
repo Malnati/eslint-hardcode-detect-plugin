@@ -54,7 +54,11 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m2-channel-t3-ci.md
 │   │   ├── m3-channel-t4-t6.md
 │   │   ├── m4-channel-t5-agents.md
-│   │   └── m5-release-candidate.md
+│   │   ├── m5-release-candidate.md
+│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0)
+│   │       ├── README.md
+│   │       ├── TASK_FILE_TEMPLATE.md
+│   │       └── m0-baseline/      # Tarefas M0 (A1–A5); ver README.md na pasta
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md

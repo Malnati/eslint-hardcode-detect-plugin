@@ -85,12 +85,15 @@ gantt
 
 ## 7. Camada A — Tarefas e orçamento de tokens (pré-execução de agentes)
 
-| ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão |
-|----|--------|--------|---------|------------------------|----------------------|
-| A1 | Criar/atualizar índice `distribution-milestones/README.md` | macro-plan | README com links M0–M5 | 12 000 | Índice navegável |
-| A2 | Atualizar `distribution-channels-macro-plan.md` (índice + versão + cadeia T1→T6) | README novo | Macro-plan coerente | 18 000 | Secção índice e bump de versão doc |
-| A3 | Atualizar `docs/repository-tree.md` para pasta `distribution-milestones/` | Estrutura nova | Árvore atualizada | 10 000 | Grafo reflete `docs/` |
-| A4 | Revisão cruzada `specs/plugin-contract.md` × docs do plugin | Contrato | Lista de gaps ou “OK” | 25 000 | Registo em PR ou doc |
+Índice dos ficheiros por tarefa: [`tasks/m0-baseline/README.md`](tasks/m0-baseline/README.md). **A5** cobre a ordem 3 do timelining (secção 4), além de A1–A4.
+
+| ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
+|----|--------|--------|---------|------------------------|----------------------|-------------------|
+| A1 | Criar/atualizar índice `distribution-milestones/README.md` | macro-plan | README com links M0–M5 | 12 000 | Índice navegável | [`tasks/m0-baseline/A1-index-milestones-readme.md`](tasks/m0-baseline/A1-index-milestones-readme.md) |
+| A2 | Atualizar `distribution-channels-macro-plan.md` (índice + versão + cadeia T1→T6) | README novo | Macro-plan coerente | 18 000 | Secção índice e bump de versão doc | [`tasks/m0-baseline/A2-macro-plan-index.md`](tasks/m0-baseline/A2-macro-plan-index.md) |
+| A3 | Atualizar `docs/repository-tree.md` para pasta `distribution-milestones/` | Estrutura nova | Árvore atualizada | 10 000 | Grafo reflete `docs/` | [`tasks/m0-baseline/A3-repository-tree.md`](tasks/m0-baseline/A3-repository-tree.md) |
+| A4 | Revisão cruzada `specs/plugin-contract.md` × docs do plugin | Contrato | Lista de gaps ou “OK” | 25 000 | Registo em PR ou doc | [`tasks/m0-baseline/A4-plugin-contract-vs-readme.md`](tasks/m0-baseline/A4-plugin-contract-vs-readme.md) |
+| A5 | Confirmar massa Nest + e2e `nest-workspace.e2e.mjs` documentados (alinha à ordem 3 do timelining) | Specs e massa em `packages/` | Referências coerentes em specs e docs | — | Registo alinhado a [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md) e e2e | [`tasks/m0-baseline/A5-nest-massa-e2e-documentada.md`](tasks/m0-baseline/A5-nest-massa-e2e-documentada.md) |
 
 ---
 

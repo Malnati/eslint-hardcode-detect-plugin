@@ -81,6 +81,8 @@ Perfis atuais na raiz: `dev`, `e2e`, `prod`. Perfis planejados no macro-plan (ex
 
 **Gate:** só avançar para a Camada B com todas as linhas necessárias preenchidas ou marcadas N/A com justificativa.
 
+*Ficheiros de tarefa (um `.md` por linha Camada A, opcional mas recomendado para rastreio):* pasta `tasks/<slug-do-marco>/` com modelo em [`tasks/TASK_FILE_TEMPLATE.md`](tasks/TASK_FILE_TEMPLATE.md) e convenções em [`tasks/README.md`](tasks/README.md).
+
 ---
 
 ## 8. Camada B — Execução de agentes por fase
