@@ -210,6 +210,7 @@ Duplicar pacotes `e2e-fixture-*` para cada linha da tabela mestre **aumenta** cu
 
 ## Versão do documento
 
+- **1.3.0** — Sincronização **M0** (baseline macro): índice e conteúdo dos planos por marco alinhados a [`distribution-milestones/README.md`](distribution-milestones/README.md); cadeia **T1→T6** e handoff em **M3** (incl. segunda onda T6 após M4) coerentes com [`distribution-milestones/m3-channel-t4-t6.md`](distribution-milestones/m3-channel-t4-t6.md).
 - **1.2.0** — Planeamento por **durações e composição** (sem datas de calendário normativas); tabela-resumo M0–M5; Gantt macro com eixo T0 fictício e princípio explícito.
 - **1.1.0** — Remissão aos planos por marco em [`distribution-milestones/README.md`](distribution-milestones/README.md); nota sobre cadeia de handoff T1→T6 vs marcos M0–M5.
 - **1.0.0** — Plano macro inicial: trilhas T1–T6, rastreabilidade de canais, sequência, Gantt ilustrativo, ciclo de vida, Compose, milestones GitHub.
