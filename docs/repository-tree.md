@@ -42,6 +42,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── README.md             # Índice dos guias em docs/
 │   ├── architecture.md
 │   ├── documentation-policy.md
+│   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md

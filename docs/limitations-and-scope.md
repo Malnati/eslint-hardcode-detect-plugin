@@ -2,7 +2,7 @@
 
 ## Escopo do produto
 
-**eslint-plugin-hardcode-detect** é um plugin ESLint focado em **detecção e governança de valores hardcoded** (strings e mensagens), evoluindo para análise em **vários níveis** (por arquivo, dependências, classificação, ordenação, severidade/níveis). O detalhamento da visão está em [`specs/vision-hardcode-plugin.md`](../specs/vision-hardcode-plugin.md).
+**eslint-plugin-hardcode-detect** é um plugin ESLint focado em **detecção e governança de valores hardcoded** (strings e mensagens), evoluindo para análise em **vários níveis** (por arquivo, dependências, classificação, ordenação, severidade/níveis). O detalhamento da visão está em [`specs/vision-hardcode-plugin.md`](../specs/vision-hardcode-plugin.md). Uma taxonomia conceitual de tipos de hardcoding e níveis de gravidade (fora do contrato normativo imediato das regras) está em [`hardcoding-map.md`](hardcoding-map.md).
 
 ## Restrições de repositório
 

@@ -20,7 +20,12 @@ Reduzir strings e valores fixos inadequados no código, com relatórios **classi
 
 As regras `no-hardcoded-strings` e `standardize-error-messages` são a **base**. A regra `hello-world` é apenas **demonstração** para validar o carregamento do plugin; não entra no roadmap funcional de hardcode. Novas regras ou opções devem atualizar `plugin-contract.md` e este documento quando afetarem a visão macro.
 
+## Mapa conceitual de categorias
+
+A taxonomia de tipos de hardcoding, níveis de gravidade (L1–L4) e camadas de detecção (texto, AST, parsers, revisão) está em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). O documento complementa este roadmap sem substituir o contrato normativo em [`plugin-contract.md`](plugin-contract.md).
+
 ## Versão
 
+- **0.3.0** — referência ao mapa conceitual em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md).
 - **0.2.0** — distinção explícita da regra de demonstração `hello-world` em relação à base de produto.
 - **0.1.0** — primeira definição da visão multi-nível.

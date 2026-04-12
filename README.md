@@ -16,6 +16,7 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 - [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — consulta e manutenção de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/).
 - [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — commit e push ao concluir trabalho.
 - [`docs/repository-tree.md`](docs/repository-tree.md) — grafo de arquivos e diretórios.
+- [`docs/hardcoding-map.md`](docs/hardcoding-map.md) — taxonomia e níveis de hardcoding (mapa conceitual).
 - [`docs/documentation-policy.md`](docs/documentation-policy.md) — boas práticas Markdown no GitHub.
 - [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) — limitações e restrições.
 - [`docs/architecture.md`](docs/architecture.md) — arquitetura do repositório.

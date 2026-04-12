@@ -6,6 +6,7 @@
 |-----------|----------|
 | [architecture.md](architecture.md) | Visão da arquitetura do monorepo |
 | [documentation-policy.md](documentation-policy.md) | Boas práticas Markdown no GitHub |
+| [hardcoding-map.md](hardcoding-map.md) | Taxonomia, níveis e camadas de detecção de hardcoding |
 | [limitations-and-scope.md](limitations-and-scope.md) | Escopo, limitações e restrições |
 | [repository-tree.md](repository-tree.md) | Grafo de arquivos e diretórios |
 | [versioning-for-agents.md](versioning-for-agents.md) | Fluxo Git para agentes |
