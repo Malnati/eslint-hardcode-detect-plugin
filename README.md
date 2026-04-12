@@ -19,6 +19,7 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 - [`docs/hardcoding-map.md`](docs/hardcoding-map.md) — taxonomia e níveis de hardcoding (mapa conceitual).
 - [`docs/documentation-policy.md`](docs/documentation-policy.md) — boas práticas Markdown no GitHub.
 - [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) — limitações e restrições.
+- [`docs/distribution-channels-macro-plan.md`](docs/distribution-channels-macro-plan.md) — plano macro por canal/trilha (e2e, Compose, marcos GitHub).
 - [`docs/architecture.md`](docs/architecture.md) — arquitetura do repositório.
 - [`docs/versioning-for-agents.md`](docs/versioning-for-agents.md) — versionamento Git para agentes.
 

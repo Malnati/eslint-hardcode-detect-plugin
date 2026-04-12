@@ -50,6 +50,10 @@ flowchart LR
 
 *Canais auxiliares*: Cursor/Copilot (regras, skills, hooks), MCP, hooks Git — orquestram ou enriquecem o trabalho; o **artefato normativo** do lint continua sendo o pacote npm + configuração ESLint.
 
+## Roadmap e validação por trilha
+
+O planejamento macro (trilhas T1–T6, rastreabilidade canal a canal, propostas de massa e2e, perfis Docker, diagramas e marcos em PRs no GitHub) está em [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md).
+
 ## Limitações
 
 - O plugin **não** empacota por si só todos os canais da tabela: muitos são **política de projeto** (hooks, CI, Docker).
@@ -60,6 +64,7 @@ flowchart LR
 
 | Recurso | Ligação |
 |---------|---------|
+| Plano macro (e2e, trilhas, marcos GitHub) | [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md) |
 | Mapa conceitual de hardcoding | [`hardcoding-map.md`](hardcoding-map.md) |
 | Visão do produto | [`../specs/vision-hardcode-plugin.md`](../specs/vision-hardcode-plugin.md) |
 | Contrato das regras | [`../specs/plugin-contract.md`](../specs/plugin-contract.md) |
@@ -75,4 +80,5 @@ flowchart LR
 
 ## Versão do documento
 
+- **1.1.0** — Secção “Roadmap e validação por trilha” com ligação a `distribution-channels-macro-plan.md`.
 - **1.0.0** — Lista inicial de canais de distribuição e operacionalização, alinhada ao plano e a `reference/Clippings/`.
