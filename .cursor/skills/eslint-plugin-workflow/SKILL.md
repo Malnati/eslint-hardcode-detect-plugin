@@ -17,6 +17,11 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 2. Confirme que a mudança está refletida no spec (edite o spec primeiro se o contrato mudar).
 3. Consulte [`reference/Clippings/`](../../../reference/Clippings/) e siga [`specs/agent-reference-clippings.md`](../../../specs/agent-reference-clippings.md); use a skill [`reference-clippings-workflow`](../reference-clippings-workflow/SKILL.md) quando precisar sincronizar recortes da documentação oficial.
 
+## Mensagens de erro (contrato e agentes)
+
+- Relatórios de **falha** por agentes neste repositório seguem [`specs/agent-error-messaging-triple.md`](../../../specs/agent-error-messaging-triple.md); skill [`agent-error-messaging-triple`](../agent-error-messaging-triple/SKILL.md).
+- A regra futura `standardize-error-messages` deve usar o catálogo com `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` por código (ver [`specs/plugin-contract.md`](../../../specs/plugin-contract.md)), alinhado ao mesmo modelo semântico.
+
 ## Implementação
 
 1. Ao citar ficheiros do monorepo em exemplos ou na resposta ao utilizador, use **caminhos relativos à raiz** (ver [`docs/documentation-policy.md`](../../../docs/documentation-policy.md)).

@@ -14,3 +14,4 @@ Estas instruções são uma **ponte**: a fonte normativa completa está em [`AGE
 5. Visão de produto (hardcode multi-nível): [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
 6. Ao citar ficheiros deste repositório em texto ou exemplos, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).
 7. Integrações (registry, publicação, MCP): [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.
+8. Falhas (testes, build, CI): ao relatar, [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md).

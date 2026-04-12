@@ -370,3 +370,9 @@ Conteúdo mínimo:
 - Premissa 4: textos grandes com placeholders sinalizados como candidatos a template e orientação de mecanismo adequada.
 - Ferramentas GNU básicas executadas ou consideradas conforme comandos indicados (grep, awk, sed, sort, uniq, find, comm, xargs, cut). A tradução da saída desses comandos em inconformidades e exemplos “Antes/Depois” é responsabilidade do agente.
 - Relatório `docs/review/NNNN-report-hard-coded.md` gerado com pendências e recomendações detalhadas.
+
+---
+
+## Uso no monorepo `eslint-hardcode-detect-plugin`
+
+Este ficheiro é **genérico**. No repositório **eslint-hardcode-detect-plugin**, cruzar com [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md) (substituições de caminhos e aplicabilidade). Ao comunicar **falhas** (testes, build, CI, comandos), seguir [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — três partes: diagnóstico técnico sênior, correção definitiva, contorno operacional.

@@ -26,7 +26,7 @@ Extrair de [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md)
 
 ## Âncora de versão
 
-Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md) na versão **0.4.0** do documento (secção «Versão do documento» no spec).
+Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md) na versão **0.5.0** do documento (secção «Versão do documento» no spec).
 
 ## Regras nomeadas
 
@@ -44,7 +44,7 @@ Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../..
 
 | Campo | Tipo | Padrão | Descrição |
 |-------|------|--------|-----------|
-| `messages` | objeto | `{}` | Mapa de código → `{ raw, user, dev }` (strings não vazias após trim). |
+| `messages` | objeto | `{}` | Mapa de código → `{ seniorDiagnostic, systemicRemediation, operationalWorkaround }` (strings não vazias após trim); ver [`specs/agent-error-messaging-triple.md`](../../../../../specs/agent-error-messaging-triple.md). |
 | `codePattern` | string (regex) | `[A-Z]{2,10}(?:[-_][A-Z0-9]+)*[-_]\d{3,5}` | Usada quando o catálogo está vazio para exigir código na mensagem. |
 | `loggers` | string[] | `console.error`, `console.warn`, `logger.error`, `logger.warn` | Nomes completos `objeto.método` aceitos em `CallExpression`. |
 | `errorConstructors` | string[] | `Error`, `TypeError`, `RangeError`, `ReferenceError` | Construtores considerados em `ThrowStatement` / `NewExpression`. |
@@ -57,7 +57,7 @@ Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../..
 | `no-hardcoded-strings` | `hardcoded` (pelo menos) | Orientar uso de constantes ou catálogo. |
 | `standardize-error-messages` | `missingCode` | Mensagem sem código esperado ou sem entrada no catálogo quando aplicável. |
 | `standardize-error-messages` | `unknownCode` | Código referenciado não existe no catálogo (quando a regra validar chaves do catálogo). |
-| `standardize-error-messages` | `invalidCatalogEntry` | Entrada do catálogo sem `raw`, `user` e `dev` válidos. |
+| `standardize-error-messages` | `invalidCatalogEntry` | Entrada do catálogo sem `seniorDiagnostic`, `systemicRemediation` e `operationalWorkaround` válidos. |
 | `standardize-error-messages` | `dynamicMessage` | Mensagem não estática (não é literal string nem template sem expressões). |
 
 ## Requisitos de e2e descritos no contrato

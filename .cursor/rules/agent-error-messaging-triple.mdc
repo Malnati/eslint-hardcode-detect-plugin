@@ -1,0 +1,12 @@
+---
+description: Falhas relatadas em três partes — diagnóstico sênior, correção definitiva, contorno operacional
+alwaysApply: true
+---
+
+# Mensagens de falha em três partes
+
+Contrato completo: [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md).
+
+Sempre que **comunicar uma falha** (testes, build, CI, comandos, bloqueios, análise de causa), estruture a resposta em **três secções**: **Diagnóstico técnico (sênior)**, **Correção definitiva**, **Contorno operacional**. Casos limite e delegação a sub-agentes estão no spec.
+
+Skill: [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../skills/agent-error-messaging-triple/SKILL.md).

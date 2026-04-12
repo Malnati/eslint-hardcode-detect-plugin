@@ -19,6 +19,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── .cursor/
 │   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
+│   │   ├── agent-error-messaging-triple.mdc
 │   │   ├── agent-ia-governance.mdc
 │   │   ├── agent-integration-testing-policy.mdc
 │   │   ├── agent-reference-agents.mdc
@@ -31,6 +32,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── repo-layout.mdc
 │   │   └── repo-relative-paths.mdc
 │   └── skills/               # Skills reutilizáveis pelos agentes
+│       ├── agent-error-messaging-triple/
 │       ├── docker-compose-workflow/
 │       ├── eslint-plugin-workflow/
 │       ├── git-agent-workflow/
@@ -104,6 +106,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   └── legacy-snapshot/      # Snapshot histórico (ESLint local, action de exemplo)
 └── specs/                    # Contratos e visão
     ├── agent-docker-compose.md         # Docker Compose, .docker/ e action ops-eslint
+    ├── agent-error-messaging-triple.md # Falhas relatadas em três partes (agentes de IA)
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md

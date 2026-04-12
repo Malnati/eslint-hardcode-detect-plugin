@@ -38,7 +38,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 | Campo | Tipo | Padrão | Descrição |
 |-------|------|--------|-----------|
-| `messages` | objeto | `{}` | Mapa de código → `{ raw, user, dev }` (strings não vazias após trim). |
+| `messages` | objeto | `{}` | Mapa de código → `{ seniorDiagnostic, systemicRemediation, operationalWorkaround }` (strings não vazias após trim); semântica alinhada a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md). |
 | `codePattern` | string (regex) | `[A-Z]{2,10}(?:[-_][A-Z0-9]+)*[-_]\d{3,5}` | Usada quando o catálogo está vazio para exigir código na mensagem. |
 | `loggers` | string[] | `console.error`, `console.warn`, `logger.error`, `logger.warn` | Nomes completos `objeto.método` aceitos em `CallExpression`. |
 | `errorConstructors` | string[] | `Error`, `TypeError`, `RangeError`, `ReferenceError` | Construtores considerados em `ThrowStatement` / `NewExpression`. |
@@ -49,7 +49,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 |----|-----|
 | `missingCode` | Mensagem sem código esperado ou sem entrada no catálogo quando aplicável. |
 | `unknownCode` | Código referenciado não existe no catálogo (quando a regra validar chaves do catálogo). |
-| `invalidCatalogEntry` | Entrada do catálogo sem `raw`, `user` e `dev` válidos. |
+| `invalidCatalogEntry` | Entrada do catálogo sem `seniorDiagnostic`, `systemicRemediation` e `operationalWorkaround` válidos. |
 | `dynamicMessage` | Mensagem não estática (não é literal string nem template sem expressões). |
 
 - **Comportamento**:
@@ -71,6 +71,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 ## Versão do documento
 
+- **0.5.0** — catálogo `standardize-error-messages`: campos `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` (alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md)); substituem `raw` / `user` / `dev`.
 - **0.4.0** — e2e com massa Nest (`e2e-fixture-nest` + contagens fixas); detalhes em [`e2e-fixture-nest.md`](e2e-fixture-nest.md).
 - **0.3.0** — fumaça e2e (motor + flat config + plugin) descrita; RuleTester permanece o contrato principal por regra.
 - **0.2.0** — regras `hello-world` (demo) e `no-hardcoded-strings` (primeira regra de produto) descritas e implementáveis no pacote.
