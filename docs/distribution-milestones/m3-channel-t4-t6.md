@@ -1,6 +1,6 @@
 # Marco M3: T4 + T6 (`channel-t4-t6`)
 
-Plano para **IDE/LSP (T4)** e preparação de **Git hooks (T6)**. A **cadeia normativa T1→…→T6** exige **T5 antes de T6**; o macro-plan agrupa T4 e T6 no mesmo milestone **M3**. **Política adotada (Opção A recomendada):** neste marco, entregar **T4 completo**; T6 fica **preparado** (docs, esboço de fixture) até existir handoff de **M4 (T5)** — PRs que **fechem** T6 devem abrir **após** os entregáveis de T5, ou usar **Opção B:** duas ondas no Gantt (T4 primeiro; T6 após merge M4).
+Plano para **IDE/LSP (T4)** e preparação de **Git hooks (T6)**. A **cadeia normativa T1→…→T6** exige **T5 antes de T6**; [`distribution-channels-macro-plan.md`](../distribution-channels-macro-plan.md) agrupa T4 e T6 no mesmo milestone **M3** (parágrafo **«Cadeia de handoff»** em **Princípios**). **Política adotada (Opção A recomendada):** neste marco, entregar **T4 completo**; T6 fica **preparado** (docs, esboço de fixture) até existir handoff de **M4 (T5)** — PRs que **fechem** T6 devem abrir **após** os entregáveis de T5, ou usar **Opção B:** duas ondas no Gantt (T4 primeiro; T6 após merge M4).
 
 **Milestone GitHub sugerido:** `channel-t4-t6`  
 **Labels:** `area/channel-T4`, `area/channel-T6`, `type/docs`
