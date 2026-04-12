@@ -81,7 +81,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── src/fixture-hardcodes/      # Literais fixos com contagens no e2e
 │   │   └── eslint.config.mjs           # Flat config + plugin via dist do pacote irmão
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
-│       ├── docs/rules/                 # Documentação de regras (ex.: hello-world)
+│       ├── docs/rules/                 # Uma página por regra do contrato (hello-world, no-hardcoded-strings, standardize-error-messages)
 │       ├── e2e/                        # Fumaça e2e (ESLint API + fixtures consumidor)
 │       │   ├── fixtures/hello-world/   # Flat config mínimo + amostra
 │       │   ├── hello-world.e2e.mjs

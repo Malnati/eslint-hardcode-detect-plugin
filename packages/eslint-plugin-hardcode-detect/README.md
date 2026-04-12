@@ -38,7 +38,8 @@ O preset `hardcode-detect/recommended` aplica apenas `no-hardcoded-strings`. A r
 | ID | Descrição |
 |----|-----------|
 | `hello-world` | Demonstração mínima (um aviso por arquivo); ver [`docs/rules/hello-world.md`](docs/rules/hello-world.md). |
-| `no-hardcoded-strings` | Desencoraja literais de string com comprimento ≥ 2. |
+| `no-hardcoded-strings` | Desencoraja literais de string com comprimento ≥ 2; ver [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md). |
+| `standardize-error-messages` | Contrato e página de referência; ainda não exportada no pacote; ver [`docs/rules/standardize-error-messages.md`](docs/rules/standardize-error-messages.md). |
 
 ## Desenvolvimento
 
