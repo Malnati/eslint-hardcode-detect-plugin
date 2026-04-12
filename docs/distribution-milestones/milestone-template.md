@@ -36,22 +36,27 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Ordem | Subtarefa | Depende de | Dono (opcional) | “Pronto para PR” quando |
-|-------|-----------|------------|-----------------|-------------------------|
-| 1 | | | | |
+| Ordem | Subtarefa | Duração estimada | Depende de | Dono (opcional) | “Pronto para PR” quando |
+|-------|-----------|------------------|------------|-----------------|-------------------------|
+| 1 | | *ex.: 7d* | | | |
+
+**Duração total do marco (soma sequencial das subtarefas, salvo paralelismo explícito):** *preencher (ex.: 14d).*
 
 ---
 
-## 5. Gantt (janela do marco)
+## 5. Composição temporal (durações)
+
+Diagrama opcional: eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações (`Xd`) e dependências `after` são normativas**, não o calendário civil.
 
 ```mermaid
 gantt
   title Marco M{N}
   dateFormat YYYY-MM-DD
   section Fase
-  Tarefa :a1, YYYY-MM-DD, 7d
+  Tarefa_a :a1, 2000-01-01, 7d
+  Tarefa_b :a2, after a1, 5d
 ```
 
 ---

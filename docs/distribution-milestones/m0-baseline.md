@@ -44,30 +44,32 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Ordem | Subtarefa | Depende de | “Pronto para PR” quando |
-|-------|-----------|------------|-------------------------|
-| 1 | Índice `docs/distribution-milestones/` + links no macro-plan | — | README + macro-plan atualizados |
-| 2 | Revisão cruzada `plugin-contract` vs README do plugin | 1 | Sem divergências óbvias listadas ou issues abertas |
-| 3 | Confirmar massa Nest + e2e `nest-workspace.e2e.mjs` documentados | 2 | Referências em specs e docs coerentes |
+| Ordem | Subtarefa | Duração estimada | Depende de | “Pronto para PR” quando |
+|-------|-----------|------------------|------------|-------------------------|
+| 1 | Índice `docs/distribution-milestones/` + links no macro-plan | 5d | — | README + macro-plan atualizados |
+| 2 | Revisão cruzada `plugin-contract` vs README do plugin | 5d | 1 | Sem divergências óbvias listadas ou issues abertas |
+| 3 | Confirmar massa Nest + e2e `nest-workspace.e2e.mjs` documentados | 4d | 2 | Referências em specs e docs coerentes |
+
+**Duração total do marco (sequencial):** 14d.
 
 ---
 
-## 5. Gantt (janela do marco)
+## 5. Composição temporal (durações)
+
+Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
 ```mermaid
 gantt
   title Marco M0 baseline
   dateFormat YYYY-MM-DD
   section Documentacao
-  Indice_milestones :done, m0a, 2026-04-01, 5d
+  Indice_milestones :done, m0a, 2000-01-01, 5d
   Cruzar_specs_README :m0b, after m0a, 5d
   section Evidencia_e2e
   Revisao_Nest_mass :m0c, after m0b, 4d
 ```
-
-*Ajustar datas ao calendário real do projeto.*
 
 ---
 

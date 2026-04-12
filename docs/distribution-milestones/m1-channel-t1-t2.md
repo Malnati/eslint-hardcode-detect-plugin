@@ -46,24 +46,28 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Ordem | Subtarefa | Depende de | “Pronto para PR” quando |
-|-------|-----------|------------|-------------------------|
-| 1 | Matriz T1 documentada + jobs/scripts | M0 | Matriz ou backlog explícito com critérios |
-| 2 | Smoke ops-eslint / Dockerfile | 1 | Comando reprodutível documentado |
-| 3 | Rascunho perfil `e2e-ops` (se aplicável) | 2 | Issue ou secção no spec Docker com próximos passos |
+| Ordem | Subtarefa | Duração estimada | Depende de | “Pronto para PR” quando |
+|-------|-----------|------------------|------------|-------------------------|
+| 1 | Matriz T1 documentada + jobs/scripts | 10d | M0 | Matriz ou backlog explícito com critérios |
+| 2 | Smoke ops-eslint / Dockerfile | 11d | 1 | Comando reprodutível documentado |
+| 3 | Rascunho perfil `e2e-ops` (se aplicável) | *incl. em 1–2 / opcional* | 2 | Issue ou secção no spec Docker com próximos passos |
+
+**Duração total do marco (T1 → T2 em sequência):** 21d (10d + 11d).
 
 ---
 
-## 5. Gantt (janela do marco)
+## 5. Composição temporal (durações)
+
+Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
 ```mermaid
 gantt
   title Marco M1 T1 e T2
   dateFormat YYYY-MM-DD
   section T1
-  Matriz_npm :m1a, 2026-04-15, 10d
+  Matriz_npm :m1a, 2000-01-01, 10d
   section T2
   Smoke_ops_image :m1b, after m1a, 11d
 ```

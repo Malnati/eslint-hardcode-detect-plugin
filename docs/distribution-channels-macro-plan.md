@@ -1,8 +1,10 @@
 # Plano macro: canais de distribuição, e2e e marcos
 
-Este documento é o **roadmap macro** para validar e operacionalizar a solução descrita em [`solution-distribution-channels.md`](solution-distribution-channels.md), com **trilhas de teste** (agrupamento DRY de canais com a mesma superfície mecânica), proposta de massas `packages/e2e-fixture-*`, perfis Docker Compose futuros, diagramas (sequência, Gantt), ciclo de vida por trilha e organização de **PRs/milestones** no GitHub. Não substitui o contrato das regras em [`specs/plugin-contract.md`](../specs/plugin-contract.md) nem a taxonomia em [`hardcoding-map.md`](hardcoding-map.md).
+Este documento é o **roadmap macro** para validar e operacionalizar a solução descrita em [`solution-distribution-channels.md`](solution-distribution-channels.md), com **trilhas de teste** (agrupamento DRY de canais com a mesma superfície mecânica), proposta de massas `packages/e2e-fixture-*`, perfis Docker Compose futuros, diagramas (sequência, composição temporal), ciclo de vida por trilha e organização de **PRs/milestones** no GitHub. Não substitui o contrato das regras em [`specs/plugin-contract.md`](../specs/plugin-contract.md) nem a taxonomia em [`hardcoding-map.md`](hardcoding-map.md).
 
-**Planos detalhados por marco (M0–M5):** índice em [`distribution-milestones/README.md`](distribution-milestones/README.md) — cada ficheiro inclui handoff na **cadeia T1→T6**, matriz e2e×Compose, diagramas, timelining, Gantt e protocolo de tarefas/orçamento de tokens pré-execução de agentes (Camadas A/B).
+**Tempos de planeamento:** os marcos definem **durações** (`Xd`), **dependências** e **composição** do trabalho — **não** datas de calendário para início ou fim. Diagramas Gantt usam um **eixo fictício T0** só para proporção visual; o que é normativo está nas tabelas e nos números de duração nos ficheiros por marco.
+
+**Planos detalhados por marco (M0–M5):** índice em [`distribution-milestones/README.md`](distribution-milestones/README.md) — cada ficheiro inclui handoff na **cadeia T1→T6**, matriz e2e×Compose, diagramas, **ordem e durações das tarefas**, composição temporal (Gantt com T0 fictício onde existir) e protocolo de tarefas/orçamento de tokens pré-execução de agentes (Camadas A/B).
 
 **Fontes técnicas:** decisões sobre ESLint, npm, Cursor e MCP devem alinhar-se a [`reference/Clippings/`](../reference/Clippings/) (índice em [`reference/Clippings/README.md`](../reference/Clippings/README.md)) e [`specs/agent-reference-clippings.md`](../specs/agent-reference-clippings.md). Versionamento Git: [`versioning-for-agents.md`](versioning-for-agents.md), [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md).
 
@@ -12,8 +14,9 @@ Este documento é o **roadmap macro** para validar e operacionalizar a solução
 2. **`reference/`** — somente leitura para o pacote publicável; não importar Clippings em `packages/`.
 3. **Massas e2e** — workspaces auxiliares `packages/e2e-fixture-*` (não publicáveis como o plugin), espelhando o papel de [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md).
 4. **Trilhas** — vários **canais** da tabela mestre mapeiam para uma **trilha** quando a automação testável é a mesma (ex.: npm projeto e workspaces → mesma trilha T1 com matriz documentada).
+5. **Durações sem datas fixas** — prazos expressos em dias de esforço planejado e dependências lógicas; o **calendário civil** (quando cada marco começa no mundo real) fica fora destes documentos.
 
-**Cadeia de handoff (artefatos):** em termos de **dependência de produto**, a ordem normativa é **T1 → T2 → T3 → T4 → T5 → T6** (cada trilha consome o entregável validado da anterior). Os **marcos GitHub M0–M5** agrupam o trabalho de outra forma; quando o calendário M divergir (ex.: T6 vs T5), seguir a política explícita em [`distribution-milestones/m3-channel-t4-t6.md`](distribution-milestones/m3-channel-t4-t6.md).
+**Cadeia de handoff (artefatos):** em termos de **dependência de produto**, a ordem normativa é **T1 → T2 → T3 → T4 → T5 → T6** (cada trilha consome o entregável validado da anterior). Os **marcos GitHub M0–M5** agrupam o trabalho de outra forma; quando a **ordem dos marcos M** divergir da sequência T5→T6 (ex.: T6 depende de entregas de M4), seguir a política explícita em [`distribution-milestones/m3-channel-t4-t6.md`](distribution-milestones/m3-channel-t4-t6.md).
 
 ## Trilhas de validação
 
@@ -100,26 +103,41 @@ sequenceDiagram
   Runner-->>Vcs: statusCheck
 ```
 
-## Timeline: Gantt (ilustrativo)
+## Composição temporal dos marcos (durações)
 
-Datas de exemplo para alinhar marcos e PRs (ajustar a calendário real do projeto).
+Durações planejadas por marco e resumo da composição (detalhe em cada `distribution-milestones/m*.md`). **D** = dias de esforço sequencial dentro do marco salvo nota.
+
+| Marco | Duração (D) | Composição (resumo) |
+|-------|-------------|---------------------|
+| **M0** | 14 | 5 + 5 + 4 — índice milestones, cruzamento specs/README, revisão massa Nest ([`m0-baseline.md`](distribution-milestones/m0-baseline.md)) |
+| **M1** | 21 | 10 (T1 matriz npm) + 11 (T2 smoke ops) ([`m1-channel-t1-t2.md`](distribution-milestones/m1-channel-t1-t2.md)) |
+| **M2** | 14 | 7 + 7 — mapear CI, paridade prod ([`m2-channel-t3-ci.md`](distribution-milestones/m2-channel-t3-ci.md)) |
+| **M3** | 20 | 10 (onda T4 / IDE) + 10 (onda T6 / hooks) — a **segunda onda** só inicia **após conclusão de M4** (ver [`m3-channel-t4-t6.md`](distribution-milestones/m3-channel-t4-t6.md)) |
+| **M4** | 18 | 8 + 10 — inventário agentes, job opcional ([`m4-channel-t5-agents.md`](distribution-milestones/m4-channel-t5-agents.md)) |
+| **M5** | 14 | 5 + 5 + 4 — notas/bump, publish/tag, smoke ([`m5-release-candidate.md`](distribution-milestones/m5-release-candidate.md)) |
+
+**Soma linear do caminho descrito abaixo:** 101d (14+21+14+10+18+10+14). Não representa calendário civil; o tempo real entre marcos depende de equipa e paralelismo fora deste doc.
+
+### Gantt macro (eixo T0 fictício)
+
+O eixo `2000-01-01` é **apenas** ancoragem Mermaid para desenhar barras; **só as durações e a ordem `after` são normativas**. A **segunda onda de M3** (T6) executa **após M4** (T5), não imediatamente após a primeira onda de M3 (T4).
 
 ```mermaid
 gantt
-  title Marcos macro por trilha
+  title Marcos e subfases M3 (eixo T0 fictício)
   dateFormat YYYY-MM-DD
-  section Baseline
-  DocMacroAndNestE2e :done, m0, 2026-04-01, 14d
-  section T1_T2
-  NpmMatrixAndOpsProfile :active, m1, 2026-04-15, 21d
-  section T3
-  CiSmokeParity :m2, 2026-05-06, 14d
-  section T4_T6
-  IdeDocAndHooks :m3, 2026-05-20, 21d
-  section T5
-  AgentEcosystemChecks :m4, 2026-06-10, 21d
+  section Baseline_a_T3
+  M0_baseline :done, m0, 2000-01-01, 14d
+  M1_t1_t2 :m1, after m0, 21d
+  M2_t3 :m2, after m1, 14d
+  section M3_onda1_T4
+  M3_guia_IDE :m3a, after m2, 10d
+  section M4_T5
+  M4_agentes :m4, after m3a, 18d
+  section M3_onda2_T6
+  M3_hooks :m3b, after m4, 10d
   section Close
-  ReleaseCandidateAndTag :m5, 2026-07-01, 14d
+  M5_release :m5, after m3b, 14d
 ```
 
 ## Proposta de workspaces e perfis Docker
@@ -192,5 +210,6 @@ Duplicar pacotes `e2e-fixture-*` para cada linha da tabela mestre **aumenta** cu
 
 ## Versão do documento
 
+- **1.2.0** — Planeamento por **durações e composição** (sem datas de calendário normativas); tabela-resumo M0–M5; Gantt macro com eixo T0 fictício e princípio explícito.
 - **1.1.0** — Remissão aos planos por marco em [`distribution-milestones/README.md`](distribution-milestones/README.md); nota sobre cadeia de handoff T1→T6 vs marcos M0–M5.
 - **1.0.0** — Plano macro inicial: trilhas T1–T6, rastreabilidade de canais, sequência, Gantt ilustrativo, ciclo de vida, Compose, milestones GitHub.

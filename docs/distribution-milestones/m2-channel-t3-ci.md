@@ -41,24 +41,28 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Ordem | Subtarefa | Depende de | “Pronto para PR” quando |
-|-------|-----------|------------|-------------------------|
-| 1 | Mapear jobs atuais `ci.yml` | M1 | Matriz de passos vs Compose `prod` |
-| 2 | Definir critério de paridade prod ↔ CI | 1 | Tabela comparativa no doc ou spec |
-| 3 | Anexos de log / artefatos (política) | 2 | Secção “Logs” no plano ou CONTRIBUTING |
+| Ordem | Subtarefa | Duração estimada | Depende de | “Pronto para PR” quando |
+|-------|-----------|------------------|------------|-------------------------|
+| 1 | Mapear jobs atuais `ci.yml` | 7d | M1 | Matriz de passos vs Compose `prod` |
+| 2 | Definir critério de paridade prod ↔ CI | 7d | 1 | Tabela comparativa no doc ou spec |
+| 3 | Anexos de log / artefatos (política) | *incl. em 2* | 2 | Secção “Logs” no plano ou CONTRIBUTING |
+
+**Duração total do marco (sequencial):** 14d.
 
 ---
 
-## 5. Gantt (janela do marco)
+## 5. Composição temporal (durações)
+
+Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
 ```mermaid
 gantt
   title Marco M2 T3 CI
   dateFormat YYYY-MM-DD
   section Pipeline
-  Mapear_ci_yml :m2a, 2026-05-06, 7d
+  Mapear_ci_yml :m2a, 2000-01-01, 7d
   Paridade_prod :m2b, after m2a, 7d
 ```
 

@@ -42,24 +42,28 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Ordem | Subtarefa | Depende de | “Pronto para PR” quando |
-|-------|-----------|------------|-------------------------|
-| 1 | Congelar escopo release | M4 + T6 | Lista de PRs merged |
-| 2 | Changelog / notas | 1 | Texto revisado |
-| 3 | Publish + tag | 2 | Artefato verificável |
+| Ordem | Subtarefa | Duração estimada | Depende de | “Pronto para PR” quando |
+|-------|-----------|------------------|------------|-------------------------|
+| 1 | Congelar escopo release | 5d | M4 + T6 | Lista de PRs merged |
+| 2 | Changelog / notas | 5d | 1 | Texto revisado |
+| 3 | Publish + tag | 4d | 2 | Artefato verificável |
+
+**Duração total do marco (sequencial):** 14d.
 
 ---
 
-## 5. Gantt (janela do marco)
+## 5. Composição temporal (durações)
+
+Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
 ```mermaid
 gantt
   title Marco M5 release
   dateFormat YYYY-MM-DD
   section Release
-  Notas_e_bump :m5a, 2026-07-01, 5d
+  Notas_e_bump :m5a, 2000-01-01, 5d
   Publish_tag :m5b, after m5a, 5d
   section Pos_deploy
   Smoke_consumidor :m5c, after m5b, 4d

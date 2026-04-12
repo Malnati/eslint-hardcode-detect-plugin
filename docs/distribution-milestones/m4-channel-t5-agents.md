@@ -40,24 +40,28 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Ordem | Subtarefa | Depende de | “Pronto para PR” quando |
-|-------|-----------|------------|-------------------------|
-| 1 | Inventário `.cursor/` e `.github/agents/` | M3 | Lista + gaps |
-| 2 | Job opcional `verify-agent-files` | 1 | Workflow ou issue |
-| 3 | Cruzamento com `agent-tooling-ecosystem-map` | 2 | Tabela remissões |
+| Ordem | Subtarefa | Duração estimada | Depende de | “Pronto para PR” quando |
+|-------|-----------|------------------|------------|-------------------------|
+| 1 | Inventário `.cursor/` e `.github/agents/` | 8d | M3 (onda 1 / handoff T4) | Lista + gaps |
+| 2 | Job opcional `verify-agent-files` | 10d | 1 | Workflow ou issue |
+| 3 | Cruzamento com `agent-tooling-ecosystem-map` | *incl. em 2* | 2 | Tabela remissões |
+
+**Duração total do marco (sequencial):** 18d.
 
 ---
 
-## 5. Gantt (janela do marco)
+## 5. Composição temporal (durações)
+
+Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
 ```mermaid
 gantt
   title Marco M4 T5 agentes
   dateFormat YYYY-MM-DD
   section Inventario
-  Arvore_cursor_github :m4a, 2026-06-10, 8d
+  Arvore_cursor_github :m4a, 2000-01-01, 8d
   section Automacao
   Job_verify_opcional :m4b, after m4a, 10d
 ```

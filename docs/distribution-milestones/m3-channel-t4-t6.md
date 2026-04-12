@@ -44,29 +44,33 @@ sequenceDiagram
 
 ---
 
-## 4. Timelining
+## 4. Ordem, dependências e durações
 
-| Onda | Subtarefa | Depende de | “Pronto para PR” quando |
-|------|-----------|------------|-------------------------|
-| 1 | Guia IDE + settings exemplo | M2 | Doc em `docs/` com paths relativos à raiz |
-| 2 | Backlog T6: doc Husky/Lefthook | 1 | Sem declarar T6 “done” sem M4 |
-| 3 | Fechar T6 (hooks + fixture) | **M4 (T5)** | Após handoff agente |
+| Onda | Subtarefa | Duração estimada | Depende de | “Pronto para PR” quando |
+|------|-----------|------------------|------------|-------------------------|
+| 1 | Guia IDE + settings exemplo | 10d | M2 | Doc em `docs/` com paths relativos à raiz |
+| 2 | Backlog T6: doc Husky/Lefthook | *incl. em 1 / preparação* | 1 | Sem declarar T6 “done” sem M4 |
+| 3 | Fechar T6 (hooks + fixture) | 10d | **M4 (T5)** concluído | Após handoff agente |
+
+**Duração total do marco (duas ondas de trabalho):** 20d (10d + 10d). **Ordem lógica do projeto:** onda 1 (T4) → **marco M4** (T5) → onda 2 (T6); ver [`../distribution-channels-macro-plan.md`](../distribution-channels-macro-plan.md).
 
 ---
 
-## 5. Gantt (janela do marco — duas ondas)
+## 5. Composição temporal (durações — duas ondas)
+
+Eixo **`2000-01-01` = T0 fictício** (Mermaid). O vínculo `after m3a` entre as barras **só** serve para somar **10d + 10d = 20d** neste documento.
+
+**Normativo:** a onda 2 (`m3b`) **não pode iniciar** antes da **conclusão do marco M4** (T5). Na linha temporal real, M4 executa-se **entre** a onda 1 e a onda 2 (ver Gantt macro).
 
 ```mermaid
 gantt
-  title Marco M3 T4 e preparacao T6
+  title Marco M3 T4 e T6 (duas ondas)
   dateFormat YYYY-MM-DD
   section Onda1_T4
-  Guia_IDE :m3a, 2026-05-20, 10d
-  section Onda2_T6_pos_T5
-  Hooks_pos_M4 :m3b, 2026-06-15, 10d
+  Guia_IDE :m3a, 2000-01-01, 10d
+  section Onda2_T6_apos_M4
+  Hooks_T6 :m3b, after m3a, 10d
 ```
-
-*A data `m3b` deve situar-se **após** o marco M4 no calendário real se T6 for “done”.*
 
 ---
 

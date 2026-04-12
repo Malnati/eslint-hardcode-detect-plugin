@@ -1,6 +1,6 @@
 # Planos por marco (M0–M5): distribuição, e2e, Compose e agentes
 
-Índice dos planos detalhados por **marco macro** alinhados a [`../distribution-channels-macro-plan.md`](../distribution-channels-macro-plan.md). Cada ficheiro inclui: objetivo e trilhas; **dependências e handoff na cadeia T1→T6**; diagrama de sequência; timelining; Gantt; matriz **e2e × Docker Compose**; **Camada A** (tarefas e orçamento de tokens pré-execução de agentes) e **Camada B** (execução por fase); plano GitHub (PR, branch, semver); riscos.
+Índice dos planos detalhados por **marco macro** alinhados a [`../distribution-channels-macro-plan.md`](../distribution-channels-macro-plan.md), onde o **princípio de tempos** (durações e composição **sem** datas de calendário normativas) está descrito. Cada ficheiro inclui: objetivo e trilhas; **dependências e handoff na cadeia T1→T6**; diagrama de sequência; **ordem, dependências e durações**; composição temporal (Gantt com eixo T0 fictício onde existir); matriz **e2e × Docker Compose**; **Camada A** (tarefas e orçamento de tokens pré-execução de agentes) e **Camada B** (execução por fase); plano GitHub (PR, branch, semver); riscos.
 
 **Template reutilizável:** [`milestone-template.md`](milestone-template.md)
 
@@ -15,7 +15,7 @@
 
 ## Cadeia T1 → T6 (handoff)
 
-Ordem normativa de **artefatos** (ver ficheiros por marco): **T1** (npm + config) → **T2** (container/imagem) → **T3** (CI reprodutível) → **T4** (IDE/LSP) → **T5** (agentes/Copilot/Cursor/MCP) → **T6** (Git hooks). O macro-plan agrupa trabalho em **M0–M5**; quando o calendário de milestones diferir da ordem T5→T6, seguir a **política** descrita em [`m3-channel-t4-t6.md`](m3-channel-t4-t6.md).
+Ordem normativa de **artefatos** (ver ficheiros por marco): **T1** (npm + config) → **T2** (container/imagem) → **T3** (CI reprodutível) → **T4** (IDE/LSP) → **T5** (agentes/Copilot/Cursor/MCP) → **T6** (Git hooks). O macro-plan agrupa trabalho em **M0–M5**; quando a **ordem lógica dos marcos M** divergir da sequência linear T4→T5→T6 (ex.: T6 com entregas após **M4**), seguir a **política** descrita em [`m3-channel-t4-t6.md`](m3-channel-t4-t6.md).
 
 ## Documentos mestre
 

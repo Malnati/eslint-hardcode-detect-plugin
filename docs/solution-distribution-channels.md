@@ -52,7 +52,7 @@ flowchart LR
 
 ## Roadmap e validação por trilha
 
-O planejamento macro (trilhas T1–T6, rastreabilidade canal a canal, propostas de massa e2e, perfis Docker, diagramas e marcos em PRs no GitHub) está em [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md).
+O planejamento macro (trilhas T1–T6, rastreabilidade canal a canal, propostas de massa e2e, perfis Docker, diagramas e marcos em PRs no GitHub) está em [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md). Os tempos são expressos em **durações e composição** (sem datas de calendário normativas); detalhe por marco em [`distribution-milestones/README.md`](distribution-milestones/README.md).
 
 ## Limitações
 
