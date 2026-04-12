@@ -55,6 +55,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 2. Não alterar [`reference/legacy-snapshot/`](../reference/legacy-snapshot/) exceto em mudança **explícita** de snapshot (PR ou prompt dedicado).
 3. Preferir imports **relativos** dentro do pacote, conforme [`AGENTS.md`](../AGENTS.md).
 4. Após edições que afetem estilo ou tipos no pacote, corrigir lints conforme a configuração do pacote.
+5. Ao **delegar** trabalho (sub-agente GitHub Copilot, agente Explore/Task ou outro assistente), passar o contexto com **caminhos relativos à raiz** ao referir ficheiros deste repositório (salvo exceções em [`docs/documentation-policy.md`](../docs/documentation-policy.md)); relatórios de sub-agentes devem seguir o mesmo critério.
 
 ## Fase D — Fechar o prompt (sempre que houver entrega relevante)
 
@@ -78,6 +79,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose e imagem `.docker/` |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
+| [`.cursor/rules/repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc) | Caminhos relativos à raiz ao citar ficheiros do repo |
 | [`.cursor/commands/`](../.cursor/commands/) | Comandos `/abrir-prompt-agente` e `/fechar-prompt-agente` (opcional) |
 | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Ponte GitHub Copilot (opcional) |
 | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) | Ponte Copilot: Docker/compose (opcional) |
@@ -86,6 +88,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Versão do documento
 
+- **1.8.0** — Fase C: delegação e relatórios com caminhos relativos à raiz; remissão a [`docs/documentation-policy.md`](../docs/documentation-policy.md); tabela de artefatos: [`.cursor/rules/repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc).
 - **1.7.0** — Escopo e tabela de skills: Docker Compose, [`specs/agent-docker-compose.md`](agent-docker-compose.md), pontes Copilot `docker-tooling` e `docker-compose.instructions`.
 - **1.6.0** — Hierarquia: remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) para Copilot/Cursor e coleções externas.
 - **1.5.0** — Fase B e hierarquia: remissão a [`agent-reference-agents.md`](agent-reference-agents.md) quando `reference/agents-ref/` for relevante; tabela de skills com `reference-agents-portfolio`.

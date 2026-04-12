@@ -18,7 +18,7 @@ Ao concluir qualquer tarefa que modifique comportamento, estrutura, contratos ou
 2. Atualizar [`docs/repository-tree.md`](../../../docs/repository-tree.md) se pastas ou arquivos normativos mudarem (incluindo `reference/Clippings/`).
 3. Ajustar [`README.md`](../../../README.md) se a entrada principal deixar de refletir o projeto.
 4. Revisar [`docs/limitations-and-scope.md`](../../../docs/limitations-and-scope.md) e [`specs/vision-hardcode-plugin.md`](../../../specs/vision-hardcode-plugin.md) se escopo ou roadmap mudarem.
-5. Aplicar [`docs/documentation-policy.md`](../../../docs/documentation-policy.md) (links relativos, hierarquia de títulos, cercas de código).
+5. Aplicar [`docs/documentation-policy.md`](../../../docs/documentation-policy.md) (links relativos, menções a paths internos relativos à raiz do repo — princípio 5b, hierarquia de títulos, cercas de código).
 6. Incluir alterações de doc no mesmo fluxo de commit que [`specs/agent-git-workflow.md`](../../../specs/agent-git-workflow.md).
 
 ## Grafo

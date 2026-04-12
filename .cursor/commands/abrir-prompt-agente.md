@@ -6,4 +6,6 @@ Antes de editar arquivos neste repositório:
 2. Se o trabalho envolver ESLint (regras, API do plugin, RuleTester, flat/legacy config), empacotamento npm do pacote ou CI que interprete essas ferramentas: consulte **primeiro** [`reference/Clippings/`](reference/Clippings/) e [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md).
 3. Confirme limites em [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) e contrato em [`specs/plugin-contract.md`](specs/plugin-contract.md) se houver mudança de comportamento.
 
+4. Ao referir ficheiros deste repositório na conversa ou em prompts a sub-agentes, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md).
+
 Em seguida, execute o pedido do usuário seguindo as skills aplicáveis em `.cursor/skills/`.

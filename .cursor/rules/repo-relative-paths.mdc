@@ -1,0 +1,12 @@
+---
+description: Citar ficheiros do repositório com caminhos relativos à raiz (não paths absolutos de máquina)
+alwaysApply: true
+---
+
+# Caminhos relativos ao repositório
+
+Ao referir ficheiros ou pastas **deste** clone em texto, exemplos, respostas ao utilizador ou prompts a sub-agentes, use **caminhos relativos à raiz** (ex.: `packages/eslint-plugin-hardcode-detect/src/...`, `specs/plugin-contract.md`). Não use caminhos absolutos de sistema (`/Users/...`, `C:\...`) para artefactos do repo.
+
+Exceções e distinção ferramentas/comunicação: [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b, secções “Ferramentas do ambiente” e “Exceções”).
+
+Contratos: [`specs/agent-session-workflow.md`](../../specs/agent-session-workflow.md) (Fase C), [`specs/agent-ia-governance.md`](../../specs/agent-ia-governance.md).

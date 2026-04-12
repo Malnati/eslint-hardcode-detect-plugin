@@ -23,6 +23,8 @@ Ao terminar tarefas que modificam este repositório (código, testes, documenta�
    - `git push origin "$(git branch --show-current)"` ou equivalente na branch atual.
 4. Se `git push` falhar, copie a mensagem de erro para o usuário e sugira verificar credenciais ou branch protegida.
 
+Ao listar ficheiros tocados na mensagem ao utilizador, use **caminhos relativos à raiz** do repositório (ver [`docs/documentation-policy.md`](../../../docs/documentation-policy.md)).
+
 ## Autoridade
 
 Normas completas: [`specs/agent-git-workflow.md`](../../../specs/agent-git-workflow.md) e [`docs/versioning-for-agents.md`](../../../docs/versioning-for-agents.md).

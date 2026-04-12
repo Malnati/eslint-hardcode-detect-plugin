@@ -12,3 +12,4 @@ Estas instruções são uma **ponte**: a fonte normativa completa está em [`AGE
 3. **Não** importe nem referencie arquivos em `reference/` como dependência de código publicável; código do plugin só em `packages/eslint-plugin-hardcode-detect/`.
 4. Mudanças de comportamento público: atualize [`specs/plugin-contract.md`](../../specs/plugin-contract.md) antes ou junto do código.
 5. Visão de produto (hardcode multi-nível): [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
+6. Ao citar ficheiros deste repositório em texto ou exemplos, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).

@@ -22,6 +22,10 @@ Você trabalha no repositório do plugin **eslint-plugin-hardcode-detect**. A au
 - Código publicável apenas em [`packages/eslint-plugin-hardcode-detect/`](../../packages/eslint-plugin-hardcode-detect/).
 - Skills e fluxos detalhados no Cursor: [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../../.cursor/skills/eslint-plugin-workflow/SKILL.md).
 
+## Citação de ficheiros
+
+Ao listar ou referir ficheiros **deste** repositório (respostas, relatórios, prompts a outros agentes), use **caminhos relativos à raiz do clone** — ver [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).
+
 ## Testes
 
 - `npm test` no pacote (build, RuleTester, e2e). Ver [`AGENTS.md`](../../AGENTS.md).

@@ -10,6 +10,7 @@ Garantir que:
 2. O **grafo de arquivos e diretórios** documentado em [`docs/repository-tree.md`](../docs/repository-tree.md) permaneça **fiel à árvore real** após mudanças estruturais.
 3. **Restrições e limitações** em [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md), [`AGENTS.md`](../AGENTS.md) e [`specs/plugin-contract.md`](plugin-contract.md) sejam **respeitadas**.
 4. **Políticas de documentação** ([`docs/documentation-policy.md`](../docs/documentation-policy.md)) e **boas práticas** de projetos OSS (transparência, contrato antes do código, proveniência de citações) sejam aplicadas.
+5. **Citação de caminhos** — ao listar ou referir ficheiros deste repositório em respostas, documentação nova ou prompts de delegação, usar **caminhos relativos à raiz do clone** (princípio 5b e exceções na política).
 
 ## Hierarquia normativa (leitura obrigatória por tema)
 
@@ -40,13 +41,14 @@ Garantir que:
 - [ ] Código publicável **somente** em [`packages/eslint-plugin-hardcode-detect/`](../packages/eslint-plugin-hardcode-detect/); **nenhum** import de `reference/` desde o pacote.
 - [ ] Não alterar [`reference/legacy-snapshot/`](../reference/legacy-snapshot/) exceto em prompt/PR **dedicado** a snapshot.
 - [ ] Imports **relativos** no pacote, conforme convenção; corrigir lints após edições relevantes.
+- [ ] Ao citar ficheiros ou pastas **deste** repo (mensagens, relatórios, sub-agentes): **caminhos relativos à raiz**, conforme [`docs/documentation-policy.md`](../docs/documentation-policy.md) (exceções: Clippings literais, semântica de API).
 
 ## Checklist — fechamento do prompt (antes de encerrar a resposta)
 
 - [ ] [`docs/repository-tree.md`](../docs/repository-tree.md) atualizado se **qualquer** diretório ou artefato normativo listado lá mudou (inclui `reference/Clippings/`, `.cursor/`, `specs/`).
 - [ ] [`reference/Clippings/README.md`](../reference/Clippings/README.md) coerente se arquivos de Clippings foram adicionados, renomeados ou removidos.
 - [ ] Demais documentos impactados conforme [`agent-documentation-workflow.md`](agent-documentation-workflow.md); [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) ou visão se limites mudaram.
-- [ ] Na **resposta ao usuário**: listar arquivos de documentação alterados **ou** declarar explicitamente que **nenhuma** atualização foi necessária.
+- [ ] Na **resposta ao usuário**: listar arquivos de documentação alterados **ou** declarar explicitamente que **nenhuma** atualização foi necessária; ao listar caminhos de ficheiros do repo, usar **relativos à raiz** (ver política).
 - [ ] Se houver alterações locais rastreadas: [`specs/agent-git-workflow.md`](agent-git-workflow.md) (commit e push na branch atual, salvo working tree vazia), com **mensagem no formato Conventional Commits** definido nesse spec.
 
 ## Mapa de artefatos para agentes
@@ -57,6 +59,7 @@ Garantir que:
 | Regra Cursor | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Ponte para este spec e checklist resumido |
 | Regra Cursor | [`.cursor/rules/clippings-official-docs.mdc`](../.cursor/rules/clippings-official-docs.mdc) | Documentação oficial e Clippings |
 | Regra Cursor | [`.cursor/rules/documentation.mdc`](../.cursor/rules/documentation.mdc) | Política Markdown |
+| Regra Cursor | [`.cursor/rules/repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc) | Caminhos relativos à raiz ao citar o repo |
 | Regra Cursor | [`.cursor/rules/git-versioning.mdc`](../.cursor/rules/git-versioning.mdc) | Git ao concluir |
 | Regra Cursor | [`.cursor/rules/repo-layout.mdc`](../.cursor/rules/repo-layout.mdc) | Layout do repositório |
 | Regra Cursor | [`.cursor/rules/agent-reference-agents.mdc`](../.cursor/rules/agent-reference-agents.mdc) | Ponte para [`agent-reference-agents.md`](agent-reference-agents.md) |
@@ -84,6 +87,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **1.7.0** — objetivo e checklists: citação de ficheiros com caminhos relativos à raiz; mapa: rule [`repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc).
 - **1.6.0** — mapa de artefatos: [`agent-docker-compose.md`](agent-docker-compose.md), rule [`docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc), skill `docker-compose-workflow`, pontes Copilot `docker-tooling` e instruções `docker-compose`.
 - **1.5.0** — remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md); mapa de artefatos: pontes `.github/agents/` e `.github/instructions/`.
 - **1.4.0** — remissão a [`agent-reference-agents.md`](agent-reference-agents.md), rule e skill associados; checklist de abertura para `reference/agents-ref/`.

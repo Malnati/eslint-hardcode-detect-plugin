@@ -19,9 +19,10 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 
 ## Implementação
 
-1. Coloque regras e helpers em `packages/eslint-plugin-hardcode-detect/src/` (por exemplo `src/rules/<id>.ts`), com regras no formato **objeto** (`meta` + `create`), `messageId` em `meta.messages` e `meta.schema` quando aplicável — alinhado a [Custom Rules](https://eslint.org/docs/latest/extend/custom-rules) e a [`eslint-plugin-eslint-plugin`](../../../reference/Clippings/dev/javascript/eslint/eslint-plugin-eslint-plugin.md) (lint local via `npm run lint` no pacote).
-2. No ponto de entrada (`src/index.ts`), exporte `meta` (nome/versão do `package.json` e `namespace` coerente com o prefixo do pacote), `rules`, e `configs` com `Object.assign` quando precisar referenciar o próprio plugin (padrão da documentação [Create Plugins](https://eslint.org/docs/latest/extend/plugins)).
-3. **Não** copie arquivos de `reference/legacy-snapshot/` como dependência; use apenas como leitura comparativa se necessário.
+1. Ao citar ficheiros do monorepo em exemplos ou na resposta ao utilizador, use **caminhos relativos à raiz** (ver [`docs/documentation-policy.md`](../../../docs/documentation-policy.md)).
+2. Coloque regras e helpers em `packages/eslint-plugin-hardcode-detect/src/` (por exemplo `src/rules/<id>.ts`), com regras no formato **objeto** (`meta` + `create`), `messageId` em `meta.messages` e `meta.schema` quando aplicável — alinhado a [Custom Rules](https://eslint.org/docs/latest/extend/custom-rules) e a [`eslint-plugin-eslint-plugin`](../../../reference/Clippings/dev/javascript/eslint/eslint-plugin-eslint-plugin.md) (lint local via `npm run lint` no pacote).
+3. No ponto de entrada (`src/index.ts`), exporte `meta` (nome/versão do `package.json` e `namespace` coerente com o prefixo do pacote), `rules`, e `configs` com `Object.assign` quando precisar referenciar o próprio plugin (padrão da documentação [Create Plugins](https://eslint.org/docs/latest/extend/plugins)).
+4. **Não** copie arquivos de `reference/legacy-snapshot/` como dependência; use apenas como leitura comparativa se necessário.
 
 ## Testes
 

@@ -25,7 +25,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── docker-compose-tooling.mdc
 │   │   ├── e2e-nest-fixture.mdc
 │   │   ├── git-versioning.mdc
-│   │   └── repo-layout.mdc
+│   │   ├── repo-layout.mdc
+│   │   └── repo-relative-paths.mdc
 │   └── skills/               # Skills reutilizáveis pelos agentes
 │       ├── docker-compose-workflow/
 │       ├── eslint-plugin-workflow/

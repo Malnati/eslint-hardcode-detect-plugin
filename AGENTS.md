@@ -25,6 +25,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 - **`reference/Clippings/`**: trechos da documentação oficial; adicionar ou atualizar em commits explícitos quando o trabalho depender dessa fonte (ver [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md)).
 - Novas regras ou mudanças de comportamento: atualizar **primeiro** `specs/plugin-contract.md`, depois implementar em `packages/`.
 - Preferir imports relativos dentro de `packages/eslint-plugin-hardcode-detect` conforme convenção do projeto.
+- Ao citar ficheiros ou pastas **deste** repositório (respostas, documentação, prompts de delegação), usar **caminhos relativos à raiz do clone**, conforme [`docs/documentation-policy.md`](docs/documentation-policy.md) (princípio 5b e exceções).
 - Após edições que afetem estilo ou tipos, corrija lints conforme configuração do pacote (quando existir).
 
 ## Versionamento Git (obrigatório ao concluir o prompt)
@@ -44,7 +45,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 
 1. Siga [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) e a skill [`.cursor/skills/github-markdown-docs/SKILL.md`](.cursor/skills/github-markdown-docs/SKILL.md).
 2. Mantenha [`docs/repository-tree.md`](docs/repository-tree.md) alinhado à árvore real sempre que diretórios ou artefatos normativos mudarem.
-3. Aplique [`docs/documentation-policy.md`](docs/documentation-policy.md) (links relativos, estrutura de títulos, cercas de código).
+3. Aplique [`docs/documentation-policy.md`](docs/documentation-policy.md) (links relativos, caminhos internos relativos à raiz, estrutura de títulos, cercas de código).
 4. Atualize [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) ou [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) quando limites ou visão de produto mudarem.
 5. Na resposta ao usuário, **liste** os arquivos de documentação alterados ou indique explicitamente que nenhuma atualização foi necessária.
 
@@ -60,7 +61,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `reference/Clippings/` | Recortes da documentação oficial (ESLint, npm, etc.); consulta obrigatória em escopo relevante. |
 | `reference/legacy-snapshot/` | Snapshot histórico; não usar como código vivo. |
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
-| `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo. |
+| `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo, caminhos relativos ao citar o repo (`repo-relative-paths.mdc`). |
 | `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `reference-agents-portfolio`, `docker-compose-workflow`). |
 | `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
 | `docker-compose.yml`, `.docker/` | Compose com perfis dev/e2e/prod; imagem ESLint para `ops-eslint` (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
@@ -81,4 +82,4 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 
 ## Automação no Cursor / CLI
 
-Neste repositório, “agente” não depende de um único arquivo de produto: a governança está em **`AGENTS.md`**, em **`specs/`** (incluindo [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md), [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md) e [`specs/agent-reference-agents.md`](specs/agent-reference-agents.md) quando houver remissão a [`reference/agents-ref/`](reference/agents-ref/)), em **`.cursor/rules/`** (regras com `alwaysApply` carregadas pelo Cursor), em **`.cursor/skills/`** (procedimentos reutilizáveis), em **`.cursor/commands/`** (atalhos de checklist) e, opcionalmente, em **`.github/agents/`** e **`.github/instructions/`** para GitHub Copilot. O fio condutor por prompt é [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md). Ao criar novas regras ou skills, mantenha links relativos e atualize [`docs/repository-tree.md`](docs/repository-tree.md) se a árvore normativa mudar.
+Neste repositório, “agente” não depende de um único arquivo de produto: a governança está em **`AGENTS.md`**, em **`specs/`** (incluindo [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md), [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md) e [`specs/agent-reference-agents.md`](specs/agent-reference-agents.md) quando houver remissão a [`reference/agents-ref/`](reference/agents-ref/)), em **`.cursor/rules/`** (regras com `alwaysApply` carregadas pelo Cursor), em **`.cursor/skills/`** (procedimentos reutilizáveis), em **`.cursor/commands/`** (atalhos de checklist) e, opcionalmente, em **`.github/agents/`** e **`.github/instructions/`** para GitHub Copilot. O fio condutor por prompt é [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md). Ao criar novas regras ou skills, mantenha links relativos, cite ficheiros do projeto com caminhos relativos à raiz e atualize [`docs/repository-tree.md`](docs/repository-tree.md) se a árvore normativa mudar.

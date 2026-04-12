@@ -17,7 +17,8 @@ Este repositório é documentado para leitura em **GitHub** (README, guias em `d
    - [`specs/`](../specs/) — contrato e visão alinhados ao código.
    - [`CONTRIBUTING.md`](../CONTRIBUTING.md) — se o fluxo de contribuição ou checagens mudarem.
 3. Garantir links relativos corretos entre arquivos do repositório (evitar URLs quebradas para paths internos).
-4. Explicitar na resposta ao usuário **quais** documentos foram atualizados ou que nenhuma atualização foi necessária (e por quê).
+4. Garantir que **menções textuais** a ficheiros e pastas internas (fora de links Markdown) usem **caminhos relativos à raiz** ao referir artefatos deste repo, conforme [`docs/documentation-policy.md`](../docs/documentation-policy.md) (princípio 5b e exceções).
+5. Explicitar na resposta ao usuário **quais** documentos foram atualizados ou que nenhuma atualização foi necessária (e por quê).
 
 ## Grafo de repositório
 
@@ -33,6 +34,7 @@ Alterações de documentação entram nos mesmos commits que o trabalho correspo
 
 ## Versão do documento
 
+- **1.5.0** — procedimento: menções a paths internos relativos à raiz; alinhamento ao princípio 5b de [`documentation-policy.md`](../docs/documentation-policy.md).
 - **1.4.0** — remissão explícita a Conventional Commits na relação com versionamento Git.
 - **1.3.0** — referência a [`agent-ia-governance.md`](agent-ia-governance.md) para checklists de abertura e fechamento.
 - **1.2.0** — referência explícita a [`agent-session-workflow.md`](agent-session-workflow.md) como orquestração da sessão.

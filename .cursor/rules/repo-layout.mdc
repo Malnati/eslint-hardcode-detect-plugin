@@ -11,6 +11,7 @@ alwaysApply: true
 - `reference/legacy-snapshot/`: alterar apenas em mudanças **explícitas** de snapshot (PR dedicado), nunca como refatoração acidental.
 - `reference/Clippings/`: trechos da **documentação oficial** externa; podem ser adicionados ou atualizados em commits explícitos de sincronização (ver [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md)), sem misturar com código em `packages/`.
 - Comportamento público das regras e opções: documentar em `specs/plugin-contract.md` **antes** ou junto com mudanças de implementação; o spec tem precedência sobre o código legado em `reference/`.
+- Referências em texto a ficheiros ou pastas normativas deste monorepo: usar **caminhos relativos à raiz** (ver [`docs/documentation-policy.md`](../../docs/documentation-policy.md), rule `repo-relative-paths.mdc`).
 - Composite Action oficial: `.github/actions/ops-eslint/` (script em `assets/run.sh`).
 - Consulte `AGENTS.md` na raiz para o fluxo completo.
 - Ao concluir alterações, documentação conforme [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md) e rule `documentation.mdc`; em seguida versionamento Git conforme [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md) e a rule `git-versioning.mdc`.

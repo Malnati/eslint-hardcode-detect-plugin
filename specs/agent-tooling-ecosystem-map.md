@@ -33,6 +33,7 @@ Esta ordem **prevalece** sobre instruções genéricas que desaconselhem, por ex
 - **Copiar em massa** ficheiros de coleções Awesome Copilot (agents, prompts, skills) para dentro de `docs/`, `specs/` ou raiz **sem** ancoragem em [`AGENTS.md`](../AGENTS.md) e `specs/`, sem atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) e sem um commit/PR claro.
 - **Tratar** `reference/agents-ref/` ou coleções externas/Copilot como fonte normativa direta: usar sempre [`agent-reference-agents.md`](agent-reference-agents.md) e substituições de caminhos.
 - **Duplicar** parágrafos longos de `specs/plugin-contract.md` ou `specs/vision-hardcode-plugin.md` dentro de `.github/agents/` ou `.github/instructions/`: preferir links relativos e um checklist curto.
+- **Citar ficheiros do repo** em pontes `.github/agents/` e `.github/instructions/` com caminhos absolutos de máquina: usar **caminhos relativos à raiz do clone** (ver [`docs/documentation-policy.md`](../docs/documentation-policy.md), princípio 5b).
 
 ## Relação com a visão do produto
 
@@ -40,5 +41,6 @@ A visão multi-nível em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md
 
 ## Versão do documento
 
+- **1.2.0** — anti-padrões: citação de ficheiros nas pontes `.github/agents/` e `.github/instructions/` com caminhos relativos à raiz.
 - **1.1.0** — equivalência para Docker/Compose: [`agent-docker-compose.md`](agent-docker-compose.md) e ponte [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md).
 - **1.0.0** — contrato inicial: mapeamento Copilot/Awesome ↔ Cursor/repo e precedência.

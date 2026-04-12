@@ -22,7 +22,7 @@ description: >-
 
 - [ ] Perfis `dev`, `e2e` e `prod` permanecem com a semântica documentada no spec (ajuste o spec se mudar).
 - [ ] Bump de `eslint` global no `.docker/Dockerfile` acompanhado de comentário e, se aplicável, coerência com `packages/eslint-plugin-hardcode-detect/package.json`.
-- [ ] Após mudança estrutural: [`docs/repository-tree.md`](../../../docs/repository-tree.md) e resposta ao utilizador listando docs tocados.
+- [ ] Após mudança estrutural: [`docs/repository-tree.md`](../../../docs/repository-tree.md) e resposta ao utilizador listando docs tocados (caminhos relativos à raiz ao citar ficheiros — [`docs/documentation-policy.md`](../../../docs/documentation-policy.md)).
 
 ## Comandos de referência
 

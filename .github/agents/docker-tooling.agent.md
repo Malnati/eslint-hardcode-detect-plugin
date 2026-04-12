@@ -27,3 +27,7 @@ Trabalho focado em **containerização de tooling** deste monorepo. A autoridade
 ## Relação com o agente principal
 
 Para alterações que também tocam o pacote ESLint, combine com [`.github/agents/eslint-hardcode-plugin.agent.md`](eslint-hardcode-plugin.agent.md) e [`specs/plugin-contract.md`](../../specs/plugin-contract.md).
+
+## Citação de ficheiros
+
+Ao referir ficheiros deste monorepo, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).
