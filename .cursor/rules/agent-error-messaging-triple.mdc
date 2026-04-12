@@ -1,12 +1,18 @@
 ---
-description: Falhas relatadas em três partes — diagnóstico sênior, correção definitiva, contorno operacional
+description: Falhas relatadas em três partes com prefixos obrigatórios — diagnóstico sênior, correção definitiva, contorno operacional
 alwaysApply: true
 ---
 
 # Mensagens de falha em três partes
 
-Contrato completo: [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md).
+Contrato completo (prefixos canónicos e níveis de conformidade): [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md).
 
-Sempre que **comunicar uma falha** (testes, build, CI, comandos, bloqueios, análise de causa), estruture a resposta em **três secções**: **Diagnóstico técnico (sênior)**, **Correção definitiva**, **Contorno operacional**. Casos limite e delegação a sub-agentes estão no spec.
+Sempre que **comunicar uma falha** (testes, build, CI, comandos, bloqueios, análise de causa), estruture a resposta em **três secções** e inicie a **primeira linha de conteúdo** de cada parte com o prefixo correspondente, **exatamente** como no spec:
+
+- `[HCD-ERR-SENIOR]` — diagnóstico técnico (sênior)
+- `[HCD-ERR-FIX]` — correção definitiva
+- `[HCD-ERR-OPS]` — contorno operacional
+
+Antes de enviar, verificar **Nível 1** (os três prefixos presentes) e **Nível 2** (contagens iguais entre si e alinhadas ao número de unidades de falha **N**). Casos limite e delegação a sub-agentes estão no spec.
 
 Skill: [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../skills/agent-error-messaging-triple/SKILL.md).

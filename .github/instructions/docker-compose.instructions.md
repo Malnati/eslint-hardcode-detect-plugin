@@ -12,4 +12,4 @@ Ponte curta: a fonte normativa é [`specs/agent-docker-compose.md`](../../specs/
 3. Alterações estruturais exigem atualização de [`docs/repository-tree.md`](../../docs/repository-tree.md) e fechamento conforme [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md).
 4. Ao citar ficheiros do repositório, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).
 5. Publicação de imagens ou integração com registry: [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.
-6. Falhas (compose, build de imagem, CI): ao relatar, [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md).
+6. Falhas (compose, build de imagem, CI): ao relatar, [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`.

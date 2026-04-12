@@ -15,7 +15,7 @@ Trabalho focado em **containerização de tooling** deste monorepo. A autoridade
 2. [`docs/architecture.md`](../../docs/architecture.md) — papel da Composite Action [`ops-eslint`](../actions/ops-eslint/action.yml).
 3. [`AGENTS.md`](../../AGENTS.md) — hierarquia geral e fechamento (docs + Git).
 4. Se o trabalho envolver **registry, credenciais ou pipelines** que publiquem imagens/pacotes: [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — usar sandboxes oficiais; não mocks de serviço no repo.
-5. Ao comunicar **falhas** (build de imagem, compose, CI): [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md).
+5. Ao comunicar **falhas** (build de imagem, compose, CI): [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]` na primeira linha de cada parte.
 
 ## Escopo
 

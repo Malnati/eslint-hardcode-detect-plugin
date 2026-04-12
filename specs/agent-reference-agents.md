@@ -14,7 +14,7 @@ Este documento define como os arquivos em [`reference/agents-ref/`](../reference
 |-------|--------|------|
 | 1 | [`AGENTS.md`](../AGENTS.md) | Prioridades e mapa do repositório |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D |
-| 2a | [`specs/agent-error-messaging-triple.md`](agent-error-messaging-triple.md) | Formato obrigatório ao comunicar falhas (três partes) |
+| 2a | [`specs/agent-error-messaging-triple.md`](agent-error-messaging-triple.md) | Falhas: prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–3 |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
 | 4 | **Este documento** | Ponte com `reference/agents-ref/` |
 | 5 | Arquivos individuais em `reference/agents-ref/` | Inspiração; aplicar apenas conforme mapeamento abaixo |
@@ -66,11 +66,12 @@ Ao usar ideias de `reference/agents-ref/`:
 - [ ] Confirmar na tabela de aplicabilidade se o arquivo se aplica ou é **Não** / **Parcial**.
 - [ ] Aplicar **substituições normativas** (documentação de referência → `docs/`/`specs/`, constantes → pacote npm, etc.).
 - [ ] Para trabalho no plugin: [`eslint-plugin-workflow`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) + [`plugin-contract.md`](plugin-contract.md).
-- [ ] Relatórios de **falha** neste repositório: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) (não substituído pelo portfólio genérico).
+- [ ] Relatórios de **falha** neste repositório: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) com prefixos obrigatórios e Níveis 1–2 verificáveis (não substituído pelo portfólio genérico).
 - [ ] Não criar `docs/<repo-externo>/` (nem imitar árvores alheias), `shared/constants.*` ou `docs/review/` como obrigação herdada do portfólio de referência sem decisão do mantenedor e atualização do grafo.
 
 ## Versão do documento
 
+- **1.5.0** — 2a e checklist: prefixos e conformidade em [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **1.4.0** — hierarquia 2a e checklist: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md).
 - **1.3.0** — exemplos de caminhos alheios com placeholder `docs/<repo-externo>/`; substituições normativas descritas em linguagem neutra.
 - **1.2.0** — substituição normativa: integrações sem mocks; [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md).

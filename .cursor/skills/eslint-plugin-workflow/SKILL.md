@@ -19,8 +19,8 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 
 ## Mensagens de erro (contrato e agentes)
 
-- Relatórios de **falha** por agentes neste repositório seguem [`specs/agent-error-messaging-triple.md`](../../../specs/agent-error-messaging-triple.md); skill [`agent-error-messaging-triple`](../agent-error-messaging-triple/SKILL.md).
-- A regra futura `standardize-error-messages` deve usar o catálogo com `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` por código (ver [`specs/plugin-contract.md`](../../../specs/plugin-contract.md)), alinhado ao mesmo modelo semântico.
+- Relatórios de **falha** por agentes neste repositório seguem [`specs/agent-error-messaging-triple.md`](../../../specs/agent-error-messaging-triple.md) (prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]` na primeira linha de cada parte); skill [`agent-error-messaging-triple`](../agent-error-messaging-triple/SKILL.md).
+- A regra futura `standardize-error-messages` deve usar o catálogo com `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` por código (ver [`specs/plugin-contract.md`](../../../specs/plugin-contract.md)); recomenda-se cada string iniciar pelo prefixo HCD-ERR-* correspondente, alinhado ao mesmo modelo semântico e à auditoria N1/N2.
 
 ## Implementação
 

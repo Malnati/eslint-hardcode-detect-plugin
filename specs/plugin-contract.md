@@ -38,7 +38,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 | Campo | Tipo | Padrão | Descrição |
 |-------|------|--------|-----------|
-| `messages` | objeto | `{}` | Mapa de código → `{ seniorDiagnostic, systemicRemediation, operationalWorkaround }` (strings não vazias após trim); semântica alinhada a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md). |
+| `messages` | objeto | `{}` | Mapa de código → `{ seniorDiagnostic, systemicRemediation, operationalWorkaround }` (strings não vazias após trim); semântica alinhada a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md). **Recomenda-se** que cada string comece pelo **prefixo canónico** da parte correspondente (`[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`), para a mesma auditoria mecânica (Níveis 1–2) que nos relatórios de agentes. |
 | `codePattern` | string (regex) | `[A-Z]{2,10}(?:[-_][A-Z0-9]+)*[-_]\d{3,5}` | Usada quando o catálogo está vazio para exigir código na mensagem. |
 | `loggers` | string[] | `console.error`, `console.warn`, `logger.error`, `logger.warn` | Nomes completos `objeto.método` aceitos em `CallExpression`. |
 | `errorConstructors` | string[] | `Error`, `TypeError`, `RangeError`, `ReferenceError` | Construtores considerados em `ThrowStatement` / `NewExpression`. |
@@ -71,6 +71,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 ## Versão do documento
 
+- **0.6.0** — `messages`: recomendação de prefixos HCD-ERR-* por campo, alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **0.5.0** — catálogo `standardize-error-messages`: campos `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` (alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md)); substituem `raw` / `user` / `dev`.
 - **0.4.0** — e2e com massa Nest (`e2e-fixture-nest` + contagens fixas); detalhes em [`e2e-fixture-nest.md`](e2e-fixture-nest.md).
 - **0.3.0** — fumaça e2e (motor + flat config + plugin) descrita; RuleTester permanece o contrato principal por regra.

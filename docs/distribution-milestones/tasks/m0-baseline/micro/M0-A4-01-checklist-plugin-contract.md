@@ -26,7 +26,7 @@ Extrair de [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md)
 
 ## Âncora de versão
 
-Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md) na versão **0.5.0** do documento (secção «Versão do documento» no spec).
+Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md) na versão **0.6.0** do documento (secção «Versão do documento» no spec).
 
 ## Regras nomeadas
 
@@ -44,7 +44,7 @@ Esta checklist reflete o contrato em [`specs/plugin-contract.md`](../../../../..
 
 | Campo | Tipo | Padrão | Descrição |
 |-------|------|--------|-----------|
-| `messages` | objeto | `{}` | Mapa de código → `{ seniorDiagnostic, systemicRemediation, operationalWorkaround }` (strings não vazias após trim); ver [`specs/agent-error-messaging-triple.md`](../../../../../specs/agent-error-messaging-triple.md). |
+| `messages` | objeto | `{}` | Mapa de código → `{ seniorDiagnostic, systemicRemediation, operationalWorkaround }` (strings não vazias após trim); alinhado a [`specs/agent-error-messaging-triple.md`](../../../../../specs/agent-error-messaging-triple.md) (recomenda-se cada string iniciar pelo prefixo HCD-ERR-* correspondente). |
 | `codePattern` | string (regex) | `[A-Z]{2,10}(?:[-_][A-Z0-9]+)*[-_]\d{3,5}` | Usada quando o catálogo está vazio para exigir código na mensagem. |
 | `loggers` | string[] | `console.error`, `console.warn`, `logger.error`, `logger.warn` | Nomes completos `objeto.método` aceitos em `CallExpression`. |
 | `errorConstructors` | string[] | `Error`, `TypeError`, `RangeError`, `ReferenceError` | Construtores considerados em `ThrowStatement` / `NewExpression`. |

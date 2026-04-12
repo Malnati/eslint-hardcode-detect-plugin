@@ -6,9 +6,11 @@ Cada entrada do catálogo `messages` (mapa código → objeto) deve definir trê
 
 | Campo | Papel |
 |-------|--------|
-| `seniorDiagnostic` | Texto para diagnóstico técnico (tracing, correlação, causa imediata). |
-| `systemicRemediation` | Texto para correção definitiva (causa raiz, automação, proteções, testes). |
-| `operationalWorkaround` | Texto para contorno operacional seguro em paralelo à correção definitiva. |
+| `seniorDiagnostic` | Texto para diagnóstico técnico (tracing, correlação, causa imediata). **Recomenda-se** iniciar por `[HCD-ERR-SENIOR]`. |
+| `systemicRemediation` | Texto para correção definitiva (causa raiz, automação, proteções, testes). **Recomenda-se** iniciar por `[HCD-ERR-FIX]`. |
+| `operationalWorkaround` | Texto para contorno operacional seguro em paralelo à correção definitiva. **Recomenda-se** iniciar por `[HCD-ERR-OPS]`. |
+
+Os prefixos são os mesmos do spec de agentes; permitem auditoria unificada (Níveis 1–2) entre mensagens emitidas pelo código e relatórios de falha de agentes.
 
 **Neste pacote**, a regra consta do contrato público mas **ainda não** está incluída no artefacto publicável exportado por `eslint-plugin-hardcode-detect` — implementação futura alinhada ao spec.
 

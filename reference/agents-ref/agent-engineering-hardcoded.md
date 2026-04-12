@@ -375,4 +375,4 @@ Conteúdo mínimo:
 
 ## Uso no monorepo `eslint-hardcode-detect-plugin`
 
-Este ficheiro é **genérico**. No repositório **eslint-hardcode-detect-plugin**, cruzar com [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md) (substituições de caminhos e aplicabilidade). Ao comunicar **falhas** (testes, build, CI, comandos), seguir [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — três partes: diagnóstico técnico sênior, correção definitiva, contorno operacional.
+Este ficheiro é **genérico**. No repositório **eslint-hardcode-detect-plugin**, cruzar com [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md) (substituições de caminhos e aplicabilidade). Ao comunicar **falhas** (testes, build, CI, comandos), seguir [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — primeira linha de cada parte com `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–3 de conformidade.

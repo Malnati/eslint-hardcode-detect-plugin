@@ -15,7 +15,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 1. [`AGENTS.md`](../AGENTS.md) — prioridades e mapa do repositório.
 2. [`agent-ia-governance.md`](agent-ia-governance.md) — checklists e mapa de rules/skills/comandos para agentes de IA.
-2a. [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) — formato obrigatório ao relatar falhas (três partes).
+2a. [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) — falhas em três partes com prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]` e Níveis 1–3 de conformidade.
 2b. [`agent-reference-agents.md`](agent-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
 2c. [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) — quando houver ambiguidade entre Cursor, GitHub Copilot ou coleções estilo Awesome: equivalências e precedência.
 2d. [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) — quando o trabalho envolver integrações externas (registry, publicação, MCP, credenciais): sandboxes dos provedores; sem mocks no repositório.
@@ -58,7 +58,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 2. Não alterar [`reference/legacy-snapshot/`](../reference/legacy-snapshot/) exceto em mudança **explícita** de snapshot (PR ou prompt dedicado).
 3. Preferir imports **relativos** dentro do pacote, conforme [`AGENTS.md`](../AGENTS.md).
 4. Após edições que afetem estilo ou tipos no pacote, corrigir lints conforme a configuração do pacote.
-5. Ao **delegar** trabalho (sub-agente GitHub Copilot, agente Explore/Task ou outro assistente), passar o contexto com **caminhos relativos à raiz** ao referir ficheiros deste repositório (salvo exceções em [`docs/documentation-policy.md`](../docs/documentation-policy.md)); relatórios de sub-agentes devem seguir o mesmo critério. Quando o sub-agente **reportar falhas**, o relatório deve seguir [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) (diagnóstico técnico sênior, correção definitiva, contorno operacional).
+5. Ao **delegar** trabalho (sub-agente GitHub Copilot, agente Explore/Task ou outro assistente), passar o contexto com **caminhos relativos à raiz** ao referir ficheiros deste repositório (salvo exceções em [`docs/documentation-policy.md`](../docs/documentation-policy.md)); relatórios de sub-agentes devem seguir o mesmo critério. Quando o sub-agente **reportar falhas**, o relatório deve seguir [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md): primeira linha de conteúdo de cada parte com `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]` (ver Níveis 1–2 no spec).
 
 ## Fase D — Fechar o prompt (sempre que houver entrega relevante)
 
@@ -67,7 +67,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
    - Atualizar [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) ou [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) se limites ou visão mudarem.
    - Ajustar `README.md`, `CONTRIBUTING.md` ou `docs/` conforme impacto.
 2. Garantir que o **índice** em [`reference/Clippings/README.md`](../reference/Clippings/README.md) liste arquivos recortados relevantes quando arquivos forem adicionados, renomeados ou removidos.
-3. Na **resposta ao usuário**, listar documentação alterada ou declarar explicitamente que **nenhuma** atualização foi necessária (e por quê). Se a entrega incluir **falhas** (testes, build, CI, comandos) ainda relevantes para o utilizador, estruturar a comunicação dessas falhas conforme [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md).
+3. Na **resposta ao usuário**, listar documentação alterada ou declarar explicitamente que **nenhuma** atualização foi necessária (e por quê). Se a entrega incluir **falhas** (testes, build, CI, comandos) ainda relevantes para o utilizador, estruturar a comunicação conforme [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) (prefixos obrigatórios; Níveis 1–2 antes de enviar).
 4. Se houver alterações locais rastreadas: seguir [`specs/agent-git-workflow.md`](agent-git-workflow.md) (commit com mensagem **Conventional Commits** e push na branch atual, salvo working tree vazia — então declarar “nada a commitar”).
 
 ## Skills e rules do repositório
@@ -80,7 +80,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
 | [`.cursor/skills/reference-agents-portfolio/SKILL.md`](../.cursor/skills/reference-agents-portfolio/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose e imagem `.docker/` |
-| [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../.cursor/skills/agent-error-messaging-triple/SKILL.md) | Mensagens de falha em três partes |
+| [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../.cursor/skills/agent-error-messaging-triple/SKILL.md) | Falhas: três partes com prefixos HCD-ERR-* |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-error-messaging-triple.mdc`](../.cursor/rules/agent-error-messaging-triple.mdc) | Falhas: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
@@ -94,6 +94,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Versão do documento
 
+- **1.11.0** — 2a, Fase C item 5 e Fase D item 3: prefixos canónicos e Níveis 1–2 em [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **1.10.0** — Hierarquia 2a; Fases C–D e tabela: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md), skill e rule `agent-error-messaging-triple`.
 - **1.9.0** — Hierarquia 2d e Fase B item 5: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md); tabela: rule [`agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc).
 - **1.8.0** — Fase C: delegação e relatórios com caminhos relativos à raiz; remissão a [`docs/documentation-policy.md`](../docs/documentation-policy.md); tabela de artefatos: [`.cursor/rules/repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc).

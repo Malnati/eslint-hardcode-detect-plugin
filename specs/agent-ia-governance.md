@@ -22,7 +22,7 @@ Garantir que:
 | 1d | [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Docker Compose (perfis dev/e2e/prod), `.docker/Dockerfile` e relação com `ops-eslint` |
 | 1e | [`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md) | Integrações externas: sem mocks no repo; sandboxes ou ambientes de teste dos provedores |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
-| 2a | [`specs/agent-error-messaging-triple.md`](agent-error-messaging-triple.md) | Formato obrigatório ao comunicar falhas (três partes) |
+| 2a | [`specs/agent-error-messaging-triple.md`](agent-error-messaging-triple.md) | Falhas: três partes com prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–3 de conformidade |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
 | 4 | [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md) | Massa e2e NestJS (workspace auxiliar; contagens da fumaça) |
 | 5 | [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) | Visão multi-nível (arquivo, dependências, classificação, etc.) |
@@ -46,11 +46,11 @@ Garantir que:
 - [ ] Imports **relativos** no pacote, conforme convenção; corrigir lints após edições relevantes.
 - [ ] Ao citar ficheiros ou pastas **deste** repo (mensagens, relatórios, sub-agentes): **caminhos relativos à raiz**, conforme [`docs/documentation-policy.md`](../docs/documentation-policy.md) (exceções: Clippings literais, semântica de API).
 - [ ] Sem **mocks, stubs ou fakes** de serviços externos para “integração”; quando necessário, documentar ou usar **sandbox** conforme [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md).
-- [ ] Ao **comunicar falhas** (testes, build, CI, comandos, bloqueios): estruturar a resposta conforme [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) (diagnóstico técnico sênior, correção definitiva, contorno operacional); relatórios de sub-agentes que descrevam falhas devem seguir o mesmo formato.
+- [ ] Ao **comunicar falhas** (testes, build, CI, comandos, bloqueios): estruturar a resposta conforme [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) — primeira linha de conteúdo de cada parte com `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; verificar **Nível 1** (três prefixos presentes) e **Nível 2** (contagens alinhadas a **N** unidades de falha); relatórios de sub-agentes que descrevam falhas devem seguir o mesmo formato.
 
 ## Checklist — fechamento do prompt (antes de encerrar a resposta)
 
-- [ ] Se a entrega **incluir falhas** ainda visíveis para o utilizador: confirmar que foram comunicadas com o formato de [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) (ou justificar sucintamente se não aplicável — ver casos limite nesse spec).
+- [ ] Se a entrega **incluir falhas** ainda visíveis para o utilizador: confirmar **Nível 1** e **Nível 2** conforme [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) (prefixos obrigatórios e contagens); **Nível 3** quando houver revisão de qualidade; ou justificar sucintamente se não aplicável — ver casos limite nesse spec.
 - [ ] [`docs/repository-tree.md`](../docs/repository-tree.md) atualizado se **qualquer** diretório ou artefato normativo listado lá mudou (inclui `reference/Clippings/`, `.cursor/`, `specs/`).
 - [ ] [`reference/Clippings/README.md`](../reference/Clippings/README.md) coerente se arquivos de Clippings foram adicionados, renomeados ou removidos.
 - [ ] Demais documentos impactados conforme [`agent-documentation-workflow.md`](agent-documentation-workflow.md); [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) ou visão se limites mudaram.
@@ -96,6 +96,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **2.0.0** — 2a e checklists: prefixos canónicos e Níveis 1–2 ao comunicar falhas; alinhado a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **1.9.0** — hierarquia 2a, checklists execução/fechamento e mapa: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md), rule e skill `agent-error-messaging-triple`.
 - **1.8.0** — hierarquia e checklists: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md); mapa: rule [`agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc).
 - **1.7.0** — objetivo e checklists: citação de ficheiros com caminhos relativos à raiz; mapa: rule [`repo-relative-paths.mdc`](../.cursor/rules/repo-relative-paths.mdc).

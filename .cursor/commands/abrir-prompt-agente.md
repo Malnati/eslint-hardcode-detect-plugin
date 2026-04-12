@@ -7,6 +7,6 @@ Antes de editar arquivos neste repositório:
 3. Confirme limites em [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) e contrato em [`specs/plugin-contract.md`](specs/plugin-contract.md) se houver mudança de comportamento.
 
 4. Ao referir ficheiros deste repositório na conversa ou em prompts a sub-agentes, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md).
-5. Se precisar **relatar falhas** durante ou após o trabalho, siga [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) e a skill `agent-error-messaging-triple`.
+5. Se precisar **relatar falhas** durante ou após o trabalho, siga [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) e a skill `agent-error-messaging-triple` — prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]` na primeira linha de cada parte; verificar Níveis 1–2 antes de enviar.
 
 Em seguida, execute o pedido do usuário seguindo as skills aplicáveis em `.cursor/skills/`.
