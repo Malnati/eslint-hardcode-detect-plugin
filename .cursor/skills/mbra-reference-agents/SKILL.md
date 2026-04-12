@@ -1,6 +1,9 @@
 ---
 name: mbra-reference-agents
-description: Aplicar instruções de reference/agents-ref alinhadas ao repositório (mapeamento MBRA, sem RUP/shared obrigatórios)
+description: >-
+  Cruza o portfólio em reference/agents-ref com as normas deste repo (substituições RUP/shared, tabela de aplicabilidade).
+  Use quando o pedido citar agentes MBRA, hardcoded genérico ou governança inspirada em reference/agents-ref.
+  Keywords: agent-mbra-reference-agents, docs/rup, shared/constants, aplicabilidade Parcial/Não.
 ---
 
 # Skill: alinhamento com `reference/agents-ref` (MBRA)

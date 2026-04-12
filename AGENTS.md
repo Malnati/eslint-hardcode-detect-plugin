@@ -6,6 +6,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 
 0. [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md) — **governança consolidada para agentes de IA**: checklists de abertura e fechamento, mapa de rules/skills/comandos, boas práticas OSS; complementa o fluxo por prompt. Instruções do portfólio em [`reference/agents-ref/`](reference/agents-ref/) devem ser cruzadas com [`specs/agent-mbra-reference-agents.md`](specs/agent-mbra-reference-agents.md) (aplicabilidade e substituições para este repo).
 1. [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md) — **orquestração por prompt**: classificar escopo, consultar Clippings e limites antes de implementar, atualizar grafo e fechar com documentação + Git.
+1b. [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md) — **mapeamento de ecossistemas** (GitHub Copilot / Awesome Copilot vs Cursor): pontes em `.github/`, precedência de instruções e anti-padrões ao usar coleções externas.
 2. [`specs/plugin-contract.md`](specs/plugin-contract.md) — contrato funcional das regras ESLint e opções públicas.
 3. [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — visão e roadmap (hardcode multi-nível: arquivo, dependências, classificação, ordenação, níveis).
 4. [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — **consulta e manutenção** de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/) (por prompt, quando o escopo for relevante).
@@ -61,6 +62,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo. |
 | `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `mbra-reference-agents`). |
 | `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
+| `.github/agents/`, `.github/instructions/` | Pontes opcionais para GitHub Copilot; normas completas em `AGENTS.md` e `specs/` (ver [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md)). |
 
 ## Fluxo sugerido de PR
 
@@ -77,4 +79,4 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 
 ## Automação no Cursor / CLI
 
-Neste repositório, “agente” não depende de um único arquivo de produto: a governança está em **`AGENTS.md`**, em **`specs/`** (incluindo [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md) e [`specs/agent-mbra-reference-agents.md`](specs/agent-mbra-reference-agents.md) quando houver remissão a [`reference/agents-ref/`](reference/agents-ref/)), em **`.cursor/rules/`** (regras com `alwaysApply` carregadas pelo Cursor), em **`.cursor/skills/`** (procedimentos reutilizáveis) e em **`.cursor/commands/`** (atalhos de checklist). O fio condutor por prompt é [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md). Ao criar novas regras ou skills, mantenha links relativos e atualize [`docs/repository-tree.md`](docs/repository-tree.md) se a árvore normativa mudar.
+Neste repositório, “agente” não depende de um único arquivo de produto: a governança está em **`AGENTS.md`**, em **`specs/`** (incluindo [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md), [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md) e [`specs/agent-mbra-reference-agents.md`](specs/agent-mbra-reference-agents.md) quando houver remissão a [`reference/agents-ref/`](reference/agents-ref/)), em **`.cursor/rules/`** (regras com `alwaysApply` carregadas pelo Cursor), em **`.cursor/skills/`** (procedimentos reutilizáveis), em **`.cursor/commands/`** (atalhos de checklist) e, opcionalmente, em **`.github/agents/`** e **`.github/instructions/`** para GitHub Copilot. O fio condutor por prompt é [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md). Ao criar novas regras ou skills, mantenha links relativos e atualize [`docs/repository-tree.md`](docs/repository-tree.md) se a árvore normativa mudar.

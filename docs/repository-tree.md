@@ -28,6 +28,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── mbra-reference-agents/
 │       └── reference-clippings-workflow/
 ├── .github/
+│   ├── agents/               # Agente GitHub Copilot (ponte para AGENTS.md e specs)
+│   ├── instructions/         # Instruções Copilot com applyTo no pacote do plugin
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
 │   └── workflows/            # CI (ex.: ci.yml)
 ├── docs/                     # Documentação complementar
@@ -69,6 +71,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
     ├── agent-mbra-reference-agents.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md
+    ├── agent-tooling-ecosystem-map.md  # Copilot/Awesome vs Cursor; precedência; pontes .github/
     ├── e2e-fixture-nest.md     # Massa e2e NestJS (workspace auxiliar)
     ├── plugin-contract.md
     └── vision-hardcode-plugin.md
@@ -78,7 +81,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 
 - **Implementação**: `packages/eslint-plugin-hardcode-detect/`.
 - **Massa e2e Nest**: `packages/e2e-fixture-nest/` (ver [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md)).
-- **Normas de produto e agente**: `specs/` + `AGENTS.md` + `.cursor/rules/`.
+- **Normas de produto e agente**: `specs/` + `AGENTS.md` + `.cursor/rules/`; pontes opcionais GitHub Copilot em `.github/agents/` e `.github/instructions/` (ver [`specs/agent-tooling-ecosystem-map.md`](../specs/agent-tooling-ecosystem-map.md)).
 - **Referência**: `reference/Clippings/` (documentação oficial espelhada), `reference/legacy-snapshot/` (histórico); somente leitura para código em `packages/`.
 
 ## Diagrama (visão lógica)

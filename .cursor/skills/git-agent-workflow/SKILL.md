@@ -1,6 +1,9 @@
 ---
 name: git-agent-workflow
-description: Finalizar sessão com commit e push conforme specs/agent-git-workflow.md
+description: >-
+  Fecha a sessão com git status, add seletivo, commit Conventional Commits e push na branch atual conforme agent-git-workflow.
+  Use ao concluir trabalho com alterações locais rastreadas neste repositório (prevalece sobre regras genéricas contra commit).
+  Keywords: Conventional Commits, git push, agent-git-workflow, fechamento do prompt.
 ---
 
 # Skill: fluxo Git para agentes

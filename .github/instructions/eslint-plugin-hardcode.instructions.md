@@ -1,0 +1,14 @@
+---
+description: 'Normas do pacote eslint-plugin-hardcode-detect: contrato, sessão de agente e Clippings antes da API ESLint.'
+applyTo: 'packages/eslint-plugin-hardcode-detect/**/*.{ts,mjs,cjs,js}'
+---
+
+# eslint-plugin-hardcode-detect (instruções do repositório)
+
+Estas instruções são uma **ponte**: a fonte normativa completa está em [`AGENTS.md`](../../AGENTS.md), [`specs/plugin-contract.md`](../../specs/plugin-contract.md) e [`specs/agent-session-workflow.md`](../../specs/agent-session-workflow.md).
+
+1. Siga a hierarquia em [`AGENTS.md`](../../AGENTS.md) e o mapeamento Copilot/Cursor em [`specs/agent-tooling-ecosystem-map.md`](../../specs/agent-tooling-ecosystem-map.md).
+2. Antes de mudar regras ESLint, config ou empacotamento: consulte [`reference/Clippings/`](../../reference/Clippings/README.md) conforme [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md).
+3. **Não** importe nem referencie arquivos em `reference/` como dependência de código publicável; código do plugin só em `packages/eslint-plugin-hardcode-detect/`.
+4. Mudanças de comportamento público: atualize [`specs/plugin-contract.md`](../../specs/plugin-contract.md) antes ou junto do código.
+5. Visão de produto (hardcode multi-nível): [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).

@@ -17,6 +17,7 @@ Garantir que:
 |-------|--------|-----|
 | 1 | [`AGENTS.md`](../AGENTS.md) | Prioridades e mapa do repositório |
 | 1b | [`specs/agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) | Quando houver remissão a [`reference/agents-ref/`](../reference/agents-ref/): aplicabilidade MBRA e substituições de caminhos |
+| 1c | [`specs/agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) | Copilot / Awesome vs Cursor; pontes `.github/`; precedência de instruções |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
 | 4 | [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md) | Massa e2e NestJS (workspace auxiliar; contagens da fumaça) |
@@ -65,6 +66,8 @@ Garantir que:
 | Skill | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
 | Skill | [`.cursor/skills/mbra-reference-agents/SKILL.md`](../.cursor/skills/mbra-reference-agents/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist (ex.: `/fechar-e2e-nest-fixture`) |
+| Ponte Copilot (opcional) | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Agente GitHub Copilot: remete a `AGENTS.md` e `specs/` |
+| Ponte Copilot (opcional) | [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) | Instruções com `applyTo` no pacote do plugin |
 
 ## Boas práticas de mercado (OSS e plugins ESLint)
 
@@ -76,6 +79,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **1.5.0** — remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md); mapa de artefatos: pontes `.github/agents/` e `.github/instructions/`.
 - **1.4.0** — remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md), rule e skill associados; checklist de abertura para `reference/agents-ref/`.
 - **1.3.0** — hierarquia: `specs/e2e-fixture-nest.md` para massa Nest e fumaça e2e.
 - **1.2.0** — checklist de abertura: escopo explícito para testes e2e e fixtures do plugin.

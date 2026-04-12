@@ -1,6 +1,9 @@
 ---
 name: reference-clippings-workflow
-description: Consultar e manter reference/Clippings (trechos da documentação oficial) em alinhamento com specs e grafo do repo
+description: >-
+  Consulta e sincroniza trechos da documentação oficial em reference/Clippings (ESLint, npm, Node) com os specs.
+  Use antes de implementar mudanças que dependam da API do ESLint, RuleTester, plugins, config flat/legacy ou empacotamento npm.
+  Keywords: Clippings, documentação oficial, ESLint docs, agent-reference-clippings, índice README em Clippings.
 ---
 
 # Skill: Clippings e documentação oficial

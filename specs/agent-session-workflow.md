@@ -16,6 +16,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 1. [`AGENTS.md`](../AGENTS.md) — prioridades e mapa do repositório.
 2. [`agent-ia-governance.md`](agent-ia-governance.md) — checklists e mapa de rules/skills/comandos para agentes de IA.
 2b. [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
+2c. [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) — quando houver ambiguidade entre Cursor, GitHub Copilot ou coleções estilo Awesome: equivalências e precedência.
 3. Este arquivo — abertura e fechamento da sessão (fases A–D).
 4. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
 5. [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) — Clippings e documentação oficial.
@@ -76,9 +77,12 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
 | [`.cursor/commands/`](../.cursor/commands/) | Comandos `/abrir-prompt-agente` e `/fechar-prompt-agente` (opcional) |
+| [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Ponte GitHub Copilot (opcional) |
+| [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) | Instruções Copilot com `applyTo` no pacote (opcional) |
 
 ## Versão do documento
 
+- **1.6.0** — Hierarquia: remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) para Copilot/Cursor e coleções externas.
 - **1.5.0** — Fase B e hierarquia: remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) quando `reference/agents-ref/` for relevante; tabela de skills com `mbra-reference-agents`.
 - **1.4.0** — escopo e2e: workspace Nest auxiliar e remissão a `specs/e2e-fixture-nest.md`; Fase C: exceção explícita para `packages/e2e-fixture-nest`.
 - **1.3.0** — tabela de escopo: linha para testes e2e e fixtures do plugin.

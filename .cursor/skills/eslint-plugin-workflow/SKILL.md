@@ -1,6 +1,9 @@
 ---
 name: eslint-plugin-workflow
-description: Implementar ou alterar regras do eslint-plugin-hardcode-detect alinhadas ao spec, sem depender da pasta reference.
+description: >-
+  Implementa e altera regras ESLint, opções e testes (RuleTester, e2e) em eslint-plugin-hardcode-detect.
+  Use quando o pedido envolver no-hardcoded-strings, standardize-error-messages, API do ESLint, flat config,
+  plugin npm ou fixtures e2e. Keywords: ESLint, RuleTester, custom rule, plugin-contract, Clippings, npm test.
 ---
 
 # Workflow do plugin ESLint (este repositório)

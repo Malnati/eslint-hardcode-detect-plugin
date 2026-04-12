@@ -1,6 +1,9 @@
 ---
 name: github-markdown-docs
-description: Atualizar documentação Markdown no padrão GitHub ao final do trabalho (README, docs/, specs/, grafo do repo)
+description: >-
+  Atualiza README, docs/, specs/ e docs/repository-tree.md ao final de tarefas que mudem comportamento, estrutura ou políticas.
+  Use ao fechar um prompt com entregas em Markdown ou quando o grafo de diretórios normativos mudar.
+  Keywords: documentation-policy, repository-tree, agent-documentation-workflow, CONTRIBUTING.
 ---
 
 # Skill: documentação Markdown para este repositório
