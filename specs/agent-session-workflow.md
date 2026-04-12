@@ -15,6 +15,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 1. [`AGENTS.md`](../AGENTS.md) — prioridades e mapa do repositório.
 2. [`agent-ia-governance.md`](agent-ia-governance.md) — checklists e mapa de rules/skills/comandos para agentes de IA.
+2b. [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
 3. Este arquivo — abertura e fechamento da sessão (fases A–D).
 4. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
 5. [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) — Clippings e documentação oficial.
@@ -39,11 +40,12 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Fase B — Fontes antes de implementar (escopo relevante)
 
-1. Reler trechos aplicáveis de [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) se o pedido puder **expandir escopo** ou **trocar limites** do plugin.
-2. Se a Fase A classificou como ecossistema ESLint/npm/CI relacionada:
+1. Se o prompt citar ou depender de agentes em [`reference/agents-ref/`](../reference/agents-ref/): aplicar [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) e a skill [`mbra-reference-agents`](../.cursor/skills/mbra-reference-agents/SKILL.md) **antes** de copiar caminhos (ex.: `docs/rup/`, `shared/constants.*`) ou políticas RUP.
+2. Reler trechos aplicáveis de [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) se o pedido puder **expandir escopo** ou **trocar limites** do plugin.
+3. Se a Fase A classificou como ecossistema ESLint/npm/CI relacionada:
    - Listar e abrir arquivos em [`reference/Clippings/`](../reference/Clippings/) (índice em [`reference/Clippings/README.md`](../reference/Clippings/README.md)).
    - Se não houver recorte adequado ou estiver desatualizado: consultar documentação **oficial** atual (MCP de documentação do projeto, quando existir; senão fonte canônica na Web) e **registrar** trecho em `reference/Clippings/` conforme [`specs/agent-reference-clippings.md`](agent-reference-clippings.md).
-3. Para mudanças de **comportamento** do plugin: garantir alinhamento com [`specs/plugin-contract.md`](plugin-contract.md) **antes** ou **junto** com o código (o spec tem precedência sobre implementação legada em `reference/`, exceto `legacy-snapshot` que não é contrato).
+4. Para mudanças de **comportamento** do plugin: garantir alinhamento com [`specs/plugin-contract.md`](plugin-contract.md) **antes** ou **junto** com o código (o spec tem precedência sobre implementação legada em `reference/`, exceto `legacy-snapshot` que não é contrato).
 
 ## Fase C — Executar o trabalho
 
@@ -70,12 +72,14 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Documentação e grafo |
 | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
+| [`.cursor/skills/mbra-reference-agents/SKILL.md`](../.cursor/skills/mbra-reference-agents/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
 | [`.cursor/commands/`](../.cursor/commands/) | Comandos `/abrir-prompt-agente` e `/fechar-prompt-agente` (opcional) |
 
 ## Versão do documento
 
+- **1.5.0** — Fase B e hierarquia: remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) quando `reference/agents-ref/` for relevante; tabela de skills com `mbra-reference-agents`.
 - **1.4.0** — escopo e2e: workspace Nest auxiliar e remissão a `specs/e2e-fixture-nest.md`; Fase C: exceção explícita para `packages/e2e-fixture-nest`.
 - **1.3.0** — tabela de escopo: linha para testes e2e e fixtures do plugin.
 - **1.2.0** — Fase D: remissão explícita a mensagens Conventional Commits em [`agent-git-workflow.md`](agent-git-workflow.md).

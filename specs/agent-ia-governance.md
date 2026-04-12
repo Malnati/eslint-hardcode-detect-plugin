@@ -16,6 +16,7 @@ Garantir que:
 | Ordem | Fonte | Uso |
 |-------|--------|-----|
 | 1 | [`AGENTS.md`](../AGENTS.md) | Prioridades e mapa do repositório |
+| 1b | [`specs/agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) | Quando houver remissão a [`reference/agents-ref/`](../reference/agents-ref/): aplicabilidade MBRA e substituições de caminhos |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
 | 4 | [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md) | Massa e2e NestJS (workspace auxiliar; contagens da fumaça) |
@@ -27,6 +28,7 @@ Garantir que:
 ## Checklist — abertura do prompt (antes de implementar)
 
 - [ ] **Objetivo e escopo** extraídos do pedido; classificação conforme tabela em [`agent-session-workflow.md`](agent-session-workflow.md) (ESLint/plugin/npm/CI vs só docs vs estrutura).
+- [ ] Se o pedido citar ou depender de arquivos em [`reference/agents-ref/`](../reference/agents-ref/): seguir [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) (não aplicar RUP/`shared/`/`docs/review/` como obrigatórios sem adaptação).
 - [ ] Se o escopo for **ESLint / npm do pacote / CI relacionada** (inclui **e2e** do plugin, fixtures e API `ESLint`): **listar e abrir** recortes relevantes em [`reference/Clippings/`](../reference/Clippings/) (índice: [`reference/Clippings/README.md`](../reference/Clippings/README.md)); se faltar ou estiver desatualizado, consultar fonte **oficial** e **registrar** clipping conforme [`agent-reference-clippings.md`](agent-reference-clippings.md).
 - [ ] Se o pedido puder **alterar limites ou escopo do produto**: reler [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md).
 - [ ] Se houver mudança de **comportamento público**: [`specs/plugin-contract.md`](plugin-contract.md) atualizado **antes** ou **junto** do código.
@@ -55,11 +57,13 @@ Garantir que:
 | Regra Cursor | [`.cursor/rules/documentation.mdc`](../.cursor/rules/documentation.mdc) | Política Markdown |
 | Regra Cursor | [`.cursor/rules/git-versioning.mdc`](../.cursor/rules/git-versioning.mdc) | Git ao concluir |
 | Regra Cursor | [`.cursor/rules/repo-layout.mdc`](../.cursor/rules/repo-layout.mdc) | Layout do repositório |
+| Regra Cursor | [`.cursor/rules/agent-mbra-reference.mdc`](../.cursor/rules/agent-mbra-reference.mdc) | Ponte para [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) |
 | Regra Cursor | [`.cursor/rules/e2e-nest-fixture.mdc`](../.cursor/rules/e2e-nest-fixture.mdc) | Massa e2e Nest (globs do fixture e e2e) |
 | Skill | [`.cursor/skills/reference-clippings-workflow/SKILL.md`](../.cursor/skills/reference-clippings-workflow/SKILL.md) | Manutenção de Clippings |
 | Skill | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | Skill | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Docs e grafo |
 | Skill | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
+| Skill | [`.cursor/skills/mbra-reference-agents/SKILL.md`](../.cursor/skills/mbra-reference-agents/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist (ex.: `/fechar-e2e-nest-fixture`) |
 
 ## Boas práticas de mercado (OSS e plugins ESLint)
@@ -72,6 +76,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **1.4.0** — remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md), rule e skill associados; checklist de abertura para `reference/agents-ref/`.
 - **1.3.0** — hierarquia: `specs/e2e-fixture-nest.md` para massa Nest e fumaça e2e.
 - **1.2.0** — checklist de abertura: escopo explícito para testes e2e e fixtures do plugin.
 - **1.1.0** — fechamento e boas práticas: mensagens de commit Conventional Commits conforme [`agent-git-workflow.md`](agent-git-workflow.md).

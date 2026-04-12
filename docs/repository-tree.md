@@ -14,6 +14,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
 │   │   ├── agent-ia-governance.mdc
+│   │   ├── agent-mbra-reference.mdc
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
@@ -24,6 +25,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── eslint-plugin-workflow/
 │       ├── git-agent-workflow/
 │       ├── github-markdown-docs/
+│       ├── mbra-reference-agents/
 │       └── reference-clippings-workflow/
 ├── .github/
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
@@ -50,6 +52,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md
+│   ├── agents-ref/           # Portfólio MBRA de instruções para agentes (mapear via specs/agent-mbra-reference-agents.md)
 │   ├── Clippings/            # Trechos da documentação oficial (ESLint, npm, etc.)
 │   │   ├── README.md
 │   │   ├── dev/
@@ -63,6 +66,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md
+    ├── agent-mbra-reference-agents.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md
     ├── e2e-fixture-nest.md     # Massa e2e NestJS (workspace auxiliar)
