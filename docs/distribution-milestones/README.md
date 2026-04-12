@@ -15,6 +15,8 @@
 | M4 | `channel-t5-agents` | [`m4-channel-t5-agents.md`](m4-channel-t5-agents.md) |
 | M5 | `release-candidate` | [`m5-release-candidate.md`](m5-release-candidate.md) |
 
+Os seis planos estão em ficheiros Markdown **neste diretório**; a coluna «Ficheiro» dá o nome exacto (M0 usa `m0-baseline.md`, não um hipotético `m0-channel-*.md`).
+
 ## Cadeia T1 → T6 (handoff)
 
 Ordem normativa de **artefatos** (ver ficheiros por marco): **T1** (npm + config) → **T2** (container/imagem) → **T3** (CI reprodutível) → **T4** (IDE/LSP) → **T5** (agentes/Copilot/Cursor/MCP) → **T6** (Git hooks). O macro-plan agrupa trabalho em **M0–M5**; quando a **ordem lógica dos marcos M** divergir da sequência linear T4→T5→T6 (ex.: T6 com entregas após **M4**), seguir a **política** descrita em [`m3-channel-t4-t6.md`](m3-channel-t4-t6.md).
