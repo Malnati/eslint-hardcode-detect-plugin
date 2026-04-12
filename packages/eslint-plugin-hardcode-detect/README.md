@@ -2,6 +2,8 @@
 
 Implementação oficial do plugin. O contrato das regras está em [`specs/plugin-contract.md`](../../specs/plugin-contract.md); a visão multi-nível em [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
 
+O contrato descreve **três** regras (`hello-world`, `no-hardcoded-strings`, `standardize-error-messages`). **Neste pacote**, a build publicável exporta hoje apenas `hello-world` e `no-hardcoded-strings`. A regra `standardize-error-messages` consta do contrato (opções e `messageId`s) mas **ainda não** está incluída no artefacto publicável — implementação futura alinhada ao spec.
+
 ## Uso rápido (ESLint 9 flat config)
 
 ```javascript
@@ -30,6 +32,8 @@ rules: {
 O plugin expõe `meta.name`, `meta.version` e `meta.namespace` (`hardcode-detect`), conforme a documentação oficial de [plugins](https://eslint.org/docs/latest/extend/plugins).
 
 ## Regras
+
+O preset `hardcode-detect/recommended` aplica apenas `no-hardcoded-strings`. A regra `hello-world` é **demonstração** e **não** faz parte de `recommended` (evita ruído em projetos reais).
 
 | ID | Descrição |
 |----|-----------|
