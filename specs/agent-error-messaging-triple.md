@@ -26,7 +26,7 @@ Cada uma das três partes deve começar pela **primeira linha de conteúdo** da 
 
 - Não basta o título da secção: as três linhas prefixadas devem existir.
 - O prefixo deve ser o **início** da primeira linha de conteúdo daquela parte (após o cabeçalho, se existir).
-- Onde uma parte não tiver conteúdo útil, usar linha mínima após o prefixo, por exemplo: `[HCD-ERR-OPS] Não aplicável — …`.
+- Onde uma parte não tiver conteúdo útil, usar linha mínima após o prefixo; por exemplo: `[HCD-ERR-SENIOR] Não aplicável — …`, `[HCD-ERR-FIX] Não aplicável — …`, `[HCD-ERR-OPS] Não aplicável — …`.
 
 ## Unidade de falha
 
@@ -120,6 +120,7 @@ A regra planejada `standardize-error-messages` (ver [`specs/plugin-contract.md`]
 
 ## Versão do documento
 
+- **2.1.1** — exemplos mínimos na secção «Regras» com os três prefixos, para contagens iguais em auditorias mecânicas (Nível 2).
 - **2.1.0** — remissão ao hook de projeto Cursor (auditoria local Níveis 1–2; `.cursor/hooks/`).
 - **2.0.0** — prefixos canónicos obrigatórios; unidade de falha; níveis de conformidade 1–3; receita de auditoria; exemplo mínimo.
 - **1.0.0** — contrato inicial: três blocos, casos limite, remissões.
