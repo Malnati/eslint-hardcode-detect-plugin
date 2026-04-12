@@ -60,7 +60,19 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
-│   │       └── m0-baseline/      # Tarefas M0 (A1–A5); micro/; evidence/; coverage-manifest.json
+│   │       └── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
+│   │           ├── README.md
+│   │           ├── A1-index-milestones-readme.md
+│   │           ├── A2-macro-plan-index.md
+│   │           ├── A3-repository-tree.md
+│   │           ├── A4-plugin-contract-vs-readme.md
+│   │           ├── A5-nest-massa-e2e-documentada.md
+│   │           ├── coverage-manifest.json
+│   │           ├── evidence/
+│   │           │   └── A4-plugin-contract-gap-matrix.md
+│   │           └── micro/
+│   │               ├── README.md
+│   │               └── M0-A*-*.md            # 15 micro-tarefas (M0-A1-01 … M0-A5-03)
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
