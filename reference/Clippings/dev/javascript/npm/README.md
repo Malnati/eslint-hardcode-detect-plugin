@@ -10,4 +10,4 @@ tags:
 
 Recortes de documentação **npm** e registry.
 
-Notas nesta pasta devem manter o tag `clippings` e metadados conforme [`../../../README.md`](../../../README.md).
+Notas nesta pasta devem manter o tag `clippings` e metadados conforme `Obsidian/Claro/Clippings/README.md`.

@@ -8,6 +8,12 @@ tags:
 
 # ESLint
 
-Recortes de documentação oficial e páginas relacionadas a **ESLint** (configuração, plugins, API).
+Documentação **ESLint** organizada em três ramos:
 
-Notas nesta pasta devem manter o tag `clippings` e metadados conforme [`../../../README.md`](../../../README.md).
+| Ramo | Pasta | Conteúdo |
+|------|--------|----------|
+| Referência | [[Clippings/dev/javascript/eslint/reference/README|reference/]] | Regras, API Node, diretrizes de regras |
+| Guias | [[Clippings/dev/javascript/eslint/guides/README|guides/]] | Configurar, depurar, estender, regras/plugins custom |
+| Pacotes npm | [[Clippings/dev/javascript/eslint/packages/README|packages/]] | Páginas npm (`eslint`, plugins) |
+
+Notas de recorte devem manter o tag `clippings` e metadados conforme `Obsidian/Claro/Clippings/README.md`.
