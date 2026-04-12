@@ -12,6 +12,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 4. [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — **consulta e manutenção** de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/) (por prompt, quando o escopo for relevante).
 5. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
 6. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
+6b. [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) — **Docker Compose** (perfis dev/e2e/prod), [`.docker/Dockerfile`](.docker/Dockerfile) e relação com a action `ops-eslint`.
 7. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
 8. [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md) — massa de testes e2e NestJS (workspace auxiliar [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest); não publicável como o plugin).
 9. [`docs/`](docs/) e [`README.md`](README.md) — documentação de arquitetura, políticas e índice.
@@ -60,9 +61,10 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `reference/legacy-snapshot/` | Snapshot histórico; não usar como código vivo. |
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
 | `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo. |
-| `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `mbra-reference-agents`). |
+| `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `mbra-reference-agents`, `docker-compose-workflow`). |
 | `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
-| `.github/agents/`, `.github/instructions/` | Pontes opcionais para GitHub Copilot; normas completas em `AGENTS.md` e `specs/` (ver [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md)). |
+| `docker-compose.yml`, `.docker/` | Compose com perfis dev/e2e/prod; imagem ESLint para `ops-eslint` (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
+| `.github/agents/`, `.github/instructions/` | Pontes opcionais para GitHub Copilot (`eslint-hardcode-plugin`, `docker-tooling`; instruções por glob); normas completas em `AGENTS.md` e `specs/` (ver [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md)). |
 
 ## Fluxo sugerido de PR
 

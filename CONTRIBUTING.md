@@ -13,7 +13,7 @@ Este projeto aceita contribuições humanas e fluxos automatizados por agentes d
 ## Fluxo recomendado
 
 1. Implementar ou editar em [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect).
-2. Rodar lint e testes (`npm run lint` e `npm test` na raiz do monorepo, ou os equivalentes no diretório do pacote).
+2. Rodar lint e testes (`npm run lint` e `npm test` na raiz do monorepo, ou os equivalentes no diretório do pacote). Alternativa em container: perfis em [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) (`docker compose --profile e2e run --rm e2e`, etc.).
 3. Atualizar specs e Markdown conforme [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md).
 4. Commit e push seguindo [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md), incluindo mensagens no formato **Conventional Commits** descrito nesse spec.
 

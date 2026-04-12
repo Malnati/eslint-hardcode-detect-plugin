@@ -26,6 +26,16 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 - `npm run lint` — ESLint do código do plugin (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`).
 - `npm test` — build + RuleTester (`tests/`) + fumaça e2e (`e2e/`) do workspace `eslint-plugin-hardcode-detect`.
 
+### Docker Compose (perfis)
+
+Normas e tabela de comandos: [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md).
+
+- `docker compose --profile dev run --rm dev` — shell interativo com o repo em `/workspace`.
+- `docker compose --profile e2e run --rm e2e` — `npm ci` e `npm test -w eslint-plugin-hardcode-detect`.
+- `docker compose --profile prod run --rm prod` — `npm ci`, `npm run lint` e testes do plugin (verificação estilo CI).
+
+Imagem só ESLint (Composite Action / `docker build -f .docker/Dockerfile`): tag padrão `malnati-ops-eslint:local`.
+
 ## Estrutura
 
 | Caminho | Conteúdo |
@@ -37,7 +47,8 @@ Monorepo para o plugin ESLint **eslint-plugin-hardcode-detect**: detecção de h
 | [`.github/actions/ops-eslint`](.github/actions/ops-eslint) | Composite GitHub Action para rodar ESLint em container. |
 | [`.cursor/rules`](.cursor/rules) | Regras do Cursor para este projeto (`alwaysApply`). |
 | [`.cursor/commands`](.cursor/commands) | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`). |
-| [`.cursor/skills`](.cursor/skills) | Skills reutilizáveis (workflow do plugin, docs, Git, Clippings). |
+| [`.cursor/skills`](.cursor/skills) | Skills reutilizáveis (workflow do plugin, docs, Git, Clippings, Docker Compose). |
+| [`docker-compose.yml`](docker-compose.yml), [`.docker/`](.docker/) | Perfis dev/e2e/prod e imagem ops-eslint (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
 
 ## Licença
 

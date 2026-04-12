@@ -1,0 +1,44 @@
+# Perfis: dev | e2e | prod
+# Uso: docker compose --profile <nome> run --rm <serviço>
+# Normas: specs/agent-docker-compose.md
+
+services:
+  dev:
+    image: node:22-bookworm-slim
+    profiles: [dev]
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    stdin_open: true
+    tty: true
+    environment:
+      ESLINT_USE_FLAT_CONFIG: "true"
+    command: ["/bin/bash"]
+
+  e2e:
+    image: node:22-bookworm-slim
+    profiles: [e2e]
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      ESLINT_USE_FLAT_CONFIG: "true"
+      NODE_ENV: test
+    command:
+      - /bin/bash
+      - -lc
+      - set -euo pipefail && npm ci && npm test -w eslint-plugin-hardcode-detect
+
+  prod:
+    image: node:22-bookworm-slim
+    profiles: [prod]
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    environment:
+      ESLINT_USE_FLAT_CONFIG: "true"
+      CI: "true"
+    command:
+      - /bin/bash
+      - -lc
+      - set -euo pipefail && npm ci && npm run lint && npm test -w eslint-plugin-hardcode-detect

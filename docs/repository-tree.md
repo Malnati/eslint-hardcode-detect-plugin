@@ -9,6 +9,10 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
+├── docker-compose.yml        # Perfis dev / e2e / prod (ver specs/agent-docker-compose.md)
+├── .dockerignore             # Contexto de build da imagem ops-eslint
+├── .docker/
+│   └── Dockerfile            # Imagem ESLint para Composite Action ops-eslint
 ├── .gitignore
 ├── .cursor/
 │   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
@@ -18,18 +22,20 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
+│   │   ├── docker-compose-tooling.mdc
 │   │   ├── e2e-nest-fixture.mdc
 │   │   ├── git-versioning.mdc
 │   │   └── repo-layout.mdc
 │   └── skills/               # Skills reutilizáveis pelos agentes
+│       ├── docker-compose-workflow/
 │       ├── eslint-plugin-workflow/
 │       ├── git-agent-workflow/
 │       ├── github-markdown-docs/
 │       ├── mbra-reference-agents/
 │       └── reference-clippings-workflow/
 ├── .github/
-│   ├── agents/               # Agente GitHub Copilot (ponte para AGENTS.md e specs)
-│   ├── instructions/         # Instruções Copilot com applyTo no pacote do plugin
+│   ├── agents/               # Agentes GitHub Copilot (pontes: plugin, docker-tooling)
+│   ├── instructions/         # Instruções Copilot (applyTo: pacote do plugin, docker-compose)
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
 │   └── workflows/            # CI (ex.: ci.yml)
 ├── docs/                     # Documentação complementar
@@ -65,6 +71,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── hardcoded-check.yml   # Workflow de exemplo (referência; não em .github/workflows/)
 │   └── legacy-snapshot/      # Snapshot histórico (ESLint local, action de exemplo)
 └── specs/                    # Contratos e visão
+    ├── agent-docker-compose.md         # Docker Compose, .docker/ e action ops-eslint
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md

@@ -1,0 +1,11 @@
+# Contexto de build da imagem ops-eslint (raiz do repo)
+node_modules
+**/node_modules
+dist
+**/dist
+coverage
+.git
+.github
+.cursor
+*.log
+.DS_Store

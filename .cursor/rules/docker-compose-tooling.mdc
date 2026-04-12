@@ -1,0 +1,12 @@
+---
+description: Docker Compose, .docker/Dockerfile e action ops-eslint — alinhar ao spec agent-docker-compose
+globs: docker-compose*.yml,.docker/**/*
+alwaysApply: false
+---
+
+# Docker neste repositório
+
+- Fonte normativa: [`specs/agent-docker-compose.md`](../../specs/agent-docker-compose.md).
+- Skill: [`.cursor/skills/docker-compose-workflow/SKILL.md`](../skills/docker-compose-workflow/SKILL.md).
+- A imagem em [`.docker/Dockerfile`](../../.docker/Dockerfile) serve à Composite Action [`.github/actions/ops-eslint`](../../.github/actions/ops-eslint) (entrypoint `eslint`); os serviços com perfis usam Node oficial para `npm ci` e testes do monorepo.
+- Ao alterar perfis ou Dockerfile: atualize o spec se a semântica mudar e mantenha [`docs/repository-tree.md`](../../docs/repository-tree.md) coerente.

@@ -36,6 +36,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | **CI** que interpreta ESLint, Node ou npm | Workflows que rodam o linter ou publicam o pacote | Consultar Clippings ou doc oficial quando a semântica do toolchain não for óbvia no repo. |
 | **Somente Markdown / specs / governança** sem tocar em API ESLint | README, `docs/`, rules do Cursor | Clippings **não** é obrigatório salvo o texto **altere** contratos que citam ESLint ou exija validar citação contra fonte oficial. |
 | **Estrutura de pastas** | Novo diretório normativo, mover Clippings | Atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) no mesmo ciclo. |
+| **Docker / Compose / imagem ops-eslint** | [`docker-compose.yml`](../docker-compose.yml), [`.docker/`](../.docker/), ajustes em [`.github/actions/ops-eslint`](../.github/actions/ops-eslint) | Ler [`specs/agent-docker-compose.md`](agent-docker-compose.md); skill [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md). Consultar Clippings só se a mudança depender de semântica oficial de ESLint/npm não óbvia no repo. |
 
 3. Se o escopo for **misturado** (ex.: código + doc), aplicar a coluna mais restritiva (ex.: código ESLint → consulta a Clippings).
 
@@ -74,14 +75,18 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Documentação e grafo |
 | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
 | [`.cursor/skills/mbra-reference-agents/SKILL.md`](../.cursor/skills/mbra-reference-agents/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
+| [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose e imagem `.docker/` |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
 | [`.cursor/commands/`](../.cursor/commands/) | Comandos `/abrir-prompt-agente` e `/fechar-prompt-agente` (opcional) |
 | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Ponte GitHub Copilot (opcional) |
+| [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) | Ponte Copilot: Docker/compose (opcional) |
 | [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) | Instruções Copilot com `applyTo` no pacote (opcional) |
+| [`.github/instructions/docker-compose.instructions.md`](../.github/instructions/docker-compose.instructions.md) | Instruções Copilot com `applyTo` em compose/Dockerfile (opcional) |
 
 ## Versão do documento
 
+- **1.7.0** — Escopo e tabela de skills: Docker Compose, [`specs/agent-docker-compose.md`](agent-docker-compose.md), pontes Copilot `docker-tooling` e `docker-compose.instructions`.
 - **1.6.0** — Hierarquia: remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) para Copilot/Cursor e coleções externas.
 - **1.5.0** — Fase B e hierarquia: remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) quando `reference/agents-ref/` for relevante; tabela de skills com `mbra-reference-agents`.
 - **1.4.0** — escopo e2e: workspace Nest auxiliar e remissão a `specs/e2e-fixture-nest.md`; Fase C: exceção explícita para `packages/e2e-fixture-nest`.

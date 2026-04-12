@@ -14,6 +14,7 @@ Este documento alinha **conceitos e pastas** usados em coleções estilo [Awesom
 | `agents/*.agent.md` (frontmatter + corpo) | [`AGENTS.md`](../AGENTS.md) + [`specs/agent-session-workflow.md`](agent-session-workflow.md) (fases A–D) + [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) (ponte opcional) | O comportamento normativo está em `specs/`; ficheiros em `.github/agents/` são atalhos que apontam para a mesma hierarquia. |
 | `instructions/*.instructions.md` com `applyTo` (globs) | [`.cursor/rules/*.mdc`](../.cursor/rules/) (`globs` / escopo) + políticas por pasta em `specs/` + [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) (ponte opcional) | Regras por ficheiro no Cursor; instruções Copilot no repo devem ser **curtas** e remeter a `AGENTS.md` / `specs/`. |
 | Skills em `.github/skills/<nome>/SKILL.md` | [`.cursor/skills/<nome>/SKILL.md`](../.cursor/skills/) | Mesmo papel (workflow especializado); descrição rica no frontmatter para descoberta. Não duplicar corpo normativo entre os dois sítios sem necessidade. |
+| Sub-agente / agente adicional (`docker-tooling`, etc.) | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) + [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Especialização em Compose e `.docker/`; continua subordinado a `AGENTS.md` e ao spec temático. |
 | Plugins Copilot (`copilot plugin install …`) | Não aplicável como runtime deste repo | Plugins externos podem inspirar prompts; a governança local continua em `AGENTS.md` e `specs/`. |
 
 ## Precedência de instruções (trabalho neste repositório)
@@ -39,4 +40,5 @@ A visão multi-nível em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md
 
 ## Versão do documento
 
+- **1.1.0** — equivalência para Docker/Compose: [`agent-docker-compose.md`](agent-docker-compose.md) e ponte [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md).
 - **1.0.0** — contrato inicial: mapeamento Copilot/Awesome ↔ Cursor/repo e precedência.

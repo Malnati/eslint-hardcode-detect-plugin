@@ -25,3 +25,7 @@ Você trabalha no repositório do plugin **eslint-plugin-hardcode-detect**. A au
 ## Testes
 
 - `npm test` no pacote (build, RuleTester, e2e). Ver [`AGENTS.md`](../../AGENTS.md).
+
+## Docker (opcional)
+
+- Perfis e comandos: [`specs/agent-docker-compose.md`](../../specs/agent-docker-compose.md). Sub-agente focado: [`.github/agents/docker-tooling.agent.md`](docker-tooling.agent.md).

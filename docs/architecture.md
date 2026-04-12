@@ -6,7 +6,8 @@ Este repositório separa três preocupações:
 
 1. **Pacote npm** ([`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect)) — implementação oficial do plugin ESLint, versionada e testável.
 2. **Referência congelada** ([`reference/`](../reference/)) — snapshots históricos; não entram na cadeia de dependências do pacote.
-3. **Automação GitHub** ([`.github/actions/ops-eslint`](../.github/actions/ops-eslint)) — composite action que executa ESLint em container; exige imagem Docker e `.docker/Dockerfile` na raiz do checkout quando `build_image` estiver ativo.
+3. **Automação GitHub** ([`.github/actions/ops-eslint`](../.github/actions/ops-eslint)) — composite action que executa ESLint em container; exige imagem Docker e [`.docker/Dockerfile`](../.docker/Dockerfile) na raiz do checkout quando `build_image` estiver ativo.
+4. **Docker Compose** ([`docker-compose.yml`](../docker-compose.yml)) — perfis `dev` (shell interativo), `e2e` (`npm ci` + testes do workspace do plugin) e `prod` (lint do monorepo + testes do plugin), normatizados em [`specs/agent-docker-compose.md`](../specs/agent-docker-compose.md). A imagem de tooling só com ESLint (`.docker/Dockerfile`, tag padrão `malnati-ops-eslint:local`) é distinta dos serviços baseados em `node:22-bookworm-slim` usados para instalar dependências do repositório.
 
 ## Fluxo de decisão
 
