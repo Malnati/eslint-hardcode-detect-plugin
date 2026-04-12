@@ -2,6 +2,8 @@
 
 Este documento é o **roadmap macro** para validar e operacionalizar a solução descrita em [`solution-distribution-channels.md`](solution-distribution-channels.md), com **trilhas de teste** (agrupamento DRY de canais com a mesma superfície mecânica), proposta de massas `packages/e2e-fixture-*`, perfis Docker Compose futuros, diagramas (sequência, Gantt), ciclo de vida por trilha e organização de **PRs/milestones** no GitHub. Não substitui o contrato das regras em [`specs/plugin-contract.md`](../specs/plugin-contract.md) nem a taxonomia em [`hardcoding-map.md`](hardcoding-map.md).
 
+**Planos detalhados por marco (M0–M5):** índice em [`distribution-milestones/README.md`](distribution-milestones/README.md) — cada ficheiro inclui handoff na **cadeia T1→T6**, matriz e2e×Compose, diagramas, timelining, Gantt e protocolo de tarefas/orçamento de tokens pré-execução de agentes (Camadas A/B).
+
 **Fontes técnicas:** decisões sobre ESLint, npm, Cursor e MCP devem alinhar-se a [`reference/Clippings/`](../reference/Clippings/) (índice em [`reference/Clippings/README.md`](../reference/Clippings/README.md)) e [`specs/agent-reference-clippings.md`](../specs/agent-reference-clippings.md). Versionamento Git: [`versioning-for-agents.md`](versioning-for-agents.md), [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md).
 
 ## Princípios
@@ -10,6 +12,8 @@ Este documento é o **roadmap macro** para validar e operacionalizar a solução
 2. **`reference/`** — somente leitura para o pacote publicável; não importar Clippings em `packages/`.
 3. **Massas e2e** — workspaces auxiliares `packages/e2e-fixture-*` (não publicáveis como o plugin), espelhando o papel de [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md).
 4. **Trilhas** — vários **canais** da tabela mestre mapeiam para uma **trilha** quando a automação testável é a mesma (ex.: npm projeto e workspaces → mesma trilha T1 com matriz documentada).
+
+**Cadeia de handoff (artefatos):** em termos de **dependência de produto**, a ordem normativa é **T1 → T2 → T3 → T4 → T5 → T6** (cada trilha consome o entregável validado da anterior). Os **marcos GitHub M0–M5** agrupam o trabalho de outra forma; quando o calendário M divergir (ex.: T6 vs T5), seguir a política explícita em [`distribution-milestones/m3-channel-t4-t6.md`](distribution-milestones/m3-channel-t4-t6.md).
 
 ## Trilhas de validação
 
@@ -188,4 +192,5 @@ Duplicar pacotes `e2e-fixture-*` para cada linha da tabela mestre **aumenta** cu
 
 ## Versão do documento
 
+- **1.1.0** — Remissão aos planos por marco em [`distribution-milestones/README.md`](distribution-milestones/README.md); nota sobre cadeia de handoff T1→T6 vs marcos M0–M5.
 - **1.0.0** — Plano macro inicial: trilhas T1–T6, rastreabilidade de canais, sequência, Gantt ilustrativo, ciclo de vida, Compose, milestones GitHub.

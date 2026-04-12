@@ -46,6 +46,15 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
 │   ├── solution-distribution-channels.md  # Canais npm/CI/Docker/IDE/agentes
 │   ├── distribution-channels-macro-plan.md  # Plano macro e2e por trilha, diagramas, marcos
+│   ├── distribution-milestones/  # Planos por marco M0–M5 (template + handoff T1→T6, Camada A/B)
+│   │   ├── README.md
+│   │   ├── milestone-template.md
+│   │   ├── m0-baseline.md
+│   │   ├── m1-channel-t1-t2.md
+│   │   ├── m2-channel-t3-ci.md
+│   │   ├── m3-channel-t4-t6.md
+│   │   ├── m4-channel-t5-agents.md
+│   │   └── m5-release-candidate.md
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
