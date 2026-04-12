@@ -2,7 +2,7 @@
 
 Marco M0 · âncora [`../A4-plugin-contract-vs-readme.md`](../A4-plugin-contract-vs-readme.md)
 
-Preencher após execução das micro-tarefas M0-A4-01 … M0-A4-04.
+**Estado:** revisão A4 concluída após as micro-tarefas M0-A4-01 … M0-A4-04; matriz e notas finais em **M0-A4-04** (data de fecho abaixo).
 
 | Área | `specs/plugin-contract.md` | README do pacote | `packages/.../docs/rules/` | Estado |
 |------|----------------------------|------------------|-----------------------------|--------|
@@ -23,10 +23,18 @@ Preencher após execução das micro-tarefas M0-A4-01 … M0-A4-04.
 - Cruzamento [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md) × [`packages/eslint-plugin-hardcode-detect/docs/rules/`](../../../../../packages/eslint-plugin-hardcode-detect/docs/rules/): cada regra do contrato tem página em `docs/rules/` (`hello-world.md`, `no-hardcoded-strings.md`, `standardize-error-messages.md`). A última documenta explicitamente que a regra **não** está ainda no artefacto publicável; o **gap** restante é de **implementação**, não de documentação em `docs/rules/`.
 - Micro-tarefa: [`../micro/M0-A4-03-contrato-vs-docs-rules.md`](../micro/M0-A4-03-contrato-vs-docs-rules.md).
 
+## Notas M0-A4-04
+
+- **Data / rev. de fecho da revisão A4:** 2026-04-12 (consolidação M0-A4-04; contrato **0.4.0**).
+- **Paridade documental (baseline T1):** sem divergências obrigatórias entre [`specs/plugin-contract.md`](../../../../../specs/plugin-contract.md), o README do pacote e as páginas em [`packages/eslint-plugin-hardcode-detect/docs/rules/`](../../../../../packages/eslint-plugin-hardcode-detect/docs/rules/) para as áreas cobertas pela matriz.
+- **Gap de produto** (fora do escopo documental A4): a regra `standardize-error-messages` está no contrato e documentada, mas **não** é exportada em [`packages/eslint-plugin-hardcode-detect/src/index.ts`](../../../../../packages/eslint-plugin-hardcode-detect/src/index.ts). Follow-up curto:
+  - Implementar a regra conforme contrato e registá-la em `plugin.rules` (e testes RuleTester / e2e se aplicável ao fecho da funcionalidade).
+  - Opcional: issue de roadmap para rastrear exportação e eventual entrada em `recommended`.
+
 ## Notas e follow-ups
 
-- Data da revisão: 2026-04-12 (M0-A4-02, M0-A4-03).
-- Referência PR ou issue:
+- Data da revisão: 2026-04-12 (M0-A4-02, M0-A4-03, **M0-A4-04** — fecho).
+- Referência PR ou issue: preencher no PR ou issue que integrar esta evidência (âncora A4); até lá, usar o histórico Git do ficheiro.
 
 ## Legenda
 
