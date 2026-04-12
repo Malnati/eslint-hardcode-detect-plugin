@@ -20,10 +20,10 @@ Este agente garante que alterações puramente estéticas (formatação, espaço
 - Delegação de formatação a ferramentas (Prettier, ESLint)
 - Foco exclusivo em mudanças funcionais
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `AGENTS.md` (seção "Proibição de alterações estéticas não solicitadas")
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/revisoes-com-ia-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/revisoes-com-ia-spec.md`
 - Configurações de lint: `.eslintrc`, `.prettierrc`, `tsconfig.json`
 
 ## Mandatórios
@@ -151,6 +151,6 @@ const data = { name: "John" };
 ## Referências
 
 - `AGENTS.md` → seção "Proibição de alterações estéticas não solicitadas"
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/revisoes-com-ia-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/revisoes-com-ia-spec.md`
 - Prettier documentation: https://prettier.io/
 - ESLint documentation: https://eslint.org/

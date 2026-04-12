@@ -20,10 +20,10 @@ Este agente assegura a aplicação rigorosa do princípio DRY (Don't Repeat Your
 - Prevenção de duplicação de código
 - Parametrização de lógica similar
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
-- `docs/rup/01-arquitetura/arquitetura-da-extensao-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/01-arquitetura/arquitetura-da-extensao-spec.md`
 - `AGENTS.md` (seção "Princípios de reutilização (DRY)")
 
 ## Mandatórios
@@ -234,6 +234,6 @@ common.ts (funções compartilhadas)
 ## Referências
 
 - `AGENTS.md` → seção "Princípios de reutilização (DRY)"
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
-- `docs/rup/01-arquitetura/arquitetura-da-extensao-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/01-arquitetura/arquitetura-da-extensao-spec.md`
 - Clean Code (Robert C. Martin) - capítulo DRY

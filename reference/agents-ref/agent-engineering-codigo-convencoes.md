@@ -20,10 +20,10 @@ Este agente assegura que todo código siga as convenções estabelecidas, inclui
 - Proibição de valores hardcoded (literais fixos)
 - Extração para constantes no topo do arquivo
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
-- `docs/rup/03-implementacao/testes-spec.md` (linters)
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/03-implementacao/testes-spec.md` (linters)
 - `AGENTS.md` (seção "Convenções de código")
 
 ## Mandatórios
@@ -156,5 +156,5 @@ if (status === HTTP_STATUS_NOT_FOUND) {
 ## Referências
 
 - `AGENTS.md` → seção "Convenções de código"
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
 - Clean Code (Robert C. Martin) - princípios de nomeação

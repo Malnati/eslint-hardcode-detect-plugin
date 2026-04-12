@@ -3,7 +3,7 @@
 ---
 
 name: Governança - Política de Documentação
-description: Garante conformidade com a política de documentação RUP e estrutura de pares .md/.md-spec
+description: Garante conformidade com a política de documentação do projeto de referência e estrutura de pares .md/.md-spec
 version: 1.0.0
 
 ---
@@ -12,24 +12,24 @@ version: 1.0.0
 
 ## Propósito
 
-Este agente assegura que toda documentação do projeto resida exclusivamente em `docs/rup/`, seguindo a estrutura de pares obrigatórios `.md` (orientação) e `-spec.md` (especificação), conforme modelo RUP estabelecido.
+Este agente assegura que toda documentação do projeto resida exclusivamente em `docs/<repo-externo>/`, seguindo a estrutura de pares obrigatórios `.md` (orientação) e `-spec.md` (especificação), conforme modelo do repositório de referência.
 
 ## Itens obrigatórios cobertos
 
 - Política de documentação (AGENTS.md)
 - Estrutura de pares `A.md` / `A-spec.md` obrigatória
-- Proibição de documentação fora de `docs/rup/`
+- Proibição de documentação fora de `docs/<repo-externo>/`
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/` (estrutura completa)
-- `docs/rup/README.md` e `docs/rup/README-spec.md`
-- `AGENTS.md` (seções "Política de documentação" e "Estrutura de documentos RUP")
+- `docs/<repo-externo>/` (estrutura completa)
+- `docs/<repo-externo>/README.md` e `docs/<repo-externo>/README-spec.md`
+- `AGENTS.md` (seções "Política de documentação" e "Estrutura de documentos")
 
 ## Mandatórios
 
 1. **Localização exclusiva:**
-   - Toda documentação técnica em `docs/rup/`
+   - Toda documentação técnica em `docs/<repo-externo>/`
    - Arquivos permitidos na raiz: `README.md`, `CHANGELOG.md`, `AGENTS.md`, `.gitignore`, configs
 
 2. **Estrutura de pares obrigatória:**
@@ -39,7 +39,7 @@ Este agente assegura que toda documentação do projeto resida exclusivamente em
 
 3. **Índice e navegação:**
    - Cada subpasta usa `README.md` como entrada (nunca `index.md`)
-   - Índices principais: `docs/rup/README.md` e `docs/rup/README-spec.md`
+   - Índices principais: `docs/<repo-externo>/README.md` e `docs/<repo-externo>/README-spec.md`
 
 4. **Proibições:**
    - Documentação na raiz: `AUDIT_*.md`, `REPORT_*.md`, `SUMMARY_*.md`, `ANALYSIS_*.md`, `TODO.md`
@@ -47,7 +47,7 @@ Este agente assegura que toda documentação do projeto resida exclusivamente em
 
 ## Fluxo de atuação
 
-1. **Identificação de fase:** Determinar fase RUP apropriada (00-07, 99-anexos)
+1. **Identificação de fase:** Determinar fase documental apropriada (00-07, 99-anexos)
 2. **Verificação de par:** Confirmar existência de `A.md` e `A-spec.md`
 3. **Criação coordenada:** Gerar ambos arquivos simultaneamente se necessário
 4. **Atualização de índices:** Registrar em `README.md` e `README-spec.md` da fase
@@ -55,16 +55,16 @@ Este agente assegura que toda documentação do projeto resida exclusivamente em
 
 ## Saídas esperadas
 
-- Pares de documentos corretamente criados em `docs/rup/`
+- Pares de documentos corretamente criados em `docs/<repo-externo>/`
 - Índices atualizados com novos artefatos
 - Changelog referenciando documentos criados/atualizados
-- Nenhum arquivo de documentação fora de `docs/rup/`
+- Nenhum arquivo de documentação fora de `docs/<repo-externo>/`
 
 ## Auditorias e segurança
 
 - Validação de pares completos antes do commit
 - Verificação de ausência de documentação na raiz
-- Conformidade com templates RUP da fase correspondente
+- Conformidade com templates da fase correspondente em `docs/<repo-externo>/`
 - Rastreabilidade via referências cruzadas e changelog
 
 ## Comandos obrigatórios
@@ -74,11 +74,11 @@ Este agente assegura que toda documentação do projeto resida exclusivamente em
 ! ls *.md | grep -E '(AUDIT|REPORT|SUMMARY|ANALYSIS|REVIEW|TODO|NOTES)' \
   || echo "❌ ERRO: Documentação proibida na raiz"
 
-# Verificar estrutura docs/rup/
-test -d docs/rup && echo "✅ docs/rup/ existe"
+# Verificar estrutura docs/<repo-externo>/ (ajustar o nome ao repositório alvo)
+test -d "docs/<repo-externo>" && echo "✅ docs/<repo-externo>/ existe"
 
 # Validar pares obrigatórios (exemplo para visão)
-find docs/rup -name "*.md" | while read f; do
+find "docs/<repo-externo>" -name "*.md" | while read f; do
   base="${f%.md}"
   spec="${base}-spec.md"
   if [[ ! "$f" =~ -spec\.md$ ]] && [[ ! "$f" =~ README\.md$ ]]; then
@@ -89,12 +89,12 @@ find docs/rup -name "*.md" | while read f; do
 done
 
 # Confirmar que todos READMEs estão presentes
-find docs/rup -type d -exec sh -c 'test -f "$1/README.md" || echo "❌ Faltando README.md em: $1"' _ {} \;
+find "docs/<repo-externo>" -type d -exec sh -c 'test -f "$1/README.md" || echo "❌ Faltando README.md em: $1"' _ {} \;
 ```
 
 ## Checklist de validação
 
-- [ ] Toda documentação reside em `docs/rup/`
+- [ ] Toda documentação reside em `docs/<repo-externo>/`
 - [ ] Pares `.md` / `-spec.md` completos
 - [ ] READMEs como arquivos de entrada (não index.md)
 - [ ] Índices principais atualizados
@@ -104,7 +104,7 @@ find docs/rup -type d -exec sh -c 'test -f "$1/README.md" || echo "❌ Faltando 
 ## Exemplos de estrutura correta
 
 ```
-docs/rup/
+docs/<repo-externo>/
   00-visao/
     README.md              ← orientação da fase
     README-spec.md         ← índice específico
@@ -120,6 +120,6 @@ docs/rup/
 ## Referências
 
 - `AGENTS.md` → seção "Política de documentação"
-- `docs/rup/README.md` → guia de estrutura RUP
-- `docs/rup/00-visao/` a `docs/rup/07-contribuicao/` → fases obrigatórias
-- `docs/rup/99-anexos/` → materiais complementares
+- `docs/<repo-externo>/README.md` → guia de estrutura do repositório de referência
+- `docs/<repo-externo>/00-visao/` a `docs/<repo-externo>/07-contribuicao/` → fases obrigatórias
+- `docs/<repo-externo>/99-anexos/` → materiais complementares

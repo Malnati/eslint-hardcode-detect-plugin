@@ -16,17 +16,17 @@ Este agente assegura que todos os planos de mudança registrados em arquivos Mar
 - Estrutura de seções mandatórias
 - Planos de auditoria irmãos obrigatórios
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/99-anexos/MVP/plan-micro-agents.md` (modelo de referência)
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/revisoes-com-ia-spec.md`
+- `docs/<repo-externo>/99-anexos/MVP/plan-micro-agents.md` (modelo de referência)
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/revisoes-com-ia-spec.md`
 - `AGENTS.md` (seção "Padrão obrigatório para planos de mudança")
 
 ## Mandatórios
 
 1. **Nomenclatura do plano:**
    - Formato: `YYYYMMDDHHMMSS-descricao.md` (timestamp UTC)
-   - Localização: `docs/rup/99-anexos/planos/` ou subdiretório apropriado
+   - Localização: `docs/<repo-externo>/99-anexos/planos/` ou subdiretório apropriado
 
 2. **Seções obrigatórias (na ordem):**
    1. Lista de arquivos existentes relevantes
@@ -36,29 +36,29 @@ Este agente assegura que todos os planos de mudança registrados em arquivos Mar
    5. Regras da mudança específica + regras globais
    6. Regras atualmente não atendidas (motivação dos ajustes)
    7. Plano de auditoria (verificações manuais e automáticas)
-   8. Checklists aplicáveis de `docs/rup/99-anexos/checklists/`
+   8. Checklists aplicáveis de `docs/<repo-externo>/99-anexos/checklists/`
 
 3. **Plano de auditoria irmão:**
    - Nome: `YYYYMMDDHHMMSS-descricao-audit.md` (mesmo prefixo + sufixo `-audit`)
    - Localização: mesmo diretório do plano principal
-   - Estrutura conforme `docs/rup/99-anexos/planos/*-audit.md`
+   - Estrutura conforme `docs/<repo-externo>/99-anexos/planos/*-audit.md`
 
 4. **Rastreabilidade:**
    - Citar `REQ-###` para requisitos impactados
    - Citar `RISK-###` para riscos mitigados/criados
-   - Referenciar documentos RUP consultados
+   - Referenciar documentos do repositório de referência consultados
 
 ## Fluxo de atuação
 
 1. **Criação do plano:** Gerar arquivo com timestamp UTC e estrutura obrigatória
 2. **Preenchimento de seções:** Documentar arquivos, requisitos, regras, auditoria
-3. **Seleção de checklists:** Identificar checklists aplicáveis em `docs/rup/99-anexos/checklists/`
+3. **Seleção de checklists:** Identificar checklists aplicáveis em `docs/<repo-externo>/99-anexos/checklists/`
 4. **Criação de auditoria:** Gerar plano `-audit.md` irmão com validações
 5. **Registro:** Atualizar changelog e referências cruzadas
 
 ## Saídas esperadas
 
-- Plano de mudança completo em `docs/rup/99-anexos/planos/YYYYMMDDHHMMSS-*.md`
+- Plano de mudança completo em `docs/<repo-externo>/99-anexos/planos/YYYYMMDDHHMMSS-*.md`
 - Plano de auditoria irmão `*-audit.md` correspondente
 - Referências cruzadas com requisitos, riscos e checklists
 - Changelog documentando criação dos planos
@@ -67,7 +67,7 @@ Este agente assegura que todos os planos de mudança registrados em arquivos Mar
 
 - Validação de estrutura completa antes do commit
 - Verificação de existência do plano de auditoria irmão
-- Conformidade com templates de `docs/rup/99-anexos/planos/`
+- Conformidade com templates de `docs/<repo-externo>/99-anexos/planos/`
 - Rastreabilidade via `REQ-###` e `RISK-###`
 
 ## Comandos obrigatórios
@@ -77,10 +77,10 @@ Este agente assegura que todos os planos de mudança registrados em arquivos Mar
 date -u +%Y%m%d%H%M%S
 
 # Verificar existência de planos existentes
-ls -la docs/rup/99-anexos/planos/
+ls -la docs/<repo-externo>/99-anexos/planos/
 
 # Validar pares plano + auditoria
-find docs/rup/99-anexos/planos/ -name "*[0-9].md" | while read plano; do
+find docs/<repo-externo>/99-anexos/planos/ -name "*[0-9].md" | while read plano; do
   audit="${plano%.md}-audit.md"
   if [[ ! -f "$audit" ]]; then
     echo "⚠️  Faltando auditoria: $plano ↔ $audit"
@@ -88,13 +88,13 @@ find docs/rup/99-anexos/planos/ -name "*[0-9].md" | while read plano; do
 done
 
 # Consultar checklists disponíveis
-ls -la docs/rup/99-anexos/checklists/
+ls -la docs/<repo-externo>/99-anexos/checklists/
 ```
 
 ## Template de estrutura obrigatória
 
 ```markdown
-<!-- docs/rup/99-anexos/planos/YYYYMMDDHHMMSS-descricao.md -->
+<!-- docs/<repo-externo>/99-anexos/planos/YYYYMMDDHHMMSS-descricao.md -->
 
 # Plano de Mudança - [Título]
 
@@ -147,13 +147,13 @@ ls -la docs/rup/99-anexos/checklists/
 
 ## 8. Checklists aplicáveis
 
-- [ ] `docs/rup/99-anexos/checklists/001-*.md`
-- [ ] `docs/rup/99-anexos/checklists/005-*.md`
+- [ ] `docs/<repo-externo>/99-anexos/checklists/001-*.md`
+- [ ] `docs/<repo-externo>/99-anexos/checklists/005-*.md`
 ```
 
 ## Referências
 
 - `AGENTS.md` → seção "Padrão obrigatório para planos de mudança"
-- `docs/rup/99-anexos/MVP/plan-micro-agents.md` → exemplo de referência
-- `docs/rup/99-anexos/planos/` → diretório de planos
-- `docs/rup/99-anexos/checklists/` → checklists disponíveis
+- `docs/<repo-externo>/99-anexos/MVP/plan-micro-agents.md` → exemplo de referência
+- `docs/<repo-externo>/99-anexos/planos/` → diretório de planos
+- `docs/<repo-externo>/99-anexos/checklists/` → checklists disponíveis

@@ -3,10 +3,10 @@
 ---
 
 name: AGENTS GUIDELINES
-description: To follow the guidelines described at AGENTS.md and RUP requirements.
+description: Seguir as diretrizes em AGENTS.md e os contratos em specs/ deste repositório.
 
 ---
 
 # My Agent
 
-You must follow the guidelines described at AGENTS.md and the requirements on docs/rup from docs/rup/00 to docs/rup/07.
+You must follow the guidelines described in `AGENTS.md` and the normative specs under `specs/` for this repository. Do not assume paths or documentation trees from other projects unless adapted per `specs/agent-reference-agents.md`.

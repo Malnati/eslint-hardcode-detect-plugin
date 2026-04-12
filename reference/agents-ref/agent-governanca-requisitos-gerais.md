@@ -20,10 +20,10 @@ Este agente garante conformidade com os requisitos gerais do projeto e as respon
 - Responsabilidades do projeto
 - Conformidade com especificações técnicas
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/02-planejamento/especificacao-de-requisitos-spec.md`
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
+- `docs/<repo-externo>/02-planejamento/especificacao-de-requisitos-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
 - `AGENTS.md` (seções "Requisitos gerais" e "Responsabilidades do projeto")
 
 ## Mandatórios
@@ -31,7 +31,7 @@ Este agente garante conformidade com os requisitos gerais do projeto e as respon
 1. **Requisitos gerais de subprojetos:**
    - JavaScript/TypeScript: `package.json`, modo `strict`, Vite para bundling
    - `.gitignore` próprio ou compartilhado cobrindo artefatos gerados
-   - Preservar estrutura descrita em `docs/rup/03-implementacao/estrutura-de-projeto-spec.md`
+   - Preservar estrutura descrita em `docs/<repo-externo>/03-implementacao/estrutura-de-projeto-spec.md`
 
 2. **Configuração e ambiente:**
    - Seguir cadeia `.env` → `docker-compose.yml` → serviço/aplicação
@@ -39,21 +39,21 @@ Este agente garante conformidade com os requisitos gerais do projeto e as respon
    - Sincronização obrigatória entre `.env.example` e `docker-compose.yml`
 
 3. **Responsabilidades técnicas:**
-   - Consultar quadro em `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
+   - Consultar quadro em `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
    - Respeitar limites de escopo definidos por função/módulo
    - Não ultrapassar autoridade técnica atribuída
 
 4. **Monitoramento e ajustes:**
    - Ajustes em portas, coletores ou dashboards documentados previamente
-   - Alterações arquiteturais requerem atualização em `docs/rup/05-entrega-e-implantacao/` e `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/`
+   - Alterações arquiteturais requerem atualização em `docs/<repo-externo>/05-entrega-e-implantacao/` e `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/`
 
 ## Fluxo de atuação
 
 1. **Validação de dependências:** Verificar `package.json`, `tsconfig.json`, bundler
 2. **Checagem de configuração:** Confirmar cadeia `.env` → compose → serviço
-3. **Auditoria estrutural:** Validar conformidade com estrutura RUP
+3. **Auditoria estrutural:** Validar conformidade com a estrutura do projeto de referência
 4. **Verificação de responsabilidade:** Confirmar autoridade técnica para mudanças
-5. **Documentação:** Registrar ajustes em artefatos RUP e changelog
+5. **Documentação:** Registrar ajustes em artefatos do repositório de referência e changelog
 
 ## Saídas esperadas
 
@@ -64,7 +64,7 @@ Este agente garante conformidade com os requisitos gerais do projeto e as respon
 
 ## Auditorias e segurança
 
-- Validação cruzada com especificações técnicas RUP
+- Validação cruzada com especificações técnicas do projeto de referência
 - Verificação de sincronização `.env.example` ↔ `docker-compose.yml`
 - Conformidade com responsabilidades técnicas atribuídas
 - Rastreabilidade via `REQ-###` em mudanças de escopo
@@ -94,7 +94,7 @@ test -f .gitignore && echo "✅ .gitignore presente"
 - [ ] `.gitignore` cobre artefatos gerados (node_modules, dist, build)
 - [ ] `.env.example` sincronizado com `docker-compose.yml`
 - [ ] Cadeia de configuração respeitada (`.env` → compose → app)
-- [ ] Estrutura conforme `docs/rup/03-implementacao/estrutura-de-projeto-spec.md`
+- [ ] Estrutura conforme `docs/<repo-externo>/03-implementacao/estrutura-de-projeto-spec.md`
 - [ ] Alterações dentro da autoridade técnica atribuída
 
 ## Requisitos por tipo de tecnologia
@@ -109,6 +109,6 @@ test -f .gitignore && echo "✅ .gitignore presente"
 ## Referências
 
 - `AGENTS.md` → seções "Requisitos gerais" e "Responsabilidades do projeto"
-- `docs/rup/02-planejamento/especificacao-de-requisitos-spec.md`
-- `docs/rup/03-implementacao/estrutura-de-projeto-spec.md`
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
+- `docs/<repo-externo>/02-planejamento/especificacao-de-requisitos-spec.md`
+- `docs/<repo-externo>/03-implementacao/estrutura-de-projeto-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`

@@ -20,11 +20,11 @@ Este agente assegura que todos os Makefiles sigam as convenções estabelecidas,
 - Boas Práticas para Arquivos Makefile
 - Indentação obrigatória com TAB
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `Makefile` (raiz do repositório)
 - `template-*/Makefile` (subprojetos quando aplicável)
-- `docs/rup/03-implementacao/build-e-automacao-spec.md`
+- `docs/<repo-externo>/03-implementacao/build-e-automacao-spec.md`
 - `AGENTS.md` (seções "Makefile" e "Boas Práticas para Arquivos Makefile")
 
 ## Mandatórios
@@ -155,4 +155,4 @@ build:
 
 - `AGENTS.md` → seções "Makefile" e "Boas Práticas para Arquivos Makefile"
 - `Makefile` → raiz do repositório
-- `docs/rup/03-implementacao/build-e-automacao-spec.md`
+- `docs/<repo-externo>/03-implementacao/build-e-automacao-spec.md`

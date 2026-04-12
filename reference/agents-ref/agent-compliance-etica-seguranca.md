@@ -20,11 +20,11 @@ Este agente assegura que todas as entregas respeitem simultaneamente LGPD, polí
 - Conformidade LGPD (Lei 13.709/2018)
 - Políticas de marketplaces e provedores de IA
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `AGENTS.md` (seção "Padrões Éticos e de Segurança")
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/controle-de-qualidade-spec.md`
-- `docs/rup/00-visao/lgpd-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/controle-de-qualidade-spec.md`
+- `docs/<repo-externo>/00-visao/lgpd-spec.md`
 - Políticas externas: Chrome Web Store, OpenAI, DeepSeek, etc.
 
 ## Mandatórios
@@ -94,7 +94,7 @@ git ls-files | grep -q "^\.env$" && echo "❌ ERRO: .env versionado" || echo "�
 grep -A20 "permissions" extension/public/manifest.json
 
 # Confirmar política de privacidade referenciada
-grep -r "privacy\|lgpd\|dados.*pessoais" docs/rup/00-visao/
+grep -r "privacy\|lgpd\|dados.*pessoais" docs/<repo-externo>/00-visao/
 ```
 
 ## Checklist de compliance
@@ -201,7 +201,7 @@ const db = connectDatabase(env);
 ## Referências
 
 - `AGENTS.md` → seção "Padrões Éticos e de Segurança"
-- `docs/rup/00-visao/lgpd-spec.md`
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/controle-de-qualidade-spec.md`
+- `docs/<repo-externo>/00-visao/lgpd-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/controle-de-qualidade-spec.md`
 - LGPD: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
 - Chrome Web Store Policies: https://developer.chrome.com/docs/webstore/program-policies/

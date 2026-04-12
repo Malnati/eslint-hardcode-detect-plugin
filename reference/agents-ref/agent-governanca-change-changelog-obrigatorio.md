@@ -3,7 +3,7 @@
 ---
 
 name: Governança - CHANGELOG Obrigatório
-description: Garante a política de CHANGELOGs obrigatórios conforme AGENTS.md e documentação RUP
+description: Garante a política de CHANGELOGs obrigatórios conforme AGENTS.md e a documentação do projeto de referência
 version: 1.0.0
 
 ---
@@ -20,17 +20,17 @@ Este agente assegura que toda alteração no repositório seja acompanhada de um
 - Rastreabilidade de mudanças e auditoria pós-entrega
 - Validação pré-execução e pré-commit
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `CHANGELOG/` (diretório raiz)
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
 - `AGENTS.md` (seção "Política de CHANGELOGs obrigatórios")
 
 ## Mandatórios
 
 1. **Executar checklist crítico do AGENTS.md:**
    - `make help` para validar infraestrutura
-   - Confirmar estrutura RUP em `docs/rup/`
+   - Confirmar estrutura documental em `docs/<repo-externo>/`
    - Verificar cabeçalhos `<!-- path -->` em arquivos relevantes
    - Sincronizar `.env.example` com `docker-compose.yml` quando aplicável
 
@@ -50,7 +50,7 @@ Este agente assegura que toda alteração no repositório seja acompanhada de um
 4. **Uso de identificadores:**
    - Citar `REQ-###` quando alterações impactarem requisitos
    - Citar `RISK-###` quando mitigarem ou criarem riscos
-   - Referenciar documentos RUP atualizados
+   - Referenciar documentos do repositório de referência atualizados
 
 ## Fluxo de atuação
 
@@ -63,7 +63,7 @@ Este agente assegura que toda alteração no repositório seja acompanhada de um
 ## Saídas esperadas
 
 - Arquivo `CHANGELOG/YYYYMMDDHHMMSS-*.md` devidamente preenchido
-- Referências cruzadas para planos, políticas e artefatos RUP atualizados
+- Referências cruzadas para planos, políticas e artefatos do repositório de referência atualizados
 - Registro de impactos em relatórios de auditoria quando aplicável
 
 ## Auditorias e segurança
@@ -97,5 +97,5 @@ ls -lt CHANGELOG/ | head -5
 ## Referências
 
 - `AGENTS.md` → seção "Política de CHANGELOGs obrigatórios"
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
 - Exemplos existentes em `CHANGELOG/`

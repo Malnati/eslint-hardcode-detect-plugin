@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Agentes de referência (`reference/agents-ref`)
 
-Arquivos em [`reference/agents-ref/`](../../reference/agents-ref/) são **portfólio genérico** de instruções reutilizáveis. **Não** aplicar caminhos ou políticas de outros projetos (ex.: `docs/rup/`, `shared/constants.*`, `docs/review/`) sem adaptação.
+Arquivos em [`reference/agents-ref/`](../../reference/agents-ref/) são **portfólio genérico** de instruções reutilizáveis. **Não** aplicar caminhos ou políticas de outros projetos (ex.: `docs/<repo-externo>/`, `shared/constants.*`, `docs/review/`) sem adaptação.
 
 **Fonte normativa:** [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md) — tabela de aplicabilidade, substituições para este repo e hierarquia sobre os arquivos de referência.
 

@@ -43,7 +43,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Fase B — Fontes antes de implementar (escopo relevante)
 
-1. Se o prompt citar ou depender de agentes em [`reference/agents-ref/`](../reference/agents-ref/): aplicar [`agent-reference-agents.md`](agent-reference-agents.md) e a skill [`reference-agents-portfolio`](../.cursor/skills/reference-agents-portfolio/SKILL.md) **antes** de copiar caminhos (ex.: `docs/rup/`, `shared/constants.*`) ou políticas RUP.
+1. Se o prompt citar ou depender de agentes em [`reference/agents-ref/`](../reference/agents-ref/): aplicar [`agent-reference-agents.md`](agent-reference-agents.md) e a skill [`reference-agents-portfolio`](../.cursor/skills/reference-agents-portfolio/SKILL.md) **antes** de copiar caminhos (ex.: `docs/<repo-externo>/`, `shared/constants.*`) ou políticas de outro repositório.
 2. Reler trechos aplicáveis de [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) se o pedido puder **expandir escopo** ou **trocar limites** do plugin.
 3. Se a Fase A classificou como ecossistema ESLint/npm/CI relacionada:
    - Listar e abrir arquivos em [`reference/Clippings/`](../reference/Clippings/) (índice em [`reference/Clippings/README.md`](../reference/Clippings/README.md)).

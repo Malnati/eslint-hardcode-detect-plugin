@@ -24,7 +24,7 @@ Este agente assegura que todos os scripts de criação de tabelas e elementos de
 - Limite de 100 registros por arquivo de seed
 - Numeração sequencial com prefixo mínimo de 5 dígitos (00001, 00002, etc.)
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `AGENTS.md` (seção "Convenções de migrações SQL")
 - `db/init/ddl/README.md`

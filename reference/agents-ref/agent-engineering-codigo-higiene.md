@@ -20,10 +20,10 @@ Este agente assegura a remoção obrigatória de código morto após qualquer re
 - Verificação recursiva em todo o projeto
 - Princípios de Clean Code aplicados
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
-- `docs/rup/04-qualidade-testes/qualidade-e-metricas-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/04-qualidade-testes/qualidade-e-metricas-spec.md`
 - `AGENTS.md` (seção "Limpeza de código e remoção de código morto")
 
 ## Mandatórios
@@ -171,6 +171,6 @@ export function Component() {
 ## Referências
 
 - `AGENTS.md` → seção "Limpeza de código e remoção de código morto"
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
-- `docs/rup/04-qualidade-testes/qualidade-e-metricas-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/04-qualidade-testes/qualidade-e-metricas-spec.md`
 - Clean Code (Robert C. Martin) - capítulo sobre simplicidade

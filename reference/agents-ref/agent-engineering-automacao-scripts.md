@@ -202,7 +202,7 @@ services:
 
 - AGENTS.md — política de scripts e automações
 - Makefile — ponto único de orquestração
-- docs/rup/03-implementacao/build-e-automacao-spec.md
+- docs/<repo-externo>/03-implementacao/build-e-automacao-spec.md
 - scripts/ — apenas bootstrapping aprovado
 - Estruturas obrigatórias conforme Docker/NestJS/NPM
 

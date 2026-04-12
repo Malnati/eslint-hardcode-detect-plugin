@@ -16,10 +16,10 @@ Este agente assegura que todos os arquivos do projeto contenham, no topo, um com
 - Validação obrigatória de presença de cabeçalhos
 - Sintaxe por tipo de arquivo
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `AGENTS.md` (seção "Convenções de cabeçalho de caminho" e validação pré-execução)
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`
 
 ## Mandatórios
 
@@ -103,7 +103,7 @@ find . -name "Makefile" -exec head -1 {} \; -print | grep -B1 "^#.*Makefile"
 ### Markdown
 
 ```markdown
-<!-- docs/rup/00-visao/README.md -->
+<!-- docs/<repo-externo>/00-visao/README.md -->
 
 # Visão do Produto
 ```
@@ -197,4 +197,4 @@ echo "✅ Todos os cabeçalhos de caminho presentes"
 
 - `AGENTS.md` → seção "Convenções de cabeçalho de caminho"
 - `AGENTS.md` → checklist "Validação Obrigatória Antes de Execução"
-- `docs/rup/03-implementacao/padroes-de-codigo-spec.md`
+- `docs/<repo-externo>/03-implementacao/padroes-de-codigo-spec.md`

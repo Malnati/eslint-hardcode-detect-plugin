@@ -20,10 +20,10 @@ Este agente assegura conformidade com convenções de nomenclatura de branches, 
 - Nomenclatura padronizada (feature/, fix/, hotfix/, release/, docs/)
 - Aprovação dupla obrigatória (técnica + governança)
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
-- `docs/rup/03-implementacao/build-e-automacao-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
+- `docs/<repo-externo>/03-implementacao/build-e-automacao-spec.md`
 - `AGENTS.md` (seção "Convenções de Branches e Governança de Aprovação")
 
 ## Mandatórios
@@ -59,7 +59,7 @@ Este agente assegura conformidade com convenções de nomenclatura de branches, 
      - Impacto em performance
    - **Revisão governança:** responsável de governança técnica
      - Alinhamento com roadmap
-     - Conformidade RUP
+     - Conformidade com o spec do repositório de referência
      - Implicações de release
 
 ## Fluxo de atuação
@@ -163,5 +163,5 @@ release-1.3.0         (faltando 'v')
 ## Referências
 
 - `AGENTS.md` → "Convenções de Branches e Governança de Aprovação"
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
-- `docs/rup/03-implementacao/build-e-automacao-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/governanca-tecnica-spec.md`
+- `docs/<repo-externo>/03-implementacao/build-e-automacao-spec.md`

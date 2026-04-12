@@ -18,12 +18,12 @@ Este agente garante a integridade da estrutura de diretórios do repositório, v
 
 - Estrutura de diretórios (AGENTS.md)
 - Convenções de configuração
-- Validação pré-execução de estrutura RUP
+- Validação pré-execução de estrutura do projeto de referência
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/03-implementacao/estrutura-de-projeto-spec.md`
-- `docs/rup/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`
+- `docs/<repo-externo>/03-implementacao/estrutura-de-projeto-spec.md`
+- `docs/<repo-externo>/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`
 - `AGENTS.md` (checklist estrutural e convenções)
 
 ## Mandatórios
@@ -32,7 +32,7 @@ Este agente garante a integridade da estrutura de diretórios do repositório, v
    - `Makefile` com targets padronizados
    - `docker-compose.yml` e variantes `.dev.yml`
    - `.env.example` sincronizado com compose
-   - `docs/rup/` (documentação RUP completa)
+   - `docs/<repo-externo>/` (árvore documental completa do repositório de referência)
    - `CHANGELOG/` (histórico de mudanças)
    - `.github/agents/` (micro-agentes)
 
@@ -42,14 +42,14 @@ Este agente garante a integridade da estrutura de diretórios do repositório, v
    - React/Vite: `src/`, `public/`, `vite.config.ts`
 
 3. **Diretórios proibidos:**
-   - `rup/` (usar somente `docs/rup/`)
-   - Documentação fora de `docs/rup/` (exceto `README.md` raiz)
+   - Cópia paralela incorreta da árvore documental (usar somente `docs/<repo-externo>/`)
+   - Documentação fora de `docs/<repo-externo>/` (exceto `README.md` raiz)
    - `.ref/` é somente leitura para referência histórica
 
 4. **Comandos de validação:**
    ```bash
    make help
-   test -f Makefile && test -d docs/rup && test -f .env.example && echo "✅ Estrutura básica OK"
+   test -f Makefile && test -d "docs/<repo-externo>" && test -f .env.example && echo "✅ Estrutura básica OK"
    ```
 
 ## Fluxo de atuação
@@ -57,19 +57,19 @@ Este agente garante a integridade da estrutura de diretórios do repositório, v
 1. **Validação inicial:** Executar `make help` e confirmar estrutura base
 2. **Inspeção:** Verificar conformidade de subprojetos com padrões
 3. **Detecção:** Identificar diretórios/arquivos fora do padrão
-4. **Correção:** Orientar reorganização conforme especificações RUP
+4. **Correção:** Orientar reorganização conforme especificações do projeto de referência
 5. **Registro:** Documentar ajustes no changelog
 
 ## Saídas esperadas
 
 - Confirmação de estrutura conforme (`✅ Estrutura básica OK`)
 - Relatório de não-conformidades detectadas
-- Sugestões de correção alinhadas com RUP
+- Sugestões de correção alinhadas com o spec de estrutura do repositório de referência
 - Changelog documentando reorganizações estruturais
 
 ## Auditorias e segurança
 
-- Verificação cruzada com `docs/rup/03-implementacao/estrutura-de-projeto-spec.md`
+- Verificação cruzada com `docs/<repo-externo>/03-implementacao/estrutura-de-projeto-spec.md`
 - Bloqueio de alterações estruturais não documentadas
 - Rastreabilidade via `REQ-###` em mudanças arquiteturais
 - Preservação de `.ref/` como imutável (somente leitura)
@@ -80,11 +80,11 @@ Este agente garante a integridade da estrutura de diretórios do repositório, v
 # Validar infraestrutura básica
 make help
 
-# Verificar estrutura RUP
-ls -la docs/rup/
+# Verificar árvore documental esperada
+ls -la docs/<repo-externo>/
 
-# Confirmar ausência de diretório rup/ proibido
-! test -d rup && echo "✅ Sem diretório rup/ proibido" || echo "❌ ERRO: diretório rup/ encontrado"
+# Confirmar ausência de cópia paralela incorreta da documentação (ex.: pasta espelho fora do padrão)
+! test -d docs-legacy-mirror && echo "✅ Sem pasta espelho proibida" || echo "❌ ERRO: pasta espelho encontrada"
 
 # Validar sincronização .env.example
 diff <(grep -E '^[A-Z_]+=(.*)$' .env.example | cut -d= -f1 | sort) \
@@ -94,14 +94,14 @@ diff <(grep -E '^[A-Z_]+=(.*)$' .env.example | cut -d= -f1 | sort) \
 ## Checklist de validação
 
 - [ ] `Makefile` existe na raiz com targets obrigatórios
-- [ ] `docs/rup/` existe com estrutura RUP completa
+- [ ] `docs/<repo-externo>/` existe com a árvore documental completa esperada
 - [ ] `.env.example` sincronizado com `docker-compose.yml`
-- [ ] Nenhum diretório `rup/` ou `req/` incorreto existe
+- [ ] Nenhum diretório espelho incorreto da documentação ou `req/` fora do padrão existe
 - [ ] Subprojetos seguem convenções (Dockerfile, Makefile, README)
 - [ ] `.ref/` preservado como somente leitura
 
 ## Referências
 
 - `AGENTS.md` → seções "Estrutura de diretórios" e "Convenções de configuração"
-- `docs/rup/03-implementacao/estrutura-de-projeto-spec.md`
-- `docs/rup/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`
+- `docs/<repo-externo>/03-implementacao/estrutura-de-projeto-spec.md`
+- `docs/<repo-externo>/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`

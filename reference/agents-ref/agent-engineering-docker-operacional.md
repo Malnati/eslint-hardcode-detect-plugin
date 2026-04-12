@@ -20,11 +20,11 @@ Este agente assegura que todos os manifestos Docker (Dockerfile, docker-compose.
 - Separação de responsabilidades Dockerfile vs docker-compose
 - Cadeia obrigatória de configuração
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
 - `docker-compose.yml` (raiz)
 - `template-*/Dockerfile` (subprojetos)
-- `docs/rup/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`
+- `docs/<repo-externo>/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`
 - `AGENTS.md` (seções "Docker" e "Convenções de configuração")
 
 ## Mandatórios
@@ -133,4 +133,4 @@ services:
 
 - `AGENTS.md` → seções "Docker" e "Convenções de configuração"
 - `docker-compose.yml` → manifesto raiz
-- `docs/rup/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`
+- `docs/<repo-externo>/05-entrega-e-implantacao/ambientes-e-configuracoes-spec.md`

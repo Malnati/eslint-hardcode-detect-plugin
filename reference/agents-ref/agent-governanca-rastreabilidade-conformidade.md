@@ -20,13 +20,13 @@ Este agente unifica os controles de rastreabilidade de execuções de agentes IA
 - Conformidade com Requisitos, Riscos e Relatórios
 - Auditoria de agentes IA e metadados de execução
 
-## Artefatos base RUP
+## Artefatos base (projeto de referência)
 
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
-- `docs/rup/02-planejamento/requisitos-spec.md`
-- `docs/rup/02-planejamento/riscos-e-mitigacoes-spec.md`
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/controle-de-qualidade-spec.md`
-- `docs/rup/02-planejamento/capacidade-diagnostico-colaborativo-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
+- `docs/<repo-externo>/02-planejamento/requisitos-spec.md`
+- `docs/<repo-externo>/02-planejamento/riscos-e-mitigacoes-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/controle-de-qualidade-spec.md`
+- `docs/<repo-externo>/02-planejamento/capacidade-diagnostico-colaborativo-spec.md`
 
 ## Mandatórios
 
@@ -44,9 +44,9 @@ Este agente unifica os controles de rastreabilidade de execuções de agentes IA
    - Vinculação com `REQ-###` e `RISK-###` quando aplicável
 
 3. **Conformidade com requisitos e riscos:**
-   - Atualizar `docs/rup/02-planejamento/requisitos-spec.md` ao adicionar/modificar `REQ-###`
-   - Revisar `docs/rup/02-planejamento/riscos-e-mitigacoes-spec.md` ao criar/mitigar riscos
-   - Sincronizar com `docs/rup/02-planejamento/capacidade-diagnostico-colaborativo-spec.md` (REQ-031 a REQ-045)
+   - Atualizar `docs/<repo-externo>/02-planejamento/requisitos-spec.md` ao adicionar/modificar `REQ-###`
+   - Revisar `docs/<repo-externo>/02-planejamento/riscos-e-mitigacoes-spec.md` ao criar/mitigar riscos
+   - Sincronizar com `docs/<repo-externo>/02-planejamento/capacidade-diagnostico-colaborativo-spec.md` (REQ-031 a REQ-045)
 
 4. **Auditoria periódica:**
    - Automatizada via `audit.yml` (GitHub Actions)
@@ -65,7 +65,7 @@ Este agente unifica os controles de rastreabilidade de execuções de agentes IA
 
 - Entrada em `docs/reports/audit-report.md` com todos os metadados
 - Requisitos e riscos atualizados quando aplicável
-- Conformidade validada com catálogo RUP
+- Conformidade validada com o catálogo de requisitos do projeto de referência
 - Changelog documentando execuções e revisões
 
 ## Auditorias e segurança
@@ -85,10 +85,10 @@ test -d docs/reports && echo "✅ Diretório de relatórios existe"
 tail -50 docs/reports/audit-report.md
 
 # Validar sincronização requisitos ↔ riscos
-grep -r "REQ-" docs/rup/02-planejamento/requisitos-spec.md | \
+grep -r "REQ-" docs/<repo-externo>/02-planejamento/requisitos-spec.md | \
   while read req; do
     id=$(echo "$req" | grep -oE 'REQ-[0-9]+')
-    grep -q "$id" docs/rup/02-planejamento/riscos-e-mitigacoes-spec.md || \
+    grep -q "$id" docs/<repo-externo>/02-planejamento/riscos-e-mitigacoes-spec.md || \
       echo "⚠️  $id sem risco vinculado"
   done
 
@@ -129,7 +129,7 @@ Este agente serve tanto para governança técnica quanto para pipelines de relea
 ## Referências
 
 - `AGENTS.md` → seções "Rastreabilidade e Auditoria de Execuções" e "Conformidade com Requisitos, Riscos e Relatórios"
-- `docs/rup/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
-- `docs/rup/02-planejamento/requisitos-spec.md`
-- `docs/rup/02-planejamento/riscos-e-mitigacoes-spec.md`
-- `docs/rup/02-planejamento/capacidade-diagnostico-colaborativo-spec.md`
+- `docs/<repo-externo>/06-governanca-tecnica-e-controle-de-qualidade/auditoria-e-rastreabilidade-spec.md`
+- `docs/<repo-externo>/02-planejamento/requisitos-spec.md`
+- `docs/<repo-externo>/02-planejamento/riscos-e-mitigacoes-spec.md`
+- `docs/<repo-externo>/02-planejamento/capacidade-diagnostico-colaborativo-spec.md`
