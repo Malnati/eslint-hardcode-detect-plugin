@@ -75,11 +75,17 @@ gantt
 
 ## 6. Matriz e2e × Docker Compose
 
+Normas de perfis e comandos: [`specs/agent-docker-compose.md`](../../specs/agent-docker-compose.md). Massa Nest e runner [`nest-workspace.e2e.mjs`](../../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs): [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md). Os comandos Compose executam-se **na raiz do clone**; a fumaça Nest **não** corre isoladamente no diretório do fixture — cobre-se **via** `npm test -w eslint-plugin-hardcode-detect` (e2e do plugin com `cwd` no workspace Nest, conforme o spec).
+
 | Massa / projeto | Trilha | Perfil Compose | Serviços / volumes | Comando ou job CI |
 |-----------------|--------|----------------|--------------------|-------------------|
-| `packages/e2e-fixture-nest` | pré-T1 | `e2e` | Serviço `e2e`: montagem `.:/workspace`, `npm ci` + `npm test -w eslint-plugin-hardcode-detect` | `docker compose --profile e2e run --rm e2e` |
-| Monorepo raiz | pré-T1 | `prod` | Serviço `prod`: paridade “lint + test” local | `docker compose --profile prod run --rm prod` |
+| Monorepo raiz; massa Nest via e2e do plugin | pré-T1 | `e2e` | Serviço `e2e`: montagem `.:/workspace`, `npm ci` + `npm test -w eslint-plugin-hardcode-detect`; variáveis (`ESLINT_USE_FLAT_CONFIG`, `NODE_ENV`, …) em [`specs/agent-docker-compose.md`](../../specs/agent-docker-compose.md) e [`docker-compose.yml`](../../docker-compose.yml) | `docker compose --profile e2e run --rm e2e` |
+| Monorepo raiz | pré-T1 | `prod` | Serviço `prod`: `npm ci`, `npm run lint`, `npm test -w eslint-plugin-hardcode-detect`; `CI=true` e demais detalhes no spec | `docker compose --profile prod run --rm prod` |
 | *Futuro* `e2e-fixture-consumer-minimal` | T1 (M1) | *planejado* `e2e-npm-matrix` | A definir no M1 | Job futuro em `.github/workflows/` |
+
+### Handoff baseline e2e → T1
+
+A M0 entrega referências estáveis a `npm test` do plugin (incluindo fumaça Nest), massa em `packages/e2e-fixture-nest` e comandos Compose reprodutíveis na tabela acima. O canal **T1** (matriz npm / consumidor) continua no marco M1; a entrada do M1 **consome** este baseline — ver secção 2 de [`docs/distribution-milestones/m1-channel-t1-t2.md`](../m1-channel-t1-t2.md).
 
 ---
 

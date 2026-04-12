@@ -51,7 +51,9 @@ docker compose --profile prod run --rm prod
 | [`.cursor/rules/docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc) | Escopo ao editar ficheiros Docker |
 | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) | Ponte GitHub Copilot |
 | [`docs/architecture.md`](../docs/architecture.md) | Visão de arquitetura incluindo Docker |
+| [`docs/distribution-milestones/m0-baseline.md`](../docs/distribution-milestones/m0-baseline.md) secção 6 | Matriz e2e×Compose (planeamento M0) e handoff baseline e2e → T1 |
 
 ## Versão do documento
 
+- **1.0.1** — remissão à matriz M0 (secção 6) para contexto de marcos e T1.
 - **1.0.0** — contrato inicial: perfis dev/e2e/prod e imagem ops-eslint.

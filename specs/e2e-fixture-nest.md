@@ -62,6 +62,16 @@ npm test --workspace eslint-plugin-hardcode-detect
 
 O primeiro comando instala dependências de **todos** os workspaces sob `packages/`, incluindo `e2e-fixture-nest`. O segundo corre o `test` desse pacote, que executa `npm run build` e depois RuleTester e e2e (entre eles [`nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs)).
 
+### Alternativa via Docker Compose (perfil `e2e`)
+
+Na raiz do clone, o mesmo `npm test -w eslint-plugin-hardcode-detect` (incluindo a fumaça Nest) pode ser reproduzido em contentor:
+
+```bash
+docker compose --profile e2e run --rm e2e
+```
+
+Perfis `dev` / `prod`, comandos completos e variáveis de ambiente (`ESLINT_USE_FLAT_CONFIG`, `NODE_ENV` no serviço `e2e`, `CI` no `prod`, etc.): [`specs/agent-docker-compose.md`](agent-docker-compose.md). Matriz e2e×Compose no planeamento M0: [`docs/distribution-milestones/m0-baseline.md`](../docs/distribution-milestones/m0-baseline.md) secção 6.
+
 ## Ordem de execução (detalhe)
 
 1. `npm install` na raiz do monorepo (instala o workspace Nest e o resto de `packages/*`).
@@ -77,5 +87,6 @@ O primeiro comando instala dependências de **todos** os workspaces sob `package
 
 ## Versão do documento
 
+- **1.1.1** — Alternativa com Docker Compose (perfil `e2e`), remissões a `agent-docker-compose` e matriz M0 secção 6.
 - **1.1.0** — Comandos explícitos da raiz (`npm install` / `npm test` e variante `--workspace`), relação API `ESLint` + `cwd` do fixture, nota sobre build incluído no `npm test`, pré-requisito Node `>=22`.
 - **1.0.0** — Introdução do workspace Nest e massa `fixture-hardcodes` com contagens fixas no e2e.
