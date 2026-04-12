@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "lint": "npm run lint -w eslint-plugin-hardcode-detect",
-    "test": "npm test -w eslint-plugin-hardcode-detect"
+    "test": "npm test -w eslint-plugin-hardcode-detect",
+    "test:docs-m0": "node scripts/validate-m0-plan-coverage.mjs"
   }
 }

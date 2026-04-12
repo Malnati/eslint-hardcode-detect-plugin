@@ -31,6 +31,15 @@ Camada A em [`../../m0-baseline.md`](../../m0-baseline.md) (secção 7).
 - **Bloqueia:** rastreabilidade do layout para agentes e humanos.
 - **Depende de:** conclusão das alterações estruturais em `docs/` que o marco introduzir (reexecutar ou ajustar após novas pastas).
 
+## Micro-tarefas
+
+Execução fragmentada: [`micro/README.md`](micro/README.md).
+
+| micro_id | Ficheiro |
+|----------|----------|
+| M0-A3-01 | [`micro/M0-A3-01-diff-arvore-distribution-milestones.md`](micro/M0-A3-01-diff-arvore-distribution-milestones.md) |
+| M0-A3-02 | [`micro/M0-A3-02-atualizar-repository-tree.md`](micro/M0-A3-02-atualizar-repository-tree.md) |
+
 ## Paths principais
 
 - `docs/repository-tree.md`

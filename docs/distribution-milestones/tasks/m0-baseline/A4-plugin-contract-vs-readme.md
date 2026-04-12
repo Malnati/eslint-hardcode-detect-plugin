@@ -33,6 +33,17 @@ Camada A em [`../../m0-baseline.md`](../../m0-baseline.md) (secção 7).
 - **Bloqueia:** confiança na linha de base T1 sobre o que o plugin garante publicamente.
 - **Depende de:** — (opcionalmente A1–A2 para alinhamento de índices).
 
+## Micro-tarefas
+
+Execução fragmentada; evidência em [`evidence/A4-plugin-contract-gap-matrix.md`](evidence/A4-plugin-contract-gap-matrix.md). Índice: [`micro/README.md`](micro/README.md).
+
+| micro_id | Ficheiro |
+|----------|----------|
+| M0-A4-01 | [`micro/M0-A4-01-checklist-plugin-contract.md`](micro/M0-A4-01-checklist-plugin-contract.md) |
+| M0-A4-02 | [`micro/M0-A4-02-paridade-readme-pacote.md`](micro/M0-A4-02-paridade-readme-pacote.md) |
+| M0-A4-03 | [`micro/M0-A4-03-contrato-vs-docs-rules.md`](micro/M0-A4-03-contrato-vs-docs-rules.md) |
+| M0-A4-04 | [`micro/M0-A4-04-artefacto-gap-matrix.md`](micro/M0-A4-04-artefacto-gap-matrix.md) |
+
 ## Paths principais
 
 - `specs/plugin-contract.md`

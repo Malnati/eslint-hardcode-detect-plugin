@@ -2,6 +2,10 @@
 
 Marco: [`../../m0-baseline.md`](../../m0-baseline.md) · **GitHub:** `macro-baseline`
 
+**Micro-tarefas** (escopo reduzido, 15 passos): [`micro/README.md`](micro/README.md).
+
+**Cobertura do plano (§4, §7, §10):** [`coverage-manifest.json`](coverage-manifest.json) — validação: `npm run test:docs-m0` na raiz do repositório.
+
 ## Grafo de dependências (Camada A)
 
 ```text

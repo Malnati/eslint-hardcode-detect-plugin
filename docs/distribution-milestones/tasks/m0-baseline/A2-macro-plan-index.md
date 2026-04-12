@@ -31,6 +31,16 @@ Camada A em [`../../m0-baseline.md`](../../m0-baseline.md) (secção 7).
 - **Bloqueia:** fecho da linha 1 do timelining (junto com A1).
 - **Depende de:** A1.
 
+## Micro-tarefas
+
+Execução fragmentada: [`micro/README.md`](micro/README.md).
+
+| micro_id | Ficheiro |
+|----------|----------|
+| M0-A2-01 | [`micro/M0-A2-01-macro-plan-indice-readme.md`](micro/M0-A2-01-macro-plan-indice-readme.md) |
+| M0-A2-02 | [`micro/M0-A2-02-cadeia-t1-t6-m3.md`](micro/M0-A2-02-cadeia-t1-t6-m3.md) |
+| M0-A2-03 | [`micro/M0-A2-03-bump-versao-macro-plan.md`](micro/M0-A2-03-bump-versao-macro-plan.md) |
+
 ## Paths principais
 
 - `docs/distribution-channels-macro-plan.md`

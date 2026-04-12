@@ -9,6 +9,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
+├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura plano M0)
+│   └── validate-m0-plan-coverage.mjs
 ├── docker-compose.yml        # Perfis dev / e2e / prod (ver specs/agent-docker-compose.md)
 ├── .dockerignore             # Contexto de build da imagem ops-eslint
 ├── .docker/
@@ -58,7 +60,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
-│   │       └── m0-baseline/      # Tarefas M0 (A1–A5); ver README.md na pasta
+│   │       └── m0-baseline/      # Tarefas M0 (A1–A5); micro/; evidence/; coverage-manifest.json
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md

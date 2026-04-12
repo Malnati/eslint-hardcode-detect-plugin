@@ -33,6 +33,16 @@ Secção 4 (timelining, ordem 3) e Camada A em [`../../m0-baseline.md`](../../m0
 - **Bloqueia:** handoff «baseline e2e» para T1.
 - **Depende de:** A4 (ordem 3 do timelining depende de 2).
 
+## Micro-tarefas
+
+Execução fragmentada: [`micro/README.md`](micro/README.md).
+
+| micro_id | Ficheiro |
+|----------|----------|
+| M0-A5-01 | [`micro/M0-A5-01-spec-e2e-fixture-nest.md`](micro/M0-A5-01-spec-e2e-fixture-nest.md) |
+| M0-A5-02 | [`micro/M0-A5-02-readme-plugin-e2e-nest.md`](micro/M0-A5-02-readme-plugin-e2e-nest.md) |
+| M0-A5-03 | [`micro/M0-A5-03-matriz-compose-agent-docker.md`](micro/M0-A5-03-matriz-compose-agent-docker.md) |
+
 ## Paths principais
 
 - `specs/e2e-fixture-nest.md`
