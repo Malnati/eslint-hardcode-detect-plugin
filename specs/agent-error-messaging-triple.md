@@ -103,6 +103,8 @@ Comparar os três totais entre si e com **N**. O Nível 3 permanece checklist ma
 
 **Extensão futura:** automatizar no CI só quando existir artefacto estável (ex. relatório em ficheiro) gerado pelo fluxo.
 
+**Automação local (Cursor):** em workspaces de confiança, o repositório pode incluir o hook de projeto `.cursor/hooks/hcd-err-triple-audit.sh` (registado em `.cursor/hooks.json`), que acumula ficheiros editados pelo Agent, valida Níveis 1–2 ao `stop` e regista resultados em `.log/hooks/YYYYMMDD-hcd-err-audit.md` (directório ignorado pelo Git).
+
 ## Casos limite
 
 | Situação | O que fazer |
@@ -118,5 +120,6 @@ A regra planejada `standardize-error-messages` (ver [`specs/plugin-contract.md`]
 
 ## Versão do documento
 
+- **2.1.0** — remissão ao hook de projeto Cursor (auditoria local Níveis 1–2; `.cursor/hooks/`).
 - **2.0.0** — prefixos canónicos obrigatórios; unidade de falha; níveis de conformidade 1–3; receita de auditoria; exemplo mínimo.
 - **1.0.0** — contrato inicial: três blocos, casos limite, remissões.

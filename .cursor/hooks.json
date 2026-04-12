@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/hcd-err-triple-audit.sh",
+        "timeout": 30,
+        "matcher": "Write"
+      }
+    ],
+    "stop": [
+      {
+        "command": ".cursor/hooks/hcd-err-triple-audit.sh",
+        "timeout": 30,
+        "loop_limit": 3
+      }
+    ],
+    "subagentStop": [
+      {
+        "command": ".cursor/hooks/hcd-err-triple-audit.sh",
+        "timeout": 30
+      }
+    ]
+  }
+}
