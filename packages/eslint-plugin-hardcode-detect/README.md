@@ -45,11 +45,11 @@ O preset `hardcode-detect/recommended` aplica apenas `no-hardcoded-strings`. A r
 
 - `npm run build` — compila `src/` para `dist/`.
 - `npm run lint` — ESLint no código do plugin (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`, `typescript-eslint`).
-- `npm test` — compila e executa testes com `RuleTester` + `node:test` + fumaça e2e (`e2e/hello-world.e2e.mjs`, `e2e/nest-workspace.e2e.mjs`).
+- `npm test` — compila e executa testes com `RuleTester` + `node:test` + fumaça e2e ([`e2e/hello-world.e2e.mjs`](e2e/hello-world.e2e.mjs), [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs); ver secção seguinte).
 
 ### Fumaça e2e (Nest)
 
-O teste `nest-workspace.e2e.mjs` usa `cwd` no workspace [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) e linta `src/fixture-hardcodes/**/*.ts` com o plugin carregado a partir de `dist/`. Contagens fixas e normas: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
+Alinhado a [`specs/plugin-contract.md`](../../specs/plugin-contract.md) (Compatibilidade / fumaça e2e), a **massa NestJS** é o workspace auxiliar [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) (aplicação Nest real). O runner está em [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs) — caminho à raiz do repositório: `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`. Esse teste instancia a API `ESLint` com `cwd` no workspace Nest, chama `lintFiles` em `src/fixture-hardcodes/**/*.ts` com o plugin a partir de `dist/` e fixa contagens de `hardcode-detect/hello-world` e `hardcode-detect/no-hardcoded-strings`. Normas e tabela de contagens: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
 
 Requer **Node.js ≥ 22** (alinhado ao CI e ao campo `engines` do pacote).
 
