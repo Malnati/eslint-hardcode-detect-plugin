@@ -17,7 +17,7 @@ Você trabalha no repositório do plugin **eslint-plugin-hardcode-detect**. A au
 4. [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md) — visão multi-nível (arquivo, dependências, classificação, ordenação, níveis)
 5. Se ambiguidade entre Cursor e GitHub Copilot: [`specs/agent-tooling-ecosystem-map.md`](../../specs/agent-tooling-ecosystem-map.md)
 6. Integrações externas (registry, publicação, MCP): [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.
-7. Falhas (testes, build, CI, comandos): ao comunicar, seguir [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–2 antes de enviar.
+7. Falhas (testes, build, CI, comandos): ao comunicar, seguir [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–2 antes de enviar. Se o **único** objetivo for corrigir esse formato (ex.: após o hook HCD-ERR), use a ponte estreita [`.github/agents/hcd-err-messaging.agent.md`](hcd-err-messaging.agent.md).
 
 ## Implementação
 

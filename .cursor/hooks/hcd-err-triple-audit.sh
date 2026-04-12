@@ -21,7 +21,36 @@ PREFIX_OPS = "[HCD-ERR-OPS]"
 PREFIXES = (PREFIX_SENIOR, PREFIX_FIX, PREFIX_OPS)
 
 SPEC_REL = "specs/agent-error-messaging-triple.md"
+AGENT_REMEDIATION = ".github/agents/hcd-err-messaging.agent.md"
 MAX_FOLLOWUP = 3  # manter alinhado a loop_limit em .cursor/hooks.json (stop)
+
+# Documentos que apenas definem/citam os literais; não aplicar gate mecânico (evita ruído).
+AUDIT_EXCLUDE_PATHS = frozenset(
+    {
+        "specs/agent-error-messaging-triple.md",
+    }
+)
+
+# Se nenhum padrão coincidir, não há “relato de falha” → não auditar contagens HCD-ERR neste ficheiro.
+FAILURE_SIGNAL_PATTERNS = tuple(
+    re.compile(p, re.MULTILINE | re.IGNORECASE)
+    for p in (
+        r"\[HCD-ERR-(?:SENIOR|FIX|OPS)\]",
+        r"npm ERR!",
+        r"AssertionError",
+        r"^\s*Error:\s",
+        r"exit\s+code",
+        r"exit\s+[1-9]\d*",
+        r"tests?\s+failed",
+        r"test suite failed",
+        r"\bFAILED\b",
+    )
+)
+
+
+def has_failure_signal(text: str) -> bool:
+    return any(p.search(text) for p in FAILURE_SIGNAL_PATTERNS)
+
 
 ALLOWED_SUFFIXES = (
     ".ts",
@@ -84,11 +113,17 @@ def prefix_lines(text: str) -> list[tuple[int, str]]:
     return out
 
 
-def audit_text(text: str) -> dict:
+def audit_text_after_gate(text: str) -> dict:
+    """N1/N2 quando o gate indicou relato de falha. Se há sinal mas zero prefixos, falha N1."""
     c = count_prefixes(text)
     total = sum(c)
     if total == 0:
-        return {"outcome": "skip", "counts": c, "reason": "nenhum prefixo HCD-ERR"}
+        return {
+            "outcome": "fail",
+            "level": 1,
+            "counts": c,
+            "reason": "Nível 1: sinal de falha sem qualquer prefixo HCD-ERR",
+        }
     if 0 in c:
         return {"outcome": "fail", "level": 1, "counts": c, "reason": "Nível 1: falta pelo menos um prefixo"}
     if c[0] != c[1] or c[1] != c[2]:
@@ -157,26 +192,6 @@ def main() -> None:
         print("{}", flush=True)
         return
 
-    if event == "subagentStop":
-        sub_id = data.get("subagent_id") or ""
-        task = (data.get("task") or "")[:500]
-        modified = data.get("modified_files") or []
-        atp = data.get("agent_transcript_path") or ""
-        status = data.get("status") or ""
-        body = (
-            "\n".join(meta_lines)
-            + "\n\n"
-            + f"- `subagent_id`: `{sub_id}`\n"
-            + f"- `status`: `{status}`\n"
-            + f"- `task`: {json.dumps(task, ensure_ascii=False)}\n"
-            + f"- `modified_files`: `{modified}`\n"
-            + f"- `agent_transcript_path`: `{atp}`\n"
-        )
-        day = datetime.now(timezone.utc).strftime("%Y%m%d")
-        append_daily_log(log_dir / f"{day}-hcd-err-audit.md", "subagentStop (rastreio)", body)
-        print("{}", flush=True)
-        return
-
     if event == "stop":
         loop_count = int(data.get("loop_count") or 0)
         lines: list[str] = []
@@ -195,17 +210,23 @@ def main() -> None:
             except OSError as e:
                 results.append(f"- `{rel}`: erro ao ler ({e})")
                 continue
-            res = audit_text(text)
+            if rel in AUDIT_EXCLUDE_PATHS:
+                results.append(
+                    f"- `{rel}`: **skip** — exclusão normativa (lista `AUDIT_EXCLUDE_PATHS` no hook)"
+                )
+                continue
+            if not has_failure_signal(text):
+                results.append(
+                    f"- `{rel}`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)"
+                )
+                continue
+            res = audit_text_after_gate(text)
             c = res["counts"]
             pl = prefix_lines(text)
             refs = ", ".join(f"L{ln}" for ln, _ in pl[:12])
             if len(pl) > 12:
                 refs += ", …"
-            if res["outcome"] == "skip":
-                results.append(
-                    f"- `{rel}`: **skip** — {res['reason']}"
-                )
-            elif res["outcome"] == "ok":
+            if res["outcome"] == "ok":
                 results.append(
                     f"- `{rel}`: **OK** — contagens SENIOR/FIX/OPS = {c[0]}/{c[1]}/{c[2]}; linhas com prefixo: {refs or '—'}"
                 )
@@ -228,12 +249,13 @@ def main() -> None:
 
         if violations and loop_count < MAX_FOLLOWUP:
             msg = (
-                "Auditoria automática (hook `.cursor/hooks/hcd-err-triple-audit.sh`): os prefixos "
-                "[HCD-ERR-SENIOR], [HCD-ERR-FIX], [HCD-ERR-OPS] estão desbalanceados ou em falta nos ficheiros: "
+                "Correção obrigatória (hook `.cursor/hooks/hcd-err-triple-audit.sh`): ajustar os ficheiros "
                 + ", ".join(f"`{v}`" for v in violations)
-                + ". Corrija conforme `"
+                + " para conformidade com `"
                 + SPEC_REL
-                + "` (Níveis 1–2: presença dos três prefixos e contagens iguais por unidade de falha)."
+                + "` (Níveis 1–2). Siga o protocolo estreito em `"
+                + AGENT_REMEDIATION
+                + "`. **Não** use a ferramenta Task nem sub-agentes genéricos para isto — edite diretamente nesta conversa."
             )
             print(json.dumps({"followup_message": msg}, ensure_ascii=False), flush=True)
         else:

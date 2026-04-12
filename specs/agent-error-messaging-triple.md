@@ -103,7 +103,7 @@ Comparar os três totais entre si e com **N**. O Nível 3 permanece checklist ma
 
 **Extensão futura:** automatizar no CI só quando existir artefacto estável (ex. relatório em ficheiro) gerado pelo fluxo.
 
-**Automação local (Cursor):** em workspaces de confiança, o repositório pode incluir o hook de projeto `.cursor/hooks/hcd-err-triple-audit.sh` (registado em `.cursor/hooks.json`), que acumula ficheiros editados pelo Agent, valida Níveis 1–2 ao `stop` e regista resultados em `.log/hooks/YYYYMMDD-hcd-err-audit.md` (directório ignorado pelo Git).
+**Automação local (Cursor):** em workspaces de confiança, o repositório inclui o hook `.cursor/hooks/hcd-err-triple-audit.sh` (registado em `.cursor/hooks.json`). O script **acumula** ficheiros editados pelo Agent (ferramenta Write), aplica um **gate por regex** (só audita contagens quando há sinal de relato de falha ou mensagem de erro típica; lista configurável no script), **exclui** mecanicamente `specs/agent-error-messaging-triple.md` para não exigir equilíbrio sobre o próprio contrato, valida Níveis 1–2 ao `stop`, regista em `.log/hooks/YYYYMMDD-hcd-err-audit.md` (gitignored) e pode emitir `followup_message` **sem** usar o evento `subagentStop` nem Task. A remediação referencia [`.github/agents/hcd-err-messaging.agent.md`](../.github/agents/hcd-err-messaging.agent.md) (ponte estreita; o Cursor não inicia outro agente por API — a mensagem recontinua o agente principal na mesma conversa).
 
 ## Casos limite
 
@@ -120,6 +120,7 @@ A regra planejada `standardize-error-messages` (ver [`specs/plugin-contract.md`]
 
 ## Versão do documento
 
+- **2.1.2** — automação local: gate regex, exclusão do spec, remissão ao agente `hcd-err-messaging`; sem hook em `subagentStop`.
 - **2.1.1** — exemplos mínimos na secção «Regras» com os três prefixos, para contagens iguais em auditorias mecânicas (Nível 2).
 - **2.1.0** — remissão ao hook de projeto Cursor (auditoria local Níveis 1–2; `.cursor/hooks/`).
 - **2.0.0** — prefixos canónicos obrigatórios; unidade de falha; níveis de conformidade 1–3; receita de auditoria; exemplo mínimo.

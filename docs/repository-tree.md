@@ -43,7 +43,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── reference-agents-portfolio/
 │       └── reference-clippings-workflow/
 ├── .github/
-│   ├── agents/               # Agentes GitHub Copilot (pontes: plugin, docker-tooling)
+│   ├── agents/               # Agentes GitHub Copilot (pontes: eslint-hardcode-plugin, docker-tooling, hcd-err-messaging)
 │   ├── instructions/         # Instruções Copilot (applyTo: pacote do plugin, docker-compose)
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
 │   └── workflows/            # CI (ex.: ci.yml)
