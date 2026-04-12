@@ -6,6 +6,14 @@ O pacote [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/) é um **wo
 
 Não é pacote publicável no npm; o código publicável do plugin continua **somente** em [`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect/).
 
+## Pré-requisitos
+
+- **Node.js:** o pacote [`eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect/) declara `engines.node` `>=22`; use uma versão compatível ao reproduzir testes localmente.
+
+## Relação entre o plugin e o fixture (e2e)
+
+O teste de fumaça **não** é executado a partir do diretório do Nest nem via `npm test` do workspace `e2e-fixture-nest`. O ficheiro [`packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs) corre no pacote do plugin (Node.js `node --test`), instancia a API `ESLint` com `cwd` resolvido para [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/) e chama `lintFiles` com o glob `src/fixture-hardcodes/**/*.ts`. Assim o ESLint carrega o [`eslint.config.mjs`](../packages/e2e-fixture-nest/eslint.config.mjs) do fixture e o plugin em `dist/` do pacote irmão.
+
 ## Hierarquia de referências (conflitos)
 
 Em caso de conflito entre documentação genérica e este repositório:
@@ -36,11 +44,29 @@ Para o glob `src/fixture-hardcodes/**/*.ts`, o teste e2e fixa:
 
 Qualquer alteração em `src/fixture-hardcodes/**` deve atualizar estes números em [`nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs) e nesta tabela.
 
-## Ordem de execução
+## Reprodução a partir da raiz do repositório
 
-1. `npm install` na raiz do monorepo (instala o workspace Nest).
-2. Build do plugin: `npm run build` no pacote `eslint-plugin-hardcode-detect` (o `npm test` do pacote já executa o build antes dos testes).
-3. Testes: `npm test` no pacote do plugin (inclui e2e).
+Na raiz do clone, [`package.json`](../package.json) define `workspaces: ["packages/*"]` e um script `test` que delega ao pacote do plugin. Fluxo mínimo:
+
+```bash
+npm install
+npm test
+```
+
+Equivalente explícito ao workspace do plugin (nome do pacote em `package.json`: `eslint-plugin-hardcode-detect`):
+
+```bash
+npm install
+npm test --workspace eslint-plugin-hardcode-detect
+```
+
+O primeiro comando instala dependências de **todos** os workspaces sob `packages/`, incluindo `e2e-fixture-nest`. O segundo corre o `test` desse pacote, que executa `npm run build` e depois RuleTester e e2e (entre eles [`nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs)).
+
+## Ordem de execução (detalhe)
+
+1. `npm install` na raiz do monorepo (instala o workspace Nest e o resto de `packages/*`).
+2. Build do plugin: `npm run build` no pacote `eslint-plugin-hardcode-detect` — **redundante** se for logo a correr `npm test` nesse pacote ou `npm test` na raiz, porque o script `test` do plugin já faz `npm run build` antes dos testes.
+3. Testes: `npm test` na raiz **ou** no pacote `eslint-plugin-hardcode-detect` (inclui e2e Nest).
 
 ## Regras para agentes
 
@@ -51,4 +77,5 @@ Qualquer alteração em `src/fixture-hardcodes/**` deve atualizar estes números
 
 ## Versão do documento
 
+- **1.1.0** — Comandos explícitos da raiz (`npm install` / `npm test` e variante `--workspace`), relação API `ESLint` + `cwd` do fixture, nota sobre build incluído no `npm test`, pré-requisito Node `>=22`.
 - **1.0.0** — Introdução do workspace Nest e massa `fixture-hardcodes` com contagens fixas no e2e.
