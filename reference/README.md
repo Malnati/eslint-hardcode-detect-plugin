@@ -2,7 +2,7 @@
 
 Esta pasta contém material de **referência apenas**: não é código-fonte do produto publicável nem dependência de build.
 
-- [`agents-ref/`](agents-ref/) — **portfólio MBRA** de instruções para agentes (governança, engenharia, compliance). Neste repositório, aplicar apenas conforme [`specs/agent-mbra-reference-agents.md`](../specs/agent-mbra-reference-agents.md) (não substitui `AGENTS.md` nem política RUP local).
+- [`agents-ref/`](agents-ref/) — **portfólio de referência** de instruções para agentes (governança, engenharia, compliance). Neste repositório, aplicar apenas conforme [`specs/agent-reference-agents.md`](../specs/agent-reference-agents.md) (não substitui `AGENTS.md` nem política RUP local).
 - [`Clippings/`](Clippings/) — **trechos da documentação oficial** (ESLint, npm, Node, etc.) recortados para consulta por agentes e humanos; ver [`Clippings/README.md`](Clippings/README.md) e o contrato em [`specs/agent-reference-clippings.md`](../specs/agent-reference-clippings.md).
 - [`legacy-snapshot/`](legacy-snapshot/) — cópia organizada dos artefatos iniciais (ESLint local, composite action de exemplo, script `assets/run.sh`).
 - [`hardcoded-check.yml`](hardcoded-check.yml) — workflow GitHub Actions de exemplo (`workflow_call`); referência apenas; não ativo na raiz nem instalado em `.github/workflows/` aqui.

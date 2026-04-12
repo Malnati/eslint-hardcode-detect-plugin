@@ -18,7 +18,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
 │   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
 │   │   ├── agent-ia-governance.mdc
-│   │   ├── agent-mbra-reference.mdc
+│   │   ├── agent-reference-agents.mdc
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
@@ -31,7 +31,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── eslint-plugin-workflow/
 │       ├── git-agent-workflow/
 │       ├── github-markdown-docs/
-│       ├── mbra-reference-agents/
+│       ├── reference-agents-portfolio/
 │       └── reference-clippings-workflow/
 ├── .github/
 │   ├── agents/               # Agentes GitHub Copilot (pontes: plugin, docker-tooling)
@@ -60,7 +60,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md
-│   ├── agents-ref/           # Portfólio MBRA de instruções para agentes (mapear via specs/agent-mbra-reference-agents.md)
+│   ├── agents-ref/           # Portfólio de referência de instruções para agentes (mapear via specs/agent-reference-agents.md)
 │   ├── Clippings/            # Trechos da documentação oficial (ESLint, npm, etc.)
 │   │   ├── README.md
 │   │   ├── dev/
@@ -75,7 +75,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md
-    ├── agent-mbra-reference-agents.md
+    ├── agent-reference-agents.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md
     ├── agent-tooling-ecosystem-map.md  # Copilot/Awesome vs Cursor; precedência; pontes .github/

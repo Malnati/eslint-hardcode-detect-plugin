@@ -15,7 +15,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 1. [`AGENTS.md`](../AGENTS.md) — prioridades e mapa do repositório.
 2. [`agent-ia-governance.md`](agent-ia-governance.md) — checklists e mapa de rules/skills/comandos para agentes de IA.
-2b. [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
+2b. [`agent-reference-agents.md`](agent-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
 2c. [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) — quando houver ambiguidade entre Cursor, GitHub Copilot ou coleções estilo Awesome: equivalências e precedência.
 3. Este arquivo — abertura e fechamento da sessão (fases A–D).
 4. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
@@ -42,7 +42,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 ## Fase B — Fontes antes de implementar (escopo relevante)
 
-1. Se o prompt citar ou depender de agentes em [`reference/agents-ref/`](../reference/agents-ref/): aplicar [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) e a skill [`mbra-reference-agents`](../.cursor/skills/mbra-reference-agents/SKILL.md) **antes** de copiar caminhos (ex.: `docs/rup/`, `shared/constants.*`) ou políticas RUP.
+1. Se o prompt citar ou depender de agentes em [`reference/agents-ref/`](../reference/agents-ref/): aplicar [`agent-reference-agents.md`](agent-reference-agents.md) e a skill [`reference-agents-portfolio`](../.cursor/skills/reference-agents-portfolio/SKILL.md) **antes** de copiar caminhos (ex.: `docs/rup/`, `shared/constants.*`) ou políticas RUP.
 2. Reler trechos aplicáveis de [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md) se o pedido puder **expandir escopo** ou **trocar limites** do plugin.
 3. Se a Fase A classificou como ecossistema ESLint/npm/CI relacionada:
    - Listar e abrir arquivos em [`reference/Clippings/`](../reference/Clippings/) (índice em [`reference/Clippings/README.md`](../reference/Clippings/README.md)).
@@ -74,7 +74,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Documentação e grafo |
 | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
-| [`.cursor/skills/mbra-reference-agents/SKILL.md`](../.cursor/skills/mbra-reference-agents/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
+| [`.cursor/skills/reference-agents-portfolio/SKILL.md`](../.cursor/skills/reference-agents-portfolio/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose e imagem `.docker/` |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
@@ -88,7 +88,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 
 - **1.7.0** — Escopo e tabela de skills: Docker Compose, [`specs/agent-docker-compose.md`](agent-docker-compose.md), pontes Copilot `docker-tooling` e `docker-compose.instructions`.
 - **1.6.0** — Hierarquia: remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) para Copilot/Cursor e coleções externas.
-- **1.5.0** — Fase B e hierarquia: remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) quando `reference/agents-ref/` for relevante; tabela de skills com `mbra-reference-agents`.
+- **1.5.0** — Fase B e hierarquia: remissão a [`agent-reference-agents.md`](agent-reference-agents.md) quando `reference/agents-ref/` for relevante; tabela de skills com `reference-agents-portfolio`.
 - **1.4.0** — escopo e2e: workspace Nest auxiliar e remissão a `specs/e2e-fixture-nest.md`; Fase C: exceção explícita para `packages/e2e-fixture-nest`.
 - **1.3.0** — tabela de escopo: linha para testes e2e e fixtures do plugin.
 - **1.2.0** — Fase D: remissão explícita a mensagens Conventional Commits em [`agent-git-workflow.md`](agent-git-workflow.md).

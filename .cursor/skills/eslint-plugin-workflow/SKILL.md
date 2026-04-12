@@ -12,7 +12,7 @@ Use quando for criar regras, opções ou testes para [`packages/eslint-plugin-ha
 
 ## Antes de codar
 
-0. Confirme escopo e fontes com [`specs/agent-session-workflow.md`](../../../specs/agent-session-workflow.md) (Fases A–B); para ESLint, a consulta a Clippings é obrigatória antes de implementar. Se o pedido invocar ideias de [`reference/agents-ref/`](../../../reference/agents-ref/) (ex.: “agente hardcoded” MBRA), cruze com [`specs/agent-mbra-reference-agents.md`](../../../specs/agent-mbra-reference-agents.md) e a skill [`mbra-reference-agents`](../mbra-reference-agents/SKILL.md).
+0. Confirme escopo e fontes com [`specs/agent-session-workflow.md`](../../../specs/agent-session-workflow.md) (Fases A–B); para ESLint, a consulta a Clippings é obrigatória antes de implementar. Se o pedido invocar ideias de [`reference/agents-ref/`](../../../reference/agents-ref/) (ex.: agente hardcoded genérico), cruze com [`specs/agent-reference-agents.md`](../../../specs/agent-reference-agents.md) e a skill [`reference-agents-portfolio`](../reference-agents-portfolio/SKILL.md).
 1. Leia [`specs/plugin-contract.md`](../../../specs/plugin-contract.md).
 2. Confirme que a mudança está refletida no spec (edite o spec primeiro se o contrato mudar).
 3. Consulte [`reference/Clippings/`](../../../reference/Clippings/) e siga [`specs/agent-reference-clippings.md`](../../../specs/agent-reference-clippings.md); use a skill [`reference-clippings-workflow`](../reference-clippings-workflow/SKILL.md) quando precisar sincronizar recortes da documentação oficial.

@@ -22,7 +22,7 @@ Este documento alinha **conceitos e pastas** usados em coleções estilo [Awesom
 Quando várias fontes se sobrepuserem, aplicar nesta ordem (da mais específica à mais geral):
 
 1. **Pedido explícito do utilizador no prompt atual** (objetivo, restrições, ficheiros mencionados), desde que não peça violar políticas fixas do repo (segurança, licença, contrato público do plugin).
-2. **[`AGENTS.md`](../AGENTS.md)** e **specs** listados na sua hierarquia, em especial [`agent-session-workflow.md`](agent-session-workflow.md), [`plugin-contract.md`](plugin-contract.md), [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) quando `reference/agents-ref/` for relevante.
+2. **[`AGENTS.md`](../AGENTS.md)** e **specs** listados na sua hierarquia, em especial [`agent-session-workflow.md`](agent-session-workflow.md), [`plugin-contract.md`](plugin-contract.md), [`agent-reference-agents.md`](agent-reference-agents.md) quando `reference/agents-ref/` for relevante.
 3. **Regras Cursor** em [`.cursor/rules/`](../.cursor/rules/) (incluindo `alwaysApply`).
 4. **Instruções genéricas** de outras sessões ou regras de utilizador que não sejam específicas deste repositório.
 
@@ -31,7 +31,7 @@ Esta ordem **prevalece** sobre instruções genéricas que desaconselhem, por ex
 ## Anti-padrões
 
 - **Copiar em massa** ficheiros de coleções Awesome Copilot (agents, prompts, skills) para dentro de `docs/`, `specs/` ou raiz **sem** ancoragem em [`AGENTS.md`](../AGENTS.md) e `specs/`, sem atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) e sem um commit/PR claro.
-- **Tratar** `reference/agents-ref/` ou repositórios MBRA/Copilot como fonte normativa direta: usar sempre [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) e substituições de caminhos.
+- **Tratar** `reference/agents-ref/` ou coleções externas/Copilot como fonte normativa direta: usar sempre [`agent-reference-agents.md`](agent-reference-agents.md) e substituições de caminhos.
 - **Duplicar** parágrafos longos de `specs/plugin-contract.md` ou `specs/vision-hardcode-plugin.md` dentro de `.github/agents/` ou `.github/instructions/`: preferir links relativos e um checklist curto.
 
 ## Relação com a visão do produto

@@ -1,6 +1,6 @@
-# Contrato: agentes de referência MBRA (`reference/agents-ref`)
+# Contrato: agentes de referência (`reference/agents-ref`)
 
-Este documento define como os arquivos em [`reference/agents-ref/`](../reference/agents-ref/) — portfólio genérico de instruções para agentes (MBRA) — se relacionam com **este** repositório. Em caso de conflito entre um agente de referência e [`AGENTS.md`](../AGENTS.md), os **specs deste repo** ou [`docs/documentation-policy.md`](../docs/documentation-policy.md), **prevalecem** as fontes normativas locais.
+Este documento define como os arquivos em [`reference/agents-ref/`](../reference/agents-ref/) — portfólio genérico de instruções para agentes — se relacionam com **este** repositório. Em caso de conflito entre um agente de referência e [`AGENTS.md`](../AGENTS.md), os **specs deste repo** ou [`docs/documentation-policy.md`](../docs/documentation-policy.md), **prevalecem** as fontes normativas locais.
 
 ## Objetivo
 
@@ -18,16 +18,16 @@ Este documento define como os arquivos em [`reference/agents-ref/`](../reference
 | 4 | **Este documento** | Ponte com `reference/agents-ref/` |
 | 5 | Arquivos individuais em `reference/agents-ref/` | Inspiração; aplicar apenas conforme mapeamento abaixo |
 
-## Substituições normativas (MBRA → este repositório)
+## Substituições normativas (portfólio de referência → este repositório)
 
-| Conceito nos agentes MBRA | Neste repositório usar |
-|---------------------------|-------------------------|
+| Conceito nos agentes de referência | Neste repositório usar |
+|-----------------------------------|-------------------------|
 | Documentação técnica só em `docs/rup/` com pares `.md`/`-spec.md` | [`docs/`](../docs/) (política em [`docs/documentation-policy.md`](../docs/documentation-policy.md)), [`specs/`](./), [`README.md`](../README.md), [`CONTRIBUTING.md`](../CONTRIBUTING.md); **não** existe árvore RUP |
 | `AGENTS.md` + exigência explícita de `docs/rup/00`–`07` | [`AGENTS.md`](../AGENTS.md) e [`specs/`](./) apenas |
 | Constantes compartilhadas em `shared/constants.*` | Módulos dentro de [`packages/eslint-plugin-hardcode-detect/`](../packages/eslint-plugin-hardcode-detect/) (ex.: `src/`), com imports **relativos** conforme [`AGENTS.md`](../AGENTS.md); nomes de pastas seguem o pacote, não um `shared/` obrigatório |
 | Relatórios de hardcoded em `docs/review/NNNN-report-hard-coded.md` | **Não** é padrão aqui. Para auditorias: descrever achados na **PR**, em **issue** ou em doc em [`docs/`](../docs/)/`specs/` se o mantenedor pedir; evitar criar árvores novas sem atualizar [`docs/repository-tree.md`](../docs/repository-tree.md) |
 | Detecção genérica de hardcoded “no produto” | Para **código do plugin**: seguir [`specs/plugin-contract.md`](plugin-contract.md), [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) e a skill [`eslint-plugin-workflow`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) |
-| CHANGELOG obrigatório por mudança (formato MBRA) | Alinhar a [`specs/agent-git-workflow.md`](agent-git-workflow.md) e convenções do projeto; [`CHANGELOG.md`](../CHANGELOG.md) existe na raiz — atualizar quando releases/entradas forem esperadas pelo fluxo do repo |
+| CHANGELOG obrigatório por mudança (formato externo rígido) | Alinhar a [`specs/agent-git-workflow.md`](agent-git-workflow.md) e convenções do projeto; [`CHANGELOG.md`](../CHANGELOG.md) existe na raiz — atualizar quando releases/entradas forem esperadas pelo fluxo do repo |
 
 ## Tabela de aplicabilidade por arquivo em `reference/agents-ref/`
 
@@ -35,8 +35,8 @@ Legenda: **Sim** = adotar o espírito e procedimentos adaptados; **Parcial** = s
 
 | Arquivo | Aplicabilidade | Notas |
 |---------|----------------|-------|
-| `agent-compliance-etica-seguranca.md` | Parcial | Não expor segredos; respeitar LGPD em exemplos; não commitar credenciais. Sem obrigação de fluxos MBRA de marketplace além do que o repo já define |
-| `agent-engineering-automacao-scripts.md` | Parcial | Scripts em CI (`.github/`) e `package.json`; não exigir abertura de issues “MBRA” automaticamente |
+| `agent-compliance-etica-seguranca.md` | Parcial | Não expor segredos; respeitar LGPD em exemplos; não commitar credenciais. Sem obrigação de fluxos de marketplace além do que o repo já define |
+| `agent-engineering-automacao-scripts.md` | Parcial | Scripts em CI (`.github/`) e `package.json`; não exigir abertura automática de issues genéricas |
 | `agent-engineering-cabecalho-caminho.md` | Não | Este repo **não** exige cabeçalho de caminho em todo arquivo; seguir estilo existente em `packages/` |
 | `agent-engineering-codigo-convencoes.md` | Parcial | Convenções do pacote + ESLint; literais: ver contrato do plugin, não só “extrair constante” |
 | `agent-engineering-codigo-higiene.md` | Parcial | Remover código morto com cuidado; não expandir escopo além do pedido |
@@ -47,14 +47,14 @@ Legenda: **Sim** = adotar o espírito e procedimentos adaptados; **Parcial** = s
 | `agent-engineering-makefile-boas-praticas.md` | Não | Não há Makefile na raiz como padrão |
 | `agent-engineering-no-aesthetic-changes.md` | Sim | Mudanças só funcionais; sem reformatação ou comentários não solicitados; usar ferramentas de lint/format do pacote |
 | `agent-engineering-reuso-dry.md` | Parcial | DRY no código do plugin; não duplicar regras/helpers sem necessidade |
-| `agent-governanca-change-changelog-obrigatorio.md` | Parcial | Seguir expectativas de changelog/release do repo, não template MBRA rígido |
+| `agent-governanca-change-changelog-obrigatorio.md` | Parcial | Seguir expectativas de changelog/release do repo, não template externo rígido |
 | `agent-governanca-documentacao-politica-documentacao.md` | Não (substituído) | Política local: [`docs/documentation-policy.md`](../docs/documentation-policy.md), [`agent-documentation-workflow.md`](agent-documentation-workflow.md) |
-| `agent-governanca-estrutura-diretorios.md` | Parcial | Preservar [`repo-layout`](../.cursor/rules/repo-layout.mdc) e [`AGENTS.md`](../AGENTS.md); não impor árvore MBRA |
+| `agent-governanca-estrutura-diretorios.md` | Parcial | Preservar [`repo-layout`](../.cursor/rules/repo-layout.mdc) e [`AGENTS.md`](../AGENTS.md); não impor árvore de outro projeto |
 | `agent-governanca-planos-mudanca-padrao.md` | Parcial | Planos grandes: preferir issues/PR; specs em `specs/` quando for contrato |
 | `agent-governanca-rastreabilidade-conformidade.md` | Parcial | Commits Conventional Commits; ligar mudanças a `plugin-contract` quando comportamento mudar |
 | `agent-governanca-requisitos-gerais.md` | Parcial | Requisitos gerais = contratos em `specs/` + limites em [`limitations-and-scope.md`](../docs/limitations-and-scope.md) |
 | `agent-governanca-requisitos-registro-novos.md` | Parcial | “Novos requisitos” → atualizar specs e contrato antes do código quando aplicável |
-| `agent-release-branches-governanca.md` | Parcial | Seguir branch atual e políticas Git do repo; sem impor fluxo MBRA de aprovações |
+| `agent-release-branches-governanca.md` | Parcial | Seguir branch atual e políticas Git do repo; sem impor fluxo externo de aprovações |
 | `my-agent.md` | Não (substituído) | O “my agent” deste repo é a pilha [`AGENTS.md`](../AGENTS.md) + `specs/`, não `docs/rup/` |
 
 ## Checklist para o agente de IA
@@ -64,8 +64,9 @@ Ao usar ideias de `reference/agents-ref/`:
 - [ ] Confirmar na tabela de aplicabilidade se o arquivo se aplica ou é **Não** / **Parcial**.
 - [ ] Aplicar **substituições normativas** (RUP → `docs/`/`specs/`, constantes → pacote npm, etc.).
 - [ ] Para trabalho no plugin: [`eslint-plugin-workflow`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) + [`plugin-contract.md`](plugin-contract.md).
-- [ ] Não criar `docs/rup/`, `shared/constants.*` ou `docs/review/` como obrigação MBRA sem decisão do mantenedor e atualização do grafo.
+- [ ] Não criar `docs/rup/`, `shared/constants.*` ou `docs/review/` como obrigação herdada do portfólio de referência sem decisão do mantenedor e atualização do grafo.
 
 ## Versão do documento
 
-- **1.0.0** — contrato inicial: mapeamento MBRA ↔ repositório eslint-plugin-hardcode-detect.
+- **1.1.0** — nomenclatura neutra; remoção de menções a entidade externa no texto normativo.
+- **1.0.0** — contrato inicial: mapeamento portfólio de referência ↔ repositório eslint-plugin-hardcode-detect.

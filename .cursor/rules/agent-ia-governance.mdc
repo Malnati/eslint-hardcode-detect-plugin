@@ -11,4 +11,4 @@ Contrato completo e checklists: [`specs/agent-ia-governance.md`](../../specs/age
 
 **Fechamento:** manter [`docs/repository-tree.md`](../../docs/repository-tree.md) alinhado à árvore real; cumprir [`specs/agent-documentation-workflow.md`](../../specs/agent-documentation-workflow.md); na resposta, listar docs alterados ou declarar que não houve necessidade; se houver mudanças locais, [`specs/agent-git-workflow.md`](../../specs/agent-git-workflow.md).
 
-**Skills:** `reference-clippings-workflow`, `eslint-plugin-workflow`, `github-markdown-docs`, `git-agent-workflow`, `mbra-reference-agents`, `docker-compose-workflow` (em [`.cursor/skills/`](../../.cursor/skills/)); se `reference/agents-ref/` for relevante, leia [`specs/agent-mbra-reference-agents.md`](../../specs/agent-mbra-reference-agents.md).
+**Skills:** `reference-clippings-workflow`, `eslint-plugin-workflow`, `github-markdown-docs`, `git-agent-workflow`, `reference-agents-portfolio`, `docker-compose-workflow` (em [`.cursor/skills/`](../../.cursor/skills/)); se `reference/agents-ref/` for relevante, leia [`specs/agent-reference-agents.md`](../../specs/agent-reference-agents.md).

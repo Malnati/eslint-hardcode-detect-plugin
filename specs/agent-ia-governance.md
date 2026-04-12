@@ -16,7 +16,7 @@ Garantir que:
 | Ordem | Fonte | Uso |
 |-------|--------|-----|
 | 1 | [`AGENTS.md`](../AGENTS.md) | Prioridades e mapa do repositório |
-| 1b | [`specs/agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) | Quando houver remissão a [`reference/agents-ref/`](../reference/agents-ref/): aplicabilidade MBRA e substituições de caminhos |
+| 1b | [`specs/agent-reference-agents.md`](agent-reference-agents.md) | Quando houver remissão a [`reference/agents-ref/`](../reference/agents-ref/): aplicabilidade do portfólio e substituições de caminhos |
 | 1c | [`specs/agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) | Copilot / Awesome vs Cursor; pontes `.github/`; precedência de instruções |
 | 1d | [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Docker Compose (perfis dev/e2e/prod), `.docker/Dockerfile` e relação com `ops-eslint` |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
@@ -30,7 +30,7 @@ Garantir que:
 ## Checklist — abertura do prompt (antes de implementar)
 
 - [ ] **Objetivo e escopo** extraídos do pedido; classificação conforme tabela em [`agent-session-workflow.md`](agent-session-workflow.md) (ESLint/plugin/npm/CI vs só docs vs estrutura).
-- [ ] Se o pedido citar ou depender de arquivos em [`reference/agents-ref/`](../reference/agents-ref/): seguir [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) (não aplicar RUP/`shared/`/`docs/review/` como obrigatórios sem adaptação).
+- [ ] Se o pedido citar ou depender de arquivos em [`reference/agents-ref/`](../reference/agents-ref/): seguir [`agent-reference-agents.md`](agent-reference-agents.md) (não aplicar RUP/`shared/`/`docs/review/` como obrigatórios sem adaptação).
 - [ ] Se o escopo for **ESLint / npm do pacote / CI relacionada** (inclui **e2e** do plugin, fixtures e API `ESLint`): **listar e abrir** recortes relevantes em [`reference/Clippings/`](../reference/Clippings/) (índice: [`reference/Clippings/README.md`](../reference/Clippings/README.md)); se faltar ou estiver desatualizado, consultar fonte **oficial** e **registrar** clipping conforme [`agent-reference-clippings.md`](agent-reference-clippings.md).
 - [ ] Se o pedido puder **alterar limites ou escopo do produto**: reler [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md).
 - [ ] Se houver mudança de **comportamento público**: [`specs/plugin-contract.md`](plugin-contract.md) atualizado **antes** ou **junto** do código.
@@ -59,14 +59,14 @@ Garantir que:
 | Regra Cursor | [`.cursor/rules/documentation.mdc`](../.cursor/rules/documentation.mdc) | Política Markdown |
 | Regra Cursor | [`.cursor/rules/git-versioning.mdc`](../.cursor/rules/git-versioning.mdc) | Git ao concluir |
 | Regra Cursor | [`.cursor/rules/repo-layout.mdc`](../.cursor/rules/repo-layout.mdc) | Layout do repositório |
-| Regra Cursor | [`.cursor/rules/agent-mbra-reference.mdc`](../.cursor/rules/agent-mbra-reference.mdc) | Ponte para [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md) |
+| Regra Cursor | [`.cursor/rules/agent-reference-agents.mdc`](../.cursor/rules/agent-reference-agents.mdc) | Ponte para [`agent-reference-agents.md`](agent-reference-agents.md) |
 | Regra Cursor | [`.cursor/rules/e2e-nest-fixture.mdc`](../.cursor/rules/e2e-nest-fixture.mdc) | Massa e2e Nest (globs do fixture e e2e) |
 | Regra Cursor | [`.cursor/rules/docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc) | Docker Compose e `.docker/` (globs) |
 | Skill | [`.cursor/skills/reference-clippings-workflow/SKILL.md`](../.cursor/skills/reference-clippings-workflow/SKILL.md) | Manutenção de Clippings |
 | Skill | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | Skill | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Docs e grafo |
 | Skill | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
-| Skill | [`.cursor/skills/mbra-reference-agents/SKILL.md`](../.cursor/skills/mbra-reference-agents/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
+| Skill | [`.cursor/skills/reference-agents-portfolio/SKILL.md`](../.cursor/skills/reference-agents-portfolio/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | Skill | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose, `.docker/Dockerfile` e perfis dev/e2e/prod |
 | Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist (ex.: `/fechar-e2e-nest-fixture`) |
 | Ponte Copilot (opcional) | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Agente GitHub Copilot: remete a `AGENTS.md` e `specs/` |
@@ -86,7 +86,7 @@ Garantir que:
 
 - **1.6.0** — mapa de artefatos: [`agent-docker-compose.md`](agent-docker-compose.md), rule [`docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc), skill `docker-compose-workflow`, pontes Copilot `docker-tooling` e instruções `docker-compose`.
 - **1.5.0** — remissão a [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md); mapa de artefatos: pontes `.github/agents/` e `.github/instructions/`.
-- **1.4.0** — remissão a [`agent-mbra-reference-agents.md`](agent-mbra-reference-agents.md), rule e skill associados; checklist de abertura para `reference/agents-ref/`.
+- **1.4.0** — remissão a [`agent-reference-agents.md`](agent-reference-agents.md), rule e skill associados; checklist de abertura para `reference/agents-ref/`.
 - **1.3.0** — hierarquia: `specs/e2e-fixture-nest.md` para massa Nest e fumaça e2e.
 - **1.2.0** — checklist de abertura: escopo explícito para testes e2e e fixtures do plugin.
 - **1.1.0** — fechamento e boas práticas: mensagens de commit Conventional Commits conforme [`agent-git-workflow.md`](agent-git-workflow.md).
