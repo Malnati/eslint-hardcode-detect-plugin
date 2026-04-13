@@ -36,3 +36,14 @@ Sub-micro-tarefa `M1-A2-05` concluída.
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+Papel **Analista de testes** — matriz técnica RuleTester/e2e e critérios de evidência para a política suggest vs fix (A2):
+
+- **Artefacto:** [`../A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](../A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md).
+- **Verificações:** tabela P-SVF-* → S-R1-* → asserção dominante (`output` / `suggestions` / só `errors`); caso segredo (`SECRET_LIKE_LITERAL`) e papel dos e2e como fumaça (não matriz linha a linha); critérios de evidência para M1-A2-08 e modelo HCD-ERR-*; alinhamento ao signoff [`../A2-development-reviewer-suggest-vs-fix-policy-signoff.md`](../A2-development-reviewer-suggest-vs-fix-policy-signoff.md) e a [`../A2-architect-suggest-vs-fix-policy-ci-environment.md`](../A2-architect-suggest-vs-fix-policy-ci-environment.md); remissão à matriz S-R1 em [`../A1-test-analyst-ruletester-r1-matrix-evidence.md`](../A1-test-analyst-ruletester-r1-matrix-evidence.md).
+- **Rastreabilidade no doc da regra:** secção *Rastreabilidade de negócio* em [`packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`](../../../../../packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md) com remissão ao artefacto acima.
+- **Handoff:** [`micro/M1-A2-07-papel-revisor-testes-suggest-vs-fix-policy.md`](M1-A2-07-papel-revisor-testes-suggest-vs-fix-policy.md).
+
+Estado: **concluído**.
+
