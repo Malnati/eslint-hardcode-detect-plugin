@@ -36,3 +36,14 @@ Sub-micro-tarefa `M1-A2-07` concluída.
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+Execução formal do gate e registo de evidências (M1-A2-08):
+
+- **Artefacto:** [`../A2-test-runner-suggest-vs-fix-policy-evidence.md`](../A2-test-runner-suggest-vs-fix-policy-evidence.md).
+- **Verificações:** `npm test -w eslint-plugin-hardcode-detect` com código de saída **0**; Node >=22; cadeia build + RuleTester (`tests/index.test.mjs`, `tests/no-hardcoded-strings-r1.test.mjs`, prova P-SVF / S-R1-*) + e2e conforme script do pacote; alinhado ao parecer M1-A2-07 e à matriz do analista A2.
+- **Limites de papel:** sem edição de `packages/eslint-plugin-hardcode-detect/src/` neste passo.
+- **Validação:** critério global de A2 para o gate de testes cumprido após esta execução (comportamento `suggest` vs `fix` reproduzível na suite e na documentação normativa).
+
+Estado: **concluído**.
+
