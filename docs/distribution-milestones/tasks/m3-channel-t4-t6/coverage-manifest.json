@@ -1,0 +1,100 @@
+{
+  "manifest_version": "1",
+  "milestone": "M3",
+  "plan_file": "docs/distribution-milestones/m3-channel-t4-t6.md",
+  "requirements": [
+    {
+      "id": "m3-sec4-order-1",
+      "description": "Timelining §4 onda 1: guia IDE + settings",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-01-inventario-ide-extensao-requisitos-t1.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-02-passos-eslint-config-workspace-settings.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md"
+      ]
+    },
+    {
+      "id": "m3-sec4-order-2",
+      "description": "Timelining §4 onda 2 (preparação): backlog T6 Husky/Lefthook",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md"
+      ]
+    },
+    {
+      "id": "m3-sec4-order-3",
+      "description": "Timelining §4 onda 3: fechar T6 após M4",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-01-criterios-readme-fixture-git-hooks.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-03-matriz-sec6-e2e-compose-m3.md"
+      ]
+    },
+    {
+      "id": "m3-sec6-matrix",
+      "description": "Matriz §6 M3 e2e × Docker Compose",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-03-matriz-sec6-e2e-compose-m3.md"
+      ]
+    },
+    {
+      "id": "m3-sec7-A1",
+      "description": "Camada A §7 — A1: guia IDE",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-01-inventario-ide-extensao-requisitos-t1.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-02-passos-eslint-config-workspace-settings.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md"
+      ]
+    },
+    {
+      "id": "m3-sec7-A2",
+      "description": "Camada A §7 — A2: esboço política hooks",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md"
+      ]
+    },
+    {
+      "id": "m3-sec7-A3",
+      "description": "Camada A §7 — A3: fixture opcional pós-M4",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-01-criterios-readme-fixture-git-hooks.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-03-matriz-sec6-e2e-compose-m3.md"
+      ]
+    },
+    {
+      "id": "m3-sec2-handoff",
+      "description": "Handoff §2: T3 entrada; saída para T5 e T6",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md"
+      ]
+    },
+    {
+      "id": "m3-sec10-done",
+      "description": "Done §10: T4 alinhado ao CI; T6 só com M4 quando aplicável",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md"
+      ]
+    },
+    {
+      "id": "m3-sec10-risks",
+      "description": "Riscos §10: T6 antes de T5; hooks em CI",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md",
+        "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md"
+      ]
+    }
+  ],
+  "external_gates": [
+    {
+      "id": "m3-sec10-docs-milestones",
+      "description": "Manifest M3 e índices de milestones válidos na branch",
+      "documented_in": "docs/distribution-milestones/m3-channel-t4-t6.md",
+      "ci_command": "npm run test:docs-milestones && npm run lint && npm test -w eslint-plugin-hardcode-detect"
+    }
+  ]
+}

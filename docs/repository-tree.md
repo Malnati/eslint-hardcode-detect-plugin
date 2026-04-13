@@ -65,7 +65,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m3-channel-t4-t6.md
 │   │   ├── m4-channel-t5-agents.md
 │   │   ├── m5-release-candidate.md
-│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0–M2)
+│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0–M3)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
 │   │       ├── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
@@ -103,6 +103,15 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           └── micro/
 │   │               ├── README.md
 │   │               └── M2-A*-*.md            # 9 micro-tarefas (M2-A1-01 … M2-A3-03)
+│   │       └── m3-channel-t4-t6/   # Tarefas M3 Camada A (T4 IDE + preparação T6 + micro + manifesto)
+│   │           ├── README.md
+│   │           ├── A1-guia-ide-eslint-flat-config.md
+│   │           ├── A2-esboco-politica-git-hooks.md
+│   │           ├── A3-fixture-e2e-git-hooks-sample-pos-m4.md
+│   │           ├── coverage-manifest.json
+│   │           └── micro/
+│   │               ├── README.md
+│   │               └── M3-A*-*.md            # 8 micro-tarefas (M3-A1-01 … M3-A3-03)
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
