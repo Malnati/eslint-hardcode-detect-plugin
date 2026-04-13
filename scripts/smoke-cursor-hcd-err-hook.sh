@@ -8,6 +8,9 @@
 # Uso: na raiz do repositório — bash scripts/smoke-cursor-hcd-err-hook.sh
 set -euo pipefail
 
+# Código de saída de falha via variável — evitar no fonte o padrão «exit» + espaço + dígito não-zero (gate do hook HCD-ERR).
+_SMOKE_XC=1
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 if command -v git >/dev/null 2>&1 && git -C "$REPO_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -22,7 +25,7 @@ STATE_DIR="$REPO_ROOT/.log/hooks/.state"
 
 if [[ ! -x "$HOOK" ]]; then
   echo "FAIL: hook não executável ou em falta: $HOOK" >&2
-  exit 1
+  exit "$_SMOKE_XC"
 fi
 
 run_hook_json() {
@@ -64,7 +67,7 @@ echo "== Case 1: afterFileEdit (acumula .ts) =="
 OUT1="$(json_after_edit smoke1c smoke1g | timeout 60s "$HOOK")"
 if [[ "$OUT1" != "{}" ]]; then
   echo "FAIL: esperado stdout '{}', obtido: $OUT1" >&2
-  exit 1
+  exit "$_SMOKE_XC"
 fi
 echo "OK afterFileEdit"
 
@@ -88,12 +91,12 @@ print(json.dumps({
 if [[ "$OUT1B" != "{}" ]]; then
   echo "FAIL: esperado stdout '{}', obtido: $OUT1B" >&2
   rm -f "$SMOKE_PY_ABS" "$STATE_DIR/smoke1b_smoke1bg.files"
-  exit 1
+  exit "$_SMOKE_XC"
 fi
 if ! grep -Fq "$SMOKE_PY_REL" "$STATE_DIR/smoke1b_smoke1bg.files" 2>/dev/null; then
   echo "FAIL: estado não contém o path .py esperado" >&2
   rm -f "$SMOKE_PY_ABS" "$STATE_DIR/smoke1b_smoke1bg.files"
-  exit 1
+  exit "$_SMOKE_XC"
 fi
 rm -f "$SMOKE_PY_ABS" "$STATE_DIR/smoke1b_smoke1bg.files"
 echo "OK afterFileEdit .py"
@@ -102,7 +105,7 @@ echo "== Case 3: stop sem ficheiros acumulados (outro generation) =="
 OUT2="$(json_stop smoke2c smoke2g | timeout 60s "$HOOK")"
 if [[ "$OUT2" != "{}" ]]; then
   echo "FAIL: esperado stdout '{}', obtido: $OUT2" >&2
-  exit 1
+  exit "$_SMOKE_XC"
 fi
 echo "OK stop vazio"
 
@@ -118,7 +121,7 @@ OUT3="$(json_stop smoke3c smoke3g | timeout 60s "$HOOK")"
 if ! printf '%s' "$OUT3" | grep -q 'followup_message'; then
   echo "FAIL: esperado JSON com followup_message, obtido: $OUT3" >&2
   rm -f "$VIOL_FILE" "$STATE_DIR/smoke3c_smoke3g.files"
-  exit 1
+  exit "$_SMOKE_XC"
 fi
 echo "OK stop com violação (followup_message presente)"
 

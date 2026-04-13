@@ -32,6 +32,8 @@ MAX_FOLLOWUP = 3  # manter alinhado a loop_limit em .cursor/hooks.json (stop)
 AUDIT_EXCLUDE_PATHS = frozenset(
     {
         "specs/agent-error-messaging-triple.md",
+        # Massa negativa intencional para o smoke (copiada para .log/hooks/_smoke-hcd-err-violation.md em runtime).
+        "scripts/fixtures/smoke-hcd-err-violation-body.md",
     }
 )
 
