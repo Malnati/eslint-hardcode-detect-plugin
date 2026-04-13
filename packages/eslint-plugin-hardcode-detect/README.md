@@ -41,6 +41,10 @@ O preset `hardcode-detect/recommended` aplica apenas `no-hardcoded-strings`. A r
 | `no-hardcoded-strings` | Desencoraja literais de string com comprimento ≥ 2; ver [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md). |
 | `standardize-error-messages` | Contrato e página de referência; ainda não exportada no pacote; ver [`docs/rules/standardize-error-messages.md`](docs/rules/standardize-error-messages.md). |
 
+Com `remediationMode: "r1"` em `no-hardcoded-strings`, a regra pode aplicar remediação **R1** (constantes no topo do mesmo ficheiro). A política de **autofix** (`eslint --fix` / `output` no RuleTester) face a **apenas sugestões** (`suggestions` sem `output`) e aos casos só com erro está documentada em [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md), com matriz P-SVF-* e cenários S-R1-* espelhados na suite [`tests/no-hardcoded-strings-r1.test.mjs`](tests/no-hardcoded-strings-r1.test.mjs).
+
+Para validar o pacote a partir da raiz do monorepo: `npm test -w eslint-plugin-hardcode-detect`.
+
 ## Desenvolvimento
 
 - `npm run build` — compila `src/` para `dist/`.

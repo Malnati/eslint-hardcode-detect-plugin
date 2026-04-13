@@ -36,3 +36,9 @@ Sub-micro-tarefa `M1-A2-03` concluída.
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+- [`packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`](../../../../../packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md) — semântica RuleTester (`output` / `suggestions` / só `errors`), matriz P-SVF-* → outcome com ligação a S-R1-*, `envDefaultLiteralPolicy`, caminhos arriscados, segredos, prova em `tests/no-hardcoded-strings-r1.test.mjs`, comando `npm test -w eslint-plugin-hardcode-detect`, links aos entregáveis A2 e A3.
+- [`packages/eslint-plugin-hardcode-detect/README.md`](../../../../../packages/eslint-plugin-hardcode-detect/README.md) — excerto sobre R1 e remissão ao doc da regra.
+
+Estado: **concluído**.
