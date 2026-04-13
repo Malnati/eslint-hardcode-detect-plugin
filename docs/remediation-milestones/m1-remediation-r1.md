@@ -93,6 +93,8 @@ gantt
 
 **A1 — entregável do arquiteto (CI, comando e ambiente):** [`tasks/m1-remediation-r1/A1-architect-ruletester-r1-ci-environment.md`](tasks/m1-remediation-r1/A1-architect-ruletester-r1-ci-environment.md).
 
+**A1 — entregável do analista de testes (matriz técnica RuleTester + critérios de evidência):** [`tasks/m1-remediation-r1/A1-test-analyst-ruletester-r1-matrix-evidence.md`](tasks/m1-remediation-r1/A1-test-analyst-ruletester-r1-matrix-evidence.md).
+
 ---
 
 ## 8. Camada B — Execução de agentes por fase
