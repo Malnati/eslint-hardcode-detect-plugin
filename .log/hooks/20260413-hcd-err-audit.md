@@ -2461,3 +2461,24 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T16:52:09Z`
+- `conversation_id`: `3100282d-50b9-4c69-9217-0667867bd377`
+- `generation_id`: `0a1f9418-246b-4a75-8987-d7ebafa442cc`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/3100282d-50b9-4c69-9217-0667867bd377/3100282d-50b9-4c69-9217-0667867bd377.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-01-papel-arquiteto-suggest-vs-fix-policy.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
