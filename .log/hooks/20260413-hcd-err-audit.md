@@ -1821,3 +1821,23 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T04:08:17Z`
+- `conversation_id`: `d4d6fa3f-7f71-44ef-8f2d-5dda2647ce90`
+- `generation_id`: `243db5b7-18a0-4078-b32e-e3160a5c79bf`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d4d6fa3f-7f71-44ef-8f2d-5dda2647ce90/d4d6fa3f-7f71-44ef-8f2d-5dda2647ce90.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/utils/constant-name.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/utils/glob-match.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
