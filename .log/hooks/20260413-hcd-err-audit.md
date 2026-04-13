@@ -2835,3 +2835,21 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T18:39:39Z`
+- `conversation_id`: `fe6660b2-50de-4de3-87f3-925f0a2e36a2`
+- `generation_id`: `9fa4faec-f782-46c0-acf2-75d10b7533a1`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/fe6660b2-50de-4de3-87f3-925f0a2e36a2/fe6660b2-50de-4de3-87f3-925f0a2e36a2.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A1-architect-ruletester-r1-ci-environment.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
