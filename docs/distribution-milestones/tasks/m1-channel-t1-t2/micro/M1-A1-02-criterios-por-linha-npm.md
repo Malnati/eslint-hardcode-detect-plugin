@@ -15,7 +15,7 @@ Definir **critérios de sucesso reprodutíveis** por linha da matriz T1 (ex.: pr
 
 ## Definition of done
 
-- Para cada linha priorizada: comando ou referência ao job CI / `npm test` do workspace do plugin; **exit code** e verificação mínima (ex.: sem regressão nas regras contratuais).
+- Para cada linha priorizada: comando ou referência ao job CI / `npm test` do workspace do plugin; **código de saída** do processo e verificação mínima (ex.: sem regressão nas regras contratuais).
 - Ligação à evidência de gaps em [`../evidence/T1-t2-parity-gap-matrix.md`](../evidence/T1-t2-parity-gap-matrix.md) quando houver lacunas documentadas.
 
 ## Paths principais
