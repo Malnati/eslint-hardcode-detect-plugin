@@ -111,6 +111,7 @@ Cada linha é um **pacote de aceitação** implementável como um ou mais casos 
 ## 7. Ligação à execução técnica
 
 - **Comando canónico e CI:** [`A1-architect-ruletester-r1-ci-environment.md`](A1-architect-ruletester-r1-ci-environment.md).
+- **Matriz técnica RuleTester e critérios de evidência (analista de testes, M1-A1-06):** [`A1-test-analyst-ruletester-r1-matrix-evidence.md`](A1-test-analyst-ruletester-r1-matrix-evidence.md).
 - **Contrato funcional:** [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md).
 - **Papel seguinte:** [`micro/M1-A1-03-papel-revisor-negocio-ruletester-r1-suite.md`](micro/M1-A1-03-papel-revisor-negocio-ruletester-r1-suite.md) — validar esta especificação contra o contrato e [`docs/architecture.md`](../../../architecture.md).
 - **Resultado da revisão (M1-A1-03):** [`A1-business-reviewer-ruletester-r1-signoff.md`](A1-business-reviewer-ruletester-r1-signoff.md).

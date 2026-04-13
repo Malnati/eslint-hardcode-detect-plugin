@@ -36,3 +36,13 @@ Sub-micro-tarefa `M1-A1-05` concluída.
 
 `packages/eslint-plugin-hardcode-detect/tests/`
 
+## Entregável (concluído)
+
+Contribuição do papel **Analista de testes** para A1 — matriz técnica RuleTester/e2e e critérios de evidência:
+
+- **Artefacto:** [`../A1-test-analyst-ruletester-r1-matrix-evidence.md`](../A1-test-analyst-ruletester-r1-matrix-evidence.md).
+- **Conteúdo:** tabela S-R1-01 … S-R1-08 → comentários e tipo de asserção em [`packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`](../../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs); caso extra de literal sintético tipo segredo; papel dos e2e (`hello-world`, `nest-workspace`) na cadeia `npm test`; requisito de `cwd` do pacote para `filePath`; critérios de evidência para M1-A1-08; limites de papel (sem aprovação de merge isolada).
+- **Validação:** documentação apenas; o gate técnico continua a ser `npm test -w eslint-plugin-hardcode-detect` (M1-A1-08).
+
+Estado: **concluído**.
+

@@ -4,7 +4,7 @@
 
 | ID | Ficheiro / pasta |
 |----|------------------|
-| A1 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M1-A1-*`). Entregáveis normativos: [`A1-architect-ruletester-r1-ci-environment.md`](A1-architect-ruletester-r1-ci-environment.md) (arquiteto), [`A1-business-analyst-ruletester-r1-acceptance.md`](A1-business-analyst-ruletester-r1-acceptance.md) (analista de negócio). |
+| A1 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M1-A1-*`). Entregáveis normativos: [`A1-architect-ruletester-r1-ci-environment.md`](A1-architect-ruletester-r1-ci-environment.md) (arquiteto), [`A1-business-analyst-ruletester-r1-acceptance.md`](A1-business-analyst-ruletester-r1-acceptance.md) (analista de negócio), [`A1-test-analyst-ruletester-r1-matrix-evidence.md`](A1-test-analyst-ruletester-r1-matrix-evidence.md) (analista de testes). |
 | A2 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M1-A2-*`) |
 | A3 | [`A3-contract-sync-post-r1.md`](A3-contract-sync-post-r1.md) |
 

@@ -1,7 +1,8 @@
 /**
  * Suite RuleTester R1 — M1-A1-04.
  * Revisão desenvolvimento: M1-A1-05 (estilo, escopo, segurança dos literais de teste).
- * Rastreabilidade: docs/remediation-milestones/tasks/m1-remediation-r1/A1-business-analyst-ruletester-r1-acceptance.md (S-R1-*).
+ * Matriz técnica / evidência: docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-analyst-ruletester-r1-matrix-evidence.md (M1-A1-06).
+ * Rastreabilidade negócio: docs/remediation-milestones/tasks/m1-remediation-r1/A1-business-analyst-ruletester-r1-acceptance.md (S-R1-*).
  */
 import { RuleTester } from "eslint";
 import { test } from "node:test";
