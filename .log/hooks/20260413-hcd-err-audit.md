@@ -2215,3 +2215,22 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T13:18:21Z`
+- `conversation_id`: `cfeca573-8e70-4470-98d3-7bdd434cb2e1`
+- `generation_id`: `b714ad5f-fa93-40ab-8128-fb3ff07ba494`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/cfeca573-8e70-4470-98d3-7bdd434cb2e1/cfeca573-8e70-4470-98d3-7bdd434cb2e1.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-05-papel-revisor-desenvolvimento-ruletester-r1-suite.md`: **VIOLAÇÃO** (Nível 1: sinal de falha sem qualquer prefixo HCD-ERR) — contagens 0/0/0; linhas: —
+- `packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
