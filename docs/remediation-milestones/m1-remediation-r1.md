@@ -95,6 +95,8 @@ gantt
 
 **A1 — entregável do analista de testes (matriz técnica RuleTester + critérios de evidência):** [`tasks/m1-remediation-r1/A1-test-analyst-ruletester-r1-matrix-evidence.md`](tasks/m1-remediation-r1/A1-test-analyst-ruletester-r1-matrix-evidence.md).
 
+**A1 — entregável do revisor de testes (parecer sobre matriz e critérios de evidência, M1-A1-07):** [`tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md`](tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md).
+
 ---
 
 ## 8. Camada B — Execução de agentes por fase
