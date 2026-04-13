@@ -17,7 +17,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── .docker/
 │   └── Dockerfile            # Imagem ESLint para Composite Action ops-eslint
 ├── .gitignore
-├── .log/                     # Logs locais (gitignored); ex. hooks/YYYYMMDD-hcd-err-audit.md gerado pelo hook HCD-ERR
+├── .log/                     # Ex.: hooks/YYYYMMDD-hcd-err-audit.md (versionável); hooks/.state/ ignorado no Git
 ├── .cursor/
 │   ├── hooks.json            # Hooks do Cursor (auditoria HCD-ERR após Write + stop; ver .cursor/hooks/)
 │   ├── hooks/                # Scripts invocados por hooks.json (ex.: hcd-err-triple-audit.sh)

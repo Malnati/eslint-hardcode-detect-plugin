@@ -2,5 +2,9 @@ node_modules/
 dist/
 coverage/
 *.log
-.log/
+# `*.log` casa também com o segmento de caminho `.log`; permitir versionar `.log/` (auditoria do hook).
+!.log/
+!.log/**
+# Estado efémero do hook (acumula paths por conversa); não versionar.
+.log/hooks/.state/
 .DS_Store

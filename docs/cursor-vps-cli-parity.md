@@ -40,7 +40,7 @@ bash scripts/smoke-cursor-hcd-err-hook.sh
 
 1. Abrir o repositório como workspace de projeto (no IDE: **trusted** quando o Cursor pedir).
 2. Executar um prompt que provoque **edição de ficheiro** (ferramenta Write) e **conclusão do turno** (para o evento `stop` correr).
-3. Verificar se surgem entradas novas em `.log/hooks/` (ficheiros `YYYYMMDD-hcd-err-audit.md` ou estado em `.log/hooks/.state/`). O directório `.log/` está em [`.gitignore`](../.gitignore); não esperes ver commits com estes ficheiros.
+3. Verificar se surgem entradas novas em `.log/hooks/` (ficheiros `YYYYMMDD-hcd-err-audit.md` ou estado em `.log/hooks/.state/`). O directório `.log/` **não** está em [`.gitignore`](../.gitignore); podes versionar os relatórios de auditoria se fizer sentido para a equipa.
 4. Se não aparecer nada, o CLI dessa versão pode não estar a despachar hooks — regista a versão do Cursor CLI e consulta a documentação oficial actual.
 
 ## Pré-requisitos úteis
