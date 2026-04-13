@@ -58,6 +58,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── documentation-policy.md
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
 │   ├── solution-distribution-channels.md  # Canais npm/CI/Docker/IDE/agentes
+│   ├── hardcode-remediation-macro-plan.md  # Plano macro remediação R1–R3, segredos, env, marcos M0–M5
 │   ├── distribution-channels-macro-plan.md  # Plano macro e2e por trilha, diagramas, marcos, durações
 │   ├── distribution-milestones/  # Planos M0–M5 (durações relativas, template, handoff T1→T6, Camada A/B)
 │   │   ├── README.md

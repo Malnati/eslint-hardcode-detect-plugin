@@ -24,8 +24,13 @@ As regras `no-hardcoded-strings` e `standardize-error-messages` são a **base**.
 
 A taxonomia de tipos de hardcoding, níveis de gravidade (L1–L4) e camadas de detecção (texto, AST, parsers, revisão) está em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). O documento complementa este roadmap sem substituir o contrato normativo em [`plugin-contract.md`](plugin-contract.md).
 
+## Plano macro de remediação
+
+O roadmap de **remediação assistida** (trilhas **R1**–**R3**: constantes no arquivo, valores duplicados entre arquivos, externalização para arquivos de propriedades e variáveis de ambiente), tratamento de **segredos** e **reconfirmação** do índice a cada execução do ESLint está descrito em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md). Esse plano orienta marcos M0–M5; alterações de comportamento público continuam a exigir atualização de [`plugin-contract.md`](plugin-contract.md).
+
 ## Versão
 
+- **0.6.0** — remissão ao plano macro de remediação em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md).
 - **0.5.0** — mensagens de agente: prefixos HCD-ERR-* e níveis de conformidade em [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md); catálogo do plugin alinhado.
 - **0.4.0** — `standardize-error-messages` e alinhamento com [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md).
 - **0.3.0** — referência ao mapa conceitual em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md).

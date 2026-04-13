@@ -12,13 +12,14 @@
 | [`solution-distribution-channels.md`](solution-distribution-channels.md) | **Por onde** a solução circula (npm, CI, Docker, IDE, agentes). Lista canais diretos e indiretos em relação ao pacote ESLint. |
 | [`specs/plugin-contract.md`](../specs/plugin-contract.md) | **Comportamento normativo** das regras e opções públicas do plugin; precedência sobre interpretações genéricas. |
 | [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md) | **Roadmap macro** por trilha de validação e2e, diagramas, ciclo de vida e marcos em PRs (planejamento; nem todo item está implementado). |
+| [`hardcode-remediation-macro-plan.md`](hardcode-remediation-macro-plan.md) | **Roadmap macro** de remediação (trilhas R1–R3: constantes por arquivo, módulo compartilhado, propriedades/env), segredos, verificação global por execução; não substitui o contrato das regras (planejamento; nem todo item está implementado). |
 | [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md) | **Integrações externas** (registry, publicação, MCP, etc.): sem mocks no repositório; usar sandboxes ou ambientes de teste oficiais dos provedores. |
 
 *Distinção entre trilhas **T1** (npm), **T3** (CI) e **T5** (MCP e ecossistema agente) e limites do MCP: ver secção [MCP (T5), npm (T1) e CI (T3)](#mcp-t5-npm-t1-e-ci-t3).*
 
 ## Canais de distribuição e artefatos indiretos
 
-A solução completa de governança de hardcoding pode combinar o **pacote npm** com políticas de projeto (CI, Docker, hooks, IDEs). Vários canais da tabela em [`solution-distribution-channels.md`](solution-distribution-channels.md) são **indiretos**: orquestram ou documentam o fluxo (Cursor, Copilot, MCP, hooks Git) **sem** substituir o tarball do plugin. O detalhe de cobertura planejada por trilha e massa de testes está em [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md).
+A solução completa de governança de hardcoding pode combinar o **pacote npm** com políticas de projeto (CI, Docker, hooks, IDEs). Vários canais da tabela em [`solution-distribution-channels.md`](solution-distribution-channels.md) são **indiretos**: orquestram ou documentam o fluxo (Cursor, Copilot, MCP, hooks Git) **sem** substituir o tarball do plugin. O detalhe de cobertura planejada por trilha e massa de testes está em [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md). O planejamento de **remediação multi-nível** (constantes, duplicados entre arquivos, externalização para arquivos de propriedades) está em [`hardcode-remediation-macro-plan.md`](hardcode-remediation-macro-plan.md).
 
 ## MCP (T5), npm (T1) e CI (T3)
 

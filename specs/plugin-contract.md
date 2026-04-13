@@ -1,6 +1,6 @@
 # Contrato do plugin `eslint-plugin-hardcode-detect`
 
-Este documento define o comportamento público esperado do pacote em [`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect). A implementação deve seguir este contrato; o material em [`reference/legacy-snapshot`](../reference/legacy-snapshot) é apenas inspiração histórica. A visão de produto de longo prazo (hardcode em múltiplos níveis) está em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md).
+Este documento define o comportamento público esperado do pacote em [`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect). A implementação deve seguir este contrato; o material em [`reference/legacy-snapshot`](../reference/legacy-snapshot) é apenas inspiração histórica. A visão de produto de longo prazo (hardcode em múltiplos níveis) está em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md). O **planejamento macro** de remediação (constantes por arquivo, módulo compartilhado, arquivos de propriedades, segredos) está em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md); novas opções públicas decorrentes desse roadmap devem ser normativas **neste** documento antes do merge de código correspondente (marco M0 desse plano).
 
 ## Escopo
 
@@ -71,6 +71,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 ## Versão do documento
 
+- **0.7.0** — remissão ao plano macro de remediação em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md); obrigação de alinhar opções públicas no marco M0 desse plano.
 - **0.6.0** — `messages`: recomendação de prefixos HCD-ERR-* por campo, alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **0.5.0** — catálogo `standardize-error-messages`: campos `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` (alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md)); substituem `raw` / `user` / `dev`.
 - **0.4.0** — e2e com massa Nest (`e2e-fixture-nest` + contagens fixas); detalhes em [`e2e-fixture-nest.md`](e2e-fixture-nest.md).

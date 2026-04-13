@@ -8,6 +8,7 @@
 | [documentation-policy.md](documentation-policy.md) | Boas práticas Markdown no GitHub |
 | [hardcoding-map.md](hardcoding-map.md) | Taxonomia, níveis e camadas de detecção de hardcoding |
 | [solution-distribution-channels.md](solution-distribution-channels.md) | Canais de distribuição e operacionalização do plugin (npm, CI, Docker, IDE, agentes) |
+| [hardcode-remediation-macro-plan.md](hardcode-remediation-macro-plan.md) | Plano macro de remediação (R1–R3: arquivo, compartilhado, propriedades/env), segredos, verificação global |
 | [distribution-channels-macro-plan.md](distribution-channels-macro-plan.md) | Plano macro por trilha (e2e, Compose, diagramas, marcos GitHub) |
 | [distribution-milestones/README.md](distribution-milestones/README.md) | Índice M0–M5 com plano por ficheiro (`mN-*.md`), alinhado ao macro-plan; handoff T1→T6; e2e×Compose; Camadas A/B; tarefas Camada A em `tasks/` |
 | [limitations-and-scope.md](limitations-and-scope.md) | Escopo, limitações e restrições |
