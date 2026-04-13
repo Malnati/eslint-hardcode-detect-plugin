@@ -132,6 +132,24 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           ├── A1-definir-semver-major-minor-patch.md
 │   │           ├── A2-rascunho-notas-release.md
 │   │           └── A3-plano-smoke-pos-publish.md
+│   ├── remediation-milestones/  # Planos M0–M5 remediação R1–R3 (handoff M0→M5, template, Camada A/B)
+│   │   ├── README.md
+│   │   ├── milestone-template.md
+│   │   ├── m0-contract-baseline.md
+│   │   ├── m1-remediation-r1.md
+│   │   ├── m2-remediation-r2-global.md
+│   │   ├── m3-remediation-r3-data-files.md
+│   │   ├── m4-secrets-remediation.md
+│   │   ├── m5-remediation-release.md
+│   │   └── tasks/                # Camada A por marco (modelo + pastas M0–M5)
+│   │       ├── README.md
+│   │       ├── TASK_FILE_TEMPLATE.md
+│   │       ├── m0-contract-baseline/
+│   │       ├── m1-remediation-r1/
+│   │       ├── m2-remediation-r2-global/
+│   │       ├── m3-remediation-r3-data-files/
+│   │       ├── m4-secrets-remediation/
+│   │       └── m5-remediation-release/
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md

@@ -6,7 +6,7 @@ Não substitui o contrato das regras em [`specs/plugin-contract.md`](../specs/pl
 
 **Tempos de planeamento:** os marcos definem **durações** (`Xd`), **dependências** e **composição** do trabalho — **não** datas de calendário para início ou fim. Diagramas Gantt usam um **eixo fictício T0** só para proporção visual; o que é normativo está nas tabelas e nos números de duração.
 
-**Planos detalhados por marco:** podem ser desdobrados no futuro em `docs/remediation-milestones/` (índice `README.md`, arquivos `m0-*.md` …), por analogia a [`distribution-milestones/README.md`](distribution-milestones/README.md). Até lá, este arquivo concentra o planejamento macro.
+**Planos detalhados por marco:** ver [`remediation-milestones/README.md`](remediation-milestones/README.md) (índice M0–M5, `milestone-template.md`, ficheiros `m0-contract-baseline.md` … `m5-remediation-release.md`, tarefas Camada A em `remediation-milestones/tasks/`), por analogia a [`distribution-milestones/README.md`](distribution-milestones/README.md). Este ficheiro permanece o **resumo** do roadmap; em caso de divergência entre planos por marco e implementação pretendida, prevalece o contrato normativo em [`specs/plugin-contract.md`](../specs/plugin-contract.md).
 
 **Fontes técnicas:** decisões sobre API ESLint, `fix`, `suggest`, empacotamento npm e configuração flat devem alinhar-se a [`reference/Clippings/`](../reference/Clippings/) e [`specs/agent-reference-clippings.md`](../specs/agent-reference-clippings.md). Integrações externas (registries, segredos em plataforma) seguem [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md) — sem mocks de serviços externos no repositório.
 
@@ -154,4 +154,5 @@ A validação **T1** (consumidor npm) e **T3** (CI) em [`distribution-channels-m
 
 ## Versão do documento
 
+- **1.1.0** — Remissão explícita aos planos por marco em [`remediation-milestones/README.md`](remediation-milestones/README.md).
 - **1.0.0** — Plano macro inicial: trilhas R1–R3, segredos, env defaults, verificação global, marcos M0–M5, riscos de `concurrency` ESLint, e2e e multi-linguagem.
