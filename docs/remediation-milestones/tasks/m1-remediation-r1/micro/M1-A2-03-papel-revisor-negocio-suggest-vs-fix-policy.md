@@ -36,3 +36,8 @@ Sub-micro-tarefa `M1-A2-02` concluída.
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+Parecer normativo do revisor de negócio: [`../A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](../A2-business-reviewer-suggest-vs-fix-policy-signoff.md) — rastreabilidade contrato ↔ critérios C-SVF-* e políticas P-SVF-*, alinhamento a `docs/architecture.md` e ao doc do arquiteto (semântica RuleTester), riscos/condições e parecer **aprovado** com handoff para M1-A2-04.
+
+Estado: **concluído** (entregável acima).
