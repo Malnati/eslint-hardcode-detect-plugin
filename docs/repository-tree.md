@@ -9,11 +9,12 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
-├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke do hook HCD-ERR, verify ficheiros normativos T5)
+├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke do hook HCD-ERR, verify ficheiros normativos T5, Cursor headless micro M1)
 │   ├── fixtures/             # Massa para smoke (ex.: corpo inválido HCD-ERR para o hook)
 │   │   └── smoke-hcd-err-violation-body.md
 │   ├── validate-milestone-plan-coverage.mjs
 │   ├── verify-normative-agent-files.mjs
+│   ├── run-m1-remediation-micro-cursor-headless.sh  # Sequência headless das micro M1 (Cursor CLI agent -p)
 │   └── smoke-cursor-hcd-err-hook.sh
 ├── docker-compose.yml        # Perfis dev / e2e / prod / e2e-ops (ver specs/agent-docker-compose.md)
 ├── .dockerignore             # Contexto de build da imagem ops-eslint
