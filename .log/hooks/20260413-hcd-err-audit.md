@@ -720,3 +720,73 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 - `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-02-politica-artefatos-logs-falha.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L27, L31, L35
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:13:41Z`
+- `conversation_id`: `9ec1e52c-0cb6-45a7-bc56-591b603edcad`
+- `generation_id`: `c4a44f10-2fe7-45b2-b027-b87ec6ffe21e`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/9ec1e52c-0cb6-45a7-bc56-591b603edcad/9ec1e52c-0cb6-45a7-bc56-591b603edcad.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:14:45Z`
+- `conversation_id`: `9ec1e52c-0cb6-45a7-bc56-591b603edcad`
+- `generation_id`: `1a18c903-8835-47ab-b6fd-3191bc79529a`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/9ec1e52c-0cb6-45a7-bc56-591b603edcad/9ec1e52c-0cb6-45a7-bc56-591b603edcad.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:16:51Z`
+- `conversation_id`: `9ec1e52c-0cb6-45a7-bc56-591b603edcad`
+- `generation_id`: `63f8148f-fde0-4d4b-bd97-59fd352df1d8`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/9ec1e52c-0cb6-45a7-bc56-591b603edcad/9ec1e52c-0cb6-45a7-bc56-591b603edcad.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A1-guia-ide-eslint-flat-config.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A2-esboco-politica-git-hooks.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A3-fixture-e2e-git-hooks-sample-pos-m4.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-01-inventario-ide-extensao-requisitos-t1.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-02-passos-eslint-config-workspace-settings.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-01-criterios-readme-fixture-git-hooks.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-03-matriz-sec6-e2e-compose-m3.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `scripts/validate-milestone-plan-coverage.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
