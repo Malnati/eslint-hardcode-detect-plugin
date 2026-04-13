@@ -82,11 +82,13 @@ gantt
 
 ## 7. Camada A — Tarefas e orçamento de tokens (pré-execução de agentes)
 
-| ID | Tarefa | Teto (tokens) estimado | Critério de conclusão |
-|----|--------|------------------------|----------------------|
-| A1 | Definir semver (major/minor/patch) | 15 000 | Justificativa breaking |
-| A2 | Rascunho notas release | 20 000 | Links issues/PRs |
-| A3 | Plano smoke pós-publish | 18 000 | Passos reprodutíveis |
+Índice dos ficheiros por tarefa: [`tasks/m5-release-candidate/README.md`](tasks/m5-release-candidate/README.md).
+
+| ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
+|----|--------|--------|---------|------------------------|----------------------|-------------------|
+| A1 | Definir semver (major/minor/patch) | `specs/plugin-contract.md`; `docs/versioning-for-agents.md`; `package.json` do plugin; histórico desde último release | Decisão major/minor/patch + justificativa; [`tasks/m5-release-candidate/evidence/M5-semver-decision.md`](tasks/m5-release-candidate/evidence/M5-semver-decision.md) | 15 000 | Justificativa alinhada a contrato e Conventional Commits | [`tasks/m5-release-candidate/A1-definir-semver-major-minor-patch.md`](tasks/m5-release-candidate/A1-definir-semver-major-minor-patch.md) |
+| A2 | Rascunho notas release | A1; issues/PRs; CHANGELOG se existir | Texto de release com links; [`tasks/m5-release-candidate/evidence/M5-release-notes-draft.md`](tasks/m5-release-candidate/evidence/M5-release-notes-draft.md) | 20 000 | Links issues/PRs; revisável | [`tasks/m5-release-candidate/A2-rascunho-notas-release.md`](tasks/m5-release-candidate/A2-rascunho-notas-release.md) |
+| A3 | Plano smoke pós-publish | A2; matriz §6; `docs/solution-distribution-channels.md` | Passos reprodutíveis; [`tasks/m5-release-candidate/evidence/M5-smoke-post-publish.md`](tasks/m5-release-candidate/evidence/M5-smoke-post-publish.md) | 18 000 | Passos reprodutíveis | [`tasks/m5-release-candidate/A3-plano-smoke-pos-publish.md`](tasks/m5-release-candidate/A3-plano-smoke-pos-publish.md) |
 
 ---
 

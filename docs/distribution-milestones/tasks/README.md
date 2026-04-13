@@ -26,5 +26,4 @@ Cada marco em [`..`](..) (`m0-baseline.md`, `m1-channel-t1-t2.md`, …) pode ter
 | M2 | [`m2-channel-t3-ci/`](m2-channel-t3-ci/README.md) |
 | M3 | [`m3-channel-t4-t6/`](m3-channel-t4-t6/README.md) |
 | M4 | [`m4-channel-t5-agents/`](m4-channel-t5-agents/README.md) |
-
-Replicação para **M5:** ao fechar a Camada A de `m5-release-candidate.md`, criar `tasks/m5-<slug>/`, copiar o template e um ficheiro por linha da tabela (M4 segue o mesmo padrão).
+| M5 | [`m5-release-candidate/`](m5-release-candidate/README.md) |
