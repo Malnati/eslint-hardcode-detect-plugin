@@ -34,9 +34,11 @@ Ordem dos passos no job `test` antes e incluindo o pacote:
 | 2 | Node 22 | `actions/setup-node` com `node-version: "22"` |
 | 3 | Instalação | `npm install` (raiz) |
 | 4 | Verificação de ficheiros normativos de agentes | `npm run verify:agent-files` |
-| 5 | Validação de cobertura de planos (milestones M0–M2) | `npm run test:docs-milestones` |
+| 5 | Validação de cobertura de manifestos de planos (distribuição e remediação) | `npm run test:docs-milestones` |
 | 6 | Lint do workspace | `npm run lint` |
 | 7 | Teste do pacote plugin | `npm test -w eslint-plugin-hardcode-detect` |
+
+O comando `npm run test:docs-milestones` executa [`scripts/validate-milestone-plan-coverage.mjs`](../../../../scripts/validate-milestone-plan-coverage.mjs), que percorre os manifestos registados no array `MILESTONE_CONFIG` (planos sob `docs/distribution-milestones/tasks/` e `docs/remediation-milestones/tasks/`). Índice normativo: [`docs/remediation-milestones/tasks/README.md`](../README.md).
 
 - **Timeout do job:** `timeout-minutes: 10`.
 - **SO:** `ubuntu-latest`.

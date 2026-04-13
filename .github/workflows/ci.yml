@@ -18,7 +18,7 @@ jobs:
         run: npm install
       - name: Verify normative agent files (T5)
         run: npm run verify:agent-files
-      - name: Validate distribution milestone plan coverage (M0–M2)
+      - name: Validate milestone plan manifests (distribution and remediation)
         run: npm run test:docs-milestones
       - name: Lint workspace
         run: npm run lint
