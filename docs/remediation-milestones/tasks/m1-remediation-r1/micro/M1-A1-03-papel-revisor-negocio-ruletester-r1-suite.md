@@ -26,7 +26,9 @@ Contribuição do papel **Revisor de negócio** para os outputs agregados de A1:
 
 ## Critério de conclusão
 
-Papel **Revisor de negócio**: entregáveis deste ficheiro concluídos; alinhado ao critério global de A1: `npm test -w eslint-plugin-hardcode-detect` com todos os casos R1 a passar.
+- **Deste papel (M1-A1-03):** parecer emitido em [`../A1-business-reviewer-ruletester-r1-signoff.md`](../A1-business-reviewer-ruletester-r1-signoff.md); micro concluída quando o signoff estiver entregue (ver *Critério de conclusão (M1-A1-03)* nesse documento).
+
+- **Cadeia A1 (global):** `npm test -w eslint-plugin-hardcode-detect` com todos os casos R1 a passar aplica-se **após** implementação e validação dos testes (M1-A1-04 em diante); **não** é gate do revisor de negócio.
 
 ## Dependências
 
