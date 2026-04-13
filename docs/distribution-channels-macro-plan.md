@@ -39,7 +39,7 @@ Cada linha corresponde à tabela mestre em [`solution-distribution-channels.md`]
 | npm workspaces / monorepo | T1 | Mesmo que T1 (cwd em pacote filho) | `docker compose --profile e2e` | Parcial |
 | npm global + `bin` | T1 | Smoke documentado ou script em `packages/eslint-plugin-hardcode-detect/e2e/` | CI ou job manual | Planejado |
 | `npm exec` / `npx` | T1 | Job que roda `npx eslint` ou `npm exec` com pacote linkado | Workflow dedicado ou step em CI | Planejado |
-| Registries privados / `publishConfig` | T1 | Matriz `.npmrc` de exemplo **sem segredos**; validação contra **sandbox ou registry de testes** do fornecedor (ver [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md)) | Opcional perfil `e2e-registry` | Planejado |
+| Registries privados / `publishConfig` | T1 | Matriz `.npmrc` de exemplo **sem segredos**; **não** implementar no repositório mocks, stubs nem servidor local que imite registry para CI de integração; critério futuro: **sandbox**, registry de testes ou fluxo oficial (npm, GitHub Packages, etc.); ver [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md) | Opcional perfil `e2e-registry` (só com gate externo documentado) | **Backlog (validação externa)** |
 | Docker / OCI | T2 | Imagem `malnati-ops-eslint` + volume do repo | Novo perfil `e2e-ops` (planejado) | Parcial (imagem + action existentes) |
 | CI/CD | T3 | Repositório consumidor mínimo ou reuse do monorepo | [`ci.yml`](../.github/workflows/) + paridade `prod` Compose | Parcial |
 | Git hooks | T6 | Fixture com script `prepare` / doc de Husky | Não típico em Docker; validação local/CI opcional | Planejado |
@@ -47,7 +47,7 @@ Cada linha corresponde à tabela mestre em [`solution-distribution-channels.md`]
 | Cursor: hooks | T5 | Presença `hooks.json` + teste de schema se existir | N/A | Planejado |
 | Cursor: Marketplace Plugin | T5 | Documentação + checklist release marketplace | Fora do npm do plugin | Planejado |
 | Cursor CLI / headless | T5 | Script que invoca CLI se disponível no runner | CI condicional | Planejado |
-| MCP | T5 | Validação conforme **documentação do servidor MCP** ou ambiente de desenvolvimento suportado pelo fornecedor (ver [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md)) | N/A | Planejado |
+| MCP | T5 | Validação conforme **documentação do servidor MCP** ou ambiente de desenvolvimento suportado pelo fornecedor; **não** substituir o fornecedor por mocks de integração no repo (ver [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md)) | N/A | **Backlog (validação externa)** |
 | GitHub Copilot agents/instructions | T5 | `.github/agents/`, `.github/instructions/` | Workflow de verificação de ficheiros | Parcial |
 | Editores com ESLint / LSP | T4 | Mesma massa T1; guia de `settings.json` / workspace | Documentação + teste opcional | Planejado |
 
