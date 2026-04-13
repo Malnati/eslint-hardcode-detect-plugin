@@ -60,12 +60,12 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `packages/eslint-plugin-hardcode-detect/` | Código e testes do plugin npm. |
 | `packages/e2e-fixture-nest/` | Workspace NestJS **somente** para massa e2e (ver [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md)); não é o pacote publicável do plugin. |
 | `specs/` | Contrato, visão e fluxos normativos (incl. `agent-session-workflow.md` e demais contratos de agente). |
-| `docs/` | Políticas, grafo do repositório e arquitetura. |
+| `docs/` | Políticas, grafo do repositório e arquitetura; [`docs/cursor-vps-cli-parity.md`](docs/cursor-vps-cli-parity.md) (IDE vs Cursor CLI/VPS e smoke do hook HCD-ERR). |
 | `reference/Clippings/` | Recortes da documentação oficial (ESLint, npm, etc.); consulta obrigatória em escopo relevante. |
 | `reference/legacy-snapshot/` | Snapshot histórico; não usar como código vivo. |
 | `.github/actions/ops-eslint/` | Composite Action para lint em Docker. |
 | `.cursor/rules/` | Regras Cursor (`alwaysApply`): governança IA, sessão do agente, Clippings, documentação, Git, layout do repo, integrações sem mocks (`agent-integration-testing-policy.mdc`), caminhos relativos ao citar o repo (`repo-relative-paths.mdc`), falhas com prefixos HCD-ERR-* (`agent-error-messaging-triple.mdc`). |
-| `.cursor/hooks.json` + `.cursor/hooks/` | Hooks Cursor de projeto: gate por regex + auditoria HCD-ERR (Níveis 1–2) quando há sinal de falha; registo em `.log/hooks/` (gitignored); `followup_message` sem Task. Ver [`specs/agent-error-messaging-triple.md`](specs/agent-error-messaging-triple.md) e [`.github/agents/hcd-err-messaging.agent.md`](.github/agents/hcd-err-messaging.agent.md). |
+| `.cursor/hooks.json` + `.cursor/hooks/` | Hooks Cursor de projeto: gate por regex + auditoria HCD-ERR (Níveis 1–2) quando há sinal de falha; registo em `.log/hooks/` (gitignored); `followup_message` sem Task. Ver [`specs/agent-error-messaging-triple.md`](specs/agent-error-messaging-triple.md), [`.github/agents/hcd-err-messaging.agent.md`](.github/agents/hcd-err-messaging.agent.md) e smoke [`scripts/smoke-cursor-hcd-err-hook.sh`](scripts/smoke-cursor-hcd-err-hook.sh) / [`docs/cursor-vps-cli-parity.md`](docs/cursor-vps-cli-parity.md). |
 | `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `reference-agents-portfolio`, `docker-compose-workflow`, `agent-error-messaging-triple`). |
 | `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
 | `docker-compose.yml`, `.docker/` | Compose com perfis dev/e2e/prod; imagem ESLint para `ops-eslint` (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |

@@ -9,8 +9,9 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
-├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura plano M0)
-│   └── validate-m0-plan-coverage.mjs
+├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura plano M0, smoke do hook HCD-ERR)
+│   ├── validate-m0-plan-coverage.mjs
+│   └── smoke-cursor-hcd-err-hook.sh
 ├── docker-compose.yml        # Perfis dev / e2e / prod (ver specs/agent-docker-compose.md)
 ├── .dockerignore             # Contexto de build da imagem ops-eslint
 ├── .docker/
@@ -49,6 +50,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   └── workflows/            # CI (ex.: ci.yml)
 ├── docs/                     # Documentação complementar
 │   ├── README.md             # Índice dos guias em docs/
+│   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, verificação de hooks e smoke
 │   ├── architecture.md
 │   ├── documentation-policy.md
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)

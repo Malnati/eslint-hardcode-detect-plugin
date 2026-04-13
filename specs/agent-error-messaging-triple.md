@@ -105,6 +105,8 @@ Comparar os três totais entre si e com **N**. O Nível 3 permanece checklist ma
 
 **Automação local (Cursor):** em workspaces de confiança, o repositório inclui o hook `.cursor/hooks/hcd-err-triple-audit.sh` (registado em `.cursor/hooks.json`). O script **acumula** ficheiros editados pelo Agent (ferramenta Write), aplica um **gate por regex** (só audita contagens quando há sinal de relato de falha ou mensagem de erro típica; lista configurável no script), **exclui** mecanicamente `specs/agent-error-messaging-triple.md` para não exigir equilíbrio sobre o próprio contrato, valida Níveis 1–2 ao `stop`, regista em `.log/hooks/YYYYMMDD-hcd-err-audit.md` (gitignored) e pode emitir `followup_message` **sem** usar o evento `subagentStop` nem Task. A remediação referencia [`.github/agents/hcd-err-messaging.agent.md`](../.github/agents/hcd-err-messaging.agent.md) (ponte estreita; o Cursor não inicia outro agente por API — a mensagem recontinua o agente principal na mesma conversa).
 
+Para **validar o script do hook** sem o loop completo do Agent (local ou VPS), use [`scripts/smoke-cursor-hcd-err-hook.sh`](../scripts/smoke-cursor-hcd-err-hook.sh). Para **IDE vs Cursor CLI** e checklist de integração manual, ver [`docs/cursor-vps-cli-parity.md`](../docs/cursor-vps-cli-parity.md).
+
 ## Casos limite
 
 | Situação | O que fazer |
@@ -120,6 +122,7 @@ A regra planejada `standardize-error-messages` (ver [`specs/plugin-contract.md`]
 
 ## Versão do documento
 
+- **2.1.3** — smoke do hook (`scripts/smoke-cursor-hcd-err-hook.sh`) e documentação IDE/CLI/VPS (`docs/cursor-vps-cli-parity.md`).
 - **2.1.2** — automação local: gate regex, exclusão do spec, remissão ao agente `hcd-err-messaging`; sem hook em `subagentStop`.
 - **2.1.1** — exemplos mínimos na secção «Regras» com os três prefixos, para contagens iguais em auditorias mecânicas (Nível 2).
 - **2.1.0** — remissão ao hook de projeto Cursor (auditoria local Níveis 1–2; `.cursor/hooks/`).

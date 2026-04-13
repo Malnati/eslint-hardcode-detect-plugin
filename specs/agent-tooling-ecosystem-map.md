@@ -18,6 +18,10 @@ Este documento alinha **conceitos e pastas** usados em coleções estilo [Awesom
 | Sub-agente / agente adicional (`docker-tooling`, etc.) | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) + [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Especialização em Compose e `.docker/`; continua subordinado a `AGENTS.md` e ao spec temático. |
 | Plugins Copilot (`copilot plugin install …`) | Não aplicável como runtime deste repo | Plugins externos podem inspirar prompts; a governança local continua em `AGENTS.md` e `specs/`. |
 
+## Cursor IDE vs Cursor CLI (incl. VPS)
+
+O comportamento de **hooks**, **rules** e outros artefactos em [`.cursor/`](../.cursor/) pode variar entre a aplicação de secretária e o **Cursor CLI** (`agent`, sessões headless). Este repositório **não** assume paridade até verificação; ver [`docs/cursor-vps-cli-parity.md`](../docs/cursor-vps-cli-parity.md) (smoke do hook HCD-ERR e checklist manual na VPS).
+
 ## Precedência de instruções (trabalho neste repositório)
 
 Quando várias fontes se sobrepuserem, aplicar nesta ordem (da mais específica à mais geral):
@@ -42,6 +46,7 @@ A visão multi-nível em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md
 
 ## Versão do documento
 
+- **1.4.0** — secção Cursor IDE vs CLI/VPS; remissão a [`docs/cursor-vps-cli-parity.md`](../docs/cursor-vps-cli-parity.md).
 - **1.3.0** — equivalência para o agente pontual `hcd-err-messaging` (mensagens de falha HCD-ERR).
 - **1.2.0** — anti-padrões: citação de ficheiros nas pontes `.github/agents/` e `.github/instructions/` com caminhos relativos à raiz.
 - **1.1.0** — equivalência para Docker/Compose: [`agent-docker-compose.md`](agent-docker-compose.md) e ponte [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md).
