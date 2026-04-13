@@ -54,7 +54,7 @@ Fixar, para a trilha **R1** com `remediationMode: "r1"`, uma **política de risc
 | C-SVF-MODE | Trilha | `remediationMode` | `"off"` — sem fix R1; `"r1"` — aplica esta política onde o literal for elegível e não estiver excluído por glob. |
 | C-SVF-EXCL | Exclusão de remediação | `remediationExcludeGlobs`, `remediationIncludeGlobs` | Sem **fix** R1 quando o `filename` estiver excluído (reporte pode manter-se — alinhado à matriz A1 secção 4); **suggest** pode ou não ser oferecido conforme produto; deve ser um comportamento único e testável. |
 | C-SVF-SECRET | Candidatos a segredo | `secretRemediationMode` | Por defeito **seguro**: não copiar valores sensíveis em claro; alinhar a *suggest-only*, placeholder ou autofix agressivo só com opt-in, conforme enum do contrato e [`docs/hardcode-remediation-macro-plan.md`](../../../hardcode-remediation-macro-plan.md). |
-| C-SVF-ENV | Literais de default de env | `envDefaultLiteralPolicy` | Interacção com `process.env` + `??`/`||`; pode ser *suggest*-only ou caminho sem fix conforme risco — ligar a S-R1-07 e à matriz abaixo. |
+| C-SVF-ENV | Literais de default de env | `envDefaultLiteralPolicy` | Interacção com `process.env` + `??`/`||`; pares reporte/fix por valor da política — ver §3.1 e S-R1-07. |
 | C-SVF-I18N-TEST | Contexto “arriscado” | R1 + exclusões / macro-plan | Cópia i18n, testes, frameworks: onde o fix automático altera semântica de tradução ou contratos de teste, preferir **suggest** ou exclusão por glob em vez de **fix** por defeito. |
 
 **Estado do contrato:** a secção de remediação está marcada como **planeada**; os critérios acima são **alvo** negocial. Desvios na implementação exigem actualização do contrato (A3) ou ajuste dos casos e documentação no pacote (cadeia M1-A2-03+).
@@ -70,11 +70,37 @@ Cada linha descreve o **outcome negocial** esperado quando `remediationMode: "r1
 | P-SVF-01 | Literal de **aplicação** sem indício de segredo (L1), **fora** de zonas i18n/teste exclusivas | **Fix** (`output` determinístico no RuleTester) | Convenção `constantNamingConvention`, `dedupeWithinFile` conforme contrato; ficheiro não excluído por `remediationExcludeGlobs`. | S-R1-01, S-R1-02, S-R1-03 |
 | P-SVF-02 | **Caminho excluído** de remediação (`remediationExcludeGlobs` casa com `filename`) | **Sem fix R1** | Reporte de hardcode pode manter-se (política A1); **não** exigir `output` de remediação R1 para esse ficheiro. | S-R1-05 |
 | P-SVF-03 | **Inclusão restrita** (`remediationIncludeGlobs` não vazio) | **Fix** só se o caminho **incluído**; caso contrário sem fix R1 | Coerente com S-R1-06. | S-R1-06 |
-| P-SVF-04 | **Candidato a segredo** (heurística L1 / tokens sensíveis) | **Suggest-only** ou placeholder / sem copiar valor em claro; autofix completo só com `secretRemediationMode` **aggressive-autofix-opt-in** | Alinhado a *Dados sigilosos* no macro-plan e a `secretRemediationMode` no contrato. | Casos de segredo na suite (ver testes R1) |
-| P-SVF-05 | **Literal de default** de `process.env` (`??` / `||`) | Depende de `envDefaultLiteralPolicy` **e** risco de fix: preferir **suggest** ou caminho sem **fix** quando o fix alterar contrato de env sem revisão humana | Documentar o par esperado (reporte + ausência de `output` ou presença de `suggestions`) por valor de política. | S-R1-07 |
+| P-SVF-04 | **Candidato a segredo** (heurística L1 / tokens sensíveis) | Com `secretRemediationMode` por defeito (**`suggest-only`**): **sem autofix** que copie o valor em claro; **sem** `suggestions` que reproduzam o valor sensível na suite M1 — apenas reporte (`errors`). Autofix completo só com **`aggressive-autofix-opt-in`**. | Alinhado a *Dados sigilosos* no macro-plan e ao enum em contrato. | Evidência: bloco «Segredo provável» em [`no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs) (sem ID S-R1-* em A1). |
+| P-SVF-05 | **Literal de default** de `process.env` (`??` / `||`) | Ver **§3.1** — por valor de `envDefaultLiteralPolicy`; em M1 a suite fixa pares concretos com `output` ou `valid`. | Macro-plan (*Defaults de variáveis de ambiente*); revisão humana recomendada para alterar contratos de env em projectos reais. | S-R1-07 |
 | P-SVF-06 | **i18n / cópia de UI** / mensagens de tradução | **Suggest-only** por defeito (sem `output` que reescreva chaves ou textos de catálogo) ou **exclusão** por glob se o projecto externalizar noutro fluxo | Evita `eslint --fix` a alterar ficheiros de tradução de forma opaca. | S-R1-08 |
 | P-SVF-07 | **Testes / fixtures** (strings que definem contratos de teste ou snapshots) | **Suggest-only** por defeito ou exclusão por glob | Risco de quebrar expectativas ou duplicar constantes no sítio errado. | S-R1-08 |
 | P-SVF-08 | **Frameworks** com strings semânticas (rotas, keys) | **Suggest-only** por defeito quando o fix R1 não for semanticamente neutro | Detalhe de implementação documentado na regra / README pelo desenvolvedor (M1-A2-04). | S-R1-08 (extensível) |
+
+### 3.1 Pares `envDefaultLiteralPolicy` × evidência RuleTester (S-R1-07)
+
+Valores do contrato: `include` \| `report-separate` \| `ignore` (ver [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md)). A tabela abaixo fixa o **par negocial** aceite em M1, alinhado aos comentários S-R1-07 em [`no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs).
+
+| Valor | Reporte do literal de fallback | Remediação R1 na suite M1 |
+|-------|-------------------------------|---------------------------|
+| `include` | `messageId: "hardcoded"` no reporte do literal de fallback | **`output`**: constante no topo; o literal do fallback passa a referenciar a constante (`??` e `||` cobertos). |
+| `report-separate` | `messageId: "hardcodedEnvDefault"` (classe distinta de `include`) | **`output`** com a mesma forma de substituição que em `include`; distinção negocial no `messageId`. |
+| `ignore` | Sem reporte de hardcode para o par `process.env` + literal nos exemplos da suite | Casos **`valid`** (sem `errors` para esse literal de fallback). |
+
+### 3.2 Rastreabilidade S-R1-* ↔ P-SVF-* ↔ forma RuleTester
+
+| ID cenário (A1) | Políticas P-SVF | Forma na âncora R1 |
+|-----------------|-----------------|-------------------|
+| S-R1-01 … S-R1-03 | P-SVF-01 | `output` |
+| S-R1-04 | (sem remediação R1) | Só `errors`, sem `output` |
+| S-R1-05 | P-SVF-02 | `errors` + `suggestions`, sem `output` |
+| S-R1-06 | P-SVF-03 | `output` se `filename` incluído; senão `suggestions` sem `output` |
+| S-R1-07 | P-SVF-05 | Ver §3.1 (`include` / `report-separate` / `ignore`) |
+| S-R1-08 | P-SVF-06, P-SVF-07, P-SVF-08 | `suggestions` sem `output` (ex.: ficheiro `*.test.ts` na suite) |
+| (bloco «Segredo provável», sem ID S-R1 em A1) | P-SVF-04 | Só `errors`, sem `output` nem `suggestions` |
+
+### 3.3 P-SVF-06, P-SVF-07, P-SVF-08 e o cenário S-R1-08
+
+A matriz A1 define **um** pacote S-R1-08 para contexto «arriscado» (i18n / teste / framework). Na suite M1, esse pacote está **instanciado** com um `filename` de teste (`*.test.ts`), pelo que a **forma** de evidência é **suggest-only** (sem `output`). As categorias P-SVF-06 (i18n), P-SVF-07 (testes/fixtures) e P-SVF-08 (frameworks) partilham, para efeito de RuleTester, a mesma **política de risco**: não autofix R1 por defeito nesses contextos; exemplos adicionais (ficheiros i18n, rotas) podem ser acrescentados na documentação da regra e na suite pelo **M1-A2-04**, mantendo a política negocial aqui fixada.
 
 **Prioridade em caso de sobreposição:** exclusão por glob (P-SVF-02) e modo segredo (P-SVF-04) prevalecem sobre P-SVF-01 para o mesmo literal quando ambos se apliquem.
 
@@ -88,7 +114,7 @@ A correspondência entre outcome negocial e prova automatizada segue [`A2-archit
 - **Apenas suggest:** casos com **`suggestions`** e **sem** `output` esperado para aquele reporte — o utilizador aplica manualmente se quiser.
 - **Só erros** (sem `output` nem `suggestions` onde o produto fixar remediação): detecção sem oferta de remediação automática ou sugestão, conforme contrato e suite.
 
-A suite em [`no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs) deve **materializar** cada linha da matriz (P-SVF-*) que esteja no âmbito M1, com identificadores de cenário alinhados a S-R1-*.
+A suite em [`no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs) deve **materializar** cada linha da matriz (P-SVF-*) que esteja no âmbito M1, com identificadores de cenário alinhados a S-R1-*. A consolidação S-R1 ↔ P-SVF ↔ `output` / `suggestions` / só `errors` está em **§3.2**; o bloco «Segredo provável» segue **P-SVF-04** (§3.2, última linha).
 
 ---
 
@@ -102,7 +128,7 @@ A suite em [`no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plug
 
 ## 6. Fronteira com M1-A1 (suite S-R1-*)
 
-A especificação de cenários S-R1-01 … S-R1-08 permanece em [`A1-business-analyst-ruletester-r1-acceptance.md`](A1-business-analyst-ruletester-r1-acceptance.md). O presente documento define a **política fina** de **suggest vs fix** para cumprir S-R1-07 e S-R1-08 e para alinhar P-SVF-* à reprodutibilidade técnica.
+A especificação de cenários S-R1-01 … S-R1-08 permanece em [`A1-business-analyst-ruletester-r1-acceptance.md`](A1-business-analyst-ruletester-r1-acceptance.md). O presente documento define a **política fina** de **suggest vs fix** para cumprir S-R1-07 e S-R1-08 (§3.1 e §3.3) e para alinhar P-SVF-* à reprodutibilidade técnica (§3.2).
 
 ---
 
