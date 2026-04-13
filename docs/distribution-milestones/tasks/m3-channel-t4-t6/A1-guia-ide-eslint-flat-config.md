@@ -27,6 +27,7 @@ Camada A em [`../../m3-channel-t4-t6.md`](../../m3-channel-t4-t6.md) (secções 
 ## Critério de conclusão
 
 - Passos reprodutíveis; um leitor consegue obter diagnostics ESLint no IDE de forma consistente com o repositório.
+- Cross-check massa Nest (`packages/e2e-fixture-nest`) × handoff T3 e matriz M3 §6: [`micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md`](micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md).
 
 ## Dependências
 
