@@ -65,6 +65,7 @@ O contrato prevê `secretRemediationMode` para modos seguros e *opt-in* a autofi
 ## Rastreabilidade de negócio
 
 - Política e critérios C-SVF-* / P-SVF-* (analista de negócio): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md).
-- Parecer do revisor: [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
+- Parecer do revisor de negócio: [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
+- Parecer do revisor de desenvolvimento (doc da regra ↔ suite R1): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md).
 
 Se o comportamento implementado divergir do contrato planeado, a sincronização formal do spec é a tarefa **A3** ([`docs/remediation-milestones/tasks/m1-remediation-r1/A3-contract-sync-post-r1.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A3-contract-sync-post-r1.md)).
