@@ -808,3 +808,316 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:19:28Z`
+- `conversation_id`: `435834fc-d4df-4a69-a9a2-194080828911`
+- `generation_id`: `e860ae8a-9c24-445e-8445-0074693497f4`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/435834fc-d4df-4a69-a9a2-194080828911/435834fc-d4df-4a69-a9a2-194080828911.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:20:25Z`
+- `conversation_id`: `435834fc-d4df-4a69-a9a2-194080828911`
+- `generation_id`: `175d7878-d9e1-4e3f-aae1-77eba1b32898`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/435834fc-d4df-4a69-a9a2-194080828911/435834fc-d4df-4a69-a9a2-194080828911.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-01-inventario-ide-extensao-requisitos-t1.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:21:33Z`
+- `conversation_id`: `35457767-262d-455a-bc4e-0d27c806fd86`
+- `generation_id`: `9a6ba7d4-5313-40ed-b19f-7b7df3da0911`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/35457767-262d-455a-bc4e-0d27c806fd86/35457767-262d-455a-bc4e-0d27c806fd86.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:22:22Z`
+- `conversation_id`: `35457767-262d-455a-bc4e-0d27c806fd86`
+- `generation_id`: `401d1ea1-6d70-479c-ac2d-2f15d40b2109`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/35457767-262d-455a-bc4e-0d27c806fd86/35457767-262d-455a-bc4e-0d27c806fd86.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-02-passos-eslint-config-workspace-settings.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:23:36Z`
+- `conversation_id`: `08e549f1-a763-47a1-81b5-166146825696`
+- `generation_id`: `fc0677ca-f6fa-4938-8aea-17e420e6cb9b`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/08e549f1-a763-47a1-81b5-166146825696/08e549f1-a763-47a1-81b5-166146825696.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:24:51Z`
+- `conversation_id`: `08e549f1-a763-47a1-81b5-166146825696`
+- `generation_id`: `0e709b17-c2d4-4321-85ba-61ea76264bda`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/08e549f1-a763-47a1-81b5-166146825696/08e549f1-a763-47a1-81b5-166146825696.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A1-guia-ide-eslint-flat-config.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:25:31Z`
+- `conversation_id`: `5f6a207a-0262-4302-bca2-0bd9788e03fd`
+- `generation_id`: `7446c945-2850-4fd1-a9fd-d5c6b428a48e`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/5f6a207a-0262-4302-bca2-0bd9788e03fd/5f6a207a-0262-4302-bca2-0bd9788e03fd.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:26:36Z`
+- `conversation_id`: `5f6a207a-0262-4302-bca2-0bd9788e03fd`
+- `generation_id`: `9d3d1f87-3dc7-496d-a56e-51fb4a13bc25`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/5f6a207a-0262-4302-bca2-0bd9788e03fd/5f6a207a-0262-4302-bca2-0bd9788e03fd.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A2-esboco-politica-git-hooks.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:27:27Z`
+- `conversation_id`: `303fdcf3-21b6-4334-802e-6fe7cd9706bd`
+- `generation_id`: `0b97fdb4-fdba-4d73-ba32-5ae3dbc7e897`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/303fdcf3-21b6-4334-802e-6fe7cd9706bd/303fdcf3-21b6-4334-802e-6fe7cd9706bd.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:28:08Z`
+- `conversation_id`: `efd5b568-fd06-4735-b9ac-ed0d19e0abc9`
+- `generation_id`: `da77e6a0-2081-4f1c-b358-839070d19ffa`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/efd5b568-fd06-4735-b9ac-ed0d19e0abc9/efd5b568-fd06-4735-b9ac-ed0d19e0abc9.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:28:46Z`
+- `conversation_id`: `303fdcf3-21b6-4334-802e-6fe7cd9706bd`
+- `generation_id`: `a0703304-92e8-428f-b4fe-a07169da5f16`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/303fdcf3-21b6-4334-802e-6fe7cd9706bd/303fdcf3-21b6-4334-802e-6fe7cd9706bd.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A2-esboco-politica-git-hooks.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:30:06Z`
+- `conversation_id`: `efd5b568-fd06-4735-b9ac-ed0d19e0abc9`
+- `generation_id`: `e9f044b0-34c5-4e72-a4ef-042e627ad63b`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/efd5b568-fd06-4735-b9ac-ed0d19e0abc9/efd5b568-fd06-4735-b9ac-ed0d19e0abc9.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:31:45Z`
+- `conversation_id`: `efd5b568-fd06-4735-b9ac-ed0d19e0abc9`
+- `generation_id`: `0b5cf692-967d-4aa1-95f1-d283dd6ae4c0`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/efd5b568-fd06-4735-b9ac-ed0d19e0abc9/efd5b568-fd06-4735-b9ac-ed0d19e0abc9.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/A3-fixture-e2e-git-hooks-sample-pos-m4.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-01-criterios-readme-fixture-git-hooks.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:32:50Z`
+- `conversation_id`: `e68a94d0-8549-4abb-9367-de3e6b3ea06d`
+- `generation_id`: `447895fd-5dae-4f54-87cd-b0e307dc584d`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/e68a94d0-8549-4abb-9367-de3e6b3ea06d/e68a94d0-8549-4abb-9367-de3e6b3ea06d.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:34:10Z`
+- `conversation_id`: `e68a94d0-8549-4abb-9367-de3e6b3ea06d`
+- `generation_id`: `f7fc0d1b-5f0f-4ef8-87f1-0b0a1de95b92`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/e68a94d0-8549-4abb-9367-de3e6b3ea06d/e68a94d0-8549-4abb-9367-de3e6b3ea06d.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/m3-channel-t4-t6.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-01-criterios-readme-fixture-git-hooks.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-02-gate-nao-fechar-t6-sem-m4.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:35:33Z`
+- `conversation_id`: `10cd3894-1a2c-4931-a45d-985458b1e941`
+- `generation_id`: `6cac6252-f9f6-49e1-abd0-24d49bdce7a9`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/10cd3894-1a2c-4931-a45d-985458b1e941/10cd3894-1a2c-4931-a45d-985458b1e941.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:36:27Z`
+- `conversation_id`: `10cd3894-1a2c-4931-a45d-985458b1e941`
+- `generation_id`: `a1a4930f-6a22-4a85-89dc-7d2ca9b627c7`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/10cd3894-1a2c-4931-a45d-985458b1e941/10cd3894-1a2c-4931-a45d-985458b1e941.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-03-matriz-sec6-e2e-compose-m3.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
