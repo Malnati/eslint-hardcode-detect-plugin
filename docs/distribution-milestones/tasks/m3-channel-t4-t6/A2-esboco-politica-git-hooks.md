@@ -21,13 +21,14 @@ Camada A em [`../../m3-channel-t4-t6.md`](../../m3-channel-t4-t6.md) (secções 
 
 ## Outputs
 
-- Secção curta ou ADR em `docs/` sobre Husky, Lefthook ou hooks nativos acionando `eslint`, com **alvo normativo:** o mesmo caminho de lint que o CI (ver M2).
+- Secção curta ou ADR em `docs/` sobre Husky, Lefthook ou hooks nativos acionando `eslint`, com **alvo normativo:** o mesmo caminho de lint que o CI (ver M2) — detalhado em [`micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md`](micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md) («Alinhamento CLI / lint / CI — alvo normativo para T6 (entregável)»).
 - Riscos de hooks que alteram estado git em CI citados explicitamente — ver tabela comparativa em [`micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md`](micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md) («Comparação de abordagens — riscos (entregável)»).
 
 ## Critério de conclusão
 
 - Riscos CI e ambiguidade de comandos tratados; não se declara T6 «done» sem M4 (Opção A/B do plano M3).
 - Comparação documental Husky / Lefthook / hooks nativos concluída: [`micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md`](micro/M3-A2-01-husky-lefthook-hooks-nativos-riscos.md).
+- Alinhamento ao CLI/lint do CI e ponte M2 concluído: [`micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md`](micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md) (comandos canónicos, [`docs/distribution-milestones/m2-channel-t3-ci.md`](../../m2-channel-t3-ci.md), aviso T6/M4).
 
 ## Dependências
 
