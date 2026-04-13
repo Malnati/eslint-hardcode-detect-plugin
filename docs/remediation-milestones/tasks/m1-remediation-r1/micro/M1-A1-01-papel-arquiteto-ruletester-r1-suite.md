@@ -36,3 +36,8 @@ M0 concluído.
 
 `packages/eslint-plugin-hardcode-detect/tests/`
 
+## Entregável (concluído)
+
+Documentação normativa do arquiteto: [`../A1-architect-ruletester-r1-ci-environment.md`](../A1-architect-ruletester-r1-ci-environment.md) — comando canónico, cadeia `npm test` do pacote, mapeamento CI, limites de ambiente e limites de papel (sem edição de `tests/` neste papel).
+
+Estado: **concluído** (entregável acima).

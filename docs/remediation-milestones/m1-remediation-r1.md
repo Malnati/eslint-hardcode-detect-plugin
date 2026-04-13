@@ -91,6 +91,8 @@ gantt
 | A2 | Política suggest vs fix | Macro-plan secção segredos (antecipação) | Tabela no doc da regra | 15 000 | Comportamento reproduzível | Sub-micro-tarefas por papel: [`tasks/m1-remediation-r1/micro/README.md`](tasks/m1-remediation-r1/micro/README.md) (prefixo `M1-A2-*`) |
 | A3 | Actualizar `plugin-contract.md` se comportamento divergir do rascunho M0 | A1 | Amend contrato | 18 000 | Versão contrato | [`tasks/m1-remediation-r1/A3-contract-sync-post-r1.md`](tasks/m1-remediation-r1/A3-contract-sync-post-r1.md) |
 
+**A1 — entregável do arquiteto (CI, comando e ambiente):** [`tasks/m1-remediation-r1/A1-architect-ruletester-r1-ci-environment.md`](tasks/m1-remediation-r1/A1-architect-ruletester-r1-ci-environment.md).
+
 ---
 
 ## 8. Camada B — Execução de agentes por fase
