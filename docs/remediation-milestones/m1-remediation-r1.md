@@ -103,6 +103,8 @@ gantt
 
 **A2 — entregável do analista de negócio (critérios P-SVF e aceitação suggest vs fix, M1-A2-02):** [`tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md).
 
+**A2 — entregável do revisor de negócio (parecer sobre aceitação suggest vs fix, M1-A2-03):** [`tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
+
 **A2 — entregável do analista de testes (matriz técnica suggest vs fix + critérios de evidência):** [`tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md).
 
 **A2 — entregável do revisor de testes (parecer sobre matriz e critérios de evidência, M1-A2-07):** [`tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md).

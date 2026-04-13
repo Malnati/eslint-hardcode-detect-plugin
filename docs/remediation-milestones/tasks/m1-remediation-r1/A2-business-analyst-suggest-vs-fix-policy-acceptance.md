@@ -122,6 +122,7 @@ A suite em [`no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plug
 
 - **A3 — contrato:** se a implementação divergir desta política ou do contrato planeado, actualizar [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md) segundo [`A3-contract-sync-post-r1.md`](A3-contract-sync-post-r1.md).
 - **M1-A2-03 — revisor de negócio:** validar este documento contra o contrato e [`docs/architecture.md`](../../../architecture.md).
+- **Resultado da revisão (M1-A2-03):** [`A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
 - **M1-A2-04 — desenvolvedor:** reflectir a tabela acima em [`packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`](../../../../packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md) e excertos do [`README.md`](../../../../packages/eslint-plugin-hardcode-detect/README.md) do pacote, e garantir testes coerentes.
 
 ---
