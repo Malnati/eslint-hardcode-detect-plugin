@@ -72,8 +72,24 @@ Estes e2e são **fumaça / regressão** sobre API ESLint e massas do repositóri
 |----------|----------------|
 | Comando canónico | `npm test -w eslint-plugin-hardcode-detect` (raiz do monorepo) |
 | Sucesso | Código de saída **0** em toda a cadeia (build, ambos os ficheiros RuleTester listados no script, ambos os e2e). |
-| Registo mínimo | Comando executado + exit code; em falha, últimas linhas relevantes do output para diagnóstico. |
+| Registo mínimo | Comando executado e código de saída; se o comando falhar, últimas linhas relevantes do output para diagnóstico. |
 | Ambiente | Coerente com CI (Node 22 no GitHub Actions; localmente `engines.node >=22`). |
+
+## Modelo de relato de falha (testador, N=1)
+
+Quando **M1-A1-08** comunicar uma falha de `npm test` ou de uma fase da cadeia do pacote, o relato deve seguir [`specs/agent-error-messaging-triple.md`](../../../../specs/agent-error-messaging-triple.md) (Níveis 1–2). **N** = 1 unidade de falha; exemplo mínimo:
+
+### Diagnóstico técnico (sênior)
+
+[HCD-ERR-SENIOR] `npm test -w eslint-plugin-hardcode-detect` terminou com código de saída não zero; incluir trecho do output (ex.: stack ou TAP) e correlacionar com `packages/eslint-plugin-hardcode-detect/tests/` ou `packages/eslint-plugin-hardcode-detect/e2e/` conforme o log.
+
+### Correção definitiva
+
+[HCD-ERR-FIX] Corrigir a causa no código, testes, contrato ou CI que o log indicar (diff mínimo; regressão coberta pela mesma suite quando aplicável).
+
+### Contorno operacional
+
+[HCD-ERR-OPS] Até haver correção, reproduzir localmente com a mesma versão de Node que o CI (`engines.node` / `actions/setup-node`); documentar o comando exacto e o código de saída. Risco: contorno não substitui fix de causa raiz nem merge sem revisão (M1-A1-07).
 
 ## Limites de papel
 
