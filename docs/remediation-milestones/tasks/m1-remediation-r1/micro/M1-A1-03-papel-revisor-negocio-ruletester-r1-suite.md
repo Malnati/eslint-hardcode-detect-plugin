@@ -36,3 +36,8 @@ Sub-micro-tarefa `M1-A1-02` concluída.
 
 `packages/eslint-plugin-hardcode-detect/tests/`
 
+## Entregável (concluído)
+
+Parecer normativo do revisor de negócio: [`../A1-business-reviewer-ruletester-r1-signoff.md`](../A1-business-reviewer-ruletester-r1-signoff.md) — rastreabilidade contrato ↔ critérios e cenários do analista, alinhamento a `docs/architecture.md`, riscos/condições e parecer **aprovado** com handoff para M1-A1-04.
+
+Estado: **concluído** (entregável acima).
