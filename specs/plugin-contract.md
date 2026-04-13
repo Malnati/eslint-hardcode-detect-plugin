@@ -26,7 +26,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 - **Comportamento**:
   - Em nós `Literal` cujo valor é `string`, se `value.length >= 2`, reportar com a mensagem configurada (equivalente a: evitar string literal; mover para constantes ou catálogo).
   - Strings de comprimento menor que 2 são ignoradas.
-- **Schema**: vazio (`[]`).
+- **Schema (implementação actual)**: vazio (`[]`). O **schema planeado** para remediação R1–R3 está na secção **Remediação assistida — opções públicas planeadas (R1–R3)** abaixo neste documento; essas opções normativas aplicam-se prioritariamente a esta regra (ou a regras derivadas com IDs estáveis quando forem acrescentadas ao contrato). A materialização no código segue os marcos M1–M4 do plano em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md).
 - **Mensagens**: pelo menos `hardcoded` com texto orientando uso de constantes ou catálogo.
 
 ### `standardize-error-messages`
@@ -60,6 +60,53 @@ Este documento define o comportamento público esperado do pacote em [`packages/
     - `CallExpression` para loggers listados: primeiro argumento.
   - **Strings estáticas**: literais string ou `TemplateLiteral` sem expressões (`${}`).
 
+## Remediação assistida — opções públicas planeadas (R1–R3)
+
+Esta secção fixa **vocabulário e semântica** das opções públicas para remediação assistida alinhadas a [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md) e à visão em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md). As trilhas **R1** (por ficheiro), **R2** (multi-ficheiro / módulo partilhado) e **R3** (ficheiros de dados e ambiente) podem corresponder a **regras distintas** ou a **modos / sub-opções** da mesma família (`no-hardcoded-strings` ou nomes estáveis futuros); o contrato previne ambiguidade de schema **antes** do merge de implementação correspondente.
+
+**Estado:** **planeado** — nem todas as opções abaixo estão implementadas no pacote na data desta versão do contrato; os marcos alvo (M1–M4) indicam a fase prevista. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
+
+### Tabela de opções (nomes estáveis)
+
+| Opção | Tipo | Padrão planeável | Trilha | Marco alvo | Descrição |
+|-------|------|------------------|--------|------------|-----------|
+| `remediationMode` | `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"` | `"off"` | Transversal | M1+ | Selecciona trilha de remediação ou heurística que escolhe R1/R2/R3 conforme contexto (quando suportado). `"off"` mantém apenas detecção. |
+| `constantNamingConvention` | string (enum documentado) | `"UPPER_SNAKE_CASE"` | R1 | M1 | Convenção para identificadores de constantes injectadas no topo do ficheiro. |
+| `dedupeWithinFile` | boolean | `true` | R1 | M1 | Uma constante por valor normalizado dentro do mesmo `SourceCode`. |
+| `remediationIncludeGlobs` | string[] | `[]` | R1 | M1 | Limita remediação a caminhos relativos que casam com estes globs (lista vazia = sem filtro extra além do `files` do ESLint). |
+| `remediationExcludeGlobs` | string[] | `[]` | R1–R3 | M1+ | Exclui testes, i18n, exemplos (ex.: `**/*.i18n.ts`, `**/.env.example`). |
+| `sharedConstantsModule` | string (path ou padrão resolvível) | — | R2 | M2 | Destino do módulo partilhado para constantes reutilizadas entre ficheiros (por pacote ou política de repositório). |
+| `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | R2 | M2 | Estilo de import a gerar ao referenciar `sharedConstantsModule`. |
+| `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | R2 | M2 | O índice de valores para duplicados no âmbito do lint **reconstrói-se** (ou invalida-se correctamente) em cada invocação `lintFiles` sobre o conjunto definido pelo `eslint.config`; não há cache stale entre execuções sem política explícita. |
+| `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | R2 | M2 | Quando a API ESLint usar `concurrency` / workers, o desenho deve documentar: desactivar paralelismo para regras com estado global, segunda passagem determinística, ou índice em ficheiro idempotente (ver macro-plan). |
+| `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
+| `dataFileTargets` | string[] | `[]` | R3 | M3 | Caminhos ou globs dos ficheiros de dados (vazio = derivação por convenção documentada na implementação). |
+| `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
+| `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | Modo seguro por defeito: sem copiar valores sensíveis em claro; fix agressivo exige opt-in explícito. Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
+| `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Transversal | M1–M3 | Tratamento de literais que são fallbacks de `process.env` (operadores `??` ou `||`) ou espelhos em constantes; mesma classe de hardcode que o literal de default (ver macro-plan). |
+
+### R1 — constantes no mesmo ficheiro
+
+- **Objectivo:** `fix` / `suggest` com âmbito ao ficheiro actual, compatível com o modelo clássico de `fixer` ESLint no AST corrente.
+- **Comportamento esperado:** declarações no topo (ordem definível por convenção), substituição de ocorrências do mesmo valor no mesmo `SourceCode` quando `dedupeWithinFile` for verdadeiro.
+
+### R2 — módulo partilhado e índice global no âmbito do lint
+
+- **Objectivo:** quando o **mesmo valor normalizado** aparece em **mais do que um** ficheiro do conjunto lintado, gerar ou actualizar um **módulo partilhado** (`sharedConstantsModule`) e reescrever imports e referências.
+- **Índice:** `literalIndexRebuildPolicy` obriga coerência com a execução actual do ESLint sobre `files` / `ignores` — “global” significa o âmbito do projecto segundo o flat config, não o universo da organização (ver macro-plan).
+- **Paralelismo:** `parallelLintingCompatibility` obriga a documentar a interacção com `concurrency` / workers (estado em memória partilhado pode ser inválido se vários workers processarem ficheiros em paralelo).
+
+### R3 — ficheiros de dados e ambiente
+
+- **Objectivo:** externalizar valores para `.json`, `.yaml`/`.yml`, `.toml`, `.properties` (ou subset em `dataFileFormats`) e código de leitura adequado à stack.
+- **Segredos:** valores classificados como sensíveis **não** são escritos em claro em ficheiros de dados; segue `secretRemediationMode` e a política de segredos do macro-plan.
+- **Merge:** `dataFileMergeStrategy` define expectativa mínima ante chaves duplicadas ou conflitos de escrita.
+
+### Segredos e literais de default de ambiente
+
+- **Segredos:** heurísticas e gravidade alinhadas ao mapa; sugestões devem orientar env / cofres / gestão de segredos da plataforma **sem** simular fornecedores externos no repositório ([`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md)).
+- **Literais de default:** expressões com `process.env`, operadores `??` ou `||` e um literal de string como fallback tratam esse literal como candidato a remediação segundo `envDefaultLiteralPolicy` e a trilha efectiva após classificação.
+
 ## Compatibilidade
 
 - Implementação em TypeScript ou JavaScript ES modules, alinhada à API de regras do ESLint 9.
@@ -71,6 +118,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 ## Versão do documento
 
+- **0.8.0** — M0: secção *Remediação assistida — opções públicas planeadas (R1–R3)* com tabela de opções estáveis (caminhos partilhados R2, formatos R3, `secretRemediationMode`, `envDefaultLiteralPolicy`, índice e paralelismo); ligação do schema planeado à regra `no-hardcoded-strings`.
 - **0.7.0** — remissão ao plano macro de remediação em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md); obrigação de alinhar opções públicas no marco M0 desse plano.
 - **0.6.0** — `messages`: recomendação de prefixos HCD-ERR-* por campo, alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **0.5.0** — catálogo `standardize-error-messages`: campos `seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround` (alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md)); substituem `raw` / `user` / `dev`.
