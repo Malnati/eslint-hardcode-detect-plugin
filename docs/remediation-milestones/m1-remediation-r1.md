@@ -105,6 +105,8 @@ gantt
 
 **A2 — entregável do revisor de negócio (parecer sobre aceitação suggest vs fix, M1-A2-03):** [`tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
 
+**A2 — entregável do revisor de desenvolvimento (parecer doc ↔ suite R1, M1-A2-05):** [`tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md`](tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md).
+
 **A2 — entregável do analista de testes (matriz técnica suggest vs fix + critérios de evidência):** [`tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md).
 
 **A2 — entregável do revisor de testes (parecer sobre matriz e critérios de evidência, M1-A2-07):** [`tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md).
