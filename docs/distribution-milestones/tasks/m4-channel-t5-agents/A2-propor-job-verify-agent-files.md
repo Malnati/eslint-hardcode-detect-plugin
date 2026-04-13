@@ -20,6 +20,10 @@ Camada A em [`../../m4-channel-t5-agents.md`](../../m4-channel-t5-agents.md) (se
 - Matriz §6 do plano M4: ficheiros normativos T5 vs Compose — validação por workflow, sem obrigar perfil Docker novo.
 - Pipeline atual: [`.github/workflows/ci.yml`](../../../../.github/workflows/ci.yml) (ordem: `test:docs-milestones`, `lint`, testes do workspace).
 
+### Artefacto entregue
+
+- Handoff e remissões: [`evidence/A2-verify-agent-files-handoff.md`](evidence/A2-verify-agent-files-handoff.md) (`npm run verify:agent-files`, step em [`.github/workflows/ci.yml`](../../../../.github/workflows/ci.yml)).
+
 ## Outputs
 
 - **Proposta concreta** numa destas formas:

@@ -8,6 +8,7 @@
     "lint": "npm run lint -w eslint-plugin-hardcode-detect",
     "test": "npm test -w eslint-plugin-hardcode-detect",
     "test:docs-m0": "node scripts/validate-milestone-plan-coverage.mjs",
-    "test:docs-milestones": "node scripts/validate-milestone-plan-coverage.mjs"
+    "test:docs-milestones": "node scripts/validate-milestone-plan-coverage.mjs",
+    "verify:agent-files": "node scripts/verify-normative-agent-files.mjs"
   }
 }
