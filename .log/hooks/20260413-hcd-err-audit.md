@@ -499,3 +499,97 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T00:41:22Z`
+- `conversation_id`: `5389c909-49cf-4e75-9ba4-29b4c024e071`
+- `generation_id`: `5a16bd10-a41a-43a3-a3aa-b6bda897cfa0`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/5389c909-49cf-4e75-9ba4-29b4c024e071/5389c909-49cf-4e75-9ba4-29b4c024e071.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `AGENTS.md`: **OK** — contagens SENIOR/FIX/OPS = 2/2/2; linhas com prefixo: L9, L89
+- `docs/cursor-vps-cli-parity.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/agent-error-messaging-triple.md`: **skip** — exclusão normativa (lista `AUDIT_EXCLUDE_PATHS` no hook)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T00:42:03Z`
+- `conversation_id`: `6378e286-9322-44c6-852d-08cab1cd9254`
+- `generation_id`: `62c184a2-bbbb-4958-abbe-5ddda17cd199`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/6378e286-9322-44c6-852d-08cab1cd9254/6378e286-9322-44c6-852d-08cab1cd9254.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T00:43:20Z`
+- `conversation_id`: `6378e286-9322-44c6-852d-08cab1cd9254`
+- `generation_id`: `edd9dd21-ca5b-4433-974f-1500d0995fbd`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/6378e286-9322-44c6-852d-08cab1cd9254/6378e286-9322-44c6-852d-08cab1cd9254.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `specs/agent-docker-compose.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T00:43:50Z`
+- `conversation_id`: `f917ea03-9721-4b98-a9fe-30faff59099c`
+- `generation_id`: `143edd0a-c59a-4d4e-b7f9-8fc0b401bd18`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/f917ea03-9721-4b98-a9fe-30faff59099c/f917ea03-9721-4b98-a9fe-30faff59099c.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T00:44:56Z`
+- `conversation_id`: `f917ea03-9721-4b98-a9fe-30faff59099c`
+- `generation_id`: `4ccf4b44-f947-456b-9a58-833833cbcad6`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/f917ea03-9721-4b98-a9fe-30faff59099c/f917ea03-9721-4b98-a9fe-30faff59099c.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m1-channel-t1-t2/A3-docker-compose-e2e-ops-draft.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-02-repository-tree-quando-perfil.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
