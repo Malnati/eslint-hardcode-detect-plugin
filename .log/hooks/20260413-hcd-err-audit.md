@@ -3092,3 +3092,22 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T21:30:36Z`
+- `conversation_id`: `c617818a-d376-4a9a-8a7f-4ba7ccbf50d9`
+- `generation_id`: `a8895e6a-36a5-4cd4-8fb3-84ac786ead56`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/c617818a-d376-4a9a-8a7f-4ba7ccbf50d9/c617818a-d376-4a9a-8a7f-4ba7ccbf50d9.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/m1-remediation-r1.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
