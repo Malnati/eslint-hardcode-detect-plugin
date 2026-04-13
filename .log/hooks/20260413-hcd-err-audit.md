@@ -2367,3 +2367,21 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 - `docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L77, L81, L85
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T14:05:38Z`
+- `conversation_id`: `1d227757-9bfd-4d2a-9d91-f128cdc44c6a`
+- `generation_id`: `02f391f7-4965-46e6-84fa-59e24046f021`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/1d227757-9bfd-4d2a-9d91-f128cdc44c6a/1d227757-9bfd-4d2a-9d91-f128cdc44c6a.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
