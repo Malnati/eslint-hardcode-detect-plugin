@@ -2385,3 +2385,25 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T14:06:55Z`
+- `conversation_id`: `1d227757-9bfd-4d2a-9d91-f128cdc44c6a`
+- `generation_id`: `827ba4ca-53d2-4c45-ac9f-54ae48db4966`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/1d227757-9bfd-4d2a-9d91-f128cdc44c6a/1d227757-9bfd-4d2a-9d91-f128cdc44c6a.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A1-architect-ruletester-r1-ci-environment.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L77, L81, L85
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-runner-ruletester-r1-evidence.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-08-papel-testador-ruletester-r1-suite.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
