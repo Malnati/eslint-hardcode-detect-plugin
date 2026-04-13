@@ -34,5 +34,10 @@ Sub-micro-tarefa `M1-A1-01` concluída.
 
 ## Paths principais
 
-`packages/eslint-plugin-hardcode-detect/tests/`
+`packages/eslint-plugin-hardcode-detect/tests/` (alvo da suite; este papel não edita essa pasta).
 
+## Entregável (concluído)
+
+Especificação normativa do analista de negócio: [`../A1-business-analyst-ruletester-r1-acceptance.md`](../A1-business-analyst-ruletester-r1-acceptance.md) — critérios de aceitação, rastreabilidade ao contrato, exclusões/include globs, matriz de cenários R1 e fronteira com M1-A2.
+
+Estado: **concluído** (entregável acima).
