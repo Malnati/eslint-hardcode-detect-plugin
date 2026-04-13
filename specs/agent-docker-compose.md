@@ -30,6 +30,33 @@ docker compose --profile e2e run --rm e2e
 docker compose --profile prod run --rm prod
 ```
 
+### Perfil planeado: `e2e-ops` (volume + imagem ops-eslint)
+
+**Estado:** o perfil **`e2e-ops`** e o serviço homónimo **ainda não** estão definidos em [`docker-compose.yml`](../docker-compose.yml). O desenho abaixo alinha a evolução do Compose à matriz M1 ([`docs/distribution-milestones/m1-channel-t1-t2.md`](../docs/distribution-milestones/m1-channel-t1-t2.md) §6): trilha **T2** com montagem do repositório e execução de ESLint na imagem **ops-eslint**, por oposição aos perfis atuais que usam `node:22-bookworm-slim` com `npm ci`.
+
+**Função pretendida:** um serviço que monta o clone em `/workspace` e corre o binário `eslint` com a imagem construída a partir de [`.docker/Dockerfile`](../.docker/Dockerfile) (tag padrão `malnati-ops-eslint:local`), no mesmo espírito que [`assets/run.sh`](../.github/actions/ops-eslint/assets/run.sh).
+
+**Pré-requisitos** (iguais em intenção ao smoke T2 na secção seguinte):
+
+- Na raiz do clone: `npm ci` no host para que `node_modules` e fontes sob o mount coincidam com a trilha T1.
+- Imagem local: `docker build -t malnati-ops-eslint:local -f .docker/Dockerfile .` (ou imagem já presente com a mesma tag).
+- `ESLINT_USE_FLAT_CONFIG=true` e path de análise alinhado a `npm run lint` para o pacote, tipicamente `packages/eslint-plugin-hardcode-detect` (ver **Smoke reprodutível (T2)** abaixo).
+
+**Comando-alvo** (quando o perfil existir no Compose):
+
+```bash
+docker compose --profile e2e-ops run --rm e2e-ops
+```
+
+Até `docker-compose.yml` declarar o perfil e o serviço `e2e-ops`, este comando **não** é aplicável; use o smoke documentado em **Smoke reprodutível (T2)** (build + `run.sh`).
+
+**Desenho pretendido (implementação futura):**
+
+- `volumes`: `.:/workspace` (paridade de árvore com o host).
+- `working_dir`: `/workspace`.
+- `image`: `malnati-ops-eslint:local` (não a imagem Node dos perfis `dev` / `e2e` / `prod`).
+- `command` / entrypoint: equivalente ao fluxo de lint já descrito em **Smoke reprodutível (T2)** — por exemplo invocar `bash .github/actions/ops-eslint/assets/run.sh --path packages/eslint-plugin-hardcode-detect --build-image false` dentro do container, ou o mesmo conjunto de argumentos que esse script aplica ao `eslint`.
+
 ## Imagem ops-eslint (`.docker/Dockerfile`)
 
 - **Propósito**: executar o binário `eslint` no container com workspace montado (relatório JSON, `--fix`, etc.), como em [`assets/run.sh`](../.github/actions/ops-eslint/assets/run.sh).
@@ -92,6 +119,7 @@ Matriz de evidência (estado por dimensão): [`docs/distribution-milestones/task
 
 ## Versão do documento
 
+- **1.0.4** — subsecção **Perfil planeado: `e2e-ops`** (pré-requisitos, comando-alvo `docker compose --profile e2e-ops run --rm e2e-ops`, estado não implementado no Compose; remissão M1 §6).
 - **1.0.3** — subsecção **Paridade T1↔T2 (versão e config)** e remissão à matriz de evidência M1.
 - **1.0.2** — secção smoke T2 (build + `run.sh`), relatório padrão e nota sobre CI vs trilha T3.
 - **1.0.1** — remissão à matriz M0 (secção 6) para contexto de marcos e T1.
