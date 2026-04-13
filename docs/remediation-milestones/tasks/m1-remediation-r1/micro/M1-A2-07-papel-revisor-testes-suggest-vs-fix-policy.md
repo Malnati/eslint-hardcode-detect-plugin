@@ -36,3 +36,14 @@ Sub-micro-tarefa `M1-A2-06` concluída.
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+Revisão de testes sobre a matriz técnica P-SVF / suggest vs fix e critérios de evidência (M1-A2-06), alinhada à suite RuleTester R1 e ao ambiente A2:
+
+- **Artefacto:** [`../A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](../A2-test-reviewer-suggest-vs-fix-policy-signoff.md).
+- **Verificações:** matriz P-SVF-01 … P-SVF-08 e caso sintético de segredo confrontados com [`packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`](../../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs); critérios de evidência para M1-A2-08 e modelo HCD-ERR considerados adequados; e2e como fumaça na cadeia `npm test`; condições de `cwd` / `filePath`; coerência com o parecer M1-A2-05; parecer **Aprovado** com condições documentadas.
+- **Limites de papel:** não execução da suíte no lugar do testador (M1-A2-08); gate global `npm test` após o testador.
+- **Validação:** documentação normativa; o gate técnico continua a ser `npm test -w eslint-plugin-hardcode-detect` (M1-A2-08).
+
+Estado: **concluído**.
+

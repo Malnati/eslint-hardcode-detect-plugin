@@ -3,7 +3,8 @@
  * Revisão desenvolvimento: M1-A1-05 (estilo, escopo, segurança dos literais de teste).
  * Matriz técnica / evidência: docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-analyst-ruletester-r1-matrix-evidence.md (M1-A1-06).
  * Política suggest vs fix — matriz P-SVF / evidência testes: docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md (M1-A2-06).
- * Revisão testes: docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md (M1-A1-07).
+ * Revisão testes (suggest vs fix A2): docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md (M1-A2-07).
+ * Revisão testes (suite R1 A1): docs/remediation-milestones/tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md (M1-A1-07).
  * Rastreabilidade negócio: docs/remediation-milestones/tasks/m1-remediation-r1/A1-business-analyst-ruletester-r1-acceptance.md (S-R1-*).
  */
 import { RuleTester } from "eslint";
