@@ -14,6 +14,7 @@
 - [`docs/remediation-milestones/m1-remediation-r1.md`](../../m1-remediation-r1.md) — secção 7 (Camada A), tarefa A1.
 - Micro-tarefa: [`micro/M1-A1-08-papel-testador-ruletester-r1-suite.md`](micro/M1-A1-08-papel-testador-ruletester-r1-suite.md).
 - Critérios de evidência (referência): [`A1-test-analyst-ruletester-r1-matrix-evidence.md`](A1-test-analyst-ruletester-r1-matrix-evidence.md).
+- Parecer do revisor de testes (M1-A1-07): [`A1-test-reviewer-ruletester-r1-signoff.md`](A1-test-reviewer-ruletester-r1-signoff.md).
 
 ## Execução registada
 

@@ -97,6 +97,8 @@ gantt
 
 **A1 — entregável do revisor de testes (parecer sobre matriz e critérios de evidência, M1-A1-07):** [`tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md`](tasks/m1-remediation-r1/A1-test-reviewer-ruletester-r1-signoff.md).
 
+**A1 — entregável do testador (execução e evidências do gate `npm test`, M1-A1-08):** [`tasks/m1-remediation-r1/A1-test-runner-ruletester-r1-evidence.md`](tasks/m1-remediation-r1/A1-test-runner-ruletester-r1-evidence.md).
+
 ---
 
 ## 8. Camada B — Execução de agentes por fase
