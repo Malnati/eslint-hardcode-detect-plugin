@@ -36,3 +36,9 @@ Sub-micro-tarefa `M1-A1-03` concluída.
 
 `packages/eslint-plugin-hardcode-detect/tests/`
 
+## Entregável (concluído)
+
+Suite RuleTester em [`packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`](../../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs) — cenários **S-R1-01** … **S-R1-08** (mais caso de segredo provável) alinhados a [`../A1-business-analyst-ruletester-r1-acceptance.md`](../A1-business-analyst-ruletester-r1-acceptance.md); `npm test` do pacote inclui este ficheiro.
+
+Estado: **concluído**.
+

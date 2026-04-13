@@ -172,6 +172,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       │   └── nest-workspace.e2e.mjs  # Massa Nest (cwd no workspace irmão)
 │       ├── src/rules/                  # Implementação das regras ESLint
 │       ├── tests/                      # RuleTester + node:test
+│       │   ├── index.test.mjs          # hello-world + no-hardcoded-strings (base)
+│       │   └── no-hardcoded-strings-r1.test.mjs  # Remediação R1 (marco M1 / S-R1-*)
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md

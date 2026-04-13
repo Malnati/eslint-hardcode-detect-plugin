@@ -17,7 +17,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "eslint .",
-    "test": "npm run build && node --test tests/index.test.mjs e2e/hello-world.e2e.mjs e2e/nest-workspace.e2e.mjs"
+    "test": "npm run build && node --test tests/index.test.mjs tests/no-hardcoded-strings-r1.test.mjs e2e/hello-world.e2e.mjs e2e/nest-workspace.e2e.mjs"
   },
   "keywords": [
     "eslint",
