@@ -81,7 +81,7 @@ gantt
 | `packages/e2e-fixture-nest` | T1 | `e2e` | `e2e`: `.:/workspace` | `docker compose --profile e2e run --rm e2e` |
 | Monorepo (lint parity) | T1/T3 | `prod` | `prod`: `npm ci` + lint + test | `docker compose --profile prod run --rm prod` |
 | Volume + imagem ops-eslint | T2 | *planejado* `e2e-ops` | Montagem repo → ESLint na imagem [`../../.docker/Dockerfile`](../../.docker/Dockerfile) | `docker compose --profile e2e-ops run --rm e2e-ops` (quando existir) |
-| Action CI | T2 | N/A | Composite [`ops-eslint`](../../.github/actions/ops-eslint/) | Step em `.github/workflows/ci.yml` |
+| Action CI | T2 | N/A | Composite [`ops-eslint`](../../.github/actions/ops-eslint/) | Pendente no repo: [`ci.yml`](../../.github/workflows/ci.yml) ainda não invoca `ops-eslint`; smoke documentado em [`specs/agent-docker-compose.md`](../../specs/agent-docker-compose.md) e [`README.md`](../../README.md); T3 em [`m2-channel-t3-ci.md`](m2-channel-t3-ci.md). |
 
 ---
 

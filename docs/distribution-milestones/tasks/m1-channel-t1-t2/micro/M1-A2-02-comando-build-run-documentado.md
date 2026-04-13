@@ -21,3 +21,8 @@ Consolidar **um** fluxo mínimo reprodutível: build da imagem ops-eslint e exec
 
 - `specs/agent-docker-compose.md`
 - `README.md` (raiz, se já documentar a imagem)
+
+## Onde está consolidado
+
+- Sequência normativa (build, `run.sh`, relatório padrão, nota CI / T3): [`specs/agent-docker-compose.md`](../../../../../specs/agent-docker-compose.md) — secção **Smoke reprodutível (T2) — build + run**.
+- Atalho com comandos copiáveis na raiz: [`README.md`](../../../../../README.md) — **Smoke T2 (imagem ops-eslint)**.

@@ -38,6 +38,18 @@ Normas e tabela de comandos: [`specs/agent-docker-compose.md`](specs/agent-docke
 
 Imagem só ESLint (Composite Action / `docker build -f .docker/Dockerfile`): tag padrão `malnati-ops-eslint:local`.
 
+#### Smoke T2 (imagem ops-eslint)
+
+Fluxo mínimo reprodutível (paridade com `npm run lint` no workspace do plugin). Detalhe e contexto de CI: [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) (secção **Smoke reprodutível (T2)**).
+
+```bash
+npm ci
+docker build -t malnati-ops-eslint:local -f .docker/Dockerfile .
+bash .github/actions/ops-eslint/assets/run.sh \
+  --path packages/eslint-plugin-hardcode-detect \
+  --build-image false
+```
+
 ## Estrutura
 
 | Caminho | Conteúdo |
