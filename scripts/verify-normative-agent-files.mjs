@@ -20,6 +20,7 @@ const NORMATIVE_AGENT_FILES = [
   ".cursor/rules/agent-ia-governance.mdc",
   ".cursor/rules/agent-integration-testing-policy.mdc",
   ".cursor/rules/agent-reference-agents.mdc",
+  ".cursor/rules/agent-remediation-micro-roles.mdc",
   ".cursor/rules/agent-session.mdc",
   ".cursor/rules/clippings-official-docs.mdc",
   ".cursor/rules/documentation.mdc",
@@ -36,6 +37,7 @@ const NORMATIVE_AGENT_FILES = [
   ".cursor/skills/github-markdown-docs/SKILL.md",
   ".cursor/skills/reference-agents-portfolio/SKILL.md",
   ".cursor/skills/reference-clippings-workflow/SKILL.md",
+  ".cursor/skills/remediation-micro-roles-workflow/SKILL.md",
   // §1.3 Comandos
   ".cursor/commands/abrir-prompt-agente.md",
   ".cursor/commands/fechar-prompt-agente.md",
@@ -50,6 +52,7 @@ const NORMATIVE_AGENT_FILES = [
   // §1.6 Instruções Copilot
   ".github/instructions/docker-compose.instructions.md",
   ".github/instructions/eslint-plugin-hardcode.instructions.md",
+  ".github/instructions/milestones-planning.instructions.md",
 ];
 
 const missing = NORMATIVE_AGENT_FILES.filter(

@@ -13,7 +13,7 @@ Este documento alinha **conceitos e pastas** usados em coleções estilo [Awesom
 |-----------------------------------------------------|-------------------------------|--------|
 | `agents/*.agent.md` (frontmatter + corpo) | [`AGENTS.md`](../AGENTS.md) + [`specs/agent-session-workflow.md`](agent-session-workflow.md) (fases A–D) + [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) (ponte opcional) | O comportamento normativo está em `specs/`; ficheiros em `.github/agents/` são atalhos que apontam para a mesma hierarquia. |
 | Ponte só HCD-ERR (formato de falhas) | [`.github/agents/hcd-err-messaging.agent.md`](../.github/agents/hcd-err-messaging.agent.md) + hook em [`.cursor/hooks/`](../.cursor/hooks/) | Escopo mínimo (Níveis 1–2); não substitui o agente do plugin; não confundir com Task/subagent. |
-| `instructions/*.instructions.md` com `applyTo` (globs) | [`.cursor/rules/*.mdc`](../.cursor/rules/) (`globs` / escopo) + políticas por pasta em `specs/` + [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) (ponte opcional) | Regras por ficheiro no Cursor; instruções Copilot no repo devem ser **curtas** e remeter a `AGENTS.md` / `specs/`. |
+| `instructions/*.instructions.md` com `applyTo` (globs) | [`.cursor/rules/*.mdc`](../.cursor/rules/) (`globs` / escopo) + políticas por pasta em `specs/` + [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) e [`.github/instructions/milestones-planning.instructions.md`](../.github/instructions/milestones-planning.instructions.md) (pontes opcionais) | Regras por ficheiro no Cursor; instruções Copilot no repo devem ser **curtas** e remeter a `AGENTS.md` / `specs/`. |
 | Skills em `.github/skills/<nome>/SKILL.md` | [`.cursor/skills/<nome>/SKILL.md`](../.cursor/skills/) | Mesmo papel (workflow especializado); descrição rica no frontmatter para descoberta. Não duplicar corpo normativo entre os dois sítios sem necessidade. |
 | Sub-agente / agente adicional (`docker-tooling`, etc.) | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) + [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Especialização em Compose e `.docker/`; continua subordinado a `AGENTS.md` e ao spec temático. |
 | Plugins Copilot (`copilot plugin install …`) | Não aplicável como runtime deste repo | Plugins externos podem inspirar prompts; a governança local continua em `AGENTS.md` e `specs/`. |
@@ -46,6 +46,7 @@ A visão multi-nível em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md
 
 ## Versão do documento
 
+- **1.5.0** — tabela de equivalências: instruções [`milestones-planning.instructions.md`](../.github/instructions/milestones-planning.instructions.md) para `docs/*-milestones/**`; remissão a [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md).
 - **1.4.0** — secção Cursor IDE vs CLI/VPS; remissão a [`docs/cursor-vps-cli-parity.md`](../docs/cursor-vps-cli-parity.md).
 - **1.3.0** — equivalência para o agente pontual `hcd-err-messaging` (mensagens de falha HCD-ERR).
 - **1.2.0** — anti-padrões: citação de ficheiros nas pontes `.github/agents/` e `.github/instructions/` com caminhos relativos à raiz.

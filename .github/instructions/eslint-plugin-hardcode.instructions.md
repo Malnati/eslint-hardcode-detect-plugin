@@ -15,3 +15,4 @@ Estas instruções são uma **ponte**: a fonte normativa completa está em [`AGE
 6. Ao citar ficheiros deste repositório em texto ou exemplos, use **caminhos relativos à raiz** — [`docs/documentation-policy.md`](../../docs/documentation-policy.md) (princípio 5b).
 7. Integrações (registry, publicação, MCP): [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.
 8. Falhas (testes, build, CI): ao relatar, [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — obrigatório `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; verificar Níveis 1–2.
+9. Planos de dev, testes e correcções com várias fases: [`specs/agent-remediation-micro-roles.md`](../../specs/agent-remediation-micro-roles.md) — sub-micro-tarefas por **papel** (foco único); skill [`remediation-micro-roles-workflow`](../../.cursor/skills/remediation-micro-roles-workflow/SKILL.md).

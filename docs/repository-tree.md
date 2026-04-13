@@ -30,6 +30,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── agent-ia-governance.mdc
 │   │   ├── agent-integration-testing-policy.mdc
 │   │   ├── agent-reference-agents.mdc
+│   │   ├── agent-remediation-micro-roles.mdc
 │   │   ├── agent-session.mdc
 │   │   ├── clippings-official-docs.mdc
 │   │   ├── documentation.mdc
@@ -45,10 +46,11 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── git-agent-workflow/
 │       ├── github-markdown-docs/
 │       ├── reference-agents-portfolio/
-│       └── reference-clippings-workflow/
+│       ├── reference-clippings-workflow/
+│       └── remediation-micro-roles-workflow/
 ├── .github/
 │   ├── agents/               # Agentes GitHub Copilot (pontes: eslint-hardcode-plugin, docker-tooling, hcd-err-messaging)
-│   ├── instructions/         # Instruções Copilot (applyTo: pacote do plugin, docker-compose)
+│   ├── instructions/         # Instruções Copilot (applyTo: pacote, docker-compose, marcos *-milestones)
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
 │   └── workflows/            # CI (ex.: ci.yml)
 ├── docs/                     # Documentação complementar
@@ -185,6 +187,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md
     ├── agent-integration-testing-policy.md  # Integrações: sandboxes; sem mocks no repo
+    ├── agent-remediation-micro-roles.md  # Sub-micro-tarefas por papel (foco único)
     ├── agent-reference-agents.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md

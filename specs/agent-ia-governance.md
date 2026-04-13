@@ -21,6 +21,7 @@ Garantir que:
 | 1c | [`specs/agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) | Copilot / Awesome vs Cursor; pontes `.github/`; precedência de instruções |
 | 1d | [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Docker Compose (perfis dev/e2e/prod/e2e-ops), `.docker/Dockerfile` e relação com `ops-eslint` |
 | 1e | [`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md) | Integrações externas: sem mocks no repo; sandboxes ou ambientes de teste dos provedores |
+| 1f | [`specs/agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md) | Sub-micro-tarefas **por papel** (foco único) em planos de dev, testes, correcções e marcos `*-milestones/` com `micro/` |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
 | 2a | [`specs/agent-error-messaging-triple.md`](agent-error-messaging-triple.md) | Falhas: três partes com prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–3 de conformidade |
 | 3 | [`specs/plugin-contract.md`](plugin-contract.md) | Comportamento público do plugin |
@@ -38,6 +39,7 @@ Garantir que:
 - [ ] Se o pedido puder **alterar limites ou escopo do produto**: reler [`docs/limitations-and-scope.md`](../docs/limitations-and-scope.md).
 - [ ] Se houver mudança de **comportamento público**: [`specs/plugin-contract.md`](plugin-contract.md) atualizado **antes** ou **junto** do código.
 - [ ] Se o escopo envolver **integração externa** (registry npm, publicação de pacote, MCP, OAuth, webhooks, credenciais de CI): seguir [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) (sandboxes dos provedores; sem mocks de serviço no repositório).
+- [ ] Se o pedido envolver **planos de desenvolvimento**, **correcções/testes** em `packages/` ou **marcos** em [`docs/remediation-milestones/`](../docs/remediation-milestones/) / [`docs/distribution-milestones/`](../docs/distribution-milestones/): aplicar [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md) — declarar **papel** do turno, evitar multi-foco; seguir `micro/README.md` quando a tarefa Camada A estiver fragmentada.
 
 ## Checklist — execução
 
@@ -47,6 +49,7 @@ Garantir que:
 - [ ] Ao citar ficheiros ou pastas **deste** repo (mensagens, relatórios, sub-agentes): **caminhos relativos à raiz**, conforme [`docs/documentation-policy.md`](../docs/documentation-policy.md) (exceções: Clippings literais, semântica de API).
 - [ ] Sem **mocks, stubs ou fakes** de serviços externos para “integração”; quando necessário, documentar ou usar **sandbox** conforme [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md).
 - [ ] Ao **comunicar falhas** (testes, build, CI, comandos, bloqueios): estruturar a resposta conforme [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) — primeira linha de conteúdo de cada parte com `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; verificar **Nível 1** (três prefixos presentes) e **Nível 2** (contagens alinhadas a **N** unidades de falha); relatórios de sub-agentes que descrevam falhas devem seguir o mesmo formato.
+- [ ] Se o trabalho cair no âmbito de [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md): **não** misturar papéis (especificação vs implementação vs testador) no mesmo passo sem separação explícita; em delegação, **um papel por sub-agente** quando possível.
 
 ## Checklist — fechamento do prompt (antes de encerrar a resposta)
 
@@ -73,6 +76,7 @@ Garantir que:
 | Regra Cursor | [`.cursor/rules/docker-compose-tooling.mdc`](../.cursor/rules/docker-compose-tooling.mdc) | Docker Compose e `.docker/` (globs) |
 | Regra Cursor | [`.cursor/rules/agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc) | Integrações: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) |
 | Regra Cursor | [`.cursor/rules/agent-error-messaging-triple.mdc`](../.cursor/rules/agent-error-messaging-triple.mdc) | Falhas: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) |
+| Regra Cursor | [`.cursor/rules/agent-remediation-micro-roles.mdc`](../.cursor/rules/agent-remediation-micro-roles.mdc) | Sub-micro-tarefas por papel: [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md) |
 | Skill | [`.cursor/skills/reference-clippings-workflow/SKILL.md`](../.cursor/skills/reference-clippings-workflow/SKILL.md) | Manutenção de Clippings |
 | Skill | [`.cursor/skills/eslint-plugin-workflow/SKILL.md`](../.cursor/skills/eslint-plugin-workflow/SKILL.md) | Implementação no pacote |
 | Skill | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Docs e grafo |
@@ -80,11 +84,13 @@ Garantir que:
 | Skill | [`.cursor/skills/reference-agents-portfolio/SKILL.md`](../.cursor/skills/reference-agents-portfolio/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | Skill | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose, `.docker/Dockerfile` e perfis dev/e2e/prod/e2e-ops |
 | Skill | [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../.cursor/skills/agent-error-messaging-triple/SKILL.md) | Formato triplo para relatórios de falha |
+| Skill | [`.cursor/skills/remediation-micro-roles-workflow/SKILL.md`](../.cursor/skills/remediation-micro-roles-workflow/SKILL.md) | Foco único por papel em planos de dev, testes e marcos |
 | Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist (ex.: `/fechar-e2e-nest-fixture`) |
 | Ponte Copilot (opcional) | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Agente GitHub Copilot: remete a `AGENTS.md` e `specs/` |
 | Ponte Copilot (opcional) | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) | Docker/compose/imagem ops-eslint: remete a [`agent-docker-compose.md`](agent-docker-compose.md) |
 | Ponte Copilot (opcional) | [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) | Instruções com `applyTo` no pacote do plugin |
 | Ponte Copilot (opcional) | [`.github/instructions/docker-compose.instructions.md`](../.github/instructions/docker-compose.instructions.md) | Instruções com `applyTo` em `docker-compose*.yml` e `.docker/**` |
+| Ponte Copilot (opcional) | [`.github/instructions/milestones-planning.instructions.md`](../.github/instructions/milestones-planning.instructions.md) | Instruções com `applyTo` em `docs/remediation-milestones/**` e `docs/distribution-milestones/**` |
 
 ## Boas práticas de mercado (OSS e plugins ESLint)
 
@@ -96,6 +102,7 @@ Garantir que:
 
 ## Versão do documento
 
+- **2.1.0** — hierarquia 1f, checklists abertura/execução e mapa: [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md); rule `agent-remediation-micro-roles.mdc`, skill `remediation-micro-roles-workflow`, instruções `milestones-planning`.
 - **2.0.0** — 2a e checklists: prefixos canónicos e Níveis 1–2 ao comunicar falhas; alinhado a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **1.9.0** — hierarquia 2a, checklists execução/fechamento e mapa: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md), rule e skill `agent-error-messaging-triple`.
 - **1.8.0** — hierarquia e checklists: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md); mapa: rule [`agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc).

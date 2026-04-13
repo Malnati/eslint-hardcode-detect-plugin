@@ -18,6 +18,7 @@ Você trabalha no repositório do plugin **eslint-plugin-hardcode-detect**. A au
 5. Se ambiguidade entre Cursor e GitHub Copilot: [`specs/agent-tooling-ecosystem-map.md`](../../specs/agent-tooling-ecosystem-map.md)
 6. Integrações externas (registry, publicação, MCP): [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md) — sandboxes dos provedores; sem mocks no repositório.
 7. Falhas (testes, build, CI, comandos): ao comunicar, seguir [`specs/agent-error-messaging-triple.md`](../../specs/agent-error-messaging-triple.md) — prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–2 antes de enviar. Se o **único** objetivo for corrigir esse formato (ex.: após o hook HCD-ERR), use a ponte estreita [`.github/agents/hcd-err-messaging.agent.md`](hcd-err-messaging.agent.md).
+8. Planos de desenvolvimento, testes, correcções em `packages/` ou marcos em `docs/*-milestones/`: [`specs/agent-remediation-micro-roles.md`](../../specs/agent-remediation-micro-roles.md) — declarar **papel** do turno; evitar multi-foco; skill [`.cursor/skills/remediation-micro-roles-workflow/SKILL.md`](../../.cursor/skills/remediation-micro-roles-workflow/SKILL.md).
 
 ## Implementação
 

@@ -22,6 +22,7 @@ Este documento é o **artefacto rastreável** pedido em [`../A1-inventario-curso
 | `.cursor/rules/agent-ia-governance.mdc` | sim | Governança; hierarquia com `AGENTS.md` |
 | `.cursor/rules/agent-integration-testing-policy.mdc` | sim | Integrações sem mocks |
 | `.cursor/rules/agent-reference-agents.mdc` | sim | `reference/agents-ref/` vs normas do repo |
+| `.cursor/rules/agent-remediation-micro-roles.mdc` | sim | Sub-micro-tarefas por papel (planos de dev, testes, marcos `*-milestones/`) |
 | `.cursor/rules/agent-session.mdc` | sim | Orquestração por prompt |
 | `.cursor/rules/clippings-official-docs.mdc` | sim | Consulta `reference/Clippings/` em escopo ESLint/npm |
 | `.cursor/rules/documentation.mdc` | sim | Markdown / fechamento de documentação |
@@ -31,7 +32,7 @@ Este documento é o **artefacto rastreável** pedido em [`../A1-inventario-curso
 | `.cursor/rules/repo-layout.mdc` | sim | Layout do monorepo e `packages/` |
 | `.cursor/rules/repo-relative-paths.mdc` | sim | Citação de paths relativos à raiz |
 
-**Resumo:** 12 ficheiros; 10 com `alwaysApply: true`, 2 com `false` (`docker-compose-tooling`, `e2e-nest-fixture` — escopo por contexto).
+**Resumo:** 13 ficheiros; 11 com `alwaysApply: true`, 2 com `false` (`docker-compose-tooling`, `e2e-nest-fixture` — escopo por contexto).
 
 ---
 
@@ -46,6 +47,7 @@ Este documento é o **artefacto rastreável** pedido em [`../A1-inventario-curso
 | `.cursor/skills/github-markdown-docs/SKILL.md` | README, `docs/`, `repository-tree` |
 | `.cursor/skills/reference-agents-portfolio/SKILL.md` | Cruzamento com `reference/agents-ref/` |
 | `.cursor/skills/reference-clippings-workflow/SKILL.md` | Sincronização de `reference/Clippings/` |
+| `.cursor/skills/remediation-micro-roles-workflow/SKILL.md` | Foco único por papel em planos de dev, testes e marcos |
 
 Equivalência no mapa: skills em `.github/skills/` → neste repo usam **apenas** `.cursor/skills/` (não há pasta `.github/skills/`).
 
@@ -86,6 +88,7 @@ Equivalência no mapa: skills em `.github/skills/` → neste repo usam **apenas*
 |------|-------------------------|--------|
 | `.github/instructions/docker-compose.instructions.md` | `docker-compose*.yml,.docker/**/*` | Ponte curta para `specs/agent-docker-compose.md` |
 | `.github/instructions/eslint-plugin-hardcode.instructions.md` | `packages/eslint-plugin-hardcode-detect/**/*.{ts,mjs,cjs,js}` | Ponte para pacote publicável + `AGENTS.md` / `specs/` |
+| `.github/instructions/milestones-planning.instructions.md` | `docs/remediation-milestones/**/*.md,docs/distribution-milestones/**/*.md` | Marcos; remete a `agent-remediation-micro-roles` |
 
 ---
 

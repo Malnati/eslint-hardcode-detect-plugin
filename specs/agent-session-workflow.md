@@ -19,6 +19,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 2b. [`agent-reference-agents.md`](agent-reference-agents.md) — quando o pedido envolver [`reference/agents-ref/`](../reference/agents-ref/).
 2c. [`agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) — quando houver ambiguidade entre Cursor, GitHub Copilot ou coleções estilo Awesome: equivalências e precedência.
 2d. [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md) — quando o trabalho envolver integrações externas (registry, publicação, MCP, credenciais): sandboxes dos provedores; sem mocks no repositório.
+2e. [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md) — quando o trabalho envolver planos de desenvolvimento, testes, correcções em `packages/` ou marcos em `docs/*-milestones/`: sub-micro-tarefas por **papel** (foco único).
 3. Este arquivo — abertura e fechamento da sessão (fases A–D).
 4. [`specs/plugin-contract.md`](plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](vision-hardcode-plugin.md) — produto e visão.
 5. [`specs/agent-reference-clippings.md`](agent-reference-clippings.md) — Clippings e documentação oficial.
@@ -41,6 +42,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | **Docker / Compose / imagem ops-eslint** | [`docker-compose.yml`](../docker-compose.yml), [`.docker/`](../.docker/), ajustes em [`.github/actions/ops-eslint`](../.github/actions/ops-eslint) | Ler [`specs/agent-docker-compose.md`](agent-docker-compose.md); skill [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md). Consultar Clippings só se a mudança depender de semântica oficial de ESLint/npm não óbvia no repo. |
 
 3. Se o escopo for **misturado** (ex.: código + doc), aplicar a coluna mais restritiva (ex.: código ESLint → consulta a Clippings).
+4. Se o pedido envolver **planos de marcos** (`docs/remediation-milestones/`, `docs/distribution-milestones/`) **e** entregas em `packages/`, ou combinar **especificação + implementação + testes** num único pedido: aplicar [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md) — declarar o **papel** do turno ou seguir o índice em `tasks/*/micro/README.md` quando existir; skill [`remediation-micro-roles-workflow`](../.cursor/skills/remediation-micro-roles-workflow/SKILL.md).
 
 ## Fase B — Fontes antes de implementar (escopo relevante)
 
@@ -59,6 +61,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 3. Preferir imports **relativos** dentro do pacote, conforme [`AGENTS.md`](../AGENTS.md).
 4. Após edições que afetem estilo ou tipos no pacote, corrigir lints conforme a configuração do pacote.
 5. Ao **delegar** trabalho (sub-agente GitHub Copilot, agente Explore/Task ou outro assistente), passar o contexto com **caminhos relativos à raiz** ao referir ficheiros deste repositório (salvo exceções em [`docs/documentation-policy.md`](../docs/documentation-policy.md)); relatórios de sub-agentes devem seguir o mesmo critério. Quando o sub-agente **reportar falhas**, o relatório deve seguir [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md): primeira linha de conteúdo de cada parte com `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]` (ver Níveis 1–2 no spec).
+6. Se [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md) se aplicar: **um papel por delegação** quando possível; não fundir revisão de negócio, desenvolvimento e testador no mesmo sub-prompt sem limites explícitos.
 
 ## Fase D — Fechar o prompt (sempre que houver entrega relevante)
 
@@ -81,6 +84,7 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.cursor/skills/reference-agents-portfolio/SKILL.md`](../.cursor/skills/reference-agents-portfolio/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
 | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose e imagem `.docker/` |
 | [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../.cursor/skills/agent-error-messaging-triple/SKILL.md) | Falhas: três partes com prefixos HCD-ERR-* |
+| [`.cursor/skills/remediation-micro-roles-workflow/SKILL.md`](../.cursor/skills/remediation-micro-roles-workflow/SKILL.md) | Sub-micro-tarefas por papel (foco único) |
 | [`.cursor/rules/agent-session.mdc`](../.cursor/rules/agent-session.mdc) | Lembrete Cursor: este fluxo |
 | [`.cursor/rules/agent-error-messaging-triple.mdc`](../.cursor/rules/agent-error-messaging-triple.mdc) | Falhas: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) |
 | [`.cursor/rules/agent-ia-governance.mdc`](../.cursor/rules/agent-ia-governance.mdc) | Checklist resumido e ponte para [`agent-ia-governance.md`](agent-ia-governance.md) |
@@ -91,9 +95,11 @@ Este contrato **orquestra** os demais; em caso de ambiguidade sobre “o que faz
 | [`.github/agents/docker-tooling.agent.md`](../.github/agents/docker-tooling.agent.md) | Ponte Copilot: Docker/compose (opcional) |
 | [`.github/instructions/eslint-plugin-hardcode.instructions.md`](../.github/instructions/eslint-plugin-hardcode.instructions.md) | Instruções Copilot com `applyTo` no pacote (opcional) |
 | [`.github/instructions/docker-compose.instructions.md`](../.github/instructions/docker-compose.instructions.md) | Instruções Copilot com `applyTo` em compose/Dockerfile (opcional) |
+| [`.github/instructions/milestones-planning.instructions.md`](../.github/instructions/milestones-planning.instructions.md) | Instruções Copilot com `applyTo` em `docs/*-milestones/**` (opcional) |
 
 ## Versão do documento
 
+- **1.12.0** — hierarquia 2e; Fase A item 4, Fase C item 6 e tabela: [`agent-remediation-micro-roles.md`](agent-remediation-micro-roles.md); skill e rule `remediation-micro-roles` / `agent-remediation-micro-roles`; instruções `milestones-planning`.
 - **1.11.0** — 2a, Fase C item 5 e Fase D item 3: prefixos canónicos e Níveis 1–2 em [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
 - **1.10.0** — Hierarquia 2a; Fases C–D e tabela: [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md), skill e rule `agent-error-messaging-triple`.
 - **1.9.0** — Hierarquia 2d e Fase B item 5: [`agent-integration-testing-policy.md`](agent-integration-testing-policy.md); tabela: rule [`agent-integration-testing-policy.mdc`](../.cursor/rules/agent-integration-testing-policy.mdc).

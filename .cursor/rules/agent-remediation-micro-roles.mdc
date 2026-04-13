@@ -1,0 +1,13 @@
+---
+description: Sub-micro-tarefas por papel — foco único em planos de dev, testes e marcos (remediation/distribution)
+alwaysApply: true
+---
+
+# Sub-micro-tarefas por papel (foco único)
+
+Quando o prompt envolver **planos de desenvolvimento**, **ajustes ou correcções** em `packages/`, **testes** (definir, executar, rever evidências) ou **marcos** em `docs/remediation-milestones/` / `docs/distribution-milestones/`, siga [`specs/agent-remediation-micro-roles.md`](../../specs/agent-remediation-micro-roles.md):
+
+1. Declarar **qual papel** está a exercer neste turno (ou seguir o ficheiro `micro/` aplicável).
+2. **Evitar multi-foco:** não misturar especificação de negócio, implementação e execução de testes no mesmo passo sem separação explícita ou pedido do utilizador.
+3. Em **delegação** a sub-agentes: um papel por invocação, limites de paths e critério de saída — ver spec.
+4. Skill: [`remediation-micro-roles-workflow`](../../.cursor/skills/remediation-micro-roles-workflow/SKILL.md).
