@@ -1326,3 +1326,39 @@ _Nenhum ficheiro acumulado neste turno._
 - `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-semver-decision.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-smoke-post-publish.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:54:31Z`
+- `conversation_id`: `b3db8b9f-9619-4bbd-bf03-90d6f5593420`
+- `generation_id`: `2c784c0b-e944-4bf3-8452-6d5f833d22be`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/b3db8b9f-9619-4bbd-bf03-90d6f5593420/b3db8b9f-9619-4bbd-bf03-90d6f5593420.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:56:21Z`
+- `conversation_id`: `b3db8b9f-9619-4bbd-bf03-90d6f5593420`
+- `generation_id`: `e7bc419a-ed6b-46b2-bc39-e223dec040f5`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/b3db8b9f-9619-4bbd-bf03-90d6f5593420/b3db8b9f-9619-4bbd-bf03-90d6f5593420.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-semver-decision.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
