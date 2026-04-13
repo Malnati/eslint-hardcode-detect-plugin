@@ -3346,3 +3346,21 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T22:14:48Z`
+- `conversation_id`: `6ead7ff7-3020-4c5e-a8cc-845b7a2bb7df`
+- `generation_id`: `8bc41694-92eb-4bfb-8ba3-00dd04aa8520`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/6ead7ff7-3020-4c5e-a8cc-845b7a2bb7df/6ead7ff7-3020-4c5e-a8cc-845b7a2bb7df.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `specs/plugin-contract.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L79
