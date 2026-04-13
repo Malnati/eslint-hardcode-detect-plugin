@@ -65,7 +65,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m3-channel-t4-t6.md
 │   │   ├── m4-channel-t5-agents.md
 │   │   ├── m5-release-candidate.md
-│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0–M3)
+│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0–M4 manifestados; M5 por fechar)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
 │   │       ├── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
@@ -112,6 +112,11 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           └── micro/
 │   │               ├── README.md
 │   │               └── M3-A*-*.md            # 8 micro-tarefas (M3-A1-01 … M3-A3-03)
+│   │       └── m4-channel-t5-agents/   # Tarefas M4 Camada A (T5 agentes; sem micro/manifesto nesta iteração)
+│   │           ├── README.md
+│   │           ├── A1-inventario-cursor-github-agentes-checklist.md
+│   │           ├── A2-propor-job-verify-agent-files.md
+│   │           └── A3-docs-limites-mcp-clippings.md
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md

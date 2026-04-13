@@ -9,8 +9,8 @@ Plano para **Cursor, Copilot, MCP** (T5): superfícies **indiretas** que **prese
 
 ## 1. Objetivo e escopo (trilhas e canais)
 
-- Verificação de árvore [`.cursor/rules/`](../../.cursor/rules/), [`.cursor/skills/`](../../.cursor/skills/), [`.github/agents/`](../../.github/agents/), [`.github/instructions/`](../../.github/instructions/); smoke MCP opcional; política em [`../../specs/agent-tooling-ecosystem-map.md`](../../specs/agent-tooling-ecosystem-map.md).
-- **Canais:** linhas Cursor/Copilot/MCP na tabela mestre.
+- Verificação de árvore [`.cursor/rules/`](../../.cursor/rules/), [`.cursor/skills/`](../../.cursor/skills/), [`.cursor/commands/`](../../.cursor/commands/), [`.cursor/hooks.json`](../../.cursor/hooks.json) / [`.cursor/hooks/`](../../.cursor/hooks/), [`.github/agents/`](../../.github/agents/), [`.github/instructions/`](../../.github/instructions/); smoke MCP opcional; política em [`../../specs/agent-tooling-ecosystem-map.md`](../../specs/agent-tooling-ecosystem-map.md).
+- **Canais:** linhas **Cursor** (regras, skills, hooks, CLI), **GitHub Copilot** (agents, instructions), **MCP** — tabela mestre em [`../solution-distribution-channels.md`](../solution-distribution-channels.md) (secção «Tabela mestre de canais»).
 
 ---
 
@@ -79,11 +79,13 @@ gantt
 
 ## 7. Camada A — Tarefas e orçamento de tokens (pré-execução de agentes)
 
-| ID | Tarefa | Teto (tokens) estimado | Critério de conclusão |
-|----|--------|------------------------|----------------------|
-| A1 | Inventário + checklist | 22 000 | Tabela de ficheiros |
-| A2 | Propor job verify | 25 000 | YAML ou backlog |
-| A3 | Atualizar docs limites MCP | 18 000 | Link Clippings se necessário |
+Índice dos ficheiros por tarefa: [`tasks/m4-channel-t5-agents/README.md`](tasks/m4-channel-t5-agents/README.md).
+
+| ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
+|----|--------|--------|---------|------------------------|----------------------|-------------------|
+| A1 | Inventário `.cursor/` / pontes Copilot + checklist | Handoff T4 (M3), [`agent-tooling-ecosystem-map`](../../specs/agent-tooling-ecosystem-map.md) | Tabela de ficheiros + gaps | 22 000 | Lista verificável contra o disco e o mapa de equivalências | [`tasks/m4-channel-t5-agents/A1-inventario-cursor-github-agentes-checklist.md`](tasks/m4-channel-t5-agents/A1-inventario-cursor-github-agentes-checklist.md) |
+| A2 | Propor job `verify-agent-files` | A1; [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) | Step/job YAML **ou** backlog documentado | 25 000 | Automação ou decisão adiada com critérios; não regredir T3 | [`tasks/m4-channel-t5-agents/A2-propor-job-verify-agent-files.md`](tasks/m4-channel-t5-agents/A2-propor-job-verify-agent-files.md) |
+| A3 | Docs limites MCP (+ Clippings se preciso) | `limitations-and-scope`, `solution-distribution-channels`; A1 recomendado | Parágrafos ancorados; Clippings só se decisão depender de doc oficial | 18 000 | Papel indireto do MCP explícito vs npm/CI | [`tasks/m4-channel-t5-agents/A3-docs-limites-mcp-clippings.md`](tasks/m4-channel-t5-agents/A3-docs-limites-mcp-clippings.md) |
 
 ---
 
