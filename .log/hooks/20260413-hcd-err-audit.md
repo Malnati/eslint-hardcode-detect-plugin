@@ -1398,3 +1398,21 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 - `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-release-notes-draft.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T02:04:50Z`
+- `conversation_id`: `566b6525-8426-4c6c-b9f7-c4dde86d695b`
+- `generation_id`: `8f98bd2c-0a5b-4427-bef8-d1aa2b70d812`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/566b6525-8426-4c6c-b9f7-c4dde86d695b/566b6525-8426-4c6c-b9f7-c4dde86d695b.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
