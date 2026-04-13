@@ -87,7 +87,7 @@ gantt
 
 | ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
 |----|--------|--------|---------|------------------------|----------------------|-------------------|
-| A1 | Bateria RuleTester segredos (safe defaults) | hardcoding-map L1 | Ficheiros teste | 30 000 | Nenhum segredo em output fix | [`tasks/m4-secrets-remediation/A1-ruletester-secrets-safe-defaults.md`](tasks/m4-secrets-remediation/A1-ruletester-secrets-safe-defaults.md) |
+| A1 | Bateria RuleTester segredos (safe defaults) | hardcoding-map L1 | Ficheiros teste | 30 000 | Nenhum segredo em output fix | Sub-micro-tarefas por papel: [`tasks/m4-secrets-remediation/micro/README.md`](tasks/m4-secrets-remediation/micro/README.md) (prefixo `M4-A1-*`) |
 | A2 | Opt-in schema fix agressivo | A1 | Opções em `plugin-contract` | 12 000 | Documentado | [`tasks/m4-secrets-remediation/A2-opt-in-aggressive-fix-schema.md`](tasks/m4-secrets-remediation/A2-opt-in-aggressive-fix-schema.md) |
 | A3 | Guia consumidor (env, cofre) | Macro-plan | Markdown pacote | 18 000 | Links externos só documentação oficial | [`tasks/m4-secrets-remediation/A3-consumer-guide-secrets.md`](tasks/m4-secrets-remediation/A3-consumer-guide-secrets.md) |
 

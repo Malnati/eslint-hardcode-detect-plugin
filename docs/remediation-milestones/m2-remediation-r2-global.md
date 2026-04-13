@@ -88,9 +88,9 @@ gantt
 
 | ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
 |----|--------|--------|---------|------------------------|----------------------|-------------------|
-| A1 | Especificar normalização de valor e chave de dup | Macro-plan | Secção em spec ou código comentado | 14 000 | Comportamento único | [`tasks/m2-remediation-r2-global/A1-normalization-dup-key.md`](tasks/m2-remediation-r2-global/A1-normalization-dup-key.md) |
+| A1 | Especificar normalização de valor e chave de dup | Macro-plan | Secção em spec ou código comentado | 14 000 | Comportamento único | Sub-micro-tarefas por papel: [`tasks/m2-remediation-r2-global/micro/README.md`](tasks/m2-remediation-r2-global/micro/README.md) (prefixo `M2-A1-*`) |
 | A2 | ADR `concurrency` vs estado | Clippings Node API ESLint | ADR ou `specs/` | 20 000 | Decisão registada | [`tasks/m2-remediation-r2-global/A2-concurrency-adr.md`](tasks/m2-remediation-r2-global/A2-concurrency-adr.md) |
-| A3 | Fixture e2e multi-ficheiro | A1, A2 | Pasta fixture + runner | 40 000 | e2e verde | [`tasks/m2-remediation-r2-global/A3-e2e-multi-file-fixture.md`](tasks/m2-remediation-r2-global/A3-e2e-multi-file-fixture.md) |
+| A3 | Fixture e2e multi-ficheiro | A1, A2 | Pasta fixture + runner | 40 000 | e2e verde | Sub-micro-tarefas por papel: [`tasks/m2-remediation-r2-global/micro/README.md`](tasks/m2-remediation-r2-global/micro/README.md) (prefixo `M2-A3-*`) |
 
 ---
 

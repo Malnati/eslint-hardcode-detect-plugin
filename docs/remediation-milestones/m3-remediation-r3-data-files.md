@@ -85,9 +85,9 @@ gantt
 
 | ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
 |----|--------|--------|---------|------------------------|----------------------|-------------------|
-| A1 | Writers JSON/YAML (MVP) | Requisitos M3 | Módulo `src/` + testes | 45 000 | Cobertura mínima | [`tasks/m3-remediation-r3-data-files/A1-writers-json-yaml.md`](tasks/m3-remediation-r3-data-files/A1-writers-json-yaml.md) |
+| A1 | Writers JSON/YAML (MVP) | Requisitos M3 | Módulo `src/` + testes | 45 000 | Cobertura mínima | Sub-micro-tarefas por papel: [`tasks/m3-remediation-r3-data-files/micro/README.md`](tasks/m3-remediation-r3-data-files/micro/README.md) (prefixo `M3-A1-*`) |
 | A2 | Política de caminhos de ficheiro (globs) | Contrato | Opções públicas | 15 000 | Schema estável | [`tasks/m3-remediation-r3-data-files/A2-data-file-path-policy.md`](tasks/m3-remediation-r3-data-files/A2-data-file-path-policy.md) |
-| A3 | e2e fixture R3 | A1 | Nova massa em `packages/` | 35 000 | Runner e2e | [`tasks/m3-remediation-r3-data-files/A3-e2e-fixture-r3.md`](tasks/m3-remediation-r3-data-files/A3-e2e-fixture-r3.md) |
+| A3 | e2e fixture R3 | A1 | Nova massa em `packages/` | 35 000 | Runner e2e | Sub-micro-tarefas por papel: [`tasks/m3-remediation-r3-data-files/micro/README.md`](tasks/m3-remediation-r3-data-files/micro/README.md) (prefixo `M3-A3-*`) |
 
 ---
 

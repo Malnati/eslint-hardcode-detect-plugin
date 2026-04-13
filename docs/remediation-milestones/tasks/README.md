@@ -11,7 +11,26 @@ Cada marco em [`..`](..) (`m0-contract-baseline.md`, `m1-remediation-r1.md`, …
 | IDs | `A1`, `A2`, … por marco |
 | Ligação ao GitHub | Usar o **milestone GitHub sugerido** no cabeçalho do plano do marco |
 | Timelining | Quando uma subtarefa da secção «Ordem, dependências e durações» não tiver linha na tabela Camada A, acrescentar linha **A{N}** no plano do marco e ficheiro correspondente |
-| Micro-tarefas | Opcional: pasta `micro/` com ficheiros `M{N}-A<1-5>-<nn>-<slug>.md`, índice em `micro/README.md`, `coverage-manifest.json`. **Validação:** o script [`scripts/validate-milestone-plan-coverage.mjs`](../../../scripts/validate-milestone-plan-coverage.mjs) (`npm run test:docs-milestones` na raiz) cobre hoje os manifestos em `docs/distribution-milestones/tasks/`. Se forem adicionados manifestos de cobertura para **remediation-milestones**, é necessário **estender** `MILESTONE_CONFIG` nesse script para incluir os novos caminhos — até lá, a validação de micro-tarefas aplica-se apenas quando o manifesto existir e o script for actualizado. |
+| Micro-tarefas | Opcional: pasta `micro/` com ficheiros `M{N}-A<1-5>-<nn>-<slug>.md` (ou com `papel-<papel>-` no slug, ver linha seguinte), índice em `micro/README.md`, `coverage-manifest.json` na pasta do marco. **Validação:** [`scripts/validate-milestone-plan-coverage.mjs`](../../../scripts/validate-milestone-plan-coverage.mjs) (`npm run test:docs-milestones` na raiz) inclui manifestos em `docs/distribution-milestones/tasks/` e `docs/remediation-milestones/tasks/` (M1–M4 com `micro/`). Novos manifestos exigem entrada em `MILESTONE_CONFIG` nesse script. |
+| **Sub-micro-tarefas por papel** | Quando uma tarefa Camada A envolve alterações em `packages/` (código-fonte, `tests/` ou `e2e/`), **não** se usa um único `A{N}.md` agregador: esse ficheiro é **substituído** por ficheiros em `micro/` com o padrão `M{N}-A{x}-{yy}-papel-<papel>-<slug>.md`. O `{yy}` é sequencial **por tarefa-mãe** `A{x}` (01, 02, …). Tarefas estritamente documentais (`specs/`, `docs/` sem `packages/`) mantêm **um** `A{N}.md`. **Excepção M5:** tarefas de release com impacto mínimo (ex.: semver) podem permanecer como `A{N}` único — ver nota em [`m5-remediation-release/README.md`](m5-remediation-release/README.md). **Validação:** manifestos `coverage-manifest.json` em M1–M4 remediação estão registados em [`scripts/validate-milestone-plan-coverage.mjs`](../../../scripts/validate-milestone-plan-coverage.mjs). **Regeneração em massa (opcional):** [`scripts/remediation-micro-generate.mjs`](../../../scripts/remediation-micro-generate.mjs) — só após alteração coordenada do plano; rever diffs. |
+
+### Papéis (`<papel>`)
+
+| Slug | Papel |
+|------|--------|
+| `arquiteto` | Ambiente, infra, desempenho, políticas de execução e deployment quando relevante |
+| `analista-negocio` | Critérios de aceitação, inputs/outputs alinhados ao contrato e ao macro-plan |
+| `revisor-negocio` | Revisão de especificações contra contrato e arquitectura |
+| `desenvolvedor` | Implementação em `packages/` (e fixtures permitidas) |
+| `revisor-desenvolvimento` | Revisão de código/diffs sem expandir o âmbito funcional |
+| `analista-testes` | Especificação de testes (RuleTester, e2e) e matriz de cobertura |
+| `revisor-testes` | Revisão de planos de teste e critérios de evidência |
+| `testador` | Execução de `npm test` no workspace do pacote e registo de evidências |
+| `dev-especialista-correcoes` | Ciclo condicional: análise de falhas, patches, revalidação (não substitui o desenvolvedor na entrega inicial) |
+
+**Ordem sugerida entre papéis:** arquiteto → analista de negócio → revisor de negócio → desenvolvedor → revisor de desenvolvimento → analista de testes → revisor de testes → testador → (se falha) dev especialista em correcções → testador.
+
+**Índice:** cada pasta `micro/README.md` lista dependências e `micro_id` por ficheiro. **Manifesto:** ficheiro `coverage-manifest.json` na pasta do marco (ex.: [`m1-remediation-r1/coverage-manifest.json`](m1-remediation-r1/coverage-manifest.json)), registado em `scripts/validate-milestone-plan-coverage.mjs`.
 
 ## Modelo
 

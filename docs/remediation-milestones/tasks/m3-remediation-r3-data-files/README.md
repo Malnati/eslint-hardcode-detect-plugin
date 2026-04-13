@@ -2,8 +2,10 @@
 
 Índice das tarefas pré-execução alinhadas a [`../../m3-remediation-r3-data-files.md`](../../m3-remediation-r3-data-files.md) (secção 7).
 
-| ID | Ficheiro |
-|----|----------|
-| A1 | [`A1-writers-json-yaml.md`](A1-writers-json-yaml.md) |
+| ID | Ficheiro / pasta |
+|----|------------------|
+| A1 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M3-A1-*`) |
 | A2 | [`A2-data-file-path-policy.md`](A2-data-file-path-policy.md) |
-| A3 | [`A3-e2e-fixture-r3.md`](A3-e2e-fixture-r3.md) |
+| A3 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M3-A3-*`) |
+
+**Manifesto de cobertura:** [`coverage-manifest.json`](coverage-manifest.json) — validação com `npm run test:docs-milestones` na raiz (requer entradas em `scripts/validate-milestone-plan-coverage.mjs`).

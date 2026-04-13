@@ -87,8 +87,8 @@ gantt
 
 | ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
 |----|--------|--------|---------|------------------------|----------------------|-------------------|
-| A1 | Suite RuleTester R1 (happy path + exclusões) | M0, Clippings ESLint fix | Ficheiros em `tests/` | 35 000 | Casos passam | [`tasks/m1-remediation-r1/A1-ruletester-r1-suite.md`](tasks/m1-remediation-r1/A1-ruletester-r1-suite.md) |
-| A2 | Política suggest vs fix | Macro-plan secção segredos (antecipação) | Tabela no doc da regra | 15 000 | Comportamento reproduzível | [`tasks/m1-remediation-r1/A2-suggest-vs-fix-policy.md`](tasks/m1-remediation-r1/A2-suggest-vs-fix-policy.md) |
+| A1 | Suite RuleTester R1 (happy path + exclusões) | M0, Clippings ESLint fix | Ficheiros em `tests/` | 35 000 | Casos passam | Sub-micro-tarefas por papel: [`tasks/m1-remediation-r1/micro/README.md`](tasks/m1-remediation-r1/micro/README.md) (prefixo `M1-A1-*`) |
+| A2 | Política suggest vs fix | Macro-plan secção segredos (antecipação) | Tabela no doc da regra | 15 000 | Comportamento reproduzível | Sub-micro-tarefas por papel: [`tasks/m1-remediation-r1/micro/README.md`](tasks/m1-remediation-r1/micro/README.md) (prefixo `M1-A2-*`) |
 | A3 | Actualizar `plugin-contract.md` se comportamento divergir do rascunho M0 | A1 | Amend contrato | 18 000 | Versão contrato | [`tasks/m1-remediation-r1/A3-contract-sync-post-r1.md`](tasks/m1-remediation-r1/A3-contract-sync-post-r1.md) |
 
 ---

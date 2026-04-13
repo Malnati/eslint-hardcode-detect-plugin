@@ -1,0 +1,37 @@
+{
+  "manifest_version": "1",
+  "milestone": "M1",
+  "plan_file": "docs/remediation-milestones/m1-remediation-r1.md",
+  "requirements": [
+    {
+      "id": "m1-remediation-r1-sec7-A1",
+      "description": "Camada A §7 — A1: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-01-papel-arquiteto-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-02-papel-analista-negocio-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-03-papel-revisor-negocio-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-04-papel-desenvolvedor-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-05-papel-revisor-desenvolvimento-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-06-papel-analista-testes-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-07-papel-revisor-testes-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-08-papel-testador-ruletester-r1-suite.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-09-papel-dev-especialista-correcoes-ruletester-r1-suite.md"
+      ]
+    },
+    {
+      "id": "m1-remediation-r1-sec7-A2",
+      "description": "Camada A §7 — A2: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-01-papel-arquiteto-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-02-papel-analista-negocio-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-03-papel-revisor-negocio-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-04-papel-desenvolvedor-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-05-papel-revisor-desenvolvimento-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-06-papel-analista-testes-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-07-papel-revisor-testes-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-08-papel-testador-suggest-vs-fix-policy.md",
+        "docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-09-papel-dev-especialista-correcoes-suggest-vs-fix-policy.md"
+      ]
+    }
+  ]
+}

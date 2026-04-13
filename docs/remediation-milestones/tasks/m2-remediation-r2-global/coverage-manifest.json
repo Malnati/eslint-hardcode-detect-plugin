@@ -1,0 +1,37 @@
+{
+  "manifest_version": "1",
+  "milestone": "M2",
+  "plan_file": "docs/remediation-milestones/m2-remediation-r2-global.md",
+  "requirements": [
+    {
+      "id": "m2-remediation-r2-global-sec7-A1",
+      "description": "Camada A §7 — A1: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-01-papel-arquiteto-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-02-papel-analista-negocio-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-03-papel-revisor-negocio-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-04-papel-desenvolvedor-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-05-papel-revisor-desenvolvimento-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-06-papel-analista-testes-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-07-papel-revisor-testes-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-08-papel-testador-normalization-dup-key.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A1-09-papel-dev-especialista-correcoes-normalization-dup-key.md"
+      ]
+    },
+    {
+      "id": "m2-remediation-r2-global-sec7-A3",
+      "description": "Camada A §7 — A3: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-01-papel-arquiteto-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-02-papel-analista-negocio-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-03-papel-revisor-negocio-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-04-papel-desenvolvedor-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-05-papel-revisor-desenvolvimento-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-06-papel-analista-testes-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-07-papel-revisor-testes-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-08-papel-testador-e2e-multi-file-fixture.md",
+        "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro/M2-A3-09-papel-dev-especialista-correcoes-e2e-multi-file-fixture.md"
+      ]
+    }
+  ]
+}

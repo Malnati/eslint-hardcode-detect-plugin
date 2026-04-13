@@ -16,6 +16,17 @@ Use uma tabela ou lista no topo de cada ficheiro:
 | `timelining_order` | número da linha na secção «Ordem…» do plano, ou — |
 | `depends_on` | A1, … |
 
+### Sub-micro-tarefas por papel (`micro/`)
+
+Quando a tarefa `A{N}` for substituída por ficheiros em `micro/` (ver [`README.md`](README.md)), use **um ficheiro por papel** com o nome `M{N}-A{x}-{yy}-papel-<papel>-<slug>.md` e acrescente à tabela:
+
+| Campo | Exemplo |
+|-------|---------|
+| micro_id | `M1-A1-01` — na tabela Markdown, chave `micro_id` **sem** backticks (o validador de manifestos procura `\| micro_id \| M1-A1-01 \|`) |
+| `role` | `arquiteto` … `dev-especialista-correcoes` |
+| `parent_task` | `A1` |
+| `single_focus` | Uma frase: o que este agente faz e o que **não** faz (evitar multi-foco) |
+
 ## Secções obrigatórias no corpo
 
 1. **Plano do marco** — link para a secção 7 (Camada A) do ficheiro `mN-*.md` correspondente em `docs/remediation-milestones/`.

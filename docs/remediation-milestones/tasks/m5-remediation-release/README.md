@@ -7,3 +7,5 @@
 | A1 | [`A1-semver-release-notes.md`](A1-semver-release-notes.md) |
 | A2 | [`A2-adoption-guide.md`](A2-adoption-guide.md) |
 | A3 | [`A3-bin-cli-decision.md`](A3-bin-cli-decision.md) |
+
+**Nota:** M5 mantém **um ficheiro `A{N}.md` por tarefa** (semver/release, guia de adopção, decisão `bin`): impacto em `packages/` é tipicamente mínimo ou inexistente. Se uma tarefa M5 passar a exigir implementação substancial em código, avaliar sub-micro-tarefas por papel como em [`../README.md`](../README.md).

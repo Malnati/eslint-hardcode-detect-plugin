@@ -145,10 +145,10 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
 │   │       ├── m0-contract-baseline/
-│   │       ├── m1-remediation-r1/
-│   │       ├── m2-remediation-r2-global/
-│   │       ├── m3-remediation-r3-data-files/
-│   │       ├── m4-secrets-remediation/
+│   │       ├── m1-remediation-r1/    # coverage-manifest.json; micro/ (sub-micro por papel, prefixos M1-A1 e M1-A2); A3-contract-sync…
+│   │       ├── m2-remediation-r2-global/  # coverage-manifest.json; micro/ (M2-A1, M2-A3); A2-concurrency-adr…
+│   │       ├── m3-remediation-r3-data-files/  # coverage-manifest.json; micro/ (M3-A1, M3-A3); A2-data-file-path-policy…
+│   │       ├── m4-secrets-remediation/  # coverage-manifest.json; micro/ (M4-A1); A2/A3…
 │   │       └── m5-remediation-release/
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo

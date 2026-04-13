@@ -2,8 +2,10 @@
 
 Índice das tarefas pré-execução alinhadas a [`../../m2-remediation-r2-global.md`](../../m2-remediation-r2-global.md) (secção 7).
 
-| ID | Ficheiro |
-|----|----------|
-| A1 | [`A1-normalization-dup-key.md`](A1-normalization-dup-key.md) |
+| ID | Ficheiro / pasta |
+|----|------------------|
+| A1 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M2-A1-*`) |
 | A2 | [`A2-concurrency-adr.md`](A2-concurrency-adr.md) |
-| A3 | [`A3-e2e-multi-file-fixture.md`](A3-e2e-multi-file-fixture.md) |
+| A3 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M2-A3-*`) |
+
+**Manifesto de cobertura:** [`coverage-manifest.json`](coverage-manifest.json) — validação com `npm run test:docs-milestones` na raiz (requer entradas em `scripts/validate-milestone-plan-coverage.mjs`).

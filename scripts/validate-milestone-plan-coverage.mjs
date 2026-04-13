@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Valida manifestos de cobertura dos marcos de distribuição (M0, M1, M2, M3, …):
+ * Valida manifestos de cobertura dos marcos de distribuição e remediação (M0–M4 distribuição; M1–M4 remediação):
  * ficheiros micro existem, micro_id no conteúdo, e nenhum ficheiro micro órfão.
  *
  * Executar na raiz do repositório: node scripts/validate-milestone-plan-coverage.mjs
@@ -33,6 +33,26 @@ const MILESTONE_CONFIG = [
     manifestRel: "docs/distribution-milestones/tasks/m3-channel-t4-t6/coverage-manifest.json",
     microDirRel: "docs/distribution-milestones/tasks/m3-channel-t4-t6/micro",
     filePrefix: "M3-",
+  },
+  {
+    manifestRel: "docs/remediation-milestones/tasks/m1-remediation-r1/coverage-manifest.json",
+    microDirRel: "docs/remediation-milestones/tasks/m1-remediation-r1/micro",
+    filePrefix: "M1-",
+  },
+  {
+    manifestRel: "docs/remediation-milestones/tasks/m2-remediation-r2-global/coverage-manifest.json",
+    microDirRel: "docs/remediation-milestones/tasks/m2-remediation-r2-global/micro",
+    filePrefix: "M2-",
+  },
+  {
+    manifestRel: "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/coverage-manifest.json",
+    microDirRel: "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro",
+    filePrefix: "M3-",
+  },
+  {
+    manifestRel: "docs/remediation-milestones/tasks/m4-secrets-remediation/coverage-manifest.json",
+    microDirRel: "docs/remediation-milestones/tasks/m4-secrets-remediation/micro",
+    filePrefix: "M4-",
   },
 ];
 

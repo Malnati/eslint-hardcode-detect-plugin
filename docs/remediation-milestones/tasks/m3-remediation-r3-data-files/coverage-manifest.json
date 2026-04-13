@@ -1,0 +1,37 @@
+{
+  "manifest_version": "1",
+  "milestone": "M3",
+  "plan_file": "docs/remediation-milestones/m3-remediation-r3-data-files.md",
+  "requirements": [
+    {
+      "id": "m3-remediation-r3-data-files-sec7-A1",
+      "description": "Camada A §7 — A1: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-01-papel-arquiteto-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-02-papel-analista-negocio-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-03-papel-revisor-negocio-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-04-papel-desenvolvedor-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-05-papel-revisor-desenvolvimento-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-06-papel-analista-testes-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-07-papel-revisor-testes-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-08-papel-testador-writers-json-yaml.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A1-09-papel-dev-especialista-correcoes-writers-json-yaml.md"
+      ]
+    },
+    {
+      "id": "m3-remediation-r3-data-files-sec7-A3",
+      "description": "Camada A §7 — A3: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-01-papel-arquiteto-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-02-papel-analista-negocio-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-03-papel-revisor-negocio-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-04-papel-desenvolvedor-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-05-papel-revisor-desenvolvimento-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-06-papel-analista-testes-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-07-papel-revisor-testes-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-08-papel-testador-e2e-fixture-r3.md",
+        "docs/remediation-milestones/tasks/m3-remediation-r3-data-files/micro/M3-A3-09-papel-dev-especialista-correcoes-e2e-fixture-r3.md"
+      ]
+    }
+  ]
+}

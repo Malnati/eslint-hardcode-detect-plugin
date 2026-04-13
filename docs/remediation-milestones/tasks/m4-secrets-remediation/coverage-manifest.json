@@ -1,0 +1,22 @@
+{
+  "manifest_version": "1",
+  "milestone": "M4",
+  "plan_file": "docs/remediation-milestones/m4-secrets-remediation.md",
+  "requirements": [
+    {
+      "id": "m4-secrets-remediation-sec7-A1",
+      "description": "Camada A §7 — A1: sub-micro-tarefas por papel",
+      "micro_files": [
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-01-papel-arquiteto-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-02-papel-analista-negocio-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-03-papel-revisor-negocio-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-04-papel-desenvolvedor-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-05-papel-revisor-desenvolvimento-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-06-papel-analista-testes-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-07-papel-revisor-testes-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-08-papel-testador-ruletester-secrets-safe-defaults.md",
+        "docs/remediation-milestones/tasks/m4-secrets-remediation/micro/M4-A1-09-papel-dev-especialista-correcoes-ruletester-secrets-safe-defaults.md"
+      ]
+    }
+  ]
+}
