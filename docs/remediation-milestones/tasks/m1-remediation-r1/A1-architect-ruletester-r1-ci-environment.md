@@ -14,8 +14,9 @@ Este documento fixa **impacto em CI**, o **comando canónico de validação** e 
 Ordem efectiva:
 
 1. `npm run build` — compilação TypeScript (`tsc`) para `dist/`.
-2. `node --test` sobre:
+2. `node --test` sobre (ordem do script `test` em [`package.json`](../../../../packages/eslint-plugin-hardcode-detect/package.json)):
    - [`packages/eslint-plugin-hardcode-detect/tests/index.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/index.test.mjs) (RuleTester e regras);
+   - [`packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs) (RuleTester R1, S-R1-01 … S-R1-08);
    - [`packages/eslint-plugin-hardcode-detect/e2e/hello-world.e2e.mjs`](../../../../packages/eslint-plugin-hardcode-detect/e2e/hello-world.e2e.mjs);
    - [`packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`](../../../../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs).
 

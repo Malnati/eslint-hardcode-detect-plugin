@@ -36,3 +36,14 @@ Sub-micro-tarefa `M1-A1-07` concluída.
 
 `packages/eslint-plugin-hardcode-detect/tests/`
 
+## Entregável (concluído)
+
+Execução formal do gate e registo de evidências (M1-A1-08):
+
+- **Artefacto:** [`../A1-test-runner-ruletester-r1-evidence.md`](../A1-test-runner-ruletester-r1-evidence.md).
+- **Verificações:** `npm test -w eslint-plugin-hardcode-detect` com código de saída **0**; Node >=22; cadeia build + RuleTester (`tests/index.test.mjs`, `tests/no-hardcoded-strings-r1.test.mjs`) + e2e conforme script do pacote.
+- **Limites de papel:** sem edição de `packages/eslint-plugin-hardcode-detect/src/` neste passo.
+- **Validação:** critério global de A1 para o gate de testes cumprido após esta execução.
+
+Estado: **concluído**.
+

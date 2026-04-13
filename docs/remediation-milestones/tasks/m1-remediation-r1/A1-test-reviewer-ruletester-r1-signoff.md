@@ -109,6 +109,7 @@ O doc do analista declara que `tests/index.test.mjs`, `tests/no-hardcoded-string
 ## Handoff
 
 - **Seguinte na cadeia A1:** execução formal e evidências — [`micro/M1-A1-08-papel-testador-ruletester-r1-suite.md`](micro/M1-A1-08-papel-testador-ruletester-r1-suite.md).
+- **Evidência de execução (testador):** [`A1-test-runner-ruletester-r1-evidence.md`](A1-test-runner-ruletester-r1-evidence.md) (M1-A1-08).
 
 ## Critério de conclusão (M1-A1-07)
 
