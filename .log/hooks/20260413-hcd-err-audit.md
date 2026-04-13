@@ -629,3 +629,94 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:08:00Z`
+- `conversation_id`: `5389c909-49cf-4e75-9ba4-29b4c024e071`
+- `generation_id`: `ff6c4bc4-6d5f-47ed-85fd-d92f5cbef036`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/5389c909-49cf-4e75-9ba4-29b4c024e071/5389c909-49cf-4e75-9ba4-29b4c024e071.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:08:34Z`
+- `conversation_id`: `d1511694-7883-44a2-a5db-9b7ca57695c8`
+- `generation_id`: `f8eac13b-180b-48fe-a8de-ed054c7283e3`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d1511694-7883-44a2-a5db-9b7ca57695c8/d1511694-7883-44a2-a5db-9b7ca57695c8.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:10:34Z`
+- `conversation_id`: `d1511694-7883-44a2-a5db-9b7ca57695c8`
+- `generation_id`: `187264f6-9863-4559-9a77-acdf7108b376`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d1511694-7883-44a2-a5db-9b7ca57695c8/d1511694-7883-44a2-a5db-9b7ca57695c8.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m0-baseline/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/A1-audit-ci-yml-vs-compose-prod.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/A2-ci-artifacts-logs-policy.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/A3-contributing-ci-handoff.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/evidence/T3-ci-prod-parity-gap-matrix.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-01-inventario-ci-yml-jobs-steps.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-02-tabela-paridade-prod-vs-ci.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-03-matriz-sec6-cross-check-compose.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-01-criterio-paridade-prod-ci-formal.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-02-politica-artefatos-logs-falha.md`: **VIOLAÇÃO** (Nível 1: sinal de falha sem qualquer prefixo HCD-ERR) — contagens 0/0/0; linhas: —
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-03-onde-documentar-secao-logs.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-01-checklist-contributing-fluxo-ci.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-02-handoff-t4-o-que-ci-garante.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-03-alinhamento-workflow-comentarios-manifest.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `scripts/validate-milestone-plan-coverage.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:11:23Z`
+- `conversation_id`: `d1511694-7883-44a2-a5db-9b7ca57695c8`
+- `generation_id`: `88370dfe-c384-4d8c-ae23-351f6558403b`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d1511694-7883-44a2-a5db-9b7ca57695c8/d1511694-7883-44a2-a5db-9b7ca57695c8.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-02-politica-artefatos-logs-falha.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L27, L31, L35
