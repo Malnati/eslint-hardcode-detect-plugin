@@ -26,6 +26,10 @@ Camada A em [`../../m4-channel-t5-agents.md`](../../m4-channel-t5-agents.md) (se
 - **Checklist curto** de coerência: sem duplicar `specs/plugin-contract.md` em pontes; caminhos relativos à raiz em `.github/agents/` e `.github/instructions/`; remissões a `AGENTS.md` onde aplicável.
 - Lista de **gaps** (ficheiros em falta, globs desalinhados, divergência vs tabela de equivalências).
 
+### Artefacto entregue
+
+Inventário verificável, checklist e gaps: [`evidence/T5-normative-files-inventory.md`](evidence/T5-normative-files-inventory.md).
+
 ### Inventário de referência (estado do clone — atualizar na execução)
 
 | Superfície | Paths |

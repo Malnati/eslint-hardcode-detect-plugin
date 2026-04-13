@@ -114,6 +114,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │               └── M3-A*-*.md            # 8 micro-tarefas (M3-A1-01 … M3-A3-03)
 │   │       └── m4-channel-t5-agents/   # Tarefas M4 Camada A (T5 agentes; sem micro/manifesto nesta iteração)
 │   │           ├── README.md
+│   │           ├── evidence/
+│   │           │   └── T5-normative-files-inventory.md
 │   │           ├── A1-inventario-cursor-github-agentes-checklist.md
 │   │           ├── A2-propor-job-verify-agent-files.md
 │   │           └── A3-docs-limites-mcp-clippings.md

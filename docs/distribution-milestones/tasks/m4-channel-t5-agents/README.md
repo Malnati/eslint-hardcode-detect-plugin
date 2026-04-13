@@ -4,6 +4,8 @@ Marco: [`../../m4-channel-t5-agents.md`](../../m4-channel-t5-agents.md) · **Git
 
 **Micro-tarefas / manifesto:** nesta iteração **não** há `coverage-manifest.json` nem pasta `micro/` — a validação `npm run test:docs-milestones` continua a cobrir apenas M0–M3 (ver [`scripts/validate-milestone-plan-coverage.mjs`](../../../../scripts/validate-milestone-plan-coverage.mjs)). Uma fase futura pode acrescentar micro-tarefas `M4-*` e alargar o script.
 
+**Evidência A1 (inventário T5):** [`evidence/T5-normative-files-inventory.md`](evidence/T5-normative-files-inventory.md) — tabelas por superfície (`.cursor/`, `.github/agents/`, `.github/instructions/`), checklist de coerência e gaps vs [`specs/agent-tooling-ecosystem-map.md`](../../../../specs/agent-tooling-ecosystem-map.md).
+
 ## Grafo de dependências (Camada A)
 
 Handoff **T4** (M3, onda 1) alimenta **A1**. **A2** depende do inventário (A1). **A3** pode seguir A1 em paralelo lógico com A2; ambos alimentam o handoff **T6** (política de agente alinhada ao CI).
