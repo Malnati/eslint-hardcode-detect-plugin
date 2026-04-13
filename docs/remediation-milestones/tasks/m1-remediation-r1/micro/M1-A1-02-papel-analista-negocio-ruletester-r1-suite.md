@@ -22,7 +22,7 @@ Contrato pós-M0; `reference/Clippings/` (ESLint fix / RuleTester).
 
 ## Outputs
 
-Contribuição do papel **Analista de negócio** para os outputs agregados de A1: Ficheiros em `packages/eslint-plugin-hardcode-detect/tests/` cobrindo happy path e exclusões R1.
+**Entregável directo deste papel:** documento normativo [`../A1-business-analyst-ruletester-r1-acceptance.md`](../A1-business-analyst-ruletester-r1-acceptance.md) (critérios de aceitação, matriz S-R1-*, fronteira com M1-A2). **Não** inclui edição de `packages/eslint-plugin-hardcode-detect/tests/` — essa pasta é alvo da cadeia A1 agregada (Desenvolvedor M1-A1-04 e outros papéis), com casos derivados desta especificação.
 
 ## Critério de conclusão
 
@@ -34,7 +34,8 @@ Sub-micro-tarefa `M1-A1-01` concluída.
 
 ## Paths principais
 
-`packages/eslint-plugin-hardcode-detect/tests/` (alvo da suite; este papel não edita essa pasta).
+- Documento de aceitação (este papel): [`../A1-business-analyst-ruletester-r1-acceptance.md`](../A1-business-analyst-ruletester-r1-acceptance.md).
+- `packages/eslint-plugin-hardcode-detect/tests/` — alvo da implementação da suite (outros papéis); o analista de negócio não edita esta pasta.
 
 ## Entregável (concluído)
 

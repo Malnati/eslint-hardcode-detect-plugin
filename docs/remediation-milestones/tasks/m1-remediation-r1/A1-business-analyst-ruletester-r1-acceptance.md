@@ -48,7 +48,7 @@ Definir o que a suite RuleTester R1 deve **provar**, em termos negociais, quando
 | ID critério | Âmbito | Referência em `plugin-contract.md` | Nota |
 |-------------|--------|-----------------------------------|------|
 | C-R1-MODE | Selecção de trilha | `remediationMode` — valor `"r1"` vs `"off"` | `"off"` = apenas detecção (comportamento base da regra); `"r1"` activa remediação R1 onde aplicável. |
-| C-R1-NAMING | Nomes injectados | `constantNamingConvention` (R1, M1) | Padrão planeável `"UPPER_SNAKE_CASE"`; a suite deve incluir pelo menos um cenário que fixe a convenção por defeito e um que documente variante se o enum for alargado na implementação. |
+| C-R1-NAMING | Nomes injectados | `constantNamingConvention` (R1, M1) | Padrão planeável `"UPPER_SNAKE_CASE"`; pelo menos um cenário fixa o comportamento com o padrão por defeito. Enquanto o enum não expuser mais do que um valor efectivo na implementação, a variante «convenção explícita distinta» fica para quando o contrato ou o código alargarem o enum (handoff A3 se divergir). |
 | C-R1-DEDUPE | Uma constante por valor | `dedupeWithinFile` (R1, M1) | Quando `true`, um único identificador por valor normalizado no mesmo ficheiro; quando `false`, comportamento documentado (múltiplas declarações vs uma) deve ser testável. |
 | C-R1-INCL | Filtro inclusivo | `remediationIncludeGlobs` (R1, M1) | Lista vazia = sem filtro extra além de `files`/`ignores` do ESLint. |
 | C-R1-EXCL | Filtro exclusivo | `remediationExcludeGlobs` (R1–R3, M1+) | Exclui caminhos da **remediação** (ex.: testes, i18n); ver secção 4. |
@@ -68,6 +68,8 @@ Quando `remediationMode === "r1"` e o literal é **elegível** (ex.: comprimento
 3. **Naming:** identificadores novos respeitam `constantNamingConvention` (por defeito `UPPER_SNAKE_CASE`).
 4. **Deduplicação:** com `dedupeWithinFile: true`, um único `const` por valor normalizado no ficheiro; ocorrências múltiplas do mesmo literal convergem para a mesma referência.
 5. **Detecção vs remediação:** com `remediationMode: "off"`, os casos **invalid** actuais da regra (reporte `hardcoded`) mantêm-se testáveis; não se exige `fix` aplicável.
+
+**S-R1-02 (naming):** com o contrato e a implementação actuais, um único pacote de aceitação pode demonstrar identificadores injectados alinhados a `UPPER_SNAKE_CASE` derivado do literal (coerente com o padrão por defeito). Cenários RuleTester com `constantNamingConvention` explícito distinto do defeito entram quando o schema público materializar mais do que uma convenção; até lá, o critério C-R1-NAMING mantém-se satisfeito pelo cenário de naming derivado.
 
 ---
 
@@ -90,7 +92,7 @@ Cada linha é um **pacote de aceitação** implementável como um ou mais casos 
 | ID | Categoria | Opções mínimas (conceito) | Resultado esperado |
 |----|-----------|---------------------------|-------------------|
 | S-R1-01 | Happy path | `remediationMode: "r1"`, convenção por defeito, `dedupeWithinFile: true` | Um literal duplicado no mesmo ficheiro → um `const` no topo; referências substituídas; `fix` produz `output` determinístico. |
-| S-R1-02 | Happy path (naming) | `constantNamingConvention` distinto do defeito (se suportado) | Identificador injectado obedece à convenção escolhida. |
+| S-R1-02 | Happy path (naming) | `constantNamingConvention` por defeito; variantes explícitas quando o enum suportar | Identificador injectado alinhado à convenção efectiva (p.ex. `UPPER_SNAKE_CASE` derivado do literal enquanto só o defeito estiver materializado). |
 | S-R1-03 | Dedupe | `dedupeWithinFile: false` | Comportamento único e documentado (aceite pelo revisor de negócio); caso de regressão na suite. |
 | S-R1-04 | Detecção sem fix | `remediationMode: "off"` | Reporte de hardcode sem oferta de fix R1 (mantém alinhamento com detecção M0). |
 | S-R1-05 | Exclusão | `remediationExcludeGlobs` com padrão que casa com `filename` | Sem **fix** R1 para esse `filename`; ver secção 4 quanto ao reporte. |
