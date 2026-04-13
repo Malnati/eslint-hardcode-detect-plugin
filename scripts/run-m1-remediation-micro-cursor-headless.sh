@@ -13,6 +13,9 @@
 #
 # Variáveis opcionais:
 #   CURSOR_AGENT_BIN     — default: agent
+#   CURSOR_AGENT_MODEL   — modelo `--model` (default: gpt-5.4-nano). Alinhado ao custo API mais baixo na tabela
+#                          «Models & Pricing» (cursor.com/docs/models-and-pricing); sobrescreva se o teu plano não
+#                          expuser este ID — ver `agent models` ou `agent --list-models`.
 #   CURSOR_AGENT_TIMEOUT — duração máxima por micro (default: 2h); formato aceite por GNU timeout (ex.: 90m, 2h)
 #   MICRO_START          — índice 1-based do primeiro ficheiro (default: 1)
 #   MICRO_END            — índice 1-based do último ficheiro (default: último da lista)
@@ -32,6 +35,8 @@ if command -v git >/dev/null 2>&1 && git -C "$REPO_ROOT" rev-parse --is-inside-w
 fi
 
 CURSOR_AGENT_BIN="${CURSOR_AGENT_BIN:-agent}"
+# Default: variante mais barata listada para agente (API pool); micro-tarefas não precisam de modelo frontier.
+CURSOR_AGENT_MODEL="${CURSOR_AGENT_MODEL:-gpt-5.4-nano}"
 CURSOR_AGENT_TIMEOUT="${CURSOR_AGENT_TIMEOUT:-2h}"
 
 if ! command -v "$CURSOR_AGENT_BIN" >/dev/null 2>&1; then
@@ -119,11 +124,12 @@ run_one() {
   local prompt
   prompt="$(build_prompt "$rel_path")"
 
-  echo "== [${idx}/${_MICRO_LEN}] ${rel_path} =="
+  echo "== [${idx}/${_MICRO_LEN}] model=${CURSOR_AGENT_MODEL} ${rel_path} =="
 
   timeout "${CURSOR_AGENT_TIMEOUT}" \
     "$CURSOR_AGENT_BIN" \
     -p \
+    --model "$CURSOR_AGENT_MODEL" \
     --force \
     --trust \
     --approve-mcps \
