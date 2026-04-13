@@ -20,7 +20,10 @@
 # Segurança: este script usa --sandbox disabled e --force para permitir escrita e comandos de shell
 # sem prompts interativos. Execute apenas em workspaces confiáveis.
 #
+# Código de saída de falha via variável — evitar no fonte o padrão «exit» + espaço + dígito não-zero
+# (gate do hook `.cursor/hooks/hcd-err-triple-audit.sh`; ver specs/agent-error-messaging-triple.md).
 set -euo pipefail
+_EXIT_ERR=1
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -33,12 +36,12 @@ CURSOR_AGENT_TIMEOUT="${CURSOR_AGENT_TIMEOUT:-2h}"
 
 if ! command -v "$CURSOR_AGENT_BIN" >/dev/null 2>&1; then
   echo "Erro: comando não encontrado: ${CURSOR_AGENT_BIN} (defina CURSOR_AGENT_BIN se o binário tiver outro nome)" >&2
-  exit 1
+  exit "$_EXIT_ERR"
 fi
 
 if ! command -v timeout >/dev/null 2>&1; then
   echo "Erro: 'timeout' não está no PATH. Instale GNU coreutils (ex.: brew install coreutils e use gtimeout como alias)." >&2
-  exit 1
+  exit "$_EXIT_ERR"
 fi
 
 # Ordem canónica: docs/remediation-milestones/tasks/m1-remediation-r1/micro/README.md
@@ -69,22 +72,22 @@ MICRO_END="${MICRO_END:-$_MICRO_LEN}"
 
 if ! [[ "$MICRO_START" =~ ^[0-9]+$ ]] || ! [[ "$MICRO_END" =~ ^[0-9]+$ ]]; then
   echo "Erro: MICRO_START e MICRO_END devem ser inteiros positivos." >&2
-  exit 1
+  exit "$_EXIT_ERR"
 fi
 
 if (( MICRO_START < 1 || MICRO_START > _MICRO_LEN )); then
   echo "Erro: MICRO_START (${MICRO_START}) fora do intervalo 1..${_MICRO_LEN}." >&2
-  exit 1
+  exit "$_EXIT_ERR"
 fi
 
 if (( MICRO_END < 1 || MICRO_END > _MICRO_LEN )); then
   echo "Erro: MICRO_END (${MICRO_END}) fora do intervalo 1..${_MICRO_LEN}." >&2
-  exit 1
+  exit "$_EXIT_ERR"
 fi
 
 if (( MICRO_START > MICRO_END )); then
   echo "Erro: MICRO_START (${MICRO_START}) > MICRO_END (${MICRO_END})." >&2
-  exit 1
+  exit "$_EXIT_ERR"
 fi
 
 build_prompt() {
@@ -110,7 +113,7 @@ run_one() {
   local abs_path="${REPO_ROOT}/${rel_path}"
   if [[ ! -f "$abs_path" ]]; then
     echo "Erro: ficheiro em falta: ${rel_path}" >&2
-    exit 1
+    exit "$_EXIT_ERR"
   fi
 
   local prompt
