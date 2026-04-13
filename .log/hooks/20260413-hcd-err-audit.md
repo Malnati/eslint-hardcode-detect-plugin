@@ -1476,3 +1476,24 @@ _Nenhum ficheiro acumulado neste turno._
 - `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `scripts/fixtures/smoke-hcd-err-violation-body.md`: **VIOLAÇÃO** (Nível 1: falta pelo menos um prefixo) — contagens 1/0/0; linhas: L5
 - `scripts/smoke-cursor-hcd-err-hook.sh`: **VIOLAÇÃO** (Nível 1: sinal de falha sem qualquer prefixo HCD-ERR) — contagens 0/0/0; linhas: —
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T02:21:51Z`
+- `conversation_id`: `6cc22fe6-2324-4b90-a116-5e078affe83f`
+- `generation_id`: `9aec922b-2f9d-434b-8e20-c9efcaa2e4e9`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/6cc22fe6-2324-4b90-a116-5e078affe83f/6cc22fe6-2324-4b90-a116-5e078affe83f.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `.cursor/hooks/hcd-err-triple-audit.sh`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L22, L23, L24
+- `scripts/fixtures/smoke-hcd-err-violation-body.md`: **skip** — exclusão normativa (lista `AUDIT_EXCLUDE_PATHS` no hook)
+- `scripts/smoke-cursor-hcd-err-hook.sh`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/agent-error-messaging-triple.md`: **skip** — exclusão normativa (lista `AUDIT_EXCLUDE_PATHS` no hook)
