@@ -1298,3 +1298,31 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:52:49Z`
+- `conversation_id`: `c15631db-5af9-41dd-adc9-ade1e07082e9`
+- `generation_id`: `b2f6e233-6e09-4129-816a-51cc7dcc4d65`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/c15631db-5af9-41dd-adc9-ade1e07082e9/c15631db-5af9-41dd-adc9-ade1e07082e9.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/m5-release-candidate.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/A1-definir-semver-major-minor-patch.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/A2-rascunho-notas-release.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/A3-plano-smoke-pos-publish.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-release-notes-draft.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-semver-decision.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-smoke-post-publish.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
