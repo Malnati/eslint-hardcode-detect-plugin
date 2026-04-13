@@ -62,11 +62,27 @@ Confronto entre a matriz técnica do analista (tipo de asserção dominante) e a
 |--------|-----------|
 | Comando canónico | **Suficiente** — `npm test -w eslint-plugin-hardcode-detect` na raiz do monorepo está explícito no doc do analista e alinhado ao arquiteto. |
 | Sucesso (exit 0) | **Suficiente** — exige código de saída 0 em toda a cadeia (build, RuleTester, e2e). |
-| Registo mínimo | **Suficiente** — comando, exit code e trecho de diagnóstico em falha. |
+| Registo mínimo | **Suficiente** — comando, código de saída e trecho de diagnóstico em falha. |
 | Ambiente (Node) | **Suficiente** — coerência com CI / `engines.node >= 22`. |
 | Modelo HCD-ERR | **Suficiente e claro** — remissão a [`specs/agent-error-messaging-triple.md`](../../../../specs/agent-error-messaging-triple.md) com exemplo mínimo; o testador não substitui a revisão de testes (M1-A1-07) ao comunicar falhas. |
 
 **Lacunas identificadas:** nenhuma para desbloquear M1-A1-08; ajustes futuros à matriz ou à suite devem manter comentários `// S-R1-*` sincronizados com o doc do analista.
+
+## Exemplo canónico N=1 (HCD-ERR, alinhado ao analista)
+
+O relato de falha referenciado na matriz do analista cumpre [`specs/agent-error-messaging-triple.md`](../../../../specs/agent-error-messaging-triple.md) com **N** = 1 unidade de falha (Níveis 1–2: uma linha por prefixo). Texto de referência (idêntico ao bloco em [`A1-test-analyst-ruletester-r1-matrix-evidence.md`](A1-test-analyst-ruletester-r1-matrix-evidence.md)):
+
+### Diagnóstico técnico (sênior)
+
+[HCD-ERR-SENIOR] `npm test -w eslint-plugin-hardcode-detect` terminou com código de saída não zero; incluir trecho do output (ex.: stack ou TAP) e correlacionar com `packages/eslint-plugin-hardcode-detect/tests/` ou `packages/eslint-plugin-hardcode-detect/e2e/` conforme o log.
+
+### Correção definitiva
+
+[HCD-ERR-FIX] Corrigir a causa no código, testes, contrato ou CI que o log indicar (diff mínimo; regressão coberta pela mesma suite quando aplicável).
+
+### Contorno operacional
+
+[HCD-ERR-OPS] Até haver correção, reproduzir localmente com a mesma versão de Node que o CI (`engines.node` / `actions/setup-node`); documentar o comando exacto e o código de saída. Risco: contorno não substitui fix de causa raiz nem merge sem revisão (M1-A1-07).
 
 ---
 
