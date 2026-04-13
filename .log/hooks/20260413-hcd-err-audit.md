@@ -2097,3 +2097,24 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T12:14:41Z`
+- `conversation_id`: `99123149-dd69-49f9-8887-37b500c7e1eb`
+- `generation_id`: `c1aec9d0-b888-420e-8cd1-eb9b53d2aea4`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/99123149-dd69-49f9-8887-37b500c7e1eb/99123149-dd69-49f9-8887-37b500c7e1eb.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/tasks/m1-remediation-r1/A1-business-analyst-ruletester-r1-acceptance.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-02-papel-analista-negocio-ruletester-r1-suite.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
