@@ -23,7 +23,7 @@ Não foi possível listar PRs/issues numerados via `gh` ou API pública neste am
 
 | Referência | Descrição curta |
 |------------|-----------------|
-| [Compare `f46e906`…`57be510`](https://github.com/Malnati/eslint-hardcode-detect-plugin/compare/f46e906...57be510) | Intervalo completo (primeiro commit do repositório → `HEAD` atual). Atualizar o SHA final se o branch avançar antes do *release*. |
+| [Compare `f46e906`…`main`](https://github.com/Malnati/eslint-hardcode-detect-plugin/compare/f46e906...main) | Intervalo completo (primeiro commit do repositório → ponta atual de `main`). Para um *diff* congelado no dia do *release*, substituir `main` pelo SHA da tag ou do commit de publicação. |
 | [Commit `f5f047e`](https://github.com/Malnati/eslint-hardcode-detect-plugin/commit/f5f047e) | Reestruturação do monorepo e governança Git para agentes (inclui criação do workspace do plugin). |
 | [Commit `f99f2ec`](https://github.com/Malnati/eslint-hardcode-detect-plugin/commit/f99f2ec) | Documentação Markdown e grafo do repositório. |
 | [Commit `37debe9`](https://github.com/Malnati/eslint-hardcode-detect-plugin/commit/37debe9) | `feat(plugin)`: regras `hello-world` e `no-hardcoded-strings` + *self-lint*. |
