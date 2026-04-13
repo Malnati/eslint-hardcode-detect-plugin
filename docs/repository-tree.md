@@ -146,7 +146,11 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   └── tasks/                # Camada A por marco (modelo + pastas M0–M5)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
-│   │       ├── m0-contract-baseline/
+│   │       ├── m0-contract-baseline/   # Camada A M0 (ficheiros únicos; sem micro/)
+│   │       │   ├── README.md
+│   │       │   ├── A1-plugin-contract-remediation-options.md
+│   │       │   ├── A2-vision-alignment.md
+│   │       │   └── A3-limits-and-tree-crosscheck.md
 │   │       ├── m1-remediation-r1/    # coverage-manifest.json; micro/ (sub-micro por papel, prefixos M1-A1 e M1-A2); A3-contract-sync…
 │   │       ├── m2-remediation-r2-global/  # coverage-manifest.json; micro/ (M2-A1, M2-A3); A2-concurrency-adr…
 │   │       ├── m3-remediation-r3-data-files/  # coverage-manifest.json; micro/ (M3-A1, M3-A3); A2-data-file-path-policy…

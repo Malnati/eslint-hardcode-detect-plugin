@@ -13,6 +13,7 @@
 | [`specs/plugin-contract.md`](../specs/plugin-contract.md) | **Comportamento normativo** das regras e opções públicas do plugin; precedência sobre interpretações genéricas. |
 | [`distribution-channels-macro-plan.md`](distribution-channels-macro-plan.md) | **Roadmap macro** por trilha de validação e2e, diagramas, ciclo de vida e marcos em PRs (planejamento; nem todo item está implementado). |
 | [`hardcode-remediation-macro-plan.md`](hardcode-remediation-macro-plan.md) | **Roadmap macro** de remediação (trilhas R1–R3: constantes por arquivo, módulo compartilhado, propriedades/env), segredos, verificação global por execução; não substitui o contrato das regras (planejamento; nem todo item está implementado). |
+| [`remediation-milestones/README.md`](remediation-milestones/README.md) | **Índice de marcos** M0–M5 remediação (`mN-*.md`), handoff e tarefas Camada A em `remediation-milestones/tasks/`; complementa o macro-plan com estrutura por marco; planejamento (nem todo item está implementado); não substitui [`specs/plugin-contract.md`](../specs/plugin-contract.md). |
 | [`specs/agent-integration-testing-policy.md`](../specs/agent-integration-testing-policy.md) | **Integrações externas** (registry, publicação, MCP, etc.): sem mocks no repositório; usar sandboxes ou ambientes de teste oficiais dos provedores. |
 
 *Distinção entre trilhas **T1** (npm), **T3** (CI) e **T5** (MCP e ecossistema agente) e limites do MCP: ver secção [MCP (T5), npm (T1) e CI (T3)](#mcp-t5-npm-t1-e-ci-t3).*
