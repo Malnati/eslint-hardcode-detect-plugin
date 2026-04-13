@@ -10,6 +10,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
 ├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke do hook HCD-ERR, verify ficheiros normativos T5)
+│   ├── fixtures/             # Massa para smoke (ex.: corpo inválido HCD-ERR para o hook)
+│   │   └── smoke-hcd-err-violation-body.md
 │   ├── validate-milestone-plan-coverage.mjs
 │   ├── verify-normative-agent-files.mjs
 │   └── smoke-cursor-hcd-err-hook.sh

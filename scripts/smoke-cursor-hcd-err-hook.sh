@@ -110,13 +110,8 @@ echo "== Case 4: stop com violação (gate + prefixos desbalanceados) =="
 mkdir -p "$STATE_DIR"
 VIOL_REL=".log/hooks/_smoke-hcd-err-violation.md"
 VIOL_FILE="$REPO_ROOT/$VIOL_REL"
-cat >"$VIOL_FILE" <<'EOF'
-Something failed.
-
-Error: broken
-
-[HCD-ERR-SENIOR] apenas uma parte
-EOF
+# Conteúdo intencionalmente inválido (Níveis 1–2) fica num fixture — não embutir no .sh para o hook HCD-ERR não tratar este script como relato de falha.
+cp "$REPO_ROOT/scripts/fixtures/smoke-hcd-err-violation-body.md" "$VIOL_FILE"
 
 printf '%s\n' "$VIOL_REL" >"$STATE_DIR/smoke3c_smoke3g.files"
 OUT3="$(json_stop smoke3c smoke3g | timeout 60s "$HOOK")"
