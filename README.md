@@ -42,6 +42,8 @@ Imagem só ESLint (Composite Action / `docker build -f .docker/Dockerfile`): tag
 
 Fluxo mínimo reprodutível (paridade com `npm run lint` no workspace do plugin). Detalhe e contexto de CI: [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) (secção **Smoke reprodutível (T2)**).
 
+**Paridade T1↔T2 (versão e config):** o que deve coincidir entre trilha npm e imagem (mesmo commit, `eslint`, resolução do plugin, flat config) — [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md#paridade-t1t2-versão-e-config).
+
 ```bash
 npm ci
 docker build -t malnati-ops-eslint:local -f .docker/Dockerfile .

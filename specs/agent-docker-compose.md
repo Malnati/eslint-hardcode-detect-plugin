@@ -60,6 +60,17 @@ bash .github/actions/ops-eslint/assets/run.sh \
 
 Por defeito o script grava o relatório JSON em `report_dir` / `report_file` relativos ao path analisado (valores padrão do script: `.eslint`, `eslint-report.json`), ou seja `packages/eslint-plugin-hardcode-detect/.eslint/eslint-report.json` no host após a execução.
 
+#### Paridade T1↔T2 (versão e config)
+
+Handoff do marco M1 ([`docs/distribution-milestones/m1-channel-t1-t2.md`](../docs/distribution-milestones/m1-channel-t1-t2.md) §2): T1 (consumidor npm no monorepo) e T2 (imagem ops-eslint com o mesmo repositório montado) devem ser **rastreáveis ao mesmo commit** e à **mesma superfície de config** esperada. O que deve coincidir:
+
+- **Mesmo checkout / mesma árvore:** a trilha T1 usa o monorepo após `npm ci` na raiz; a T2 monta esse **mesmo** clone em `/workspace`. Não há paridade se o host analisar um commit e o volume montado for outro (ou um tarball desalinhado).
+- **Versão do ESLint:** o `eslint` instalado globalmente na imagem ([`.docker/Dockerfile`](../.docker/Dockerfile), alinhado ao comentário de bump conjunto) deve manter-se coerente com a faixa e as versões concretas do workspace em [`packages/eslint-plugin-hardcode-detect/package.json`](../packages/eslint-plugin-hardcode-detect/package.json) e [`package-lock.json`](../package-lock.json) na raiz (ver também o item 3 em **Obrigações para agentes de IA** abaixo).
+- **Resolução do plugin:** em T1 o pacote resolve via `node_modules` do monorepo; em T2 o container lê o **mesmo** `node_modules` e fontes através do mount — o fluxo de smoke documentado inclui `npm ci` no host antes do `run.sh` para garantir essa resolução.
+- **Flat config:** a imagem define `ESLINT_USE_FLAT_CONFIG=true`; os ficheiros `eslint.config.*` e o `--path` passado ao [`assets/run.sh`](../.github/actions/ops-eslint/assets/run.sh) devem corresponder ao que `npm run lint` usa para `packages/eslint-plugin-hardcode-detect`.
+
+Matriz de evidência (estado por dimensão): [`docs/distribution-milestones/tasks/m1-channel-t1-t2/evidence/T1-t2-parity-gap-matrix.md`](../docs/distribution-milestones/tasks/m1-channel-t1-t2/evidence/T1-t2-parity-gap-matrix.md).
+
 **CI e T2:** o workflow [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) **não** inclui hoje um step que invoque a action `ops-eslint`; o lint em CI corre no runner com `npm run lint`. O smoke T2 documentado acima é reprodutível localmente. Evolução da trilha **T3** (CI explícito) está planeada em [`docs/distribution-milestones/m2-channel-t3-ci.md`](../docs/distribution-milestones/m2-channel-t3-ci.md).
 
 ## Obrigações para agentes de IA
@@ -81,6 +92,7 @@ Por defeito o script grava o relatório JSON em `report_dir` / `report_file` rel
 
 ## Versão do documento
 
+- **1.0.3** — subsecção **Paridade T1↔T2 (versão e config)** e remissão à matriz de evidência M1.
 - **1.0.2** — secção smoke T2 (build + `run.sh`), relatório padrão e nota sobre CI vs trilha T3.
 - **1.0.1** — remissão à matriz M0 (secção 6) para contexto de marcos e T1.
 - **1.0.0** — contrato inicial: perfis dev/e2e/prod e imagem ops-eslint.

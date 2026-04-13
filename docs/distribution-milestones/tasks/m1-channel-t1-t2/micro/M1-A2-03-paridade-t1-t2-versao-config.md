@@ -21,3 +21,9 @@ Garantir rastreabilidade **mesmo commit / mesma versão do plugin** e mesma **fl
 
 - `packages/eslint-plugin-hardcode-detect/`
 - `.docker/Dockerfile`
+
+## Onde está consolidado
+
+- Subsecção normativa **Paridade T1↔T2 (versão e config)** e smoke T2: [`specs/agent-docker-compose.md`](../../../../../specs/agent-docker-compose.md).
+- Checklist DoD e matriz por dimensão: [`../evidence/T1-t2-parity-gap-matrix.md`](../evidence/T1-t2-parity-gap-matrix.md) (inclui **Conclusão M1-A2-03**).
+- Handoff do marco (§2): [`../../../m1-channel-t1-t2.md`](../../../m1-channel-t1-t2.md).
