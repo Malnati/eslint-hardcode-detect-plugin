@@ -1497,3 +1497,21 @@ _Nenhum ficheiro acumulado neste turno._
 - `scripts/fixtures/smoke-hcd-err-violation-body.md`: **skip** — exclusão normativa (lista `AUDIT_EXCLUDE_PATHS` no hook)
 - `scripts/smoke-cursor-hcd-err-hook.sh`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `specs/agent-error-messaging-triple.md`: **skip** — exclusão normativa (lista `AUDIT_EXCLUDE_PATHS` no hook)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T02:44:52Z`
+- `conversation_id`: `0f54667f-54ed-455d-8299-33c64b8cdc34`
+- `generation_id`: `3ed6bae7-4eb6-4b3c-b6a7-eeb3668c430d`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: ``
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
