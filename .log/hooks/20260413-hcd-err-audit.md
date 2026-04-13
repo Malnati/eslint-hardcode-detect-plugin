@@ -1203,3 +1203,80 @@ _Nenhum ficheiro acumulado neste turno._
 - `docs/distribution-milestones/tasks/m4-channel-t5-agents/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `docs/distribution-milestones/tasks/m4-channel-t5-agents/evidence/T5-normative-files-inventory.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:44:25Z`
+- `conversation_id`: `b985fc01-747a-4e7f-a940-241c96774412`
+- `generation_id`: `bd230ccd-ed5e-4d02-b327-548569fc4041`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/b985fc01-747a-4e7f-a940-241c96774412/b985fc01-747a-4e7f-a940-241c96774412.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:45:58Z`
+- `conversation_id`: `b985fc01-747a-4e7f-a940-241c96774412`
+- `generation_id`: `fea1c221-bc27-4f91-902a-7516fa27933c`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/b985fc01-747a-4e7f-a940-241c96774412/b985fc01-747a-4e7f-a940-241c96774412.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m4-channel-t5-agents/A2-propor-job-verify-agent-files.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m4-channel-t5-agents/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m4-channel-t5-agents/evidence/A2-verify-agent-files-handoff.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `scripts/verify-normative-agent-files.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:47:03Z`
+- `conversation_id`: `1b8cea92-a7c9-40cb-a877-dfad77009ec5`
+- `generation_id`: `116aff39-7f01-45cb-98d5-a73b169fef8b`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/1b8cea92-a7c9-40cb-a877-dfad77009ec5/1b8cea92-a7c9-40cb-a877-dfad77009ec5.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T01:48:22Z`
+- `conversation_id`: `1b8cea92-a7c9-40cb-a877-dfad77009ec5`
+- `generation_id`: `193d16f4-29a1-4edb-a388-1f0e3a75734e`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/1b8cea92-a7c9-40cb-a877-dfad77009ec5/1b8cea92-a7c9-40cb-a877-dfad77009ec5.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/limitations-and-scope.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/solution-distribution-channels.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
