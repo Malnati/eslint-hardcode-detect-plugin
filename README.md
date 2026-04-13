@@ -64,7 +64,7 @@ bash .github/actions/ops-eslint/assets/run.sh \
 | [`.cursor/rules`](.cursor/rules) | Regras do Cursor para este projeto (`alwaysApply`). |
 | [`.cursor/commands`](.cursor/commands) | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`). |
 | [`.cursor/skills`](.cursor/skills) | Skills reutilizáveis (workflow do plugin, docs, Git, Clippings, Docker Compose). |
-| [`docker-compose.yml`](docker-compose.yml), [`.docker/`](.docker/) | Perfis dev/e2e/prod e imagem ops-eslint (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
+| [`docker-compose.yml`](docker-compose.yml), [`.docker/`](.docker/) | Perfis dev/e2e/prod/e2e-ops e imagem ops-eslint (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
 
 ## Licença
 

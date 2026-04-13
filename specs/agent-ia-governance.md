@@ -19,7 +19,7 @@ Garantir que:
 | 1 | [`AGENTS.md`](../AGENTS.md) | Prioridades e mapa do repositório |
 | 1b | [`specs/agent-reference-agents.md`](agent-reference-agents.md) | Quando houver remissão a [`reference/agents-ref/`](../reference/agents-ref/): aplicabilidade do portfólio e substituições de caminhos |
 | 1c | [`specs/agent-tooling-ecosystem-map.md`](agent-tooling-ecosystem-map.md) | Copilot / Awesome vs Cursor; pontes `.github/`; precedência de instruções |
-| 1d | [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Docker Compose (perfis dev/e2e/prod), `.docker/Dockerfile` e relação com `ops-eslint` |
+| 1d | [`specs/agent-docker-compose.md`](agent-docker-compose.md) | Docker Compose (perfis dev/e2e/prod/e2e-ops), `.docker/Dockerfile` e relação com `ops-eslint` |
 | 1e | [`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md) | Integrações externas: sem mocks no repo; sandboxes ou ambientes de teste dos provedores |
 | 2 | [`specs/agent-session-workflow.md`](agent-session-workflow.md) | Fases A–D por prompt |
 | 2a | [`specs/agent-error-messaging-triple.md`](agent-error-messaging-triple.md) | Falhas: três partes com prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`; Níveis 1–3 de conformidade |
@@ -78,7 +78,7 @@ Garantir que:
 | Skill | [`.cursor/skills/github-markdown-docs/SKILL.md`](../.cursor/skills/github-markdown-docs/SKILL.md) | Docs e grafo |
 | Skill | [`.cursor/skills/git-agent-workflow/SKILL.md`](../.cursor/skills/git-agent-workflow/SKILL.md) | Fechamento Git |
 | Skill | [`.cursor/skills/reference-agents-portfolio/SKILL.md`](../.cursor/skills/reference-agents-portfolio/SKILL.md) | Uso de `reference/agents-ref/` alinhado ao repo |
-| Skill | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose, `.docker/Dockerfile` e perfis dev/e2e/prod |
+| Skill | [`.cursor/skills/docker-compose-workflow/SKILL.md`](../.cursor/skills/docker-compose-workflow/SKILL.md) | Docker Compose, `.docker/Dockerfile` e perfis dev/e2e/prod/e2e-ops |
 | Skill | [`.cursor/skills/agent-error-messaging-triple/SKILL.md`](../.cursor/skills/agent-error-messaging-triple/SKILL.md) | Formato triplo para relatórios de falha |
 | Comando (opcional) | [`.cursor/commands/`](../.cursor/commands/) | Atalhos `/…` para checklist (ex.: `/fechar-e2e-nest-fixture`) |
 | Ponte Copilot (opcional) | [`.github/agents/eslint-hardcode-plugin.agent.md`](../.github/agents/eslint-hardcode-plugin.agent.md) | Agente GitHub Copilot: remete a `AGENTS.md` e `specs/` |

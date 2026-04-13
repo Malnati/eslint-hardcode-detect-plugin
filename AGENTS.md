@@ -13,7 +13,7 @@ Este repositório é mantido por agentes de IA e humanos. Siga a ordem de autori
 4. [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — **consulta e manutenção** de trechos da documentação oficial em [`reference/Clippings/`](reference/Clippings/) (por prompt, quando o escopo for relevante).
 5. [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — **obrigações de documentação** Markdown (GitHub) ao concluir trabalho relevante.
 6. [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — **obrigações de Git** ao concluir trabalho com alterações locais.
-6b. [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) — **Docker Compose** (perfis dev/e2e/prod), [`.docker/Dockerfile`](.docker/Dockerfile) e relação com a action `ops-eslint`.
+6b. [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) — **Docker Compose** (perfis dev/e2e/prod/e2e-ops), [`.docker/Dockerfile`](.docker/Dockerfile) e relação com a action `ops-eslint`.
 6c. [`specs/agent-integration-testing-policy.md`](specs/agent-integration-testing-policy.md) — **integrações externas** (registry, publicação, MCP, etc.): sem mocks no repositório; usar **sandboxes** ou ambientes de teste oficiais dos provedores.
 7. [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) — **único** local de código-fonte do plugin publicável.
 8. [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md) — massa de testes e2e NestJS (workspace auxiliar [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest); não publicável como o plugin).
@@ -68,7 +68,7 @@ Ao **finalizar** o trabalho (código, specs, CI ou governança):
 | `.cursor/hooks.json` + `.cursor/hooks/` | Hooks Cursor de projeto: gate por regex + auditoria HCD-ERR (Níveis 1–2) quando há sinal de falha; registo em `.log/hooks/`; `followup_message` sem Task. Ver [`specs/agent-error-messaging-triple.md`](specs/agent-error-messaging-triple.md), [`.github/agents/hcd-err-messaging.agent.md`](.github/agents/hcd-err-messaging.agent.md) e smoke [`scripts/smoke-cursor-hcd-err-hook.sh`](scripts/smoke-cursor-hcd-err-hook.sh) / [`docs/cursor-vps-cli-parity.md`](docs/cursor-vps-cli-parity.md). |
 | `.cursor/skills/` | Skills reutilizáveis pelos agentes neste repo (`git-agent-workflow`, `github-markdown-docs`, `eslint-plugin-workflow`, `reference-clippings-workflow`, `reference-agents-portfolio`, `docker-compose-workflow`, `agent-error-messaging-triple`). |
 | `.cursor/commands/` | Comandos opcionais (`/abrir-prompt-agente`, `/fechar-prompt-agente`, `/fechar-e2e-nest-fixture`) para checklist de sessão. |
-| `docker-compose.yml`, `.docker/` | Compose com perfis dev/e2e/prod; imagem ESLint para `ops-eslint` (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
+| `docker-compose.yml`, `.docker/` | Compose com perfis dev/e2e/prod/e2e-ops; imagem ESLint para `ops-eslint` (ver [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
 | `.github/agents/`, `.github/instructions/` | Pontes opcionais para GitHub Copilot (`eslint-hardcode-plugin`, `docker-tooling`, `hcd-err-messaging`; instruções por glob); normas completas em `AGENTS.md` e `specs/` (ver [`specs/agent-tooling-ecosystem-map.md`](specs/agent-tooling-ecosystem-map.md)). |
 
 ## Fluxo sugerido de PR

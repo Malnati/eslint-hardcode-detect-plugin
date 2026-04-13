@@ -1,4 +1,4 @@
-# Perfis: dev | e2e | prod
+# Perfis: dev | e2e | prod | e2e-ops
 # Uso: docker compose --profile <nome> run --rm <serviço>
 # Normas: specs/agent-docker-compose.md
 
@@ -42,3 +42,18 @@ services:
       - /bin/bash
       - -lc
       - set -euo pipefail && npm ci && npm run lint && npm test -w eslint-plugin-hardcode-detect
+
+  e2e-ops:
+    image: malnati-ops-eslint:local
+    profiles: [e2e-ops]
+    working_dir: /workspace/packages/eslint-plugin-hardcode-detect
+    volumes:
+      - .:/workspace
+    environment:
+      ESLINT_USE_FLAT_CONFIG: "true"
+    entrypoint: ["/bin/bash", "-lc"]
+    command:
+      - >-
+        set -euo pipefail &&
+        mkdir -p .eslint &&
+        eslint --format json --output-file .eslint/eslint-report.json .

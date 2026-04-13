@@ -1,9 +1,9 @@
 ---
 name: docker-compose-workflow
 description: >-
-  Docker Compose na raiz (perfis dev, e2e, prod), imagem .docker/Dockerfile para ops-eslint e alinhamento
+  Docker Compose na raiz (perfis dev, e2e, prod, e2e-ops), imagem .docker/Dockerfile para ops-eslint e alinhamento
   com specs/agent-docker-compose.md. Use quando o pedido envolver docker-compose, Dockerfile do repo ou
-  Composite Action ops-eslint. Keywords: Docker, compose, perfil dev e2e prod, malnati-ops-eslint.
+  Composite Action ops-eslint. Keywords: Docker, compose, perfil dev e2e prod e2e-ops, malnati-ops-eslint.
 ---
 
 # Workflow Docker (este repositório)
@@ -20,7 +20,7 @@ description: >-
 
 ## Checklist rápido
 
-- [ ] Perfis `dev`, `e2e` e `prod` permanecem com a semântica documentada no spec (ajuste o spec se mudar).
+- [ ] Perfis `dev`, `e2e`, `prod` e `e2e-ops` permanecem com a semântica documentada no spec (ajuste o spec se mudar).
 - [ ] Bump de `eslint` global no `.docker/Dockerfile` acompanhado de comentário e, se aplicável, coerência com `packages/eslint-plugin-hardcode-detect/package.json`.
 - [ ] Após mudança estrutural: [`docs/repository-tree.md`](../../../docs/repository-tree.md) e resposta ao utilizador listando docs tocados (caminhos relativos à raiz ao citar ficheiros — [`docs/documentation-policy.md`](../../../docs/documentation-policy.md)).
 

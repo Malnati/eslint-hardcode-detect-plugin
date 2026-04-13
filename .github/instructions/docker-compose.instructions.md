@@ -1,5 +1,5 @@
 ---
-description: 'docker-compose e .docker/ — perfis dev/e2e/prod e imagem ops-eslint alinhados ao spec.'
+description: 'docker-compose e .docker/ — perfis dev/e2e/prod/e2e-ops e imagem ops-eslint alinhados ao spec.'
 applyTo: 'docker-compose*.yml,.docker/**/*'
 ---
 

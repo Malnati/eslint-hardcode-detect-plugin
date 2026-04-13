@@ -16,7 +16,7 @@ Camada A em [`../../m1-channel-t1-t2.md`](../../m1-channel-t1-t2.md) (secções 
 
 ## Inputs
 
-- [`docker-compose.yml`](../../../../docker-compose.yml) (perfis atuais `dev`, `e2e`, `prod`; **`e2e-ops` planejado**).
+- [`docker-compose.yml`](../../../../docker-compose.yml) (perfis `dev`, `e2e`, `prod`, `e2e-ops`).
 - [`specs/agent-docker-compose.md`](../../../../specs/agent-docker-compose.md).
 - Matriz §6 de [`../../m1-channel-t1-t2.md`](../../m1-channel-t1-t2.md).
 
@@ -27,7 +27,7 @@ Camada A em [`../../m1-channel-t1-t2.md`](../../m1-channel-t1-t2.md) (secções 
 
 ## Critério de conclusão
 
-- Spec e árvore **coerentes** com o estado real do repositório; estado «planejado» do `e2e-ops` explícito até haver implementação em `docker-compose.yml`.
+- Spec e árvore **coerentes** com o estado real do repositório; perfil `e2e-ops` implementado em `docker-compose.yml` e reflectido na documentação normativa.
 
 ## Dependências
 
@@ -46,7 +46,7 @@ Execução fragmentada: [`micro/README.md`](micro/README.md).
 
 ### Registo M1-A3-02 (repository-tree)
 
-**N/A neste ciclo:** o Compose ainda não define `e2e-ops`; sem diff obrigatório em `docs/repository-tree.md` até esse perfil existir. Ver [`micro/M1-A3-02-repository-tree-quando-perfil.md`](micro/M1-A3-02-repository-tree-quando-perfil.md).
+**Concluído:** o Compose define `e2e-ops`; [`docs/repository-tree.md`](../../../../docs/repository-tree.md) lista os quatro perfis na entrada do `docker-compose.yml` (ver [`micro/M1-A3-02-repository-tree-quando-perfil.md`](micro/M1-A3-02-repository-tree-quando-perfil.md)).
 
 ## Paths principais
 

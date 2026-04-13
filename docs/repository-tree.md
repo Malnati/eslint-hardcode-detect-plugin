@@ -12,7 +12,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke do hook HCD-ERR)
 │   ├── validate-milestone-plan-coverage.mjs
 │   └── smoke-cursor-hcd-err-hook.sh
-├── docker-compose.yml        # Perfis dev / e2e / prod (ver specs/agent-docker-compose.md)
+├── docker-compose.yml        # Perfis dev / e2e / prod / e2e-ops (ver specs/agent-docker-compose.md)
 ├── .dockerignore             # Contexto de build da imagem ops-eslint
 ├── .docker/
 │   └── Dockerfile            # Imagem ESLint para Composite Action ops-eslint
