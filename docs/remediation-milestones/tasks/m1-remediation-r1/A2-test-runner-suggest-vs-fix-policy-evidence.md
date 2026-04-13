@@ -28,7 +28,7 @@
 
 ## Cadeia verificada (script `test` do pacote)
 
-Conforme [`packages/eslint-plugin-hardcode-detect/package.json`](../../../../packages/eslint-plugin-hardcode-detect/package.json): `npm run build` seguido de `node --test` sobre `tests/index.test.mjs`, `tests/no-hardcoded-strings-r1.test.mjs`, `e2e/hello-world.e2e.mjs`, `e2e/nest-workspace.e2e.mjs`. Saída `node --test` (trecho): `# tests 5`, `# pass 5`, `# fail 0`; subtestes incluem `no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)`.
+Conforme [`packages/eslint-plugin-hardcode-detect/package.json`](../../../../packages/eslint-plugin-hardcode-detect/package.json): `npm run build` seguido de `node --test` sobre `tests/index.test.mjs`, `tests/no-hardcoded-strings-r1.test.mjs`, `e2e/hello-world.e2e.mjs`, `e2e/nest-workspace.e2e.mjs`. Saída `node --test` (trecho): `# tests 5`, `# pass 5`, `# fail 0`, `# duration_ms` ~4711 na invocação verificada; subtestes incluem `no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)`.
 
 A prova **P-SVF / S-R1-*** (autofix vs *suggest* vs só erro) permanece reproduzível na suite [`tests/no-hardcoded-strings-r1.test.mjs`](../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs), alinhada à matriz em [`A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md) e ao parecer em [`A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](A2-test-reviewer-suggest-vs-fix-policy-signoff.md).
 
