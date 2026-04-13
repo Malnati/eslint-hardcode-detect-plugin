@@ -99,6 +99,14 @@ gantt
 
 **A1 — entregável do testador (execução e evidências do gate `npm test`, M1-A1-08):** [`tasks/m1-remediation-r1/A1-test-runner-ruletester-r1-evidence.md`](tasks/m1-remediation-r1/A1-test-runner-ruletester-r1-evidence.md).
 
+**A2 — entregável do arquiteto (CI, comando, ambiente e reprodutibilidade suggest/fix):** [`tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`](tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md).
+
+**A2 — entregável do analista de testes (matriz técnica suggest vs fix + critérios de evidência):** [`tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md).
+
+**A2 — entregável do revisor de testes (parecer sobre matriz e critérios de evidência, M1-A2-07):** [`tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md).
+
+**A2 — entregável do testador (execução e evidências do gate `npm test`, M1-A2-08):** [`tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md`](tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md).
+
 ---
 
 ## 8. Camada B — Execução de agentes por fase

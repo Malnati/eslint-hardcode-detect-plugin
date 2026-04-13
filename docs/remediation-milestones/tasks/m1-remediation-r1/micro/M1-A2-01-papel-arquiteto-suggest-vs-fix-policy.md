@@ -40,3 +40,8 @@ Papel **Arquiteto**: entregáveis deste ficheiro concluídos; alinhado ao crité
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+Documentação normativa do arquiteto: [`../A2-architect-suggest-vs-fix-policy-ci-environment.md`](../A2-architect-suggest-vs-fix-policy-ci-environment.md) — comando canónico, semântica `output` / `suggestions` / só `errors` no RuleTester, cadeia `npm test` do pacote, mapeamento CI, limites de ambiente e limites de papel (sem edição de `tests/`, `docs/rules/` nem `README.md` do pacote neste papel).
+
+Estado: **concluído** (entregável acima).
