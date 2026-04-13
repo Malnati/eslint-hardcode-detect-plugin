@@ -25,9 +25,9 @@ Regra prática: tratar a paridade **IDE ↔ CLI** como **hipótese a validar**, 
 
 ### Nível 1 — Smoke do script do hook (sem Agent)
 
-O script [`scripts/smoke-cursor-hcd-err-hook.sh`](../scripts/smoke-cursor-hcd-err-hook.sh) envia JSON mínimo para [`.cursor/hooks/hcd-err-triple-audit.sh`](../.cursor/hooks/hcd-err-triple-audit.sh) e verifica códigos de saída e saída padrão.
+O script [`scripts/smoke-cursor-hcd-err-hook.sh`](../scripts/smoke-cursor-hcd-err-hook.sh) envia JSON mínimo para [`.cursor/hooks/hcd-err-triple-audit.sh`](../.cursor/hooks/hcd-err-triple-audit.sh) e verifica códigos de saída e saída padrão. O smoke exporta **`HCD_ERR_AUDIT_SKIP_GIT=1`** para não executar commit/push automáticos do relatório (o evento `stop` grava sempre `.log/hooks/YYYYMMDD-hcd-err-audit.md`).
 
-- **O que valida:** Python/bash, `CURSOR_PROJECT_DIR`, e a lógica do hook (eventos `afterFileEdit` e `stop`, incluindo um caso de violação simulada).
+- **O que valida:** Python/bash, `CURSOR_PROJECT_DIR`, e a lógica do hook (eventos `afterFileEdit` e `stop`, acúmulo `.ts` e `.py`, caso de violação simulada).
 - **O que não valida:** se o binário `agent` do Cursor CLI invoca de facto os hooks no teu ambiente.
 
 Executar na raiz do clone (local ou VPS):
@@ -40,7 +40,7 @@ bash scripts/smoke-cursor-hcd-err-hook.sh
 
 1. Abrir o repositório como workspace de projeto (no IDE: **trusted** quando o Cursor pedir).
 2. Executar um prompt que provoque **edição de ficheiro** (ferramenta Write) e **conclusão do turno** (para o evento `stop` correr).
-3. Verificar se surgem entradas novas em `.log/hooks/` (ficheiros `YYYYMMDD-hcd-err-audit.md` ou estado em `.log/hooks/.state/`). O directório `.log/` **não** está em [`.gitignore`](../.gitignore); podes versionar os relatórios de auditoria se fizer sentido para a equipa.
+3. Verificar se surgem entradas novas em `.log/hooks/` (ficheiros `YYYYMMDD-hcd-err-audit.md` ou estado em `.log/hooks/.state/`). O directório `.log/` **não** está em [`.gitignore`](../.gitignore); o hook pode **commitar e enviar** automaticamente só esse relatório (definir `HCD_ERR_AUDIT_SKIP_GIT=1` para o desligar).
 4. Se não aparecer nada, o CLI dessa versão pode não estar a despachar hooks — regista a versão do Cursor CLI e consulta a documentação oficial actual.
 
 ## Pré-requisitos úteis
@@ -57,4 +57,5 @@ bash scripts/smoke-cursor-hcd-err-hook.sh
 
 ## Versão do documento
 
+- **1.1.0** — smoke com `HCD_ERR_AUDIT_SKIP_GIT`; nota sobre commit/push do relatório e acúmulo `.py` no smoke.
 - **1.0.0** — introdução: IDE vs CLI/VPS, dois níveis de verificação, smoke do hook.

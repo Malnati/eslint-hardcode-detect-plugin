@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Cursor project hook: auditoria Nível 1–2 para prefixos HCD-ERR em ficheiros editados pelo Agent.
 # Norma: specs/agent-error-messaging-triple.md
+# Após gravar o relatório diário (evento stop), tenta git commit + push só desse ficheiro (índice tem de estar limpo).
+# Desativar automação Git: export HCD_ERR_AUDIT_SKIP_GIT=1 (ex.: smoke/CI).
 set -euo pipefail
 
 INPUT="$(cat)"
@@ -10,6 +12,8 @@ exec python3 - "${0}" <<'PY'
 import json
 import os
 import re
+import shutil
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -52,6 +56,7 @@ def has_failure_signal(text: str) -> bool:
     return any(p.search(text) for p in FAILURE_SIGNAL_PATTERNS)
 
 
+# Sufixos por ecossistema (Python, JS/TS, Vue, Angular HTML, Java, PHP, SQL/DDL, shell, Markdown, …).
 ALLOWED_SUFFIXES = (
     ".ts",
     ".tsx",
@@ -60,11 +65,34 @@ ALLOWED_SUFFIXES = (
     ".cjs",
     ".md",
     ".mdc",
+    ".py",
+    ".pyi",
+    ".pyw",
+    ".html",
+    ".vue",
+    ".java",
+    ".php",
+    ".phtml",
+    ".sql",
+    ".ddl",
+    ".sh",
+    ".bash",
 )
 
 EXCLUDE_SUBSTR = (
     "reference/legacy-snapshot/",
 )
+
+GIT_AUDIT_COMMIT_MSG = "chore(cursor): append HCD-ERR audit log"
+
+
+def basename_allowed(name: str) -> bool:
+    """Dockerfile / Makefile: sem extensão típica."""
+    if name in ("Makefile", "makefile"):
+        return True
+    if name == "Dockerfile" or name.startswith("Dockerfile."):
+        return True
+    return False
 
 
 def safe_id(s: str) -> str:
@@ -95,10 +123,12 @@ def to_rel(path: Path, root: Path) -> Optional[str]:
 def should_audit(rel: str) -> bool:
     if not rel:
         return False
-    lower = rel.lower()
-    if not any(lower.endswith(s) for s in ALLOWED_SUFFIXES):
+    if any(ex in rel for ex in EXCLUDE_SUBSTR):
         return False
-    return not any(ex in rel for ex in EXCLUDE_SUBSTR)
+    lower = rel.lower()
+    if any(lower.endswith(s) for s in ALLOWED_SUFFIXES):
+        return True
+    return basename_allowed(Path(rel).name)
 
 
 def count_prefixes(text: str) -> tuple[int, int, int]:
@@ -148,6 +178,94 @@ def append_daily_log(
         log_path.write_text(log_path.read_text(encoding="utf-8") + sep + block, encoding="utf-8")
     else:
         log_path.write_text(block, encoding="utf-8")
+
+
+def _env_truthy(name: str) -> bool:
+    return os.environ.get(name, "").strip().lower() in ("1", "true", "yes", "on")
+
+
+def git_commit_and_push_audit_log(root: Path, rel_log: str) -> None:
+    """Faz commit e push apenas de rel_log se o índice não tiver outros ficheiros staged."""
+    if _env_truthy("HCD_ERR_AUDIT_SKIP_GIT"):
+        return
+    git_exe = shutil.which("git")
+    if not git_exe:
+        return
+    proc = subprocess.run(
+        [git_exe, "-C", str(root), "rev-parse", "--is-inside-work-tree"],
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0 or proc.stdout.strip() != "true":
+        return
+    staged = subprocess.run(
+        [git_exe, "-C", str(root), "diff", "--cached", "--name-only"],
+        capture_output=True,
+        text=True,
+    )
+    if staged.stdout.strip():
+        print(
+            "hcd-err-audit: skip auto-commit (git index has other staged files)",
+            file=sys.stderr,
+        )
+        return
+    porc = subprocess.run(
+        [
+            git_exe,
+            "-C",
+            str(root),
+            "status",
+            "--porcelain",
+            "--untracked-files=all",
+            "--",
+            rel_log,
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if not porc.stdout.strip():
+        return
+    add_r = subprocess.run(
+        [git_exe, "-C", str(root), "add", "--", rel_log],
+        capture_output=True,
+        text=True,
+    )
+    if add_r.returncode != 0:
+        print(
+            f"hcd-err-audit: git add failed: {add_r.stderr or add_r.stdout}",
+            file=sys.stderr,
+        )
+        return
+    commit_r = subprocess.run(
+        [
+            git_exe,
+            "-C",
+            str(root),
+            "commit",
+            "-m",
+            GIT_AUDIT_COMMIT_MSG,
+            "--",
+            rel_log,
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if commit_r.returncode != 0:
+        print(
+            f"hcd-err-audit: git commit failed: {commit_r.stderr or commit_r.stdout}",
+            file=sys.stderr,
+        )
+        return
+    push_r = subprocess.run(
+        [git_exe, "-C", str(root), "push"],
+        capture_output=True,
+        text=True,
+    )
+    if push_r.returncode != 0:
+        print(
+            f"hcd-err-audit: git push failed: {push_r.stderr or push_r.stdout}",
+            file=sys.stderr,
+        )
 
 
 def main() -> None:
@@ -239,7 +357,9 @@ def main() -> None:
         body = "\n".join(meta_lines) + "\n\n### Ficheiros auditados\n\n" + ("\n".join(results) if results else "_Nenhum ficheiro acumulado neste turno._")
 
         day = datetime.now(timezone.utc).strftime("%Y%m%d")
+        rel_audit = f".log/hooks/{day}-hcd-err-audit.md"
         append_daily_log(log_dir / f"{day}-hcd-err-audit.md", "stop (auditoria HCD-ERR)", body)
+        git_commit_and_push_audit_log(root, rel_audit)
 
         try:
             if state_file.is_file():
