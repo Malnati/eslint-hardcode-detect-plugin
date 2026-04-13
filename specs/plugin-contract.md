@@ -23,11 +23,49 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 - **ID sugerido no plugin**: `no-hardcoded-strings` (namespace do plugin conforme nome publicado, ex.: `hardcode-detect/no-hardcoded-strings`).
 - **Tipo**: `problem`.
 - **Descrição**: desencorajar literais de string hardcoded no código (exceto strings triviais muito curtas).
-- **Comportamento**:
-  - Em nós `Literal` cujo valor é `string`, se `value.length >= 2`, reportar com a mensagem configurada (equivalente a: evitar string literal; mover para constantes ou catálogo).
-  - Strings de comprimento menor que 2 são ignoradas.
-- **Schema (implementação actual)**: vazio (`[]`). O **schema planeado** para remediação R1–R3 está na secção **Remediação assistida — opções públicas planeadas (R1–R3)** abaixo neste documento; essas opções normativas aplicam-se prioritariamente a esta regra (ou a regras derivadas com IDs estáveis quando forem acrescentadas ao contrato). A materialização no código segue os marcos M1–M4 do plano em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md).
-- **Mensagens**: pelo menos `hardcoded` com texto orientando uso de constantes ou catálogo.
+- **Meta ESLint**: `fixable: "code"`; `hasSuggestions: true` (há cenários só com *suggestions*, sem `fix`, conforme política de risco; ver [`packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`](../packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md)).
+
+#### Detecção
+
+- Na saída do programa (`Program:exit`), consideram-se ocorrências em nós `Literal` cujo valor é `string` e `value.length >= 2`. Strings mais curtas são ignoradas.
+- Literais que são o operando **direito** de `??` ou `||` quando o ramo esquerdo referencia `process.env` são tratados como **fallback de ambiente**. O relatório e o agrupamento para R1 respeitam `envDefaultLiteralPolicy`:
+  - **`include`**: participam do mesmo fluxo que outros literais (mensagem `hardcoded` por defeito).
+  - **`report-separate`**: usa `messageId` `hardcodedEnvDefault` para esses literais.
+  - **`ignore`**: não são reportados.
+
+#### Modo de remediação efectivo
+
+- Valores de opção `remediationMode`: `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"`.
+- **Remediação R1 por autofix** só está activa quando o modo efectivo é **R1**: `"r1"` ou `"auto"` (este último mapeia para R1 na implementação actual). Com `"off"`, ou com `"r2"` / `"r3"` (reservados: **sem** autofix R1 nesta versão), mantém-se detecção e relatórios; não há reescrita R1 automática.
+
+#### Remediação R1 (constantes no mesmo ficheiro)
+
+- Com R1 activo e contexto seguro para autofix: injectam-se declarações `const` **após** o último `import`, ou no topo do ficheiro se não houver imports; nomes em `constantNamingConvention` (hoje só `UPPER_SNAKE_CASE`); declarações ordenadas lexicograficamente por identificador; substituição das ocorrências elegíveis pelo identificador escolhido.
+- **`dedupeWithinFile`**: se `true`, um identificador por par valor + flag de fallback de ambiente no mesmo `SourceCode`; se `false`, permite múltiplas constantes para o mesmo valor (ver suite RuleTester).
+- **`remediationIncludeGlobs`** / **`remediationExcludeGlobs`**: padrões glob sobre o caminho **relativo** ao `cwd` do ESLint (`context.cwd`). Lista de inclusão vazia = sem filtro extra; exclusão impede autofix R1 nos ficheiros que casam (detecção mantém-se; podem aplicar-se *suggestions* onde a implementação o permitir).
+- **Heurísticas de segurança**: caminhos de ficheiro considerados arriscados (ex. testes, i18n) e literais que coincidem com heurística de **segredo provável** não recebem autofix R1 nem *suggestion* quando não existem alvos seguros para construir o fix; detalhe em código e na documentação da regra.
+
+#### Schema (implementação actual, M1)
+
+- Um único objecto opcional em `options[0]`; propriedades não listadas são rejeitadas (`additionalProperties: false` no JSON Schema da regra).
+
+| Campo | Tipo | Padrão | Descrição |
+|-------|------|--------|-----------|
+| `remediationMode` | `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"` | `"off"` | Trilha de remediação; ver modo efectivo acima. |
+| `constantNamingConvention` | `"UPPER_SNAKE_CASE"` | `"UPPER_SNAKE_CASE"` | Convenção dos identificadores injectados (extensível no contrato; hoje só este valor no schema). |
+| `dedupeWithinFile` | boolean | `true` | Uma constante por grupo de equivalência no mesmo ficheiro. |
+| `remediationIncludeGlobs` | string[] | `[]` | Se não vazio, só ficheiros cujo caminho relativo casa recebem autofix R1 quando o restante contexto o permitir. |
+| `remediationExcludeGlobs` | string[] | `[]` | Caminhos que casam não recebem autofix R1. |
+| `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Política para literais de fallback de `process.env` (`??` / `||`). |
+
+- Opções adicionais da tabela global (R2, R3, segredos, etc.) na secção seguinte **ainda não** fazem parte do schema desta regra até aos marcos indicados.
+
+#### Mensagens (IDs estáveis)
+
+| ID | Uso |
+|----|-----|
+| `hardcoded` | Literal reportável genérico (inclui fallback de ambiente quando `envDefaultLiteralPolicy` não é `report-separate`). |
+| `hardcodedEnvDefault` | Literal de fallback de `process.env` quando `envDefaultLiteralPolicy === "report-separate"`. |
 
 ### `standardize-error-messages`
 
@@ -64,31 +102,31 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 Esta secção fixa **vocabulário e semântica** das opções públicas para remediação assistida alinhadas a [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md) e à visão em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md). As trilhas **R1** (por ficheiro), **R2** (multi-ficheiro / módulo partilhado) e **R3** (ficheiros de dados e ambiente) podem corresponder a **regras distintas** ou a **modos / sub-opções** da mesma família (`no-hardcoded-strings` ou nomes estáveis futuros); o contrato previne ambiguidade de schema **antes** do merge de implementação correspondente.
 
-**Estado:** **planeado** — nem todas as opções abaixo estão implementadas no pacote na data desta versão do contrato; os marcos alvo (M1–M4) indicam a fase prevista. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
+**Estado:** **misto** — o subconjunto **R1** listado na subsecção `no-hardcoded-strings` acima está **implementado** no schema da regra (marco M1). As restantes linhas da tabela abaixo permanecem **vocabulário normativo** e marcos alvo (M2–M4) até integração no pacote; `r2` / `r3` como valores de `remediationMode` estão reservados (sem remediação por autofix além de R1 na implementação actual). A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
 
 ### Tabela de opções (nomes estáveis)
 
-| Opção | Tipo | Padrão planeável | Trilha | Marco alvo | Descrição |
-|-------|------|------------------|--------|------------|-----------|
-| `remediationMode` | `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"` | `"off"` | Transversal | M1+ | Selecciona trilha de remediação ou heurística que escolhe R1/R2/R3 conforme contexto (quando suportado). `"off"` mantém apenas detecção. |
-| `constantNamingConvention` | string (enum documentado) | `"UPPER_SNAKE_CASE"` | R1 | M1 | Convenção para identificadores de constantes injectadas no topo do ficheiro. |
-| `dedupeWithinFile` | boolean | `true` | R1 | M1 | Uma constante por valor normalizado dentro do mesmo `SourceCode`. |
-| `remediationIncludeGlobs` | string[] | `[]` | R1 | M1 | Limita remediação a caminhos relativos que casam com estes globs (lista vazia = sem filtro extra além do `files` do ESLint). |
-| `remediationExcludeGlobs` | string[] | `[]` | R1–R3 | M1+ | Exclui testes, i18n, exemplos (ex.: `**/*.i18n.ts`, `**/.env.example`). |
-| `sharedConstantsModule` | string (path ou padrão resolvível) | — | R2 | M2 | Destino do módulo partilhado para constantes reutilizadas entre ficheiros (por pacote ou política de repositório). |
-| `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | R2 | M2 | Estilo de import a gerar ao referenciar `sharedConstantsModule`. |
-| `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | R2 | M2 | O índice de valores para duplicados no âmbito do lint **reconstrói-se** (ou invalida-se correctamente) em cada invocação `lintFiles` sobre o conjunto definido pelo `eslint.config`; não há cache stale entre execuções sem política explícita. |
-| `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | R2 | M2 | Quando a API ESLint usar `concurrency` / workers, o desenho deve documentar: desactivar paralelismo para regras com estado global, segunda passagem determinística, ou índice em ficheiro idempotente (ver macro-plan). |
-| `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
-| `dataFileTargets` | string[] | `[]` | R3 | M3 | Caminhos ou globs dos ficheiros de dados (vazio = derivação por convenção documentada na implementação). |
-| `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
-| `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | Modo seguro por defeito: sem copiar valores sensíveis em claro; fix agressivo exige opt-in explícito. Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
-| `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Transversal | M1–M3 | Tratamento de literais que são fallbacks de `process.env` (operadores `??` ou `||`) ou espelhos em constantes; mesma classe de hardcode que o literal de default (ver macro-plan). |
+| Opção | Tipo | Padrão planeável | Trilha | Marco alvo | Na regra `no-hardcoded-strings` (M1) | Descrição |
+|-------|------|------------------|--------|------------|----------------------------------------|-----------|
+| `remediationMode` | `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"` | `"off"` | Transversal | M1+ | **Sim** (schema) | Selecciona trilha de remediação ou heurística. `"off"` mantém apenas detecção; `r2`/`r3` sem autofix R1 na versão actual. |
+| `constantNamingConvention` | string (enum documentado) | `"UPPER_SNAKE_CASE"` | R1 | M1 | **Sim** (só `UPPER_SNAKE_CASE`) | Convenção para identificadores de constantes injectadas no topo do ficheiro. |
+| `dedupeWithinFile` | boolean | `true` | R1 | M1 | **Sim** | Uma constante por valor normalizado dentro do mesmo `SourceCode` (com desdobramento para literais de fallback de ambiente). |
+| `remediationIncludeGlobs` | string[] | `[]` | R1 | M1 | **Sim** | Limita remediação a caminhos relativos que casam com estes globs (lista vazia = sem filtro extra além do `files` do ESLint). |
+| `remediationExcludeGlobs` | string[] | `[]` | R1–R3 | M1+ | **Sim** | Exclui testes, i18n, exemplos (ex.: `**/*.i18n.ts`, `**/.env.example`). |
+| `sharedConstantsModule` | string (path ou padrão resolvível) | — | R2 | M2 | **Não** | Destino do módulo partilhado para constantes reutilizadas entre ficheiros (por pacote ou política de repositório). |
+| `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | R2 | M2 | **Não** | Estilo de import a gerar ao referenciar `sharedConstantsModule`. |
+| `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | R2 | M2 | **Não** | O índice de valores para duplicados no âmbito do lint **reconstrói-se** (ou invalida-se correctamente) em cada invocação `lintFiles` sobre o conjunto definido pelo `eslint.config`; não há cache stale entre execuções sem política explícita. |
+| `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | R2 | M2 | **Não** | Quando a API ESLint usar `concurrency` / workers, o desenho deve documentar: desactivar paralelismo para regras com estado global, segunda passagem determinística, ou índice em ficheiro idempotente (ver macro-plan). |
+| `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | **Não** | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
+| `dataFileTargets` | string[] | `[]` | R3 | M3 | **Não** | Caminhos ou globs dos ficheiros de dados (vazio = derivação por convenção documentada na implementação). |
+| `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | **Não** | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
+| `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | **Não** | Modo seguro por defeito: sem copiar valores sensíveis em claro; fix agressivo exige opt-in explícito. Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
+| `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Transversal | M1–M3 | **Sim** | Tratamento de literais que são fallbacks de `process.env` (operadores `??` ou `||`) ou espelhos em constantes; mesma classe de hardcode que o literal de default (ver macro-plan). |
 
 ### R1 — constantes no mesmo ficheiro
 
 - **Objectivo:** `fix` / `suggest` com âmbito ao ficheiro actual, compatível com o modelo clássico de `fixer` ESLint no AST corrente.
-- **Comportamento esperado:** declarações no topo (ordem definível por convenção), substituição de ocorrências do mesmo valor no mesmo `SourceCode` quando `dedupeWithinFile` for verdadeiro.
+- **Comportamento esperado (M1):** declarações injectadas após imports (ou no topo), substituição de ocorrências no mesmo `SourceCode` quando `dedupeWithinFile` for verdadeiro; pormenores e matriz *suggest* vs *fix* na documentação da regra e na suite RuleTester do pacote.
 
 ### R2 — módulo partilhado e índice global no âmbito do lint
 
@@ -118,6 +156,7 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 
 ## Versão do documento
 
+- **0.9.0** — M1 / tarefa A3: `no-hardcoded-strings` com schema object (opções R1 M1), `messageId`s `hardcoded` e `hardcodedEnvDefault`, modo efectivo de remediação e secção de remediação com estado **misto** (implementado vs vocabulário futuro); alinhado à implementação em [`packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`](../packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts).
 - **0.8.0** — M0: secção *Remediação assistida — opções públicas planeadas (R1–R3)* com tabela de opções estáveis (caminhos partilhados R2, formatos R3, `secretRemediationMode`, `envDefaultLiteralPolicy`, índice e paralelismo); ligação do schema planeado à regra `no-hardcoded-strings`.
 - **0.7.0** — remissão ao plano macro de remediação em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md); obrigação de alinhar opções públicas no marco M0 desse plano.
 - **0.6.0** — `messages`: recomendação de prefixos HCD-ERR-* por campo, alinhados a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md) v2.0.0.
