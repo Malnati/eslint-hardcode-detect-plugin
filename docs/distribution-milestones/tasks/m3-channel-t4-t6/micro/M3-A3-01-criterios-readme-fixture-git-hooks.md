@@ -25,7 +25,7 @@ Definir critérios para o futuro pacote `packages/e2e-fixture-git-hooks-sample`:
 
 ## Critérios para o README — `e2e-fixture-git-hooks-sample` (entregável)
 
-Texto normativo **pronto para copiar** (ou adaptar) para o futuro `packages/e2e-fixture-git-hooks-sample/README.md` quando o workspace existir. Alinha [`m3-channel-t4-t6.md`](../../../m3-channel-t4-t6.md) §4 onda 3, §6 (matriz e2e × Compose), §7 camada A3 e o gate M4 em [`M3-A3-02-gate-nao-fechar-t6-sem-m4.md`](M3-A3-02-gate-nao-fechar-t6-sem-m4.md).
+Texto normativo **pronto para copiar** (ou adaptar) para o futuro `packages/e2e-fixture-git-hooks-sample/README.md` quando o workspace existir. Alinha [`m3-channel-t4-t6.md`](../../../m3-channel-t4-t6.md) §4 onda 3, §6 (matriz e2e × Compose), §7 camada A3 e o [gate M4 / T6](../../../m3-channel-t4-t6.md#gate-antes-de-merge-t6) (§10; rastreio da micro [`M3-A3-02`](M3-A3-02-gate-nao-fechar-t6-sem-m4.md)).
 
 ### O que o README deve deixar explícito
 
@@ -34,7 +34,7 @@ Texto normativo **pronto para copiar** (ou adaptar) para o futuro `packages/e2e-
 - **Relação com o monorepo:** declarar que o `cwd` efetivo dos scripts é a **raiz** do repositório; evitar `npx eslint` isolado ou outro diretório de trabalho **salvo** decisão documentada e alinhada ao M2/M3.
 - **Sem serviço HTTP obrigatório:** a massa T6 é **validação local** do fluxo de hooks + ESLint; **não** exigir aplicação web nem porto HTTP para reproduzir o exemplo. Isto espelha a linha **§6** do plano M3 (*Fixture hooks (futura)*: perfil Compose *N/A típico*; contraste com a linha T4/Nest onde a IDE é local e o Compose também é *N/A típico* para o fluxo principal).
 - **CI:** «Job **opcional** ou **documentado**» (matriz §6); o README **não** deve exigir um job de CI para o contribuidor validar o exemplo no próprio clone.
-- **Gate T6 / M4:** não declarar T6 «done» nem sugerir merge que **feche** T6 sem o marco **M4** satisfeito; remeter ao checklist em [`M3-A3-02`](M3-A3-02-gate-nao-fechar-t6-sem-m4.md) e a [`m3-channel-t4-t6.md`](../../../m3-channel-t4-t6.md) §10.
+- **Gate T6 / M4:** não declarar T6 «done» nem sugerir merge que **feche** T6 sem o marco **M4** satisfeito; remeter ao [checklist normativo em §10 do plano M3](../../../m3-channel-t4-t6.md#gate-antes-de-merge-t6) (micro de rastreio [`M3-A3-02`](M3-A3-02-gate-nao-fechar-t6-sem-m4.md)).
 
 ### Fora de escopo (o README deve admitir limites)
 
