@@ -21,7 +21,7 @@ Camada A em [`../../m3-channel-t4-t6.md`](../../m3-channel-t4-t6.md) (secções 
 
 ## Outputs
 
-- Pacote workspace futuro `packages/e2e-fixture-git-hooks-sample` (quando implementado) com **README** que declare limites, reprodutibilidade e relação com o mesmo caminho de lint que CI.
+- Pacote workspace futuro `packages/e2e-fixture-git-hooks-sample` (quando implementado) com **README** que declare limites, reprodutibilidade e relação com o mesmo caminho de lint que CI. Critérios normativos prontos para esse README: secção *entregável* em [`micro/M3-A3-01-criterios-readme-fixture-git-hooks.md`](micro/M3-A3-01-criterios-readme-fixture-git-hooks.md).
 
 ## Critério de conclusão
 
