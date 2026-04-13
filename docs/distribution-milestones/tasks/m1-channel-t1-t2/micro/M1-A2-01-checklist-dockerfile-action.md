@@ -82,7 +82,7 @@ Cada input em [`action.yml`](../../../../../.github/actions/ops-eslint/action.ym
 | `report_formatter` | `INPUT_REPORT_FORMATTER` | `--format` do ESLint e parsing JSON opcional para contagens. |
 | `build_image` | `INPUT_BUILD_IMAGE` | Se `true`, executa `docker build` antes do `docker run`. |
 | `image_tag` | `INPUT_IMAGE_TAG` | Tag da imagem em build e run. |
-| `fail_on_error` | `INPUT_FAIL_ON_ERROR` | Propaga ou não o exit code do ESLint. |
+| `fail_on_error` | `INPUT_FAIL_ON_ERROR` | Propaga ou não o código de saída do ESLint. |
 
 **Outputs** (`report_path`, `error_count`, `warning_count`, `status`, `exit_code`) são escritos em `GITHUB_OUTPUT` pelo mesmo script quando disponível.
 
