@@ -36,3 +36,14 @@ Sub-micro-tarefa `M1-A1-04` concluída.
 
 `packages/eslint-plugin-hardcode-detect/tests/`
 
+## Entregável (concluído)
+
+Revisão de desenvolvimento sobre a suite RuleTester R1 entregue em M1-A1-04:
+
+- **Artefacto:** [`packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`](../../../../../packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs).
+- **Verificações:** matriz **S-R1-01** … **S-R1-08** e caso de segredo sintético alinhados a [`../A1-business-analyst-ruletester-r1-acceptance.md`](../A1-business-analyst-ruletester-r1-acceptance.md); estilo e padrões consistentes com `tests/index.test.mjs` (ESM, `RuleTester`, import do `dist`); literais de teste sem dados sensíveis; escopo limitado a revisão (sem novos cenários de produto nem alteração de regra).
+- **Ajustes mínimos:** comentário de rastreabilidade M1-A1-05 e nota em `filePath` sobre `cwd` do pacote (coerente com [`../A1-architect-ruletester-r1-ci-environment.md`](../A1-architect-ruletester-r1-ci-environment.md)).
+- **Validação:** `npm test -w eslint-plugin-hardcode-detect` com exit code 0.
+
+Estado: **concluído**.
+

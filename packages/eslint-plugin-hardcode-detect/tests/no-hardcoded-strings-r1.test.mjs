@@ -1,5 +1,6 @@
 /**
  * Suite RuleTester R1 — M1-A1-04.
+ * Revisão desenvolvimento: M1-A1-05 (estilo, escopo, segurança dos literais de teste).
  * Rastreabilidade: docs/remediation-milestones/tasks/m1-remediation-r1/A1-business-analyst-ruletester-r1-acceptance.md (S-R1-*).
  */
 import { RuleTester } from "eslint";
@@ -18,7 +19,10 @@ function suggest(output) {
   return { desc: SUGGEST_DESC, output };
 }
 
-/** Caminhos absolutos coerentes com `path.relative(process.cwd(), filename)` (npm test no pacote). */
+/**
+ * Caminhos absolutos coerentes com `path.relative(process.cwd(), filename)`.
+ * Exige `npm test` com cwd no pacote (ver A1-architect-ruletester-r1-ci-environment).
+ */
 function filePath(...segments) {
   return path.join(process.cwd(), ...segments);
 }
