@@ -36,3 +36,8 @@ Sub-micro-tarefa `M1-A2-01` concluída.
 
 `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`
 
+## Entregável (concluído)
+
+Especificação normativa do analista de negócio: [`../A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](../A2-business-analyst-suggest-vs-fix-policy-acceptance.md) — matriz `suggest` vs `fix` (P-SVF-*), rastreabilidade ao contrato, reprodutibilidade RuleTester e fronteiras com A1/A3.
+
+Estado: **concluído** (entregável acima).

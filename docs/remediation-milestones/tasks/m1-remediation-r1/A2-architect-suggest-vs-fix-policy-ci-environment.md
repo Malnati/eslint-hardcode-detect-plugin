@@ -2,7 +2,7 @@
 
 Entregável do papel **Arquiteto** para a tarefa Camada A **A2** (política `suggest` vs `fix` para remediação R1), alinhado a [`docs/remediation-milestones/m1-remediation-r1.md`](../../m1-remediation-r1.md) e à sub-micro-tarefa [`micro/M1-A2-01-papel-arquiteto-suggest-vs-fix-policy.md`](micro/M1-A2-01-papel-arquiteto-suggest-vs-fix-policy.md).
 
-Este documento fixa **impacto em CI**, o **comando canónico de validação**, **limites de ambiente** e a **reprodutibilidade técnica** da política (via RuleTester). **Não** substitui a tabela de risco no doc da regra / README do pacote (outros papéis em `micro/M1-A2-*`), nem antecipa a sincronização pós-R1 em [`A3-contract-sync-post-r1.md`](A3-contract-sync-post-r1.md).
+Este documento fixa **impacto em CI**, o **comando canónico de validação**, **limites de ambiente** e a **reprodutibilidade técnica** da política (via RuleTester). **Não** substitui a tabela de risco no doc da regra / README do pacote (outros papéis em `micro/M1-A2-*`), nem antecipa a sincronização pós-R1 em [`A3-contract-sync-post-r1.md`](A3-contract-sync-post-r1.md). A **matriz de negócio** `suggest` vs `fix` (P-SVF-*) está em [`A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](A2-business-analyst-suggest-vs-fix-policy-acceptance.md) (analista de negócio, M1-A2-02).
 
 ## Comando canónico
 

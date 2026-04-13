@@ -103,6 +103,7 @@ Cada linha é um **pacote de aceitação** implementável como um ou mais casos 
 ## 6. Fronteira com M1-A2 (política `suggest` vs `fix`)
 
 - A subtarefa **3** do plano sequencial em [`docs/remediation-milestones/m1-remediation-r1.md`](../../m1-remediation-r1.md) (*Matriz suggest vs fix (risco)*) e a tarefa Camada A **A2** (`M1-A2-*`) produzem a **política documentada** (contrato ou README da regra).
+- **Política fina (matriz de risco P-SVF-*):** [`A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](A2-business-analyst-suggest-vs-fix-policy-acceptance.md) (M1-A2-02).
 - A suite **A1** deve **referenciar** que S-R1-08 (e equivalentes) dependem dessa política para decidir entre `fix` e `suggest`, sem reproduzir aqui a tabela completa de riscos.
 - Critério global A1: [`A1-architect-ruletester-r1-ci-environment.md`](A1-architect-ruletester-r1-ci-environment.md) — `npm test -w eslint-plugin-hardcode-detect` com RuleTester e e2e na cadeia do pacote.
 
