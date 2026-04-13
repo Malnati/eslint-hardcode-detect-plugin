@@ -22,7 +22,7 @@ Camada A em [`../../m1-channel-t1-t2.md`](../../m1-channel-t1-t2.md) (secção 7
 ## Outputs
 
 - Matriz T1 documentada (doc ou spec): linhas para `npm ci`, workspaces, `npx` / `npm exec` onde aplicável, massa consumidora atual e backlog explícito para linhas «Planejado».
-- Critérios de sucesso reprodutíveis por linha da matriz.
+- Critérios de sucesso reprodutíveis por linha da matriz — tabela e baseline em [`micro/M1-A1-02-criterios-por-linha-npm.md`](micro/M1-A1-02-criterios-por-linha-npm.md) (secção **Critérios por linha T1**).
 
 ## Critério de conclusão
 
