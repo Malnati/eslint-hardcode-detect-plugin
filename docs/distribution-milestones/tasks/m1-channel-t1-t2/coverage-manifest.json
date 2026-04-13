@@ -1,0 +1,114 @@
+{
+  "manifest_version": "1",
+  "milestone": "M1",
+  "plan_file": "docs/distribution-milestones/m1-channel-t1-t2.md",
+  "requirements": [
+    {
+      "id": "m1-sec4-order-1",
+      "description": "Timelining §4 ordem 1: matriz T1 documentada + jobs/scripts",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-01-inventario-matriz-t1-macro-plan.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-02-criterios-por-linha-npm.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-03-backlog-ci-registry-policy.md"
+      ]
+    },
+    {
+      "id": "m1-sec4-order-2",
+      "description": "Timelining §4 ordem 2: smoke ops-eslint / Dockerfile",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-01-checklist-dockerfile-action.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-02-comando-build-run-documentado.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-03-paridade-t1-t2-versao-config.md"
+      ]
+    },
+    {
+      "id": "m1-sec4-order-3",
+      "description": "Timelining §4 ordem 3: rascunho perfil e2e-ops (opcional)",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-01-rascunho-e2e-ops-agent-docker-compose.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-02-repository-tree-quando-perfil.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-03-matriz-m1-sec6-cross-check.md"
+      ]
+    },
+    {
+      "id": "m1-sec7-A1",
+      "description": "Camada A §7 — A1: matriz npm T1",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-01-inventario-matriz-t1-macro-plan.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-02-criterios-por-linha-npm.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-03-backlog-ci-registry-policy.md"
+      ]
+    },
+    {
+      "id": "m1-sec7-A2",
+      "description": "Camada A §7 — A2: smoke imagem ops-eslint",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-01-checklist-dockerfile-action.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-02-comando-build-run-documentado.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-03-paridade-t1-t2-versao-config.md"
+      ]
+    },
+    {
+      "id": "m1-sec7-A3",
+      "description": "Camada A §7 — A3: agent-docker-compose e e2e-ops",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-01-rascunho-e2e-ops-agent-docker-compose.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-02-repository-tree-quando-perfil.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-03-matriz-m1-sec6-cross-check.md"
+      ]
+    },
+    {
+      "id": "m1-sec10-done-t1",
+      "description": "Done §10: T1 com evidência reprodutível",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-02-criterios-por-linha-npm.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A1-03-backlog-ci-registry-policy.md"
+      ]
+    },
+    {
+      "id": "m1-sec10-done-t2",
+      "description": "Done §10: T2 com caminho documentado (imagem / volume / action)",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-02-comando-build-run-documentado.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-03-paridade-t1-t2-versao-config.md"
+      ]
+    },
+    {
+      "id": "m1-sec10-done",
+      "description": "Done §10: critérios agregados M1 (T1 + T2 alinhados)",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-03-paridade-t1-t2-versao-config.md",
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-03-matriz-m1-sec6-cross-check.md"
+      ]
+    },
+    {
+      "id": "m1-sec10-parity",
+      "description": "Done §10: paridade mesmo commit / config T1↔T2",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A2-03-paridade-t1-t2-versao-config.md"
+      ]
+    },
+    {
+      "id": "m1-sec10-compose-matrix",
+      "description": "Done §10: matriz §6 M1 alinhada a specs",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-03-matriz-m1-sec6-cross-check.md"
+      ]
+    },
+    {
+      "id": "m1-sec10-done-tree",
+      "description": "Done §10: repository-tree quando estrutura Compose mudar",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/M1-A3-02-repository-tree-quando-perfil.md"
+      ]
+    }
+  ],
+  "external_gates": [
+    {
+      "id": "m1-sec10-npm-test",
+      "description": "Camada B: npm test do pacote sem regressão",
+      "documented_in": "docs/distribution-milestones/m1-channel-t1-t2.md",
+      "ci_command": "npm test -w eslint-plugin-hardcode-detect"
+    }
+  ]
+}

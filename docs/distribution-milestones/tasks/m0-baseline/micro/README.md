@@ -46,7 +46,7 @@ Alinhamento ao grafo de âncoras em [`../README.md`](../README.md): A1→A2; A3 
 Na raiz do repositório:
 
 ```bash
-node scripts/validate-m0-plan-coverage.mjs
+node scripts/validate-milestone-plan-coverage.mjs
 ```
 
-Ou `npm run test:docs-m0` (ver [`package.json`](../../../../../package.json) na raiz).
+Ou `npm run test:docs-m0` / `npm run test:docs-milestones` (ver [`package.json`](../../../../../package.json) na raiz).

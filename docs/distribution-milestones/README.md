@@ -2,7 +2,7 @@
 
 Índice dos planos detalhados por **marco macro** alinhados a [`../distribution-channels-macro-plan.md`](../distribution-channels-macro-plan.md), onde o **princípio de tempos** (durações e composição **sem** datas de calendário normativas) está descrito. Cada ficheiro inclui: objetivo e trilhas; **dependências e handoff na cadeia T1→T6**; diagrama de sequência; **ordem, dependências e durações**; composição temporal (Gantt com eixo T0 fictício onde existir); matriz **e2e × Docker Compose**; **Camada A** (tarefas e orçamento de tokens pré-execução de agentes) e **Camada B** (execução por fase); plano GitHub (PR, branch, semver); riscos.
 
-**Ficheiros de tarefa (Camada A, um Markdown por tarefa):** [`tasks/README.md`](tasks/README.md) — piloto **M0** em [`tasks/m0-baseline/`](tasks/m0-baseline/README.md).
+**Ficheiros de tarefa (Camada A, um Markdown por tarefa):** [`tasks/README.md`](tasks/README.md) — **M0** em [`tasks/m0-baseline/`](tasks/m0-baseline/README.md); **M1** em [`tasks/m1-channel-t1-t2/`](tasks/m1-channel-t1-t2/README.md).
 
 **Template reutilizável:** [`milestone-template.md`](milestone-template.md)
 

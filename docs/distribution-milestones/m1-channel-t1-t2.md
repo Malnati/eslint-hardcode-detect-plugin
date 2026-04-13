@@ -87,11 +87,13 @@ gantt
 
 ## 7. Camada A — Tarefas e orçamento de tokens (pré-execução de agentes)
 
-| ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão |
-|----|--------|--------|---------|------------------------|----------------------|
-| A1 | Definir matriz npm (workspaces, npx) | Handoff M0 | Tabela em doc ou spec | 20 000 | Critérios de sucesso por linha |
-| A2 | Plano smoke imagem ops-eslint | Dockerfile, action | Script ou doc | 22 000 | Comando único reprodutível |
-| A3 | Alinhar `agent-docker-compose` se novo perfil | compose atual | PR de spec | 25 000 | Spec e árvore coerentes |
+Índice dos ficheiros por tarefa: [`tasks/m1-channel-t1-t2/README.md`](tasks/m1-channel-t1-t2/README.md).
+
+| ID | Tarefa | Inputs | Outputs | Teto (tokens) estimado | Critério de conclusão | Ficheiro de tarefa |
+|----|--------|--------|---------|------------------------|----------------------|-------------------|
+| A1 | Definir matriz npm (workspaces, npx) | Handoff M0 | Tabela em doc ou spec | 20 000 | Critérios de sucesso por linha | [`tasks/m1-channel-t1-t2/A1-npm-matrix-t1.md`](tasks/m1-channel-t1-t2/A1-npm-matrix-t1.md) |
+| A2 | Plano smoke imagem ops-eslint | Dockerfile, action | Script ou doc | 22 000 | Comando único reprodutível | [`tasks/m1-channel-t1-t2/A2-smoke-ops-eslint-image.md`](tasks/m1-channel-t1-t2/A2-smoke-ops-eslint-image.md) |
+| A3 | Alinhar `agent-docker-compose` se novo perfil | compose atual | PR de spec | 25 000 | Spec e árvore coerentes | [`tasks/m1-channel-t1-t2/A3-docker-compose-e2e-ops-draft.md`](tasks/m1-channel-t1-t2/A3-docker-compose-e2e-ops-draft.md) |
 
 ---
 

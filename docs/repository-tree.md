@@ -9,8 +9,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
-├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura plano M0, smoke do hook HCD-ERR)
-│   ├── validate-m0-plan-coverage.mjs
+├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke do hook HCD-ERR)
+│   ├── validate-milestone-plan-coverage.mjs
 │   └── smoke-cursor-hcd-err-hook.sh
 ├── docker-compose.yml        # Perfis dev / e2e / prod (ver specs/agent-docker-compose.md)
 ├── .dockerignore             # Contexto de build da imagem ops-eslint
@@ -65,22 +65,33 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m3-channel-t4-t6.md
 │   │   ├── m4-channel-t5-agents.md
 │   │   ├── m5-release-candidate.md
-│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0)
+│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0 + M1)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
-│   │       └── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
+│   │       ├── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
+│   │       │   ├── README.md
+│   │       │   ├── A1-index-milestones-readme.md
+│   │       │   ├── A2-macro-plan-index.md
+│   │       │   ├── A3-repository-tree.md
+│   │       │   ├── A4-plugin-contract-vs-readme.md
+│   │       │   ├── A5-nest-massa-e2e-documentada.md
+│   │       │   ├── coverage-manifest.json
+│   │       │   ├── evidence/
+│   │       │   │   └── A4-plugin-contract-gap-matrix.md
+│   │       │   └── micro/
+│   │       │       ├── README.md
+│   │       │       └── M0-A*-*.md            # 15 micro-tarefas (M0-A1-01 … M0-A5-03)
+│   │       └── m1-channel-t1-t2/   # Tarefas M1 Camada A (T1/T2 + micro + manifesto)
 │   │           ├── README.md
-│   │           ├── A1-index-milestones-readme.md
-│   │           ├── A2-macro-plan-index.md
-│   │           ├── A3-repository-tree.md
-│   │           ├── A4-plugin-contract-vs-readme.md
-│   │           ├── A5-nest-massa-e2e-documentada.md
+│   │           ├── A1-npm-matrix-t1.md
+│   │           ├── A2-smoke-ops-eslint-image.md
+│   │           ├── A3-docker-compose-e2e-ops-draft.md
 │   │           ├── coverage-manifest.json
 │   │           ├── evidence/
-│   │           │   └── A4-plugin-contract-gap-matrix.md
+│   │           │   └── T1-t2-parity-gap-matrix.md
 │   │           └── micro/
 │   │               ├── README.md
-│   │               └── M0-A*-*.md            # 15 micro-tarefas (M0-A1-01 … M0-A5-03)
+│   │               └── M1-A*-*.md            # 9 micro-tarefas (M1-A1-01 … M1-A3-03)
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md

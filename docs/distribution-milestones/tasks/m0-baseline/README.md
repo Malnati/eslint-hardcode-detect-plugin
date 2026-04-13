@@ -4,7 +4,7 @@ Marco: [`../../m0-baseline.md`](../../m0-baseline.md) · **GitHub:** `macro-base
 
 **Micro-tarefas** (escopo reduzido, 15 passos): [`micro/README.md`](micro/README.md).
 
-**Cobertura do plano (§4, §7, §10):** [`coverage-manifest.json`](coverage-manifest.json) — validação: `npm run test:docs-m0` na raiz do repositório.
+**Cobertura do plano (§4, §7, §10):** [`coverage-manifest.json`](coverage-manifest.json) — validação: `npm run test:docs-milestones` na raiz do repositório (inclui M0 e M1; alias `npm run test:docs-m0`).
 
 ## Grafo de dependências (Camada A)
 
