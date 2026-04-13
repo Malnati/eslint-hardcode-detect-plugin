@@ -1362,3 +1362,39 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 - `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-semver-decision.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T02:00:48Z`
+- `conversation_id`: `b61e3b48-67f2-42cb-9f46-8de78c7f023d`
+- `generation_id`: `7996227b-de9c-43d5-8ada-9425ce741984`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/b61e3b48-67f2-42cb-9f46-8de78c7f023d/b61e3b48-67f2-42cb-9f46-8de78c7f023d.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T02:02:46Z`
+- `conversation_id`: `b61e3b48-67f2-42cb-9f46-8de78c7f023d`
+- `generation_id`: `fcdc95b9-ac47-4c94-903c-55c99c2a90dd`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/b61e3b48-67f2-42cb-9f46-8de78c7f023d/b61e3b48-67f2-42cb-9f46-8de78c7f023d.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/m5-release-candidate/evidence/M5-release-notes-draft.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
