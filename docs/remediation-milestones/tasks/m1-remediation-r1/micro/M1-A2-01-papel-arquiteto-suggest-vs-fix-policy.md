@@ -12,6 +12,10 @@
 | single_focus | Define impacto em CI, `npm test -w eslint-plugin-hardcode-detect` e limites de ambiente; **não** edita ficheiros em `packages/eslint-plugin-hardcode-detect/docs/rules/`, `packages/eslint-plugin-hardcode-detect/README.md` e alinhamento com `tests/`. |
 | depends_on | Última sub-micro-tarefa de A1 (testador ou pipeline verde). |
 
+## Entregável normativo
+
+- [`../A2-architect-suggest-vs-fix-policy-ci-environment.md`](../A2-architect-suggest-vs-fix-policy-ci-environment.md) — CI, comando canónico, ambiente e reprodutibilidade técnica (gate RuleTester).
+
 ## Plano do marco
 
 - [`docs/remediation-milestones/m1-remediation-r1.md`](../../../m1-remediation-r1.md) — secção 7 (Camada A).
