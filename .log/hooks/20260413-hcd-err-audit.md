@@ -1647,3 +1647,50 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T03:53:23Z`
+- `conversation_id`: `8836765e-abf5-4967-9a3b-852eb1d9de2a`
+- `generation_id`: `ca1d8eec-d1eb-4e3b-a73b-0ecc9c89eca8`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/8836765e-abf5-4967-9a3b-852eb1d9de2a/8836765e-abf5-4967-9a3b-852eb1d9de2a.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `.cursor/commands/abrir-prompt-agente.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L10
+- `.cursor/commands/fechar-prompt-agente.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L5
+- `.cursor/rules/agent-ia-governance.mdc`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L12
+- `.cursor/rules/agent-remediation-micro-roles.mdc`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `.cursor/rules/agent-session.mdc`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L15
+- `.cursor/skills/remediation-micro-roles-workflow/SKILL.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `.github/agents/eslint-hardcode-plugin.agent.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L20
+- `.github/instructions/eslint-plugin-hardcode.instructions.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L17
+- `.github/instructions/milestones-planning.instructions.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `AGENTS.md`: **OK** — contagens SENIOR/FIX/OPS = 2/2/2; linhas com prefixo: L9, L90
+- `docs/distribution-milestones/tasks/m4-channel-t5-agents/evidence/T5-normative-files-inventory.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/m1-remediation-r1.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/m2-remediation-r2-global.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/m3-remediation-r3-data-files.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/m4-secrets-remediation.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/TASK_FILE_TEMPLATE.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m1-remediation-r1/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m2-remediation-r2-global/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m3-remediation-r3-data-files/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m4-secrets-remediation/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/m5-remediation-release/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `scripts/remediation-micro-generate.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `scripts/validate-milestone-plan-coverage.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `scripts/verify-normative-agent-files.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/agent-ia-governance.md`: **OK** — contagens SENIOR/FIX/OPS = 2/2/2; linhas com prefixo: L26, L51
+- `specs/agent-remediation-micro-roles.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/agent-session-workflow.md`: **OK** — contagens SENIOR/FIX/OPS = 2/2/2; linhas com prefixo: L18, L63
+- `specs/agent-tooling-ecosystem-map.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
