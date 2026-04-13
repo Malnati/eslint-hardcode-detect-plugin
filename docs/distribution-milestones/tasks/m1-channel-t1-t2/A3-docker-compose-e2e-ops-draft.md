@@ -44,6 +44,10 @@ Execução fragmentada: [`micro/README.md`](micro/README.md).
 | M1-A3-02 | [`micro/M1-A3-02-repository-tree-quando-perfil.md`](micro/M1-A3-02-repository-tree-quando-perfil.md) |
 | M1-A3-03 | [`micro/M1-A3-03-matriz-m1-sec6-cross-check.md`](micro/M1-A3-03-matriz-m1-sec6-cross-check.md) |
 
+### Registo M1-A3-02 (repository-tree)
+
+**N/A neste ciclo:** o Compose ainda não define `e2e-ops`; sem diff obrigatório em `docs/repository-tree.md` até esse perfil existir. Ver [`micro/M1-A3-02-repository-tree-quando-perfil.md`](micro/M1-A3-02-repository-tree-quando-perfil.md).
+
 ## Paths principais
 
 - `specs/agent-docker-compose.md`

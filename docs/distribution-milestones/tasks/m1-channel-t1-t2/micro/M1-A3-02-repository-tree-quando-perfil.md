@@ -22,3 +22,7 @@ Quando `e2e-ops` for implementado em [`docker-compose.yml`](../../../../../docke
 
 - `docs/repository-tree.md`
 - `docker-compose.yml`
+
+## Conclusão (ciclo atual)
+
+**N/A neste ciclo:** [`docker-compose.yml`](../../../../../docker-compose.yml) ainda não declara o perfil/serviço `e2e-ops`; não houve alteração estrutural a refletir em [`docs/repository-tree.md`](../../../../../docs/repository-tree.md). Quando o perfil for adicionado ao Compose, aplicar diff mínimo na árvore na mesma PR (conforme Definition of done acima).
