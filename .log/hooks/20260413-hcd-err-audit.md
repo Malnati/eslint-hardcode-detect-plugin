@@ -2175,3 +2175,25 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-13T13:06:27Z`
+- `conversation_id`: `8a585252-b334-4d3c-a635-f27afee77eaf`
+- `generation_id`: `882302f0-377c-40bf-abc3-3f3115c7cadf`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/8a585252-b334-4d3c-a635-f27afee77eaf/8a585252-b334-4d3c-a635-f27afee77eaf.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A1-04-papel-desenvolvedor-ruletester-r1-suite.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/tests/_probe-r1.mjs`: ficheiro em falta no disco (ignorado)
+- `packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-r1.test.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
