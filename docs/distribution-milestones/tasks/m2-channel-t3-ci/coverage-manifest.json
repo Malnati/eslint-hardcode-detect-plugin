@@ -1,0 +1,127 @@
+{
+  "manifest_version": "1",
+  "milestone": "M2",
+  "plan_file": "docs/distribution-milestones/m2-channel-t3-ci.md",
+  "requirements": [
+    {
+      "id": "m2-sec4-order-1",
+      "description": "Timelining §4 ordem 1: mapear jobs atuais ci.yml",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-01-inventario-ci-yml-jobs-steps.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-02-tabela-paridade-prod-vs-ci.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-03-matriz-sec6-cross-check-compose.md"
+      ]
+    },
+    {
+      "id": "m2-sec4-order-2",
+      "description": "Timelining §4 ordem 2: critério paridade prod ↔ CI",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-02-tabela-paridade-prod-vs-ci.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-01-criterio-paridade-prod-ci-formal.md"
+      ]
+    },
+    {
+      "id": "m2-sec4-order-3",
+      "description": "Timelining §4 ordem 3: anexos de log / artefatos (incl. em 2)",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-02-politica-artefatos-logs-falha.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-03-onde-documentar-secao-logs.md"
+      ]
+    },
+    {
+      "id": "m2-sec6-matrix",
+      "description": "Matriz §6 M2 e2e × Docker Compose",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-03-matriz-sec6-cross-check-compose.md"
+      ]
+    },
+    {
+      "id": "m2-sec7-A1",
+      "description": "Camada A §7 — A1: auditar ci.yml vs prod",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-01-inventario-ci-yml-jobs-steps.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-02-tabela-paridade-prod-vs-ci.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-03-matriz-sec6-cross-check-compose.md"
+      ]
+    },
+    {
+      "id": "m2-sec7-A2",
+      "description": "Camada A §7 — A2: política de artefatos CI",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-01-criterio-paridade-prod-ci-formal.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-02-politica-artefatos-logs-falha.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-03-onde-documentar-secao-logs.md"
+      ]
+    },
+    {
+      "id": "m2-sec7-A3",
+      "description": "Camada A §7 — A3: CONTRIBUTING e handoff",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-01-checklist-contributing-fluxo-ci.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-02-handoff-t4-o-que-ci-garante.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-03-alinhamento-workflow-comentarios-manifest.md"
+      ]
+    },
+    {
+      "id": "m2-sec2-handoff",
+      "description": "Handoff §2 para T4: regras comprovadas em CI",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-02-handoff-t4-o-que-ci-garante.md"
+      ]
+    },
+    {
+      "id": "m2-sec10-done",
+      "description": "Done §10: jobs documentados; paridade explícita; handoff T4 claro",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-01-criterio-paridade-prod-ci-formal.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-02-handoff-t4-o-que-ci-garante.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-03-alinhamento-workflow-comentarios-manifest.md"
+      ]
+    },
+    {
+      "id": "m2-sec10-logs",
+      "description": "Done §10: secção Logs / política de artefatos",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-02-politica-artefatos-logs-falha.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-03-onde-documentar-secao-logs.md"
+      ]
+    },
+    {
+      "id": "m2-sec10-parity",
+      "description": "Done §10: paridade prod vs CI",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-02-tabela-paridade-prod-vs-ci.md",
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A2-01-criterio-paridade-prod-ci-formal.md"
+      ]
+    },
+    {
+      "id": "m2-sec10-contributing",
+      "description": "Done §10: CONTRIBUTING alinhado ao fluxo CI",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-01-checklist-contributing-fluxo-ci.md"
+      ]
+    },
+    {
+      "id": "m2-sec10-done-handoff",
+      "description": "Done §10: handoff explícito para documentação T4",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-02-handoff-t4-o-que-ci-garante.md"
+      ]
+    },
+    {
+      "id": "m2-sec10-workflow-labels",
+      "description": "Done §10: workflow e labels de validação de manifestos",
+      "micro_files": [
+        "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-03-alinhamento-workflow-comentarios-manifest.md"
+      ]
+    }
+  ],
+  "external_gates": [
+    {
+      "id": "m2-sec10-npm-test",
+      "description": "Camada B: pipeline CI reprodutível na branch",
+      "documented_in": "docs/distribution-milestones/m2-channel-t3-ci.md",
+      "ci_command": "npm run test:docs-milestones && npm run lint && npm test -w eslint-plugin-hardcode-detect"
+    }
+  ]
+}

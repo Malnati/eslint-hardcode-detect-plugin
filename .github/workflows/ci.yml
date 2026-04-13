@@ -16,7 +16,7 @@ jobs:
           node-version: "22"
       - name: Install
         run: npm install
-      - name: Validate distribution milestone plan coverage (M0, M1)
+      - name: Validate distribution milestone plan coverage (M0–M2)
         run: npm run test:docs-milestones
       - name: Lint workspace
         run: npm run lint

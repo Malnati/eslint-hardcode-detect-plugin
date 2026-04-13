@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Valida manifestos de cobertura dos marcos de distribuição (M0, M1, …):
+ * Valida manifestos de cobertura dos marcos de distribuição (M0, M1, M2, …):
  * ficheiros micro existem, micro_id no conteúdo, e nenhum ficheiro micro órfão.
  *
  * Executar na raiz do repositório: node scripts/validate-milestone-plan-coverage.mjs
@@ -23,6 +23,11 @@ const MILESTONE_CONFIG = [
     manifestRel: "docs/distribution-milestones/tasks/m1-channel-t1-t2/coverage-manifest.json",
     microDirRel: "docs/distribution-milestones/tasks/m1-channel-t1-t2/micro",
     filePrefix: "M1-",
+  },
+  {
+    manifestRel: "docs/distribution-milestones/tasks/m2-channel-t3-ci/coverage-manifest.json",
+    microDirRel: "docs/distribution-milestones/tasks/m2-channel-t3-ci/micro",
+    filePrefix: "M2-",
   },
 ];
 

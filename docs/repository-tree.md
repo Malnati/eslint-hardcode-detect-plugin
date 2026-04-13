@@ -65,7 +65,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m3-channel-t4-t6.md
 │   │   ├── m4-channel-t5-agents.md
 │   │   ├── m5-release-candidate.md
-│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0 + M1)
+│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0–M2)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
 │   │       ├── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
@@ -92,6 +92,17 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           └── micro/
 │   │               ├── README.md
 │   │               └── M1-A*-*.md            # 9 micro-tarefas (M1-A1-01 … M1-A3-03)
+│   │       └── m2-channel-t3-ci/   # Tarefas M2 Camada A (T3 CI + micro + manifesto)
+│   │           ├── README.md
+│   │           ├── A1-audit-ci-yml-vs-compose-prod.md
+│   │           ├── A2-ci-artifacts-logs-policy.md
+│   │           ├── A3-contributing-ci-handoff.md
+│   │           ├── coverage-manifest.json
+│   │           ├── evidence/
+│   │           │   └── T3-ci-prod-parity-gap-matrix.md
+│   │           └── micro/
+│   │               ├── README.md
+│   │               └── M2-A*-*.md            # 9 micro-tarefas (M2-A1-01 … M2-A3-03)
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
