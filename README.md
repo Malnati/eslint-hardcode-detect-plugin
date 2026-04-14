@@ -1,49 +1,95 @@
 # eslint-hardcode-detect-plugin
 
-Monorepo for the ESLint plugin **eslint-plugin-hardcode-detect**: detection of hardcoded values at multiple levels (evolving from per-file analysis toward classification, ordering, severity, and a view across dependencies), standardization of error/log messages, and normative documentation for AI agents.
+<p align="center">
+  Hardcoded value detection and remediation workflows for ESLint 9+.
+</p>
 
-## Documentation
+<p align="center">
+  <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/v/eslint-plugin-hardcode-detect" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/dm/eslint-plugin-hardcode-detect" alt="npm monthly downloads" /></a>
+  <a href="https://github.com/malnati/eslint-hardcode-detect-plugin/actions/workflows/ci.yml"><img src="https://github.com/malnati/eslint-hardcode-detect-plugin/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="license MIT" /></a>
+  <a href="https://github.com/malnati/eslint-hardcode-detect-plugin/issues"><img src="https://img.shields.io/badge/issues-welcome-brightgreen" alt="issues welcome" /></a>
+</p>
 
-- [`AGENTS.md`](AGENTS.md) — instructions for AI agents and contributors (priorities and required workflows).
-- [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md) — consolidated governance for AI agents (checklists, graph, Clippings, closing).
-- [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md) — per-prompt flow (scope, Clippings, graph, closing).
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — how to contribute (including for agents).
-- [`docs/README.md`](docs/README.md) — index of guides under `docs/`.
-- [`specs/plugin-contract.md`](specs/plugin-contract.md) — functional contract for the rules.
-- [`specs/e2e-fixture-nest.md`](specs/e2e-fixture-nest.md) — NestJS e2e fixture (auxiliary workspace).
-- [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — vision and roadmap (multi-level).
-- [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md) — updating documentation when work is completed.
-- [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) — using and maintaining excerpts of official documentation in [`reference/Clippings/`](reference/Clippings/).
-- [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md) — commit and push when work is completed.
-- [`docs/repository-tree.md`](docs/repository-tree.md) — file and directory graph.
-- [`docs/hardcoding-map.md`](docs/hardcoding-map.md) — taxonomy and levels of hardcoding (conceptual map).
-- [`docs/documentation-policy.md`](docs/documentation-policy.md) — Markdown best practices on GitHub.
-- [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md) — limitations and restrictions.
-- [`docs/distribution-channels-macro-plan.md`](docs/distribution-channels-macro-plan.md) — macro plan by channel/track (e2e, Compose, GitHub milestones).
-- [`docs/hardcode-remediation-macro-plan.md`](docs/hardcode-remediation-macro-plan.md) — macro remediation plan (R1–R3, secrets, global verification).
-- [`docs/architecture.md`](docs/architecture.md) — repository architecture.
-- [`docs/versioning-for-agents.md`](docs/versioning-for-agents.md) — Git versioning for agents.
+## Why this project exists
 
-## Useful commands (monorepo root)
+Most teams want to remove hardcoded strings, but migration is painful when lint only says "don't do that". This project is built to help you **detect**, **prioritize**, and **remediate** with practical tracks:
 
-- `npm run lint` — ESLint on the plugin code (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`).
-- `npm test` — build + RuleTester (`tests/`) + e2e smoke (`e2e/`) for the `eslint-plugin-hardcode-detect` workspace.
+- **R1**: local constant extraction in the same file.
+- **R2**: duplicate detection across files in the same lint execution.
+- **R3**: optional write/merge into JSON/YAML data files.
 
-### Docker Compose (profiles)
+Core package: [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect).
 
-Norms and command table: [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md).
+## Quickstart (5 minutes)
 
-- `docker compose --profile dev run --rm dev` — interactive shell with the repo at `/workspace`.
-- `docker compose --profile e2e run --rm e2e` — `npm ci` and `npm test -w eslint-plugin-hardcode-detect`.
-- `docker compose --profile prod run --rm prod` — `npm ci`, `npm run lint`, and plugin tests (CI-style check).
+```bash
+npm i -D eslint eslint-plugin-hardcode-detect
+```
 
-ESLint-only image (Composite Action / `docker build -f .docker/Dockerfile`): default tag `malnati-ops-eslint:local`.
+```js
+// eslint.config.js
+import { defineConfig } from "eslint/config";
+import hardcodeDetect from "eslint-plugin-hardcode-detect";
 
-#### Smoke T2 (ops-eslint image)
+export default defineConfig([
+  {
+    plugins: { "hardcode-detect": hardcodeDetect },
+    extends: ["hardcode-detect/recommended"],
+  },
+]);
+```
 
-Minimal reproducible flow (parity with `npm run lint` in the plugin workspace). Details and CI context: [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) (**Reproducible smoke (T2)** section).
+Then run:
 
-**T1↔T2 parity (version and config):** what must align between the npm track and the image (same commit, `eslint`, plugin resolution, flat config) — [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md#paridade-t1t2-versão-e-config).
+```bash
+npx eslint .
+```
+
+## Adoption flow
+
+```mermaid
+flowchart TD
+  installStep[Install plugin] --> configStep[Apply recommended config]
+  configStep --> detectStep[Run eslint]
+  detectStep --> decisionNode{Need remediation?}
+  decisionNode -->|Yes| remediationStep[Choose R1 R2 or R3 mode]
+  decisionNode -->|No| keepStep[Keep detection-only baseline]
+  remediationStep --> ciStep[Gate with CI and tests]
+  keepStep --> ciStep
+```
+
+## Monorepo map
+
+| Path | Purpose |
+|------|---------|
+| [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) | Publishable ESLint plugin (`src/`, `tests/`, `e2e/`). |
+| [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest) | Real NestJS fixture workspace for e2e smoke. |
+| [`specs/plugin-contract.md`](specs/plugin-contract.md) | Public rule contract and behavior guarantees. |
+| [`docs/`](docs/) | Supporting docs and architectural decisions. |
+| [`reference/Clippings`](reference/Clippings) | Official external doc excerpts used for decision traceability. |
+
+## Community
+
+- Start here: [`packages/eslint-plugin-hardcode-detect/README.md`](packages/eslint-plugin-hardcode-detect/README.md)
+- Contributing guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Code of conduct: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+- Security policy: [`SECURITY.md`](SECURITY.md)
+- Support channels: [`SUPPORT.md`](SUPPORT.md)
+- Bug report: [open a bug issue](https://github.com/malnati/eslint-hardcode-detect-plugin/issues/new?template=bug_report.yml)
+- Feature request: [open a feature request](https://github.com/malnati/eslint-hardcode-detect-plugin/issues/new?template=feature_request.yml)
+- Docs improvement: [open a docs issue](https://github.com/malnati/eslint-hardcode-detect-plugin/issues/new?template=docs_improvement.yml)
+
+## Developer commands (monorepo root)
+
+- `npm run lint` — lint plugin sources.
+- `npm test` — build + RuleTester + e2e smoke on plugin workspace.
+- `npm run release:npm:precheck` — release preflight validation.
+
+## Docker and CI parity
+
+Normative Docker profile details: [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md).
 
 ```bash
 npm ci
@@ -53,20 +99,14 @@ bash .github/actions/ops-eslint/assets/run.sh \
   --build-image false
 ```
 
-## Layout
+## Deep-dive documentation
 
-| Path | Contents |
-|------|----------|
-| [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect) | npm plugin source (`tests/`, `e2e/`). |
-| [`packages/e2e-fixture-nest`](packages/e2e-fixture-nest) | NestJS workspace for e2e smoke (controlled fixture; see spec). |
-| [`reference/Clippings`](reference/Clippings) | Official documentation excerpts (required reading for ESLint/npm scope). |
-| [`reference/legacy-snapshot`](reference/legacy-snapshot) | Historical snapshot (reference only; not a dependency). |
-| [`.github/actions/ops-eslint`](.github/actions/ops-eslint) | Composite GitHub Action to run ESLint in a container. |
-| [`.cursor/rules`](.cursor/rules) | Cursor rules for this project (`alwaysApply`). |
-| [`.cursor/commands`](.cursor/commands) | Optional commands (`/abrir-prompt-agente`, `/fechar-prompt-agente`). |
-| [`.cursor/skills`](.cursor/skills) | Reusable skills (plugin workflow, docs, Git, Clippings, Docker Compose). |
-| [`docker-compose.yml`](docker-compose.yml), [`.docker/`](.docker/) | dev/e2e/prod/e2e-ops profiles and ops-eslint image (see [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md)). |
+- [`AGENTS.md`](AGENTS.md) — governance entrypoint for contributors and AI agents.
+- [`docs/README.md`](docs/README.md) — docs index.
+- [`docs/repository-tree.md`](docs/repository-tree.md) — repository graph.
+- [`docs/hardcoding-map.md`](docs/hardcoding-map.md) — conceptual taxonomy and levels.
+- [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) — roadmap.
 
 ## License
 
-See [`LICENSE`](LICENSE).
+MIT — see [`LICENSE`](LICENSE).

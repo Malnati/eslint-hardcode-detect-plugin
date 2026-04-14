@@ -1,22 +1,39 @@
 # Contribuindo
 
-Este projeto aceita contribuições humanas e fluxos automatizados por agentes de IA (Cursor / Cursor CLI). A autoridade normativa está em [`AGENTS.md`](AGENTS.md) e em [`specs/`](specs/).
+Obrigado por considerar uma contribuição para este projeto. O objetivo é manter a colaboração simples para humanos e consistente para automações.
 
-## Antes de abrir uma mudança
+## Como contribuir (fluxo humano)
 
-1. Agentes de IA: siga [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md) e [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md) em cada prompt (escopo, Clippings quando aplicável, grafo e fechamento). Se usar instruções de [`reference/agents-ref/`](reference/agents-ref/), adapte-as com [`specs/agent-reference-agents.md`](specs/agent-reference-agents.md). Comandos opcionais no Cursor: `/abrir-prompt-agente`, `/fechar-prompt-agente`.
-2. Leia [`specs/plugin-contract.md`](specs/plugin-contract.md) e [`specs/vision-hardcode-plugin.md`](specs/vision-hardcode-plugin.md) quando a mudança afetar comportamento ou escopo.
-3. Para trabalho em ESLint/regras/npm do plugin, siga [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md) e consulte [`reference/Clippings/`](reference/Clippings/).
-4. Não use arquivos em [`reference/`](reference/) como dependência de código; `Clippings/` e `legacy-snapshot/` são apenas referência.
-5. Atualize a documentação afetada (em especial [`docs/repository-tree.md`](docs/repository-tree.md) se a árvore de diretórios mudar). Ver [`docs/documentation-policy.md`](docs/documentation-policy.md) — incluindo citação de arquivos do repo com **caminhos relativos à raiz** (princípio 5b).
+1. Abra uma issue antes de mudanças grandes:
+   - Bug: [`.github/ISSUE_TEMPLATE/bug_report.yml`](.github/ISSUE_TEMPLATE/bug_report.yml)
+   - Feature: [`.github/ISSUE_TEMPLATE/feature_request.yml`](.github/ISSUE_TEMPLATE/feature_request.yml)
+   - Docs: [`.github/ISSUE_TEMPLATE/docs_improvement.yml`](.github/ISSUE_TEMPLATE/docs_improvement.yml)
+2. Faça um fork/branch e implemente mudanças focadas.
+3. Garanta validação local:
+   - `npm run lint`
+   - `npm test`
+4. Atualize documentação quando necessário (`README`, `docs/`, `specs/`).
+5. Abra o PR usando [`.github/pull_request_template.md`](.github/pull_request_template.md).
 
-## Fluxo recomendado
+## O que torna um PR fácil de revisar
 
-1. Implementar ou editar em [`packages/eslint-plugin-hardcode-detect`](packages/eslint-plugin-hardcode-detect).
-2. Rodar lint e testes (`npm run lint` e `npm test` na raiz do monorepo, ou os equivalentes no diretório do pacote). Alternativa em container: perfis em [`specs/agent-docker-compose.md`](specs/agent-docker-compose.md) (`docker compose --profile e2e run --rm e2e`, etc.).
-3. Atualizar specs e Markdown conforme [`specs/agent-documentation-workflow.md`](specs/agent-documentation-workflow.md).
-4. Commit e push seguindo [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md), incluindo mensagens no formato **Conventional Commits** descrito nesse spec.
+- Reproduzível: inclui contexto, motivação e impacto.
+- Pequeno: uma mudança lógica por PR.
+- Testável: com evidência clara de lint/teste.
+- Coeso com o contrato: ver [`specs/plugin-contract.md`](specs/plugin-contract.md).
 
-## Conduta
+## Segurança, suporte e conduta
 
-Mantenha mensagens de commit no formato **Conventional Commits** (ver [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md)) e evite incluir dados sensíveis. Dúvidas sobre limites: [`docs/limitations-and-scope.md`](docs/limitations-and-scope.md).
+- Conduta da comunidade: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
+- Vulnerabilidades: [`SECURITY.md`](SECURITY.md)
+- Suporte e dúvidas: [`SUPPORT.md`](SUPPORT.md)
+
+## Notas para agentes de IA
+
+Contribuições automatizadas também são aceitas, desde que sigam as normas do repositório:
+
+- Governança e sessão: [`specs/agent-ia-governance.md`](specs/agent-ia-governance.md), [`specs/agent-session-workflow.md`](specs/agent-session-workflow.md)
+- Hierarquia normativa: [`AGENTS.md`](AGENTS.md)
+- Clippings oficiais para escopo ESLint/npm: [`specs/agent-reference-clippings.md`](specs/agent-reference-clippings.md), [`reference/Clippings/`](reference/Clippings/)
+- Política de documentação: [`docs/documentation-policy.md`](docs/documentation-policy.md)
+- Versionamento e commits: [`specs/agent-git-workflow.md`](specs/agent-git-workflow.md)

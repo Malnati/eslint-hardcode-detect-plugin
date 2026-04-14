@@ -5,9 +5,12 @@ Documentation of repository layout. **Update this file when you create, move, or
 ```text
 .
 ├── AGENTS.md                 # Instructions for AI agents and repo priorities
+├── CODE_OF_CONDUCT.md        # Community behavior standards
 ├── CONTRIBUTING.md           # How to contribute (humans and agents)
 ├── LICENSE                   # Project license
 ├── README.md                 # Main GitHub entry point
+├── SECURITY.md               # Vulnerability reporting policy
+├── SUPPORT.md                # Support channels and triage guidance
 ├── package.json              # npm monorepo (workspaces)
 ├── scripts/                  # Root helper scripts (e.g. M0/M1 plan coverage validation, npm release, Cursor/Codex HCD-ERR hook smoke, T5 normative file verify, Cursor headless M1 micro sequence)
 │   ├── fixtures/             # Smoke fixtures (e.g. invalid HCD-ERR body for the hook)
@@ -59,6 +62,8 @@ Documentation of repository layout. **Update this file when you create, move, or
 ├── .github/
 │   ├── agents/               # GitHub Copilot agents (bridges: eslint-hardcode-plugin, docker-tooling, hcd-err-messaging)
 │   ├── instructions/         # Copilot instructions (applyTo: package, docker-compose, *-milestones)
+│   ├── ISSUE_TEMPLATE/       # Community intake templates (bug, feature, docs, config)
+│   ├── pull_request_template.md  # Default PR checklist and validation prompts
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
 │   └── workflows/            # CI and release (e.g. ci.yml, release-npm.yml)
 ├── docs/                     # Supplementary documentation

@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.1.4] - 2026-04-14
+
+### Changed
+
+- Reworked monorepo and package README files for clearer OSS onboarding, including quickstart-first structure and remediation-focused guidance.
+- Added Mermaid diagrams (`timeline`, `flowchart`, `sequenceDiagram`, `journey`) to the package README for faster conceptual adoption.
+- Added community health files at the repository root: `CODE_OF_CONDUCT.md`, `SECURITY.md`, and `SUPPORT.md`.
+- Added collaboration templates under `.github/ISSUE_TEMPLATE/` and `.github/pull_request_template.md`.
+- Added package metadata (`homepage`, `bugs`, `repository`) to improve npm discoverability and support routing.
+
 ## [0.1.3] - 2026-04-14
 
 ### Changed

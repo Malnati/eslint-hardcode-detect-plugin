@@ -1,49 +1,33 @@
 # eslint-plugin-hardcode-detect
 
-Official plugin implementation. Rule contract: [`specs/plugin-contract.md`](../../specs/plugin-contract.md); multi-level vision: [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
+<p align="center">
+  Find hardcoded strings early, then remediate with pragmatic tracks (R1, R2, R3).
+</p>
 
-The contract describes **three** rules (`hello-world`, `no-hardcoded-strings`, `standardize-error-messages`). **In this package**, the publishable build currently exports only `hello-world` and `no-hardcoded-strings`. The `standardize-error-messages` rule is in the contract (options and `messageId`s) but is **not** yet part of the publishable artifact — future implementation aligned with the spec.
+<p align="center">
+  <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/v/eslint-plugin-hardcode-detect" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/dm/eslint-plugin-hardcode-detect" alt="npm monthly downloads" /></a>
+  <a href="https://github.com/malnati/eslint-hardcode-detect-plugin/actions/workflows/ci.yml"><img src="https://github.com/malnati/eslint-hardcode-detect-plugin/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
+  <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="license MIT" /></a>
+</p>
 
-## Quick start (ESLint 9 flat config)
+Rule contract: [`specs/plugin-contract.md`](../../specs/plugin-contract.md). Product vision: [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
 
-```javascript
-import { defineConfig } from "eslint/config";
-import hardcodeDetect from "eslint-plugin-hardcode-detect";
+## Install
 
-export default defineConfig([
-  {
-    plugins: {
-      "hardcode-detect": hardcodeDetect,
-    },
-    extends: ["hardcode-detect/recommended"],
-  },
-]);
+```bash
+npm i -D eslint eslint-plugin-hardcode-detect
 ```
 
-Or enable rules manually (e.g. demo rule `hello-world`):
+## Requirements
 
-```javascript
-rules: {
-  "hardcode-detect/hello-world": "warn",
-  "hardcode-detect/no-hardcoded-strings": "warn",
-},
-```
+- Node.js `>=22`
+- ESLint `>=9` (flat config)
 
-The plugin exposes `meta.name`, `meta.version`, and `meta.namespace` (`hardcode-detect`), per official [plugins](https://eslint.org/docs/latest/extend/plugins) documentation.
+## Quickstart
 
-## Adopting remediation
-
-Goal: enable **R1** (constants in the same file), **R2** (duplicates across files in the same run), or **R3** (writing to data files) with copy-pasteable steps. Exact option semantics: [`specs/plugin-contract.md`](../../specs/plugin-contract.md); detail and matrices: [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
-
-1. **Start from** the `hardcode-detect/recommended` preset (injects `settings.hardcodeDetect: {}`, required for the R2 index when overriding the rule).
-2. **Override** `hardcode-detect/no-hardcoded-strings` with an array `[severity, options]` as in the examples below.
-3. **Secrets:** use `secretRemediationMode` according to your risk (`suggest-only` is the contract default). Summary in [Secrets, environment, and vaults](#secrets-environment-and-vaults).
-
-### R1 remediation (`remediationMode: "r1"`)
-
-Autofix constants in the **same** file (when context is safe for fix; otherwise only *suggestions* may apply).
-
-```javascript
+```js
+// eslint.config.js
 import { defineConfig } from "eslint/config";
 import hardcodeDetect from "eslint-plugin-hardcode-detect";
 
@@ -51,109 +35,155 @@ export default defineConfig([
   {
     plugins: { "hardcode-detect": hardcodeDetect },
     extends: ["hardcode-detect/recommended"],
-    rules: {
-      "hardcode-detect/no-hardcoded-strings": [
-        "warn",
-        {
-          remediationMode: "r1",
-          // secretRemediationMode: "suggest-only" | "placeholder-default" | "aggressive-autofix-opt-in"
-        },
-      ],
-    },
   },
 ]);
 ```
 
-### R2 remediation (`remediationMode: "r2"`)
+Run:
 
-**Detection** of duplicates **across** files: the same normalized value seen in another file already processed in the **same** `lintFiles` invocation yields `messageId` `hardcodedDuplicateCrossFile`. R2 autofix (shared module) is **not** in the current implementation. Requires a mutable `settings.hardcodeDetect` object — `recommended` already injects it.
+```bash
+npx eslint .
+```
 
-```javascript
-import { defineConfig } from "eslint/config";
-import hardcodeDetect from "eslint-plugin-hardcode-detect";
+## Adoption flow
 
-export default defineConfig([
+```mermaid
+flowchart TD
+  installNode[Install package] --> configNode[Enable recommended preset]
+  configNode --> lintNode[Run lint]
+  lintNode --> findingsNode{Any findings?}
+  findingsNode -->|No| baselineNode[Keep guardrail in CI]
+  findingsNode -->|Yes| modeNode[Pick remediation mode]
+  modeNode --> r1Node[R1 same-file constants]
+  modeNode --> r2Node[R2 cross-file duplicates]
+  modeNode --> r3Node[R3 JSON YAML data files]
+  r1Node --> reviewNode[Review changes and suggestions]
+  r2Node --> reviewNode
+  r3Node --> reviewNode
+  reviewNode --> baselineNode
+```
+
+## Lint execution sequence
+
+```mermaid
+sequenceDiagram
+  participant Dev as Developer
+  participant ESL as ESLint
+  participant Rule as noHardcodedStringsRule
+  participant Out as LintOutput
+  Dev->>ESL: npx eslint .
+  ESL->>Rule: Traverse AST nodes
+  Rule-->>ESL: Report findings or fixes
+  ESL-->>Out: Diagnostics suggestions fixes
+  Out-->>Dev: Actionable remediation path
+```
+
+## Roadmap timeline
+
+```mermaid
+timeline
+  title HardcodeDetect plugin timeline
+  0.1.0 : Baseline package structure
+  0.1.1 : Rule coverage stabilization
+  0.1.2 : Remediation tracks maturity
+  0.1.3 : Nest e2e smoke and docs alignment
+  0.1.4 : OSS onboarding and community templates
+  Next : standardize-error-messages export
+```
+
+## Contributor journey
+
+```mermaid
+journey
+  title Community contributor journey
+  section Discover
+    Read README and quickstart: 5: Contributor
+    Run first lint in local project: 4: Contributor
+  section Improve
+    Open issue with reproduction: 4: Contributor
+    Submit focused pull request: 4: Contributor
+  section Maintain
+    Receive review and iterate: 3: Contributor,Maintainer
+    Ship release notes and celebrate: 5: Maintainer
+```
+
+## Rules and maturity
+
+The contract defines three rules. Current published exports are `hello-world` and `no-hardcoded-strings`.
+
+| Rule | Status | In `recommended` | Description |
+|------|--------|------------------|-------------|
+| `hello-world` | Demo | No | Minimal rule for integration smoke and examples. |
+| `no-hardcoded-strings` | Stable | Yes | Detects hardcoded literals and supports R1/R2/R3 modes. |
+| `standardize-error-messages` | Planned export | No | Contract documented, not exported in current artifact. |
+
+## Remediation modes
+
+### R1 (`remediationMode: "r1"`)
+
+Same-file constant extraction when fix context is safe.
+
+```js
+"hardcode-detect/no-hardcoded-strings": ["warn", { remediationMode: "r1" }]
+```
+
+### R2 (`remediationMode: "r2"`)
+
+Cross-file duplicate detection in the same `lintFiles` run. Current release focuses on detection; shared-module autofix is not implemented.
+
+```js
+"hardcode-detect/no-hardcoded-strings": ["warn", { remediationMode: "r2" }]
+```
+
+### R3 (`remediationMode: "r3"`)
+
+Optional write/merge to data files listed in `dataFileTargets`.
+
+```js
+"hardcode-detect/no-hardcoded-strings": [
+  "warn",
   {
-    plugins: { "hardcode-detect": hardcodeDetect },
-    extends: ["hardcode-detect/recommended"],
-    rules: {
-      "hardcode-detect/no-hardcoded-strings": ["warn", { remediationMode: "r2" }],
-    },
-  },
-]);
+    remediationMode: "r3",
+    dataFileTargets: ["config/strings.json", "config/strings.yml"],
+    dataFileFormats: ["json", "yaml", "yml"],
+    dataFileMergeStrategy: "merge-keys"
+  }
+]
 ```
 
-### R3 remediation (`remediationMode: "r3"`)
+## Secrets and safe defaults
 
-Write / merge entries into **JSON** or **YAML** files listed in `dataFileTargets` (paths relative to ESLint `cwd`). With `dataFileTargets: []` there is no write — detection only.
+Sensitive-looking literals should not be committed as plaintext. Use environment variables and your platform secret manager.
 
-```javascript
-import { defineConfig } from "eslint/config";
-import hardcodeDetect from "eslint-plugin-hardcode-detect";
+- Default `secretRemediationMode` is `suggest-only`.
+- More detail in [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md) and [`specs/plugin-contract.md`](../../specs/plugin-contract.md).
+- External reference: [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).
 
-export default defineConfig([
-  {
-    plugins: { "hardcode-detect": hardcodeDetect },
-    extends: ["hardcode-detect/recommended"],
-    rules: {
-      "hardcode-detect/no-hardcoded-strings": [
-        "warn",
-        {
-          remediationMode: "r3",
-          dataFileTargets: ["config/strings.json", "config/strings.yml"],
-          dataFileFormats: ["json", "yaml", "yml"],
-          dataFileMergeStrategy: "merge-keys",
-        },
-      ],
-    },
-  },
-]);
+## Troubleshooting
+
+- **No findings appear:** ensure the target files are included by your ESLint config and run `npx eslint .` from the expected project root.
+- **R2 seems incomplete:** check parallel lint settings; see [`docs/adr-eslint-concurrency-r2.md`](../../docs/adr-eslint-concurrency-r2.md).
+- **R3 did not write files:** confirm `dataFileTargets` is not empty and paths are relative to ESLint `cwd`.
+- **Version mismatch:** verify Node `>=22` and ESLint `>=9`.
+
+## Development and testing
+
+- `npm run build` — compile `src/` into `dist/`.
+- `npm run lint` — lint package source.
+- `npm test` — build + RuleTester + e2e smoke.
+
+From monorepo root:
+
+```bash
+npm test -w eslint-plugin-hardcode-detect
 ```
 
-### R2 tooling and limits
+Nest fixture smoke details: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md) and [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs).
 
-- **No `bin` in this package:** two-phase aggregation via a dedicated CLI is **not** part of this release; the supported design is in-process index + `settings.hardcodeDetect` (see [`docs/adr-hardcode-bin-r2-aggregation.md`](../../docs/adr-hardcode-bin-r2-aggregation.md)).
-- **ESLint parallelism:** with multithreaded lint, the R2 index may be incomplete; see [`docs/adr-eslint-concurrency-r2.md`](../../docs/adr-eslint-concurrency-r2.md).
+## Community and support
 
-## Rules
-
-The `hardcode-detect/recommended` preset applies only `no-hardcoded-strings`. The `hello-world` rule is a **demo** and is **not** part of `recommended` (avoids noise in real projects).
-
-| ID | Description |
-|----|-------------|
-| `hello-world` | Minimal demo (one warning per file); see [`docs/rules/hello-world.md`](docs/rules/hello-world.md). |
-| `no-hardcoded-strings` | Discourages string literals with length ≥ 2 and emits HCD-ERR triplet messages (`[HCD-ERR-SENIOR]` / `[HCD-ERR-FIX]` / `[HCD-ERR-OPS]`); see [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md). |
-| `standardize-error-messages` | Contract and reference page; not yet exported from the package; see [`docs/rules/standardize-error-messages.md`](docs/rules/standardize-error-messages.md). |
-
-With `remediationMode: "r1"` on `no-hardcoded-strings`, the rule may apply **R1** remediation (constants at the top of the same file). **Autofix** policy (`eslint --fix` / RuleTester `output`) vs **suggestions-only** (`suggestions` without `output`) and error-only cases is documented in [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md), with P-SVF-* matrix and S-R1-* scenarios mirrored in [`tests/no-hardcoded-strings-r1.test.mjs`](tests/no-hardcoded-strings-r1.test.mjs). Normative proof criteria (P-SVF → assertion type; e2e role in the `npm test` chain): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md). Test reviewer sign-off (A2): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md). Test runner execution evidence (`npm test` gate; M1-A2-08): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md).
-
-To validate the package from the monorepo root: `npm test -w eslint-plugin-hardcode-detect`.
-
-## Secrets, environment, and vaults
-
-Literals that look like tokens or secrets (rule heuristic, aligned with L1 in [`docs/hardcoding-map.md`](../../docs/hardcoding-map.md)) must be handled carefully: **do not** commit sensitive values; prefer **environment variables** and **vaults** or your platform’s secret management (official cloud / CI vendor documentation).
-
-- **Repository policy:** we do not simulate external vendors or store real credentials in tests — see [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md).
-- **Plugin:** the `secretRemediationMode` option on `no-hardcoded-strings` controls whether R1 autofix may copy the plaintext value (`aggressive-autofix-opt-in`), use a stable placeholder (`placeholder-default`), or keep the safe default (`suggest-only`). Detail and sentinel: [`specs/plugin-contract.md`](../../specs/plugin-contract.md) and [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
-- **Recommended reading (external):** [OWASP — Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) and your runtime’s official documentation (Node.js `process.env`, Kubernetes secrets management, etc.).
-
-## Development
-
-- `npm run build` — compile `src/` to `dist/`.
-- `npm run lint` — ESLint on the plugin code (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`, `typescript-eslint`).
-- `npm test` — compile and run tests with `RuleTester` + `node:test` + e2e smoke ([`e2e/hello-world.e2e.mjs`](e2e/hello-world.e2e.mjs), [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs); see next section).
-
-### Nest e2e smoke
-
-Per [`specs/plugin-contract.md`](../../specs/plugin-contract.md) (Compatibility / e2e smoke), the **NestJS fixture** is the auxiliary workspace [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) (real Nest app). The runner is [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs) — path from repo root: `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`.
-
-That file covers two smoke paths against the fixture flat config:
-
-1. **Detection path (`fix: false`)**: instantiates ESLint with `cwd` on the Nest workspace, calls `lintFiles` on `src/fixture-hardcodes/**/*.ts`, and asserts stable counts for `hardcode-detect/hello-world` and `hardcode-detect/no-hardcoded-strings`.
-2. **Autofix path (`fix: true`)**: creates one controlled temporary file (`src/autofix-smoke.e2e.ts`) inside the Nest fixture, applies a local `overrideConfig` (`remediationMode: "r1"`) for that smoke file, runs `ESLint({ fix: true })` plus `ESLint.outputFixes(results)`, and verifies that `no-hardcoded-strings` is fixed while preserving the expected `hello-world` report. The temporary file is removed in the test `finally` block.
-
-Norms and count table: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
-
-Requires **Node.js ≥ 22** (aligned with CI and the package `engines` field).
-
-Install dependencies from the monorepo root (`npm install`) or only in this package, per your environment policy.
+- Contributing: [`CONTRIBUTING.md`](../../CONTRIBUTING.md)
+- Security: [`SECURITY.md`](../../SECURITY.md)
+- Support: [`SUPPORT.md`](../../SUPPORT.md)
+- Bug template: [open bug report](https://github.com/malnati/eslint-hardcode-detect-plugin/issues/new?template=bug_report.yml)
+- Feature template: [open feature request](https://github.com/malnati/eslint-hardcode-detect-plugin/issues/new?template=feature_request.yml)

@@ -1,0 +1,68 @@
+name: Bug report
+description: Report a reproducible bug in eslint-plugin-hardcode-detect.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting this bug.
+        Please provide enough detail to reproduce quickly.
+  - type: input
+    id: plugin_version
+    attributes:
+      label: Plugin version
+      description: Version of eslint-plugin-hardcode-detect
+      placeholder: 0.1.3
+    validations:
+      required: true
+  - type: input
+    id: eslint_version
+    attributes:
+      label: ESLint version
+      placeholder: 9.x
+    validations:
+      required: true
+  - type: input
+    id: node_version
+    attributes:
+      label: Node.js version
+      placeholder: "22.x"
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: ESLint config
+      description: Minimal `eslint.config.*` needed to reproduce
+      render: javascript
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction code
+      description: Minimal source file(s) that trigger the issue
+      render: javascript
+    validations:
+      required: true
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current behavior
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs and output
+      render: shell
+    validations:
+      required: false
