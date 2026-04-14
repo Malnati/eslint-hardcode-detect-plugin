@@ -23,6 +23,11 @@ In `packages/chatbot/api`:
 3. `npm run build`
 4. `npm run lint`
 
+From `packages/chatbot` (after wrapper scripts were added):
+
+1. `npm run build`
+2. `npm run lint`
+
 Support checks:
 
 1. `npx eslint -v`
@@ -41,6 +46,17 @@ Support checks:
   - Top warning rules:
     - `hardcode-detect/no-hardcoded-strings`: `785`
     - `null`: `1` (warning without `ruleId`, reported by ESLint output)
+  - Most affected files (top 10 by finding count):
+    - `e2e/specs/live-agrovivo.spec.ts`: `224`
+    - `e2e/specs/07-fechamento-tecnico.spec.ts`: `81`
+    - `e2e/specs/00-chatbot-ui.spec.ts`: `63`
+    - `e2e/fixtures/chat-mock.ts`: `53`
+    - `e2e/specs/04-pragas-doencas.spec.ts`: `53`
+    - `e2e/specs/06-compactacao-solo.spec.ts`: `49`
+    - `e2e/specs/05-solo-cansado.spec.ts`: `46`
+    - `e2e/specs/01-analise-solo.spec.ts`: `45`
+    - `e2e/specs/03-correcao-acidez.spec.ts`: `43`
+    - `e2e/specs/02-nutrientes-soja.spec.ts`: `36`
 
 ### `frontend`
 
@@ -51,3 +67,4 @@ Support checks:
 
 - The lint configuration was migrated to flat config in `packages/chatbot/api/eslint.config.mjs`.
 - `npm run lint` was configured as non-destructive and `npm run lint:fix` was added for optional auto-fix usage.
+- `packages/chatbot` now has wrapper scripts so `npm run build` and `npm run lint` work from that directory and delegate to `api`.

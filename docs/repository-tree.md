@@ -193,6 +193,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 ├── packages/
 │   ├── chatbot/                        # Git subtree from https://github.com/tookyn/chatboot.git (main)
 │   │   ├── ESLINT.md                   # Build + lint execution report for subtree integration
+│   │   ├── package.json                # Wrapper scripts (`build`/`lint`) delegating to api/
 │   │   └── api/                        # Imported backend service (NestJS-based)
 │   │       ├── eslint.config.mjs       # Flat ESLint config (ESLint 9 + hardcode-detect)
 │   │       └── package.json            # Scripts/deps updated for ESLint 9 migration
