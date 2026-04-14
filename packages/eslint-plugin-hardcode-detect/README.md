@@ -31,6 +31,90 @@ rules: {
 
 O plugin expõe `meta.name`, `meta.version` e `meta.namespace` (`hardcode-detect`), conforme a documentação oficial de [plugins](https://eslint.org/docs/latest/extend/plugins).
 
+## Adopção da remediação
+
+Objetivo: activar **R1** (constantes no mesmo ficheiro), **R2** (duplicados entre ficheiros na mesma execução) ou **R3** (escrita em ficheiros de dados) com passos copiáveis. Semântica exacta das opções: [`specs/plugin-contract.md`](../../specs/plugin-contract.md); detalhes e matrizes: [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
+
+1. **Parta do preset** `hardcode-detect/recommended` (injecta `settings.hardcodeDetect: {}`, necessário para o índice R2 quando sobrescreve a regra).
+2. **Sobrescreva** `hardcode-detect/no-hardcoded-strings` com um array `[severidade, opções]` conforme os exemplos abaixo.
+3. **Segredos:** use `secretRemediationMode` conforme o seu risco (`suggest-only` por defeito no contrato). Resumo na secção [Segredos, ambiente e cofres](#segredos-ambiente-e-cofres).
+
+### Remediação R1 (`remediationMode: "r1"`)
+
+Autofix de constantes no **mesmo** ficheiro (quando o contexto for seguro para fix; caso contrário podem aplicar-se só *suggestions*).
+
+```javascript
+import { defineConfig } from "eslint/config";
+import hardcodeDetect from "eslint-plugin-hardcode-detect";
+
+export default defineConfig([
+  {
+    plugins: { "hardcode-detect": hardcodeDetect },
+    extends: ["hardcode-detect/recommended"],
+    rules: {
+      "hardcode-detect/no-hardcoded-strings": [
+        "warn",
+        {
+          remediationMode: "r1",
+          // secretRemediationMode: "suggest-only" | "placeholder-default" | "aggressive-autofix-opt-in"
+        },
+      ],
+    },
+  },
+]);
+```
+
+### Remediação R2 (`remediationMode: "r2"`)
+
+**Detecção** de duplicados **entre** ficheiros: o mesmo valor normalizado visto noutro ficheiro já processado na **mesma** invocação `lintFiles` produz `messageId` `hardcodedDuplicateCrossFile`. O autofix R2 (módulo partilhado) **ainda não** está na implementação actual. Requer `settings.hardcodeDetect` objecto mutável — o `recommended` já o injecta.
+
+```javascript
+import { defineConfig } from "eslint/config";
+import hardcodeDetect from "eslint-plugin-hardcode-detect";
+
+export default defineConfig([
+  {
+    plugins: { "hardcode-detect": hardcodeDetect },
+    extends: ["hardcode-detect/recommended"],
+    rules: {
+      "hardcode-detect/no-hardcoded-strings": ["warn", { remediationMode: "r2" }],
+    },
+  },
+]);
+```
+
+### Remediação R3 (`remediationMode: "r3"`)
+
+Escrita / merge de entradas em ficheiros **JSON** ou **YAML** listados em `dataFileTargets` (caminhos relativos ao `cwd` do ESLint). Com `dataFileTargets: []` não há escrita — só detecção.
+
+```javascript
+import { defineConfig } from "eslint/config";
+import hardcodeDetect from "eslint-plugin-hardcode-detect";
+
+export default defineConfig([
+  {
+    plugins: { "hardcode-detect": hardcodeDetect },
+    extends: ["hardcode-detect/recommended"],
+    rules: {
+      "hardcode-detect/no-hardcoded-strings": [
+        "warn",
+        {
+          remediationMode: "r3",
+          dataFileTargets: ["config/strings.json", "config/strings.yml"],
+          dataFileFormats: ["json", "yaml", "yml"],
+          dataFileMergeStrategy: "merge-keys",
+        },
+      ],
+    },
+  },
+]);
+```
+
+### Ferramentas e limites R2
+
+- **Sem `bin` no pacote:** agregação em duas fases via CLI dedicada **não** faz parte deste release; o desenho suportado é índice in-process + `settings.hardcodeDetect` (ver [`docs/adr-hardcode-bin-r2-aggregation.md`](../../docs/adr-hardcode-bin-r2-aggregation.md)).
+- **Paralelismo ESLint:** com lint multithread, o índice R2 pode ser incompleto; ver [`docs/adr-eslint-concurrency-r2.md`](../../docs/adr-eslint-concurrency-r2.md).
+
 ## Regras
 
 O preset `hardcode-detect/recommended` aplica apenas `no-hardcoded-strings`. A regra `hello-world` é **demonstração** e **não** faz parte de `recommended` (evita ruído em projetos reais).

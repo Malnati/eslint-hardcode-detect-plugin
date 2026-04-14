@@ -7,6 +7,7 @@
 | [architecture.md](architecture.md) | Visão da arquitetura do monorepo |
 | [architecture-r2-global-index.md](architecture-r2-global-index.md) | Índice R2 global (marco M2), CI e `settings` |
 | [adr-eslint-concurrency-r2.md](adr-eslint-concurrency-r2.md) | ADR: paralelismo ESLint vs estado do índice R2 |
+| [adr-hardcode-bin-r2-aggregation.md](adr-hardcode-bin-r2-aggregation.md) | ADR: entrada `bin` vs agregação R2 in-process (M5) |
 | [documentation-policy.md](documentation-policy.md) | Boas práticas Markdown no GitHub |
 | [hardcoding-map.md](hardcoding-map.md) | Taxonomia, níveis e camadas de detecção de hardcoding |
 | [solution-distribution-channels.md](solution-distribution-channels.md) | Canais de distribuição e operacionalização do plugin (npm, CI, Docker, IDE, agentes) |

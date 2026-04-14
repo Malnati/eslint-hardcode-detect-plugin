@@ -69,6 +69,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
 │   ├── architecture-r2-global-index.md  # Índice R2, CI, settings (marco M2)
 │   ├── adr-eslint-concurrency-r2.md  # ADR paralelismo ESLint vs estado R2
+│   ├── adr-hardcode-bin-r2-aggregation.md  # ADR: sem bin; agregação R2 in-process vs CLI duas fases (M5)
 │   ├── solution-distribution-channels.md  # Canais npm/CI/Docker/IDE/agentes
 │   ├── hardcode-remediation-macro-plan.md  # Plano macro remediação R1–R3, segredos, env, marcos M0–M5
 │   ├── distribution-channels-macro-plan.md  # Plano macro e2e por trilha, diagramas, marcos, durações
@@ -165,7 +166,14 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │       ├── m2-remediation-r2-global/  # coverage-manifest.json; micro/ (M2-A1, M2-A3); A2-concurrency-adr…
 │   │       ├── m3-remediation-r3-data-files/  # coverage-manifest.json; micro/ (M3-A1, M3-A3); A2-data-file-path-policy…
 │   │       ├── m4-secrets-remediation/  # coverage-manifest.json; micro/ (M4-A1); A2/A3…
-│   │       └── m5-remediation-release/
+│   │       └── m5-remediation-release/   # Camada A M5 (semver, adopção, decisão bin)
+│   │           ├── README.md
+│   │           ├── A1-semver-release-notes.md
+│   │           ├── A2-adoption-guide.md
+│   │           ├── A3-bin-cli-decision.md
+│   │           └── evidence/
+│   │               ├── M5-semver-decision.md
+│   │               └── M5-release-notes-draft.md
 │   ├── limitations-and-scope.md
 │   ├── repository-tree.md    # Este arquivo
 │   └── versioning-for-agents.md
@@ -174,6 +182,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── src/fixture-hardcodes/      # Literais fixos com contagens no e2e
 │   │   └── eslint.config.mjs           # Flat config + plugin via dist do pacote irmão
 │   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
+│       ├── CHANGELOG.md                # Histórico semver do pacote publicável
 │       ├── docs/rules/                 # Uma página por regra do contrato (hello-world, no-hardcoded-strings, standardize-error-messages)
 │       ├── e2e/                        # Fumaça e2e (ESLint API + fixtures consumidor)
 │       │   ├── fixtures/hello-world/   # Flat config mínimo + amostra
