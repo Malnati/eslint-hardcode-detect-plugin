@@ -68,6 +68,10 @@ Documentation of repository layout. **Update this file when you create, move, or
 │   └── workflows/            # CI workflows (e.g. ci.yml)
 ├── docs/                     # Supplementary documentation
 │   ├── README.md             # Index of guides under docs/
+│   ├── assets/               # Versioned images (social preview; see social-preview-image.md)
+│   │   ├── social-preview.svg
+│   │   └── social-preview.png
+│   ├── social-preview-image.md  # Social preview GitHub: 1280×640, SVG→PNG, upload
 │   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, hook verification and smoke
 │   ├── codex-cli-hooks-equivalence.md  # Cursor -> Codex CLI equivalence (hooks + local MCP)
 │   ├── architecture.md

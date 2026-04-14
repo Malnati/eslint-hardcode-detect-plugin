@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280px" height="640px" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#1e1e1e"/>
+  <rect width="1280" height="10" y="630" fill="#4B32C3"/>
+
+  <circle cx="640" cy="320" r="300" fill="#4B32C3" fill-opacity="0.05"/>
+
+  <text x="640" y="280" font-family="Arial, Helvetica, sans-serif" font-size="60px" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    eslint-hardcode-detect-plugin
+  </text>
+
+  <text x="640" y="340" font-family="Arial, Helvetica, sans-serif" font-size="28px" fill="#cccccc" text-anchor="middle">
+    Detect, Prioritize, and Remediate Hardcoded Values
+  </text>
+
+  <g transform="translate(440, 420)">
+    <rect x="0" y="0" width="80" height="40" rx="20" fill="#444"/>
+    <text x="40" y="27" font-family="monospace" font-size="18px" fill="#ffd700" text-anchor="middle">R1</text>
+    <text x="40" y="65" font-family="Arial, sans-serif" font-size="14px" fill="#888" text-anchor="middle">Local</text>
+
+    <rect x="160" y="0" width="80" height="40" rx="20" fill="#444"/>
+    <text x="200" y="27" font-family="monospace" font-size="18px" fill="#ffd700" text-anchor="middle">R2</text>
+    <text x="200" y="65" font-family="Arial, sans-serif" font-size="14px" fill="#888" text-anchor="middle">Duplicate</text>
+
+    <rect x="320" y="0" width="80" height="40" rx="20" fill="#444"/>
+    <text x="360" y="27" font-family="monospace" font-size="18px" fill="#ffd700" text-anchor="middle">R3</text>
+    <text x="360" y="65" font-family="Arial, sans-serif" font-size="14px" fill="#888" text-anchor="middle">External</text>
+  </g>
+
+  <path d="M620 120 L660 120 L680 150 L660 180 L620 180 L600 150 Z" fill="none" stroke="#4B32C3" stroke-width="8"/>
+  <text x="640" y="160" font-family="Arial, Helvetica, sans-serif" font-size="30px" font-weight="bold" fill="#4B32C3" text-anchor="middle">HC</text>
+</svg>

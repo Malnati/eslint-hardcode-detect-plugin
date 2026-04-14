@@ -9,6 +9,7 @@
 | [adr-eslint-concurrency-r2.md](adr-eslint-concurrency-r2.md) | ADR: paralelismo ESLint vs estado do índice R2 |
 | [adr-hardcode-bin-r2-aggregation.md](adr-hardcode-bin-r2-aggregation.md) | ADR: entrada `bin` vs agregação R2 in-process (M5) |
 | [documentation-policy.md](documentation-policy.md) | Boas práticas Markdown no GitHub |
+| [social-preview-image.md](social-preview-image.md) | Imagem de Social Preview (1280×640): SVG em `docs/assets/`, raster e upload no GitHub |
 | [hardcoding-map.md](hardcoding-map.md) | Taxonomia, níveis e camadas de detecção de hardcoding |
 | [solution-distribution-channels.md](solution-distribution-channels.md) | Canais de distribuição e operacionalização do plugin (npm, CI, Docker, IDE, agentes) |
 | [hardcode-remediation-macro-plan.md](hardcode-remediation-macro-plan.md) | Plano macro de remediação (R1–R3: arquivo, compartilhado, propriedades/env), segredos, verificação global |
