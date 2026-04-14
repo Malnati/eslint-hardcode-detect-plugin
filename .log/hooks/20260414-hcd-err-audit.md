@@ -478,3 +478,26 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 - `packages/e2e-fixture-nest/eslint.config.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T10:51:30Z`
+- `conversation_id`: `c12df273-3509-4fdf-88ff-cc038553bda9`
+- `generation_id`: `c69b9c88-fbc3-4b06-8412-e29e7f752bec`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/c12df273-3509-4fdf-88ff-cc038553bda9/c12df273-3509-4fdf-88ff-cc038553bda9.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/architecture.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/documentation-policy.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/hardcoding-map.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/limitations-and-scope.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/solution-distribution-channels.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
