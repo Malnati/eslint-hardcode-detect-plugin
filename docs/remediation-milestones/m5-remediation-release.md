@@ -27,7 +27,12 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-45dcbc440cfd7e.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant Maint as Maintainer
@@ -39,6 +44,8 @@ sequenceDiagram
   User->>Pkg: npm_install
   CI->>Pkg: npm_test_workspace
 ```
+
+</details>
 
 ---
 
@@ -57,7 +64,12 @@ sequenceDiagram
 
 ## 5. Composição temporal (durações)
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-b638134a697801.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M5 release
   dateFormat YYYY-MM-DD
@@ -68,6 +80,8 @@ gantt
   Adocao :m5c, after m5b, 2d
   Bin_opcional :m5d, after m5a, 2d
 ```
+
+</details>
 
 ---
 

@@ -27,7 +27,12 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-c32b11ed00fcdd.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant Lit as Literal
@@ -42,6 +47,8 @@ sequenceDiagram
     Policy->>Out: fix_completo_se_opcao
   end
 ```
+
+</details>
 
 ---
 
@@ -60,7 +67,12 @@ sequenceDiagram
 
 ## 5. Composição temporal (durações)
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-3f382b11c19007.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M4 segredos
   dateFormat YYYY-MM-DD
@@ -71,6 +83,8 @@ gantt
   Schema_fix_flags :m4c, after m4b, 3d
   Docs_boas_praticas :m4d, after m4c, 2d
 ```
+
+</details>
 
 ---
 

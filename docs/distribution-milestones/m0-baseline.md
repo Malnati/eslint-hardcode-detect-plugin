@@ -29,7 +29,12 @@ Plano detalhado alinhado a [`../distribution-channels-macro-plan.md`](../distrib
 
 Baseline documental e massa e2e (encadeamento para T1).
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-1ee3e42a22e574.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Maintainer as MaintainerOrAgent
   participant Docs as docs_and_specs
@@ -41,6 +46,8 @@ sequenceDiagram
   Nest-->>Plugin: consome_dist_via_workspace
   Plugin-->>Maintainer: npm_test_e_e2e_ok
 ```
+
+</details>
 
 ---
 
@@ -60,7 +67,12 @@ sequenceDiagram
 
 Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-7cbc31624fb8d2.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M0 baseline
   dateFormat YYYY-MM-DD
@@ -70,6 +82,8 @@ gantt
   section Evidencia_e2e
   Revisao_Nest_mass :m0c, after m0b, 4d
 ```
+
+</details>
 
 ---
 

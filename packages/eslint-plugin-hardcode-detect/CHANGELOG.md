@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.2.5] - 2026-04-14
+
+### Changed
+
+- Documentation: Mermaid diagrams are published as embedded SVG images (generated via Kroki) so README and docs render figures on GitHub and npm; editable source is kept under collapsible sections as plain text. Regenerate with `npm run docs:generate-mermaid-svgs` at the repo root (requires network).
+
+### Notes
+
+- No changes to exported rules, options, or plugin runtime behavior.
+
 ## [0.2.4] - 2026-04-14
 
 ### Changed

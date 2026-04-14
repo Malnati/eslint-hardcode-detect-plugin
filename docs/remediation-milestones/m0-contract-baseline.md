@@ -29,7 +29,12 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 Contrato antes do código: especificação e revisão cruzada.
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-41e15331bfefa7.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant Author as MaintainerOrAgent
@@ -41,6 +46,8 @@ sequenceDiagram
   Author->>Map: verificar_HC_niveis_sem_duplicar
   Contract-->>Author: PR_revisao
 ```
+
+</details>
 
 ---
 
@@ -61,7 +68,12 @@ sequenceDiagram
 
 Eixo **`2000-01-01` = T0 fictício**; só as durações são normativas.
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-646fd8fcef3ec0.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M0 contrato remediação
   dateFormat YYYY-MM-DD
@@ -72,6 +84,8 @@ gantt
   Vision_patch :m0c, after m0b, 2d
   Cruzamento_limites :m0d, after m0c, 1d
 ```
+
+</details>
 
 ---
 

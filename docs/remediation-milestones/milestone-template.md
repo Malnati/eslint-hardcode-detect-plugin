@@ -26,13 +26,20 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-e1c085e791a257.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant A as ...
   participant B as ...
   A->>B: ...
 ```
+
+</details>
 
 ---
 
@@ -50,7 +57,12 @@ sequenceDiagram
 
 Diagrama opcional: eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações (`Xd`) e dependências `after` são normativas**, não o calendário civil.
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-643b8c80784f74.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M{N}
   dateFormat YYYY-MM-DD
@@ -58,6 +70,8 @@ gantt
   Tarefa_a :a1, 2000-01-01, 7d
   Tarefa_b :a2, after a1, 5d
 ```
+
+</details>
 
 ---
 

@@ -30,7 +30,12 @@ Plano para **IDE/LSP (T4)** e preparação de **Git hooks (T6)**. A **cadeia nor
 
 Onda T4 (IDE); T6 “forte” após T5 (ver nota).
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-76b42ec02efa00.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Dev as Developer
   participant IDE as IDE_ESLint
@@ -42,6 +47,8 @@ sequenceDiagram
   Repo-->>IDE: diagnostics
   Note over Dev,Repo: T6 hook chama mesmo eslint_CLI apos M4_T5
 ```
+
+</details>
 
 ---
 
@@ -65,7 +72,12 @@ Eixo **`2000-01-01` = T0 fictício** (Mermaid). O vínculo `after m3a` entre as 
 
 **Normativo:** a onda 2 (`m3b`) **não pode iniciar** antes da **conclusão do marco M4** (T5). Na linha temporal real, M4 executa-se **entre** a onda 1 e a onda 2 (ver Gantt macro).
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-6acf0e1c8569cc.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M3 T4 e T6 (duas ondas)
   dateFormat YYYY-MM-DD
@@ -74,6 +86,8 @@ gantt
   section Onda2_T6_apos_M4
   Hooks_T6 :m3b, after m3a, 10d
 ```
+
+</details>
 
 ---
 

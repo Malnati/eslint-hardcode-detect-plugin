@@ -27,7 +27,12 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-76d08e3d628fd2.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant ESLint as ESLint
@@ -41,6 +46,8 @@ sequenceDiagram
     Rule->>FS: propose_or_apply_R2_fix
   end
 ```
+
+</details>
 
 ---
 
@@ -59,7 +66,12 @@ sequenceDiagram
 
 ## 5. Composição temporal (durações)
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-c86e7ebf717f82.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M2 R2 global
   dateFormat YYYY-MM-DD
@@ -71,6 +83,8 @@ gantt
   section E2e
   Fixture_multi_file :m2d, after m2c, 4d
 ```
+
+</details>
 
 ---
 

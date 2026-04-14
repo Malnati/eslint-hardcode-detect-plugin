@@ -54,7 +54,12 @@ Com workspace do IDE aberto na **raiz** do monorepo e `eslint.workingDirectories
 
 Alinhado a [`docs/distribution-milestones/m3-channel-t4-t6.md`](../../../m3-channel-t4-t6.md) §6 («Mesma massa T1 / Nest» na trilha T4): validação da massa Nest no marco IDE é por **documentação + IDE local**, sem serviço HTTP obrigatório no Docker Compose; a paridade de regras com o CI continua a depender dos comandos T3 acima.
 
-```mermaid
+![flowchart LR](../../../../assets/diagrams/generated/mermaid-4567b9fe7839ca.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart LR
   CI_lint["CI npm run lint"] --> plugin_pkg["packages/eslint-plugin-hardcode-detect"]
   CI_test["CI npm test -w plugin"] --> e2e_nest["nest-workspace.e2e.mjs"]
@@ -62,3 +67,5 @@ flowchart LR
   IDE["IDE ESLint"] --> plugin_pkg
   IDE --> nest_fixture
 ```
+
+</details>

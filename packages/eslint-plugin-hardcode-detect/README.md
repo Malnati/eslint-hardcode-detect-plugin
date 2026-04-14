@@ -47,7 +47,12 @@ npx eslint .
 
 ## Adoption flow
 
-```mermaid
+![flowchart TD](../../docs/assets/diagrams/generated/mermaid-bb06be0094f0a8.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart TD
   installNode[Install package] --> configNode[Enable recommended preset]
   configNode --> lintNode[Run lint]
@@ -63,9 +68,16 @@ flowchart TD
   reviewNode --> baselineNode
 ```
 
+</details>
+
 ## Lint execution sequence
 
-```mermaid
+![sequenceDiagram](../../docs/assets/diagrams/generated/mermaid-4bacd78cfa04c1.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Dev as Developer
   participant ESL as ESLint
@@ -78,9 +90,16 @@ sequenceDiagram
   Out-->>Dev: Actionable remediation path
 ```
 
+</details>
+
 ## Roadmap timeline
 
-```mermaid
+![flowchart LR](../../docs/assets/diagrams/generated/mermaid-560f166112b1a3.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart LR
   v010["0.1.0 baseline"] --> v011["0.1.1 coverage"]
   v011 --> v012["0.1.2 remediation tracks"]
@@ -89,9 +108,16 @@ flowchart LR
   v014 --> nextRel["Next: standardize-error-messages"]
 ```
 
+</details>
+
 ## Contributor journey
 
-```mermaid
+![flowchart TD](../../docs/assets/diagrams/generated/mermaid-0163dc1763a340.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart TD
   subgraph discover [Discover]
     d1[Ler README e quickstart]
@@ -112,6 +138,8 @@ flowchart TD
   i2 --> m1
   m1 --> m2
 ```
+
+</details>
 
 ## Rules and maturity
 

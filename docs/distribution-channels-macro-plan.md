@@ -55,7 +55,12 @@ Cada linha corresponde à tabela mestre em [`solution-distribution-channels.md`]
 
 ### T1 — Consumidor npm (motor ESLint + plugin)
 
-```mermaid
+![sequenceDiagram](./assets/diagrams/generated/mermaid-3e715ff19befe4.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant DevOrCI as DevOrCI
   participant NpmClient as npm
@@ -72,9 +77,16 @@ sequenceDiagram
   EslintBin-->>DevOrCI: reportOrExitCode
 ```
 
+</details>
+
 ### T2 — Container ops-eslint (lint sobre volume)
 
-```mermaid
+![sequenceDiagram](./assets/diagrams/generated/mermaid-2b593110c5d773.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Operator as operator
   participant DockerEngine as docker
@@ -88,9 +100,16 @@ sequenceDiagram
   EslintEntry-->>Operator: stdoutJsonOrStatus
 ```
 
+</details>
+
 ### T3 — CI (pipeline)
 
-```mermaid
+![sequenceDiagram](./assets/diagrams/generated/mermaid-3305f61612df07.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Vcs as gitHost
   participant Runner as ciRunner
@@ -102,6 +121,8 @@ sequenceDiagram
   TestSuite-->>Runner: junitOrExitCode
   Runner-->>Vcs: statusCheck
 ```
+
+</details>
 
 ## Composição temporal dos marcos (durações)
 
@@ -122,7 +143,12 @@ Durações planejadas por marco e resumo da composição (detalhe em cada `distr
 
 O eixo `2000-01-01` é **apenas** ancoragem Mermaid para desenhar barras; **só as durações e a ordem `after` são normativas**. A **segunda onda de M3** (T6) executa **após M4** (T5), não imediatamente após a primeira onda de M3 (T4).
 
-```mermaid
+![gantt](./assets/diagrams/generated/mermaid-f765345a58fe37.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marcos e subfases M3 (eixo T0 fictício)
   dateFormat YYYY-MM-DD
@@ -139,6 +165,8 @@ gantt
   section Fechamento_M5
   M5_release :m5, after m3b, 14d
 ```
+
+</details>
 
 ## Proposta de workspaces e perfis Docker
 
@@ -183,7 +211,12 @@ Para cada entrega de trilha (ou sub-marco), repetir o ciclo abaixo e arquivar ev
 
 ## Visão geral (diagrama)
 
-```mermaid
+![flowchart TB](./assets/diagrams/generated/mermaid-2090d11967a184.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart TB
   subgraph docLayer [Documentacao]
     map[hardcoding-map]
@@ -203,6 +236,8 @@ flowchart TB
   macro --> plugin
   compose --> macro
 ```
+
+</details>
 
 ## Variante: um workspace e2e por linha da tabela
 

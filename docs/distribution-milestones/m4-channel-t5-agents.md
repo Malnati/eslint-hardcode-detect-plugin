@@ -26,7 +26,12 @@ Plano para **Cursor, Copilot, MCP** (T5): superfícies **indiretas** que **prese
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-d67d74bef9717f.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Repo as repositorio
   participant Rules as cursor_rules
@@ -37,6 +42,8 @@ sequenceDiagram
   Human->>Repo: npm_test_continua_fonte_verdade
   Rules-->>Human: orientacao_indireta
 ```
+
+</details>
 
 ---
 
@@ -56,7 +63,12 @@ sequenceDiagram
 
 Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-58b760673de653.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M4 T5 agentes
   dateFormat YYYY-MM-DD
@@ -65,6 +77,8 @@ gantt
   section Automacao
   Job_verify_opcional :m4b, after m4a, 10d
 ```
+
+</details>
 
 ---
 

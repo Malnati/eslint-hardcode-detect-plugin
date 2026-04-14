@@ -26,7 +26,12 @@ Plano para **congelar versão semver**, **tag Git**, **notas de release** e **va
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-181eef7082a6fd.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Maint as Maintainer
   participant Ver as verificacao_T1_T6
@@ -39,6 +44,8 @@ sequenceDiagram
   Reg-->>Maint: tarball
   Maint->>Maint: git_tag_release
 ```
+
+</details>
 
 ---
 
@@ -58,7 +65,12 @@ sequenceDiagram
 
 Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-031ce5e70cba8a.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M5 release
   dateFormat YYYY-MM-DD
@@ -68,6 +80,8 @@ gantt
   section Pos_deploy
   Smoke_consumidor :m5c, after m5b, 4d
 ```
+
+</details>
 
 ---
 

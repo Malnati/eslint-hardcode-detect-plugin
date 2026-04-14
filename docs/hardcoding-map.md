@@ -13,7 +13,12 @@ A typical composite action design that **scans a repository** without syntactic 
 
 The goal of this map is **not** to prescribe CI implementation or report format; it is to provide **how to interpret** any occurrence list produced by textual scanning or other layers.
 
-```mermaid
+![flowchart LR](./assets/diagrams/generated/mermaid-53296a9731347a.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart LR
   findFiles[find files]
   filterExt[filter by EXTS]
@@ -22,6 +27,8 @@ flowchart LR
   aggregate[aggregate for triage]
   findFiles --> filterExt --> filterExclude --> grepLiterals --> aggregate
 ```
+
+</details>
 
 ## 2. Without AST: expected and intentional behavior
 

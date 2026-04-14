@@ -51,7 +51,12 @@ Expressões como `process.env.FOO || 'valor'`, `process.env.FOO ?? 'valor'`, ou 
 
 **Limites:** “Global” significa **âmbito do projeto conforme o `eslint.config`**, não o universo de todos os repositórios da organização. O plugin **não** substitui um **secret scanner** enterprise nem varre `node_modules` por padrão. Exclusões por `.eslintignore` / `ignores` reduzem o conjunto: inconformidades só são confirmadas nos arquivos realmente lintados.
 
-```mermaid
+![flowchart TB](./assets/diagrams/generated/mermaid-057e62f2d70f4e.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart TB
   subgraph input [Entrada]
     cfg[eslint.config files e ignores]
@@ -77,9 +82,16 @@ flowchart TB
   lit -->|política externalizar| r3
 ```
 
+</details>
+
 ## Diagrama de sequência (motor + agregação opcional)
 
-```mermaid
+![sequenceDiagram](./assets/diagrams/generated/mermaid-5f9fae271c7c02.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant User as DevOuCI
   participant Eslint as ESLint
@@ -97,6 +109,8 @@ sequenceDiagram
   Eslint-->>User: resultados
 ```
 
+</details>
+
 ## Composição temporal dos marcos (durações)
 
 Durações planejadas por marco (**D** = dias de esforço sequencial dentro do marco, salvo nota). A soma linear do caminho abaixo é **74d**; não representa calendário civil.
@@ -112,7 +126,12 @@ Durações planejadas por marco (**D** = dias de esforço sequencial dentro do m
 
 ### Gantt macro (eixo T0 fictício)
 
-```mermaid
+![gantt](./assets/diagrams/generated/mermaid-303044a0ee24f1.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marcos R1 a R3 e endurecimento eixo T0 fictício
   dateFormat YYYY-MM-DD
@@ -126,6 +145,8 @@ gantt
   M4_segredos :m4, after m3, 10d
   M5_release :m5, after m4, 8d
 ```
+
+</details>
 
 ## Marco × entregável × risco × dependência
 

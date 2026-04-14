@@ -29,7 +29,12 @@ Plano para validar **consumidor npm (T1)** e **container/OCI (T2)** com handoff:
 
 Handoff T1 → T2 (mesmo pacote, nova superfície).
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-aa1825b92e5972.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant Dev as DevOrCI
   participant Npm as npm_install
@@ -43,6 +48,8 @@ sequenceDiagram
   Docker->>Ops: entrypoint_eslint
   Ops-->>Dev: mesmo_comportamento_esperado
 ```
+
+</details>
 
 ---
 
@@ -62,7 +69,12 @@ sequenceDiagram
 
 Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-1aa4552f843521.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M1 T1 e T2
   dateFormat YYYY-MM-DD
@@ -71,6 +83,8 @@ gantt
   section T2
   Smoke_ops_image :m1b, after m1a, 11d
 ```
+
+</details>
 
 ---
 

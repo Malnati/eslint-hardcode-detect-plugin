@@ -27,7 +27,12 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-2a9f12544bead5.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant Rule as RuleVisitor
@@ -41,6 +46,8 @@ sequenceDiagram
     Rule->>Suggest: propor_suggest_only
   end
 ```
+
+</details>
 
 ---
 
@@ -59,7 +66,12 @@ sequenceDiagram
 
 ## 5. Composição temporal (durações)
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-0f58fb67dfada4.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M1 R1
   dateFormat YYYY-MM-DD
@@ -70,6 +82,8 @@ gantt
   Suggest_vs_fix :m1c, after m1b, 3d
   Exclusoes :m1d, after m1a, 2d
 ```
+
+</details>
 
 ---
 

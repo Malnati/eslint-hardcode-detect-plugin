@@ -41,7 +41,12 @@ Cross-check da tabela **§6** do plano M3 (massa T1/Nest vs fixture hooks futura
 
 ### Diagrama (opcional)
 
-```mermaid
+![flowchart LR](../../../../assets/diagrams/generated/mermaid-cfb039ab800a52.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart LR
   subgraph principal [Fluxo principal M3 sec6]
     T4IDE[T4_IDE_local]
@@ -53,5 +58,7 @@ flowchart LR
   T4IDE -.->|"paridade opcional"| ComposeE2e
   ComposeE2e -->|"npm_test_workspace_plugin"| E2eNest["e2e_incl_Nest"]
 ```
+
+</details>
 
 *(Seta tracejada: o guia IDE não exige Compose; o mesmo comando de testes pode ser reproduzido no serviço `e2e` se desejado.)*

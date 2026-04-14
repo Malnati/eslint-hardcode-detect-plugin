@@ -33,7 +33,12 @@ Each row describes a **distribution or execution channel**: where the artifact l
 
 ## Conceptual flow (optional)
 
-```mermaid
+![flowchart LR](./assets/diagrams/generated/mermaid-898de2a64a69c4.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart LR
   pkg[npm_package]
   cfg[eslint_config]
@@ -47,6 +52,8 @@ flowchart LR
   aux --> run_local
   aux --> run_ci
 ```
+
+</details>
 
 *Auxiliary channels*: Cursor/Copilot (rules, skills, hooks), MCP, Git hooks — they orchestrate or enrich work; the normative lint **artifact** remains the npm package + ESLint configuration.
 

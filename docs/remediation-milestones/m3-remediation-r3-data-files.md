@@ -27,7 +27,12 @@ Plano detalhado alinhado a [`../hardcode-remediation-macro-plan.md`](../hardcode
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-2380e988d47117.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   autonumber
   participant Rule as RuleVisitor
@@ -38,6 +43,8 @@ sequenceDiagram
   Writer->>FS: write_or_patch_json_yaml
   Rule->>Code: suggest_import_loader
 ```
+
+</details>
 
 ---
 
@@ -57,7 +64,12 @@ sequenceDiagram
 
 ## 5. Composição temporal (durações)
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-9454d5c592b2dd.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M3 R3 dados
   dateFormat YYYY-MM-DD
@@ -69,6 +81,8 @@ gantt
   Doc_env :m3d, after m3c, 2d
   E2e_R3 :m3e, after m3d, 1d
 ```
+
+</details>
 
 ---
 

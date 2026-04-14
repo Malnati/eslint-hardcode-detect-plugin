@@ -10,6 +10,7 @@
     "test:docs-m0": "node scripts/validate-milestone-plan-coverage.mjs",
     "test:docs-milestones": "node scripts/validate-milestone-plan-coverage.mjs",
     "verify:agent-files": "node scripts/verify-normative-agent-files.mjs",
+    "docs:generate-mermaid-svgs": "node scripts/generate-mermaid-svgs.mjs",
     "release:npm:precheck": "node scripts/npm-release.mjs precheck",
     "release:npm:test": "npm run lint && npm test -w eslint-plugin-hardcode-detect",
     "release:npm:check-version": "node scripts/npm-release.mjs check-version",

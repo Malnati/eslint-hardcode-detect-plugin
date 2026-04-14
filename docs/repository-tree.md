@@ -12,11 +12,12 @@ Documentation of repository layout. **Update this file when you create, move, or
 ├── SECURITY.md               # Vulnerability reporting policy
 ├── SUPPORT.md                # Support channels and triage guidance
 ├── package.json              # npm monorepo (workspaces)
-├── scripts/                  # Root helper scripts (e.g. M0/M1 plan coverage validation, npm release, Cursor/Codex HCD-ERR hook smoke, T5 normative file verify, Cursor headless M1 micro sequence)
+├── scripts/                  # Root helper scripts (e.g. M0/M1 plan coverage validation, npm release, Mermaid→SVG via Kroki, Cursor/Codex HCD-ERR hook smoke, T5 normative file verify, Cursor headless M1 micro sequence)
 │   ├── fixtures/             # Smoke fixtures (e.g. invalid HCD-ERR body for the hook)
 │   │   └── smoke-hcd-err-violation-body.md
 │   ├── validate-milestone-plan-coverage.mjs
 │   ├── verify-normative-agent-files.mjs
+│   ├── generate-mermaid-svgs.mjs  # Extract Mermaid blocks from docs, POST to kroki.io, write docs/assets/diagrams/generated/*.svg
 │   ├── npm-release.mjs       # Orchestrates precheck/auth/check-version/publish/smoke with NPM_ACCESS_TOKEN
 │   ├── run-m1-remediation-micro-cursor-headless.sh  # Headless M1 micro sequence (Cursor CLI agent -p)
 │   ├── smoke-cursor-hcd-err-hook.sh
@@ -68,7 +69,9 @@ Documentation of repository layout. **Update this file when you create, move, or
 │   └── workflows/            # CI workflows (e.g. ci.yml)
 ├── docs/                     # Supplementary documentation
 │   ├── README.md             # Index of guides under docs/
-│   ├── assets/               # Versioned images (social preview; see social-preview-image.md)
+│   ├── assets/               # Versioned images (social preview; Mermaid SVG exports)
+│   │   ├── diagrams/
+│   │   │   └── generated/    # SVG diagrams (Kroki); regenerate: node scripts/generate-mermaid-svgs.mjs
 │   │   ├── social-preview.svg
 │   │   └── social-preview.png
 │   ├── social-preview-image.md  # Social preview GitHub: 1280×640, SVG→PNG, upload
@@ -248,7 +251,12 @@ Documentation of repository layout. **Update this file when you create, move, or
 
 ## Diagram (logical view)
 
-```mermaid
+![flowchart LR](./assets/diagrams/generated/mermaid-396cfbcd22faf8.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart LR
   subgraph publishableArea [Publishable]
     pkg[packages/eslint-plugin-hardcode-detect]
@@ -272,3 +280,5 @@ flowchart LR
   ref -.->|inspiration| pkg
   gh --> pkg
 ```
+
+</details>

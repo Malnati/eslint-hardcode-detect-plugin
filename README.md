@@ -49,7 +49,12 @@ npx eslint .
 
 ## Adoption flow
 
-```mermaid
+![flowchart TD](./docs/assets/diagrams/generated/mermaid-3e9ff9d305fb69.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 flowchart TD
   installStep[Install plugin] --> configStep[Apply recommended config]
   configStep --> detectStep[Run eslint]
@@ -59,6 +64,8 @@ flowchart TD
   remediationStep --> ciStep[Gate with CI and tests]
   keepStep --> ciStep
 ```
+
+</details>
 
 ## Monorepo map
 

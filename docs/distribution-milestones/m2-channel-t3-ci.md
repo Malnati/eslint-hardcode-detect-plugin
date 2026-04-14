@@ -26,7 +26,12 @@ Plano para **pipeline reprodutível (T3)** que consome o handoff de **T2**: mesm
 
 ## 3. Diagrama de sequência (Mermaid)
 
-```mermaid
+![sequenceDiagram](../assets/diagrams/generated/mermaid-64dc116da9fb04.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 sequenceDiagram
   participant GH as GitHub_Actions
   participant Runner as runner
@@ -38,6 +43,8 @@ sequenceDiagram
   Test-->>Runner: exit_code
   Runner-->>GH: status_check
 ```
+
+</details>
 
 ---
 
@@ -57,7 +64,12 @@ sequenceDiagram
 
 Eixo **`2000-01-01` = T0 fictício** (Mermaid); **só as durações são normativas.**
 
-```mermaid
+![gantt](../assets/diagrams/generated/mermaid-8b509160028cfd.svg)
+
+<details>
+<summary>Fonte Mermaid</summary>
+
+```text
 gantt
   title Marco M2 T3 CI
   dateFormat YYYY-MM-DD
@@ -65,6 +77,8 @@ gantt
   Mapear_ci_yml :m2a, 2000-01-01, 7d
   Paridade_prod :m2b, after m2a, 7d
 ```
+
+</details>
 
 ---
 
