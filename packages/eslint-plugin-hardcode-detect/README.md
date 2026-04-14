@@ -145,7 +145,14 @@ Literals that look like tokens or secrets (rule heuristic, aligned with L1 in [`
 
 ### Nest e2e smoke
 
-Per [`specs/plugin-contract.md`](../../specs/plugin-contract.md) (Compatibility / e2e smoke), the **NestJS fixture** is the auxiliary workspace [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) (real Nest app). The runner is [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs) — path from repo root: `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`. That test instantiates the ESLint API with `cwd` on the Nest workspace, calls `lintFiles` on `src/fixture-hardcodes/**/*.ts` with the plugin from `dist/`, and asserts counts for `hardcode-detect/hello-world` and `hardcode-detect/no-hardcoded-strings`. Norms and count table: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
+Per [`specs/plugin-contract.md`](../../specs/plugin-contract.md) (Compatibility / e2e smoke), the **NestJS fixture** is the auxiliary workspace [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) (real Nest app). The runner is [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs) — path from repo root: `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`.
+
+That file covers two smoke paths against the fixture flat config:
+
+1. **Detection path (`fix: false`)**: instantiates ESLint with `cwd` on the Nest workspace, calls `lintFiles` on `src/fixture-hardcodes/**/*.ts`, and asserts stable counts for `hardcode-detect/hello-world` and `hardcode-detect/no-hardcoded-strings`.
+2. **Autofix path (`fix: true`)**: creates one controlled temporary file (`src/autofix-smoke.e2e.ts`) inside the Nest fixture, applies a local `overrideConfig` (`remediationMode: "r1"`) for that smoke file, runs `ESLint({ fix: true })` plus `ESLint.outputFixes(results)`, and verifies that `no-hardcoded-strings` is fixed while preserving the expected `hello-world` report. The temporary file is removed in the test `finally` block.
+
+Norms and count table: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
 
 Requires **Node.js ≥ 22** (aligned with CI and the package `engines` field).
 
