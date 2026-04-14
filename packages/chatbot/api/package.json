@@ -1,6 +1,6 @@
 {
   "name": "mfe-chatbot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI Chatbot Chatbot - Proxy para api-proxy-openrouter com scripts de atendimento",
   "author": "Chatbot",
   "private": true,
