@@ -1,4 +1,0 @@
-{
-  "failure_signal_detected": true,
-  "last_failing_command": "git diff -- packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts packages/eslint-plugin-hardcode-detect/tests/index.test.mjs packages/eslint-plugin-hardcode-detect/package.json packages/eslint-plugin-hardcode-detect/CHANGELOG.md | sed -n '1,260p'"
-}
