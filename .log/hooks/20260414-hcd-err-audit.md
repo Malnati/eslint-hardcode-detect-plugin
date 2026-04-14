@@ -1209,3 +1209,21 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro elegível acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T16:18:25Z`
+- `conversation_id`: `5cbbf7d6-795f-4477-b35d-05568da8130d`
+- `generation_id`: `ce14997e-e090-4df7-9f9f-0e759c98041e`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/5cbbf7d6-795f-4477-b35d-05568da8130d/5cbbf7d6-795f-4477-b35d-05568da8130d.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L44
