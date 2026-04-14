@@ -807,3 +807,28 @@ _Nenhum ficheiro elegível acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T14:01:07Z`
+- `conversation_id`: `2dd3bc3f-d755-4250-8a12-4272670e2560`
+- `generation_id`: `c6b2d649-f42c-4a03-8331-bd312ced137e`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/2dd3bc3f-d755-4250-8a12-4272670e2560/2dd3bc3f-d755-4250-8a12-4272670e2560.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `.github/pull_request_template.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `CODE_OF_CONDUCT.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `CONTRIBUTING.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `SECURITY.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `SUPPORT.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
