@@ -16,6 +16,8 @@ jobs:
           node-version: "22"
       - name: Install
         run: npm install
+      - name: Build workspace
+        run: npm run build -w eslint-plugin-hardcode-detect
       - name: Lint workspace
         run: npm run lint
       - name: Test workspace

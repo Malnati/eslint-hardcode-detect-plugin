@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/v/eslint-plugin-hardcode-detect" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/v/eslint-plugin-hardcode-detect?color=brightgreen" alt="npm version" /></a>
   <a href="https://www.npmjs.com/package/eslint-plugin-hardcode-detect"><img src="https://img.shields.io/npm/dm/eslint-plugin-hardcode-detect" alt="npm monthly downloads" /></a>
   <a href="https://github.com/malnati/eslint-hardcode-detect-plugin/actions/workflows/ci.yml"><img src="https://github.com/malnati/eslint-hardcode-detect-plugin/actions/workflows/ci.yml/badge.svg" alt="CI status" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="license MIT" /></a>
@@ -72,6 +72,7 @@ flowchart TD
 
 ## Community
 
+- Social preview (branding / partilha): [`docs/social-preview-image.md`](docs/social-preview-image.md) e [`docs/assets/social-preview.png`](docs/assets/social-preview.png)
 - Start here: [`packages/eslint-plugin-hardcode-detect/README.md`](packages/eslint-plugin-hardcode-detect/README.md)
 - Contributing guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Code of conduct: [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md)
