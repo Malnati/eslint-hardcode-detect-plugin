@@ -4,7 +4,7 @@ Marco: [`../../m3-channel-t4-t6.md`](../../m3-channel-t4-t6.md) · **GitHub:** `
 
 **Micro-tarefas:** [`micro/README.md`](micro/README.md).
 
-**Cobertura do plano (§4, §6, §7, §10):** [`coverage-manifest.json`](coverage-manifest.json) — validação: `npm run test:docs-milestones` na raiz do repositório.
+**Cobertura do plano (§4, §6, §7, §10):** [`coverage-manifest.json`](coverage-manifest.json).
 
 ## Grafo de dependências (Camada A)
 

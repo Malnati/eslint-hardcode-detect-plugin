@@ -2,7 +2,7 @@
 
 Marco: [`../../m5-release-candidate.md`](../../m5-release-candidate.md) · **GitHub:** `release-candidate`
 
-**Micro-tarefas / manifesto:** nesta iteração **não** há `coverage-manifest.json` nem pasta `micro/` — a validação `npm run test:docs-milestones` continua a cobrir apenas M0–M3 (ver [`scripts/validate-milestone-plan-coverage.mjs`](../../../../scripts/validate-milestone-plan-coverage.mjs)).
+**Micro-tarefas / manifesto:** nesta iteração **não** há `coverage-manifest.json` nem pasta `micro/`.
 
 **Evidências (artefactos ao executar Camada A):**
 

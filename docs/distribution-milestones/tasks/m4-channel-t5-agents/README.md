@@ -2,7 +2,7 @@
 
 Marco: [`../../m4-channel-t5-agents.md`](../../m4-channel-t5-agents.md) · **GitHub:** `channel-t5-agents`
 
-**Micro-tarefas / manifesto:** nesta iteração **não** há `coverage-manifest.json` nem pasta `micro/` — a validação `npm run test:docs-milestones` continua a cobrir apenas M0–M3 (ver [`scripts/validate-milestone-plan-coverage.mjs`](../../../../scripts/validate-milestone-plan-coverage.mjs)). Uma fase futura pode acrescentar micro-tarefas `M4-*` e alargar o script.
+**Micro-tarefas / manifesto:** nesta iteração **não** há `coverage-manifest.json` nem pasta `micro/`. Uma fase futura pode acrescentar micro-tarefas `M4-*` e alargar o script.
 
 **Evidência A1 (inventário T5):** [`evidence/T5-normative-files-inventory.md`](evidence/T5-normative-files-inventory.md) — tabelas por superfície (`.cursor/`, `.github/agents/`, `.github/instructions/`), checklist de coerência e gaps vs [`specs/agent-tooling-ecosystem-map.md`](../../../../specs/agent-tooling-ecosystem-map.md).
 

@@ -48,7 +48,7 @@ Com workspace do IDE aberto na **raiz** do monorepo e `eslint.workingDirectories
 
 - Quadro normativo em [`docs/distribution-milestones/m2-channel-t3-ci.md`](../../../m2-channel-t3-ci.md) §2: entrada T3 consome T2/T1; **saída para T4** — regras e config **já comprovadas em CI** para documentar consumo IDE/LSP sem ambiguidade; risco se falhar: IDE referir comandos que o CI não executa.
 - Lista reutilizável do handoff: [`M2-A3-02-handoff-t4-o-que-ci-garante.md`](../../m2-channel-t3-ci/micro/M2-A3-02-handoff-t4-o-que-ci-garante.md).
-- Bullets operacionais do pipeline (instalação, `test:docs-milestones`, `lint`, testes do workspace do plugin): secção «O que o T3 (CI) já valida (handoff)» em [`M3-A1-02-passos-eslint-config-workspace-settings.md`](M3-A1-02-passos-eslint-config-workspace-settings.md) — evita duplicar parágrafos longos aqui.
+- Bullets operacionais do pipeline (instalação, `test:docs-m0`, `lint`, testes do workspace do plugin): secção «O que o T3 (CI) já valida (handoff)» em [`M3-A1-02-passos-eslint-config-workspace-settings.md`](M3-A1-02-passos-eslint-config-workspace-settings.md) — evita duplicar parágrafos longos aqui.
 
 ### Ligação à matriz M3 (plano do marco)
 

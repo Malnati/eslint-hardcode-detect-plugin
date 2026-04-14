@@ -11,7 +11,7 @@
 
 ## Objetivo
 
-Garantir que o nome dos steps em [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml) (ex.: validação `test:docs-milestones`) reflecte os manifestos M0–M2 e que a documentação aponta para `npm run test:docs-milestones` na raiz.
+Garantir que o nome dos steps em [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml) (ex.: validação `test:docs-m0`) reflecte os manifestos M0–M2 e que a documentação aponta para `npm run test:docs-m0` na raiz.
 
 ## Definition of done
 

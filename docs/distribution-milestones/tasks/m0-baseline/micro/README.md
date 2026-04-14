@@ -49,4 +49,4 @@ Na raiz do repositório:
 node scripts/validate-milestone-plan-coverage.mjs
 ```
 
-Ou `npm run test:docs-m0` / `npm run test:docs-milestones` (ver [`package.json`](../../../../../package.json) na raiz).
+Ou `npm run test:docs-m0` / `npm run test:docs-m0` (ver [`package.json`](../../../../../package.json) na raiz).

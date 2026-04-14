@@ -8,4 +8,4 @@
 | A2 | [`A2-concurrency-adr.md`](A2-concurrency-adr.md) |
 | A3 | Sub-micro-tarefas por papel: [`micro/README.md`](micro/README.md) (prefixo `M2-A3-*`) |
 
-**Manifesto de cobertura:** [`coverage-manifest.json`](coverage-manifest.json) — validação com `npm run test:docs-milestones` na raiz (requer entradas em `scripts/validate-milestone-plan-coverage.mjs`).
+**Manifesto de cobertura:** [`coverage-manifest.json`](coverage-manifest.json).

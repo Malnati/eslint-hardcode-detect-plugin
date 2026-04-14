@@ -8,4 +8,4 @@
 | A2 | [`A2-opt-in-aggressive-fix-schema.md`](A2-opt-in-aggressive-fix-schema.md) |
 | A3 | [`A3-consumer-guide-secrets.md`](A3-consumer-guide-secrets.md) |
 
-**Manifesto de cobertura:** [`coverage-manifest.json`](coverage-manifest.json) — validação com `npm run test:docs-milestones` na raiz (requer entradas em `scripts/validate-milestone-plan-coverage.mjs`).
+**Manifesto de cobertura:** [`coverage-manifest.json`](coverage-manifest.json).

@@ -26,11 +26,11 @@ Documentar o **alvo normativo** para T6: o hook deve invocar o **mesmo** caminho
 
 ## Alinhamento CLI / lint / CI — alvo normativo para T6 (entregável)
 
-Comandos canónicos alinhados ao job `test` em [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml) (após `npm install`): o pipeline executa, por esta ordem, `npm run test:docs-milestones`, `npm run lint` e `npm test -w eslint-plugin-hardcode-detect`. Os scripts na raiz do monorepo estão em [`package.json`](../../../../../package.json) (`lint` e `test` delegam ao workspace `eslint-plugin-hardcode-detect`).
+Comandos canónicos alinhados ao job `test` em [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml) (após `npm install`): o pipeline executa, por esta ordem, `npm run lint` e `npm test -w eslint-plugin-hardcode-detect`. Os scripts na raiz do monorepo estão em [`package.json`](../../../../../package.json) (`lint` e `test` delegam ao workspace `eslint-plugin-hardcode-detect`).
 
 - **Lint (alvo principal para um hook de pré-commit que espelhe o CI):** `npm run lint` na raiz — corresponde ao passo *Lint workspace* do workflow e ao fluxo descrito em [`CONTRIBUTING.md`](../../../../../CONTRIBUTING.md) («Fluxo recomendado»).
 - **Testes do plugin:** `npm test -w eslint-plugin-hardcode-detect`, ou `npm test` na raiz (equivalente ao script raiz) — corresponde ao passo *Test workspace* do CI.
-- **Cobertura do plano de milestones (docs):** `npm run test:docs-milestones` — corresponde ao passo *Validate distribution milestone plan coverage (M0–M2)*; no CI corre **antes** do lint.
+- **Cobertura do plano de milestones (docs):** `npm run test:docs-m0` — corresponde ao passo *Validate distribution milestone plan coverage (M0–M2)*; no CI corre **antes** do lint.
 - **Contribuidores e agentes:** seguir o fluxo recomendado em [`CONTRIBUTING.md`](../../../../../CONTRIBUTING.md); o **CI continua a fonte de verdade** para o que é executado em runner.
 
 **Ponte M2:** o marco T3 e a matriz prod/CI estão documentados em [`docs/distribution-milestones/m2-channel-t3-ci.md`](../../../m2-channel-t3-ci.md) (em especial a secção 6 e o handoff «o que o CI garante» para T4). O workflow atual materializa essa pipeline reprodutível; qualquer hook T6 deve invocar o **mesmo** tipo de comandos (raiz do monorepo, mesmos scripts), não atalhos paralelos (`npx eslint` isolado, outro diretório de trabalho) salvo decisão documentada e alinhada ao M2.

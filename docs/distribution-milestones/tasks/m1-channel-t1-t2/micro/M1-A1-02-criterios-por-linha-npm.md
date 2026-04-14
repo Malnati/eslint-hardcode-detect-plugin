@@ -38,7 +38,7 @@ Definir **critérios de sucesso reprodutíveis** por linha da matriz T1 (ex.: pr
 
 ## Critérios por linha T1
 
-Cada linha corresponde ao inventário em M1-A1-01. **Sucesso** para linhas *Parcial*: fluxo completo abaixo termina com **código de saída 0** e as verificações mínimas satisfeitas. Para espelhar o **mesmo** pipeline que o CI, na raiz: `npm install` → `npm run test:docs-milestones` → `npm run lint` → `npm test -w eslint-plugin-hardcode-detect` (todos com exit `0`).
+Cada linha corresponde ao inventário em M1-A1-01. **Sucesso** para linhas *Parcial*: fluxo completo abaixo termina com **código de saída 0** e as verificações mínimas satisfeitas. Para espelhar o **mesmo** pipeline que o CI, na raiz: `npm install` → `npm run lint` → `npm test -w eslint-plugin-hardcode-detect` (todos com exit `0`).
 
 | Canal T1 | Comando(s) reprodutíveis | Evidência CI / job | Código de saída | Verificação mínima | Estado / lacuna |
 |----------|---------------------------|--------------------|-----------------|-------------------|-----------------|

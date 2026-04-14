@@ -12,7 +12,7 @@ Marco M2 · âncoras [`../A1-audit-ci-yml-vs-compose-prod.md`](../A1-audit-ci-ym
 | Variável `CI` | Definida pelo runner | `CI=true` no serviço | Rever impacto em scripts que condicionam a `CI` |
 | Lint | `npm run lint` (workspace plugin) | `npm run lint` | Alinhado após instalação coerente |
 | Testes do plugin | `npm test -w eslint-plugin-hardcode-detect` | `npm test -w eslint-plugin-hardcode-detect` | Alinhado após instalação coerente |
-| Validação manifest milestones | `npm run test:docs-milestones` | *Não presente* no comando `prod` | Gap esperado — cobertura documental extra no CI |
+| Validação manifest milestones | `npm run test:docs-m0` | *Não presente* no comando `prod` | Gap esperado — cobertura documental extra no CI |
 | Node | 22 via `actions/setup-node` | `node:22-bookworm-slim` | Alinhado (major) |
 
 ## Conclusão (checklist DoD)
