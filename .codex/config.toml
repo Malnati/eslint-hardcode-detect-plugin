@@ -1,0 +1,9 @@
+# Configuração local (por projeto) para equivalência Cursor -> Codex CLI.
+# Não altera ~/.codex/config.toml.
+
+[features]
+codex_hooks = true
+
+[mcp_servers.hcd_err_local]
+command = "python3"
+args = [".codex/mcp/hcd_audit_server.py"]

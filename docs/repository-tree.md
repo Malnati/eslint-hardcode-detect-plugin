@@ -9,19 +9,25 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
-├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke do hook HCD-ERR, verify ficheiros normativos T5, Cursor headless micro M1)
+├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke Cursor/Codex de hook HCD-ERR, verify ficheiros normativos T5, Cursor headless micro M1)
 │   ├── fixtures/             # Massa para smoke (ex.: corpo inválido HCD-ERR para o hook)
 │   │   └── smoke-hcd-err-violation-body.md
 │   ├── validate-milestone-plan-coverage.mjs
 │   ├── verify-normative-agent-files.mjs
 │   ├── run-m1-remediation-micro-cursor-headless.sh  # Sequência headless das micro M1 (Cursor CLI agent -p)
-│   └── smoke-cursor-hcd-err-hook.sh
+│   ├── smoke-cursor-hcd-err-hook.sh
+│   └── smoke-codex-hcd-err-hooks.sh
 ├── docker-compose.yml        # Perfis dev / e2e / prod / e2e-ops (ver specs/agent-docker-compose.md)
 ├── .dockerignore             # Contexto de build da imagem ops-eslint
 ├── .docker/
 │   └── Dockerfile            # Imagem ESLint para Composite Action ops-eslint
 ├── .gitignore
 ├── .log/                     # Ex.: hooks/YYYYMMDD-hcd-err-audit.md (versionável); hooks/.state/ ignorado no Git
+├── .codex/
+│   ├── config.toml           # Config local por projeto (hooks + servidor MCP local)
+│   ├── hooks.json            # Hooks Codex (UserPromptSubmit, PreToolUse, PostToolUse, Stop)
+│   ├── hooks/                # Scripts Python da automação Codex (gate, auditoria HCD-ERR, snapshots)
+│   └── mcp/                  # Servidor MCP STDIO local (hcd-err-local)
 ├── .cursor/
 │   ├── hooks.json            # Hooks do Cursor (auditoria HCD-ERR após Write + stop; ver .cursor/hooks/)
 │   ├── hooks/                # Scripts invocados por hooks.json (ex.: hcd-err-triple-audit.sh)
@@ -57,6 +63,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── docs/                     # Documentação complementar
 │   ├── README.md             # Índice dos guias em docs/
 │   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, verificação de hooks e smoke
+│   ├── codex-cli-hooks-equivalence.md  # Equivalência Cursor -> Codex CLI (hooks + MCP local)
 │   ├── architecture.md
 │   ├── documentation-policy.md
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
@@ -218,6 +225,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 - **Implementação**: `packages/eslint-plugin-hardcode-detect/`.
 - **Massa e2e Nest**: `packages/e2e-fixture-nest/` (ver [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md)).
 - **Normas de produto e agente**: `specs/` + `AGENTS.md` + `.cursor/rules/`; pontes opcionais GitHub Copilot em `.github/agents/` e `.github/instructions/` (ver [`specs/agent-tooling-ecosystem-map.md`](../specs/agent-tooling-ecosystem-map.md)).
+- **Automação Codex local**: `.codex/hooks.json` + `.codex/hooks/` + `.codex/mcp/` (equivalência do fluxo Cursor em [`docs/codex-cli-hooks-equivalence.md`](codex-cli-hooks-equivalence.md)).
 - **Referência**: `reference/Clippings/` (documentação oficial espelhada), `reference/legacy-snapshot/` (histórico); somente leitura para código em `packages/`.
 
 ## Diagrama (visão lógica)

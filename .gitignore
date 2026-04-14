@@ -6,4 +6,6 @@ coverage/
 # `*.log` casa também com o segmento de caminho `.log`; permitir versionar `.log/` (auditoria do hook).
 !.log/
 !.log/**
+.log/hooks/.state/
+.codex/**/__pycache__/
 .DS_Store
