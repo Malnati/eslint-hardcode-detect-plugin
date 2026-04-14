@@ -1,33 +1,28 @@
-# Arquitetura do repositório
+# Repository architecture
 
-## Visão geral
+## Overview
 
-Este repositório separa três preocupações:
+This repository separates four concerns:
 
-1. **Pacote npm** ([`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect)) — implementação oficial do plugin ESLint, versionada e testável.
-2. **Referência congelada** ([`reference/`](../reference/)) — snapshots históricos; não entram na cadeia de dependências do pacote.
-3. **Automação GitHub** ([`.github/actions/ops-eslint`](../.github/actions/ops-eslint)) — composite action que executa ESLint em container; exige imagem Docker e [`.docker/Dockerfile`](../.docker/Dockerfile) na raiz do checkout quando `build_image` estiver ativo.
-4. **Docker Compose** ([`docker-compose.yml`](../docker-compose.yml)) — perfis `dev` (shell interativo), `e2e` (`npm ci` + testes do workspace do plugin) e `prod` (lint do monorepo + testes do plugin), normatizados em [`specs/agent-docker-compose.md`](../specs/agent-docker-compose.md). A imagem de tooling só com ESLint (`.docker/Dockerfile`, tag padrão `malnati-ops-eslint:local`) é distinta dos serviços baseados em `node:22-bookworm-slim` usados para instalar dependências do repositório.
+1. **npm package** ([`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect)) — official ESLint plugin implementation, versioned and testable.
+2. **Frozen reference** ([`reference/`](../reference/)) — historical snapshots; not part of the package dependency chain.
+3. **GitHub automation** ([`.github/actions/ops-eslint`](../.github/actions/ops-eslint)) — composite action that runs ESLint in a container; requires a Docker image and [`.docker/Dockerfile`](../.docker/Dockerfile) at the checkout root when `build_image` is enabled.
+4. **Docker Compose** ([`docker-compose.yml`](../docker-compose.yml)) — profiles `dev` (interactive shell), `e2e` (`npm ci` + plugin workspace tests), and `prod` (monorepo lint + plugin tests), defined in [`specs/agent-docker-compose.md`](../specs/agent-docker-compose.md). The ESLint-only tooling image (`.docker/Dockerfile`, default tag `malnati-ops-eslint:local`) is separate from services based on `node:22-bookworm-slim` used to install repository dependencies.
 
-## Fluxo de decisão
+## Decision flow
 
-- Comportamento novo ou alterado de regras: atualizar primeiro [`specs/plugin-contract.md`](../specs/plugin-contract.md), depois o código em `packages/`.
-- Mudanças apenas documentais podem ir em `docs/` e no README.
+- New or changed rule behavior: update [`specs/plugin-contract.md`](../specs/plugin-contract.md) first, then code under `packages/`.
+- Documentation-only changes may go in `docs/` and the README.
 
-## Distribuição
+## Distribution
 
-- **npm**: o artefato publicável é o pacote sob `packages/`.
-- **GitHub Actions**: consumidores podem referenciar `uses: ./.github/actions/ops-eslint` neste repositório ou o caminho publicado após release.
+- **npm**: the publishable artifact is the package under `packages/`.
+- **GitHub Actions**: consumers may reference `uses: ./.github/actions/ops-eslint` in this repository or the published path after release.
 
-## Versionamento (agentes)
+## Versioning (agents)
 
-Fluxo normativo: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md) e [`docs/versioning-for-agents.md`](versioning-for-agents.md). Agentes devem fazer commit e push ao concluir trabalho com alterações locais, salvo ausência de mudanças ou falha de push documentada.
+Normative flow: [`specs/agent-git-workflow.md`](../specs/agent-git-workflow.md) and [`docs/versioning-for-agents.md`](versioning-for-agents.md). Agents should commit and push when finishing work with local changes, unless there are no changes or push failure is documented.
 
-## Documentação (agentes)
+## Documentation (agents)
 
-Fluxo normativo: [`specs/agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md), política em [`documentation-policy.md`](documentation-policy.md) e grafo em [`repository-tree.md`](repository-tree.md). Qualquer mudança estrutural exige atualização do grafo e coerência com [`limitations-and-scope.md`](limitations-and-scope.md) e [`specs/vision-hardcode-plugin.md`](../specs/vision-hardcode-plugin.md) quando o escopo evoluir.
-</think>
-
-
-<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
-Shell
+Normative flow: [`specs/agent-documentation-workflow.md`](../specs/agent-documentation-workflow.md), policy in [`documentation-policy.md`](documentation-policy.md), and graph in [`repository-tree.md`](repository-tree.md). Any structural change requires updating the graph and staying aligned with [`limitations-and-scope.md`](limitations-and-scope.md) and [`specs/vision-hardcode-plugin.md`](../specs/vision-hardcode-plugin.md) when scope evolves.

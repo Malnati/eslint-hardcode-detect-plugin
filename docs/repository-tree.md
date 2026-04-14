@@ -1,39 +1,39 @@
-# Grafo de arquivos e diretórios
+# File and directory graph
 
-Documentação da organização do repositório. **Atualize este arquivo quando criar, mover ou remover diretórios ou documentos normativos.**
+Documentation of repository layout. **Update this file when you create, move, or remove directories or normative documents.**
 
 ```text
 .
-├── AGENTS.md                 # Instruções para agentes de IA e prioridades do repo
-├── CONTRIBUTING.md           # Como contribuir (humanos e agentes)
-├── LICENSE                   # Licença do projeto
-├── README.md                 # Entrada principal no GitHub
-├── package.json              # Monorepo npm (workspaces)
-├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, release npm, smoke Cursor/Codex de hook HCD-ERR, verify ficheiros normativos T5, Cursor headless micro M1)
-│   ├── fixtures/             # Massa para smoke (ex.: corpo inválido HCD-ERR para o hook)
+├── AGENTS.md                 # Instructions for AI agents and repo priorities
+├── CONTRIBUTING.md           # How to contribute (humans and agents)
+├── LICENSE                   # Project license
+├── README.md                 # Main GitHub entry point
+├── package.json              # npm monorepo (workspaces)
+├── scripts/                  # Root helper scripts (e.g. M0/M1 plan coverage validation, npm release, Cursor/Codex HCD-ERR hook smoke, T5 normative file verify, Cursor headless M1 micro sequence)
+│   ├── fixtures/             # Smoke fixtures (e.g. invalid HCD-ERR body for the hook)
 │   │   └── smoke-hcd-err-violation-body.md
 │   ├── validate-milestone-plan-coverage.mjs
 │   ├── verify-normative-agent-files.mjs
-│   ├── npm-release.mjs       # Orquestra precheck/auth/check-version/publish/smoke com NPM_ACCESS_TOKEN
-│   ├── run-m1-remediation-micro-cursor-headless.sh  # Sequência headless das micro M1 (Cursor CLI agent -p)
+│   ├── npm-release.mjs       # Orchestrates precheck/auth/check-version/publish/smoke with NPM_ACCESS_TOKEN
+│   ├── run-m1-remediation-micro-cursor-headless.sh  # Headless M1 micro sequence (Cursor CLI agent -p)
 │   ├── smoke-cursor-hcd-err-hook.sh
 │   └── smoke-codex-hcd-err-hooks.sh
-├── docker-compose.yml        # Perfis dev / e2e / prod / e2e-ops (ver specs/agent-docker-compose.md)
-├── .dockerignore             # Contexto de build da imagem ops-eslint
+├── docker-compose.yml        # dev / e2e / prod / e2e-ops profiles (see specs/agent-docker-compose.md)
+├── .dockerignore             # Build context for ops-eslint image
 ├── .docker/
-│   └── Dockerfile            # Imagem ESLint para Composite Action ops-eslint
+│   └── Dockerfile            # ESLint image for Composite Action ops-eslint
 ├── .gitignore
-├── .log/                     # Ex.: hooks/YYYYMMDD-hcd-err-audit.md (versionável); hooks/.state/ ignorado no Git
+├── .log/                     # e.g. hooks/YYYYMMDD-hcd-err-audit.md (versionable); hooks/.state/ gitignored
 ├── .codex/
-│   ├── config.toml           # Config local por projeto (hooks + servidor MCP local)
-│   ├── hooks.json            # Hooks Codex (UserPromptSubmit, PreToolUse, PostToolUse, Stop)
-│   ├── hooks/                # Scripts Python da automação Codex (gate, auditoria HCD-ERR, snapshots)
-│   └── mcp/                  # Servidor MCP STDIO local (hcd-err-local)
+│   ├── config.toml           # Per-project local config (hooks + local MCP server)
+│   ├── hooks.json            # Codex hooks (UserPromptSubmit, PreToolUse, PostToolUse, Stop)
+│   ├── hooks/                # Python scripts for Codex automation (gate, HCD-ERR audit, snapshots)
+│   └── mcp/                  # Local MCP STDIO server (hcd-err-local)
 ├── .cursor/
-│   ├── hooks.json            # Hooks do Cursor (auditoria HCD-ERR após Write + stop; ver .cursor/hooks/)
-│   ├── hooks/                # Scripts invocados por hooks.json (ex.: hcd-err-triple-audit.sh)
-│   ├── commands/             # Comandos Cursor (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
-│   ├── rules/                # Regras Cursor (alwaysApply conforme cada arquivo)
+│   ├── hooks.json            # Cursor hooks (HCD-ERR audit after Write + stop; see .cursor/hooks/)
+│   ├── hooks/                # Scripts invoked from hooks.json (e.g. hcd-err-triple-audit.sh)
+│   ├── commands/             # Cursor commands (/abrir-prompt-agente, /fechar-prompt-agente, /fechar-e2e-nest-fixture)
+│   ├── rules/                # Cursor rules (alwaysApply per file)
 │   │   ├── agent-error-messaging-triple.mdc
 │   │   ├── agent-ia-governance.mdc
 │   │   ├── agent-integration-testing-policy.mdc
@@ -47,7 +47,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── git-versioning.mdc
 │   │   ├── repo-layout.mdc
 │   │   └── repo-relative-paths.mdc
-│   └── skills/               # Skills reutilizáveis pelos agentes
+│   └── skills/               # Reusable agent skills
 │       ├── agent-error-messaging-triple/
 │       ├── docker-compose-workflow/
 │       ├── eslint-plugin-workflow/
@@ -57,24 +57,24 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── reference-clippings-workflow/
 │       └── remediation-micro-roles-workflow/
 ├── .github/
-│   ├── agents/               # Agentes GitHub Copilot (pontes: eslint-hardcode-plugin, docker-tooling, hcd-err-messaging)
-│   ├── instructions/         # Instruções Copilot (applyTo: pacote, docker-compose, marcos *-milestones)
+│   ├── agents/               # GitHub Copilot agents (bridges: eslint-hardcode-plugin, docker-tooling, hcd-err-messaging)
+│   ├── instructions/         # Copilot instructions (applyTo: package, docker-compose, *-milestones)
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
-│   └── workflows/            # CI e release (ex.: ci.yml, release-npm.yml)
-├── docs/                     # Documentação complementar
-│   ├── README.md             # Índice dos guias em docs/
-│   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, verificação de hooks e smoke
-│   ├── codex-cli-hooks-equivalence.md  # Equivalência Cursor -> Codex CLI (hooks + MCP local)
+│   └── workflows/            # CI and release (e.g. ci.yml, release-npm.yml)
+├── docs/                     # Supplementary documentation
+│   ├── README.md             # Index of guides under docs/
+│   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, hook verification and smoke
+│   ├── codex-cli-hooks-equivalence.md  # Cursor -> Codex CLI equivalence (hooks + local MCP)
 │   ├── architecture.md
 │   ├── documentation-policy.md
-│   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
-│   ├── architecture-r2-global-index.md  # Índice R2, CI, settings (marco M2)
-│   ├── adr-eslint-concurrency-r2.md  # ADR paralelismo ESLint vs estado R2
-│   ├── adr-hardcode-bin-r2-aggregation.md  # ADR: sem bin; agregação R2 in-process vs CLI duas fases (M5)
-│   ├── solution-distribution-channels.md  # Canais npm/CI/Docker/IDE/agentes
-│   ├── hardcode-remediation-macro-plan.md  # Plano macro remediação R1–R3, segredos, env, marcos M0–M5
-│   ├── distribution-channels-macro-plan.md  # Plano macro e2e por trilha, diagramas, marcos, durações
-│   ├── distribution-milestones/  # Planos M0–M5 (durações relativas, template, handoff T1→T6, Camada A/B)
+│   ├── hardcoding-map.md     # Hardcoding taxonomy and levels (conceptual map)
+│   ├── architecture-r2-global-index.md  # R2 index, CI, settings (M2 milestone)
+│   ├── adr-eslint-concurrency-r2.md  # ADR: ESLint parallelism vs R2 state
+│   ├── adr-hardcode-bin-r2-aggregation.md  # ADR: no bin; R2 in-process aggregation vs two-phase CLI (M5)
+│   ├── solution-distribution-channels.md  # npm/CI/Docker/IDE/agent channels
+│   ├── hardcode-remediation-macro-plan.md  # Macro remediation plan R1–R3, secrets, env, M0–M5 milestones
+│   ├── distribution-channels-macro-plan.md  # Macro e2e plan by track, diagrams, milestones, durations
+│   ├── distribution-milestones/  # M0–M5 plans (relative durations, template, T1→T6 handoff, Layer A/B)
 │   │   ├── README.md
 │   │   ├── milestone-template.md
 │   │   ├── m0-baseline.md
@@ -83,10 +83,10 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m3-channel-t4-t6.md
 │   │   ├── m4-channel-t5-agents.md
 │   │   ├── m5-release-candidate.md
-│   │   └── tasks/                # Ficheiros Camada A por marco (modelo + M0–M5; M0–M3 com micro/manifesto)
+│   │   └── tasks/                # Layer A files per milestone (template + M0–M5; M0–M3 with micro/manifest)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
-│   │       ├── m0-baseline/      # Tarefas M0 Camada A (âncoras + micro + evidence + manifesto)
+│   │       ├── m0-baseline/      # M0 Layer A tasks (anchors + micro + evidence + manifest)
 │   │       │   ├── README.md
 │   │       │   ├── A1-index-milestones-readme.md
 │   │       │   ├── A2-macro-plan-index.md
@@ -98,8 +98,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │       │   │   └── A4-plugin-contract-gap-matrix.md
 │   │       │   └── micro/
 │   │       │       ├── README.md
-│   │       │       └── M0-A*-*.md            # 15 micro-tarefas (M0-A1-01 … M0-A5-03)
-│   │       └── m1-channel-t1-t2/   # Tarefas M1 Camada A (T1/T2 + micro + manifesto)
+│   │       │       └── M0-A*-*.md            # 15 micro-tasks (M0-A1-01 … M0-A5-03)
+│   │       └── m1-channel-t1-t2/   # M1 Layer A tasks (T1/T2 + micro + manifest)
 │   │           ├── README.md
 │   │           ├── A1-npm-matrix-t1.md
 │   │           ├── A2-smoke-ops-eslint-image.md
@@ -109,8 +109,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           │   └── T1-t2-parity-gap-matrix.md
 │   │           └── micro/
 │   │               ├── README.md
-│   │               └── M1-A*-*.md            # 9 micro-tarefas (M1-A1-01 … M1-A3-03)
-│   │       └── m2-channel-t3-ci/   # Tarefas M2 Camada A (T3 CI + micro + manifesto)
+│   │               └── M1-A*-*.md            # 9 micro-tasks (M1-A1-01 … M1-A3-03)
+│   │       └── m2-channel-t3-ci/   # M2 Layer A tasks (T3 CI + micro + manifest)
 │   │           ├── README.md
 │   │           ├── A1-audit-ci-yml-vs-compose-prod.md
 │   │           ├── A2-ci-artifacts-logs-policy.md
@@ -120,8 +120,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           │   └── T3-ci-prod-parity-gap-matrix.md
 │   │           └── micro/
 │   │               ├── README.md
-│   │               └── M2-A*-*.md            # 9 micro-tarefas (M2-A1-01 … M2-A3-03)
-│   │       └── m3-channel-t4-t6/   # Tarefas M3 Camada A (T4 IDE + preparação T6 + micro + manifesto)
+│   │               └── M2-A*-*.md            # 9 micro-tasks (M2-A1-01 … M2-A3-03)
+│   │       └── m3-channel-t4-t6/   # M3 Layer A tasks (T4 IDE + T6 prep + micro + manifest)
 │   │           ├── README.md
 │   │           ├── A1-guia-ide-eslint-flat-config.md
 │   │           ├── A2-esboco-politica-git-hooks.md
@@ -129,15 +129,15 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           ├── coverage-manifest.json
 │   │           └── micro/
 │   │               ├── README.md
-│   │               └── M3-A*-*.md            # 8 micro-tarefas (M3-A1-01 … M3-A3-03)
-│   │       └── m4-channel-t5-agents/   # Tarefas M4 Camada A (T5 agentes; sem micro/manifesto nesta iteração)
+│   │               └── M3-A*-*.md            # 8 micro-tasks (M3-A1-01 … M3-A3-03)
+│   │       └── m4-channel-t5-agents/   # M4 Layer A tasks (T5 agents; no micro/manifest this iteration)
 │   │           ├── README.md
 │   │           ├── evidence/
 │   │           │   └── T5-normative-files-inventory.md
 │   │           ├── A1-inventario-cursor-github-agentes-checklist.md
 │   │           ├── A2-propor-job-verify-agent-files.md
 │   │           └── A3-docs-limites-mcp-clippings.md
-│   │       └── m5-release-candidate/   # Tarefas M5 Camada A (release; sem micro/manifesto nesta iteração)
+│   │       └── m5-release-candidate/   # M5 Layer A tasks (release; no micro/manifest this iteration)
 │   │           ├── README.md
 │   │           ├── evidence/
 │   │           │   ├── M5-semver-decision.md
@@ -146,7 +146,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │           ├── A1-definir-semver-major-minor-patch.md
 │   │           ├── A2-rascunho-notas-release.md
 │   │           └── A3-plano-smoke-pos-publish.md
-│   ├── remediation-milestones/  # Planos M0–M5 remediação R1–R3 (handoff M0→M5, template, Camada A/B)
+│   ├── remediation-milestones/  # M0–M5 remediation plans R1–R3 (M0→M5 handoff, template, Layer A/B)
 │   │   ├── README.md
 │   │   ├── milestone-template.md
 │   │   ├── m0-contract-baseline.md
@@ -155,19 +155,19 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │   ├── m3-remediation-r3-data-files.md
 │   │   ├── m4-secrets-remediation.md
 │   │   ├── m5-remediation-release.md
-│   │   └── tasks/                # Camada A por marco (modelo + pastas M0–M5)
+│   │   └── tasks/                # Layer A per milestone (template + M0–M5 folders)
 │   │       ├── README.md
 │   │       ├── TASK_FILE_TEMPLATE.md
-│   │       ├── m0-contract-baseline/   # Camada A M0 (ficheiros únicos; sem micro/)
+│   │       ├── m0-contract-baseline/   # M0 Layer A (single files; no micro/)
 │   │       │   ├── README.md
 │   │       │   ├── A1-plugin-contract-remediation-options.md
 │   │       │   ├── A2-vision-alignment.md
 │   │       │   └── A3-limits-and-tree-crosscheck.md
-│   │       ├── m1-remediation-r1/    # coverage-manifest.json; micro/ (M1-A1, M1-A2); A1-architect-…; A2-architect-suggest-vs-fix-policy-ci-environment.md; A2-business-analyst-suggest-vs-fix-policy-acceptance.md; A2-business-reviewer-suggest-vs-fix-policy-signoff.md; A2-development-reviewer-suggest-vs-fix-policy-signoff.md; A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md; A2-test-reviewer-suggest-vs-fix-policy-signoff.md; A2-test-runner-suggest-vs-fix-policy-evidence.md; A1-business-analyst-ruletester-r1-acceptance.md; A1-business-reviewer-ruletester-r1-signoff.md; A1-test-analyst-ruletester-r1-matrix-evidence.md; A3-contract-sync…
-│   │       ├── m2-remediation-r2-global/  # coverage-manifest.json; micro/ (M2-A1, M2-A3); A2-concurrency-adr…
-│   │       ├── m3-remediation-r3-data-files/  # coverage-manifest.json; micro/ (M3-A1, M3-A3); A2-data-file-path-policy…
+│   │       ├── m1-remediation-r1/    # coverage-manifest.json; micro/ (M1-A1, M1-A2); A1-architect-…; A2 suggest-vs-fix policy suite; A1 RuleTester R1 acceptance/signoff; A3 contract sync…
+│   │       ├── m2-remediation-r2-global/  # coverage-manifest.json; micro/ (M2-A1, M2-A3); A2 concurrency ADR…
+│   │       ├── m3-remediation-r3-data-files/  # coverage-manifest.json; micro/ (M3-A1, M3-A3); A2 data-file path policy…
 │   │       ├── m4-secrets-remediation/  # coverage-manifest.json; micro/ (M4-A1); A2/A3…
-│   │       └── m5-remediation-release/   # Camada A M5 (semver, adopção, decisão bin)
+│   │       └── m5-remediation-release/   # M5 Layer A (semver, adoption, bin decision)
 │   │           ├── README.md
 │   │           ├── A1-semver-release-notes.md
 │   │           ├── A2-adoption-guide.md
@@ -176,92 +176,92 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   │               ├── M5-semver-decision.md
 │   │               └── M5-release-notes-draft.md
 │   ├── limitations-and-scope.md
-│   ├── repository-tree.md    # Este arquivo
+│   ├── repository-tree.md    # This file
 │   └── versioning-for-agents.md
 ├── packages/
-│   ├── e2e-fixture-nest/               # Workspace NestJS: massa e2e (não publicável como plugin)
-│   │   ├── src/fixture-hardcodes/      # Literais fixos com contagens no e2e
-│   │   └── eslint.config.mjs           # Flat config + plugin via dist do pacote irmão
-│   └── eslint-plugin-hardcode-detect/  # Pacote npm do plugin (implementação oficial)
-│       ├── CHANGELOG.md                # Histórico semver do pacote publicável
-│       ├── docs/rules/                 # Uma página por regra do contrato (hello-world, no-hardcoded-strings, standardize-error-messages)
-│       ├── e2e/                        # Fumaça e2e (ESLint API + fixtures consumidor)
-│       │   ├── fixtures/hello-world/   # Flat config mínimo + amostra
-│       │   ├── fixtures/r2-dup/        # Dois .mjs, mesmo literal (trilha R2)
-│       │   ├── fixtures/r3-data/      # Trilha R3: merge JSON/YAML (r3-out/ gerado; ver .gitignore)
+│   ├── e2e-fixture-nest/               # NestJS workspace: e2e fixture (not publishable as the plugin)
+│   │   ├── src/fixture-hardcodes/      # Fixed literals with e2e counts
+│   │   └── eslint.config.mjs           # Flat config + plugin via sibling package dist
+│   └── eslint-plugin-hardcode-detect/  # npm plugin package (official implementation)
+│       ├── CHANGELOG.md                # Semver history of publishable package
+│       ├── docs/rules/                 # One page per contract rule (hello-world, no-hardcoded-strings, standardize-error-messages)
+│       ├── e2e/                        # e2e smoke (ESLint API + consumer fixtures)
+│       │   ├── fixtures/hello-world/   # Minimal flat config + sample
+│       │   ├── fixtures/r2-dup/        # Two .mjs files, same literal (R2 track)
+│       │   ├── fixtures/r3-data/      # R3 track: JSON/YAML merge (r3-out/ generated; see .gitignore)
 │       │   ├── hello-world.e2e.mjs
-│       │   ├── r2-multi-file.e2e.mjs   # Duplicados cross-file (R2)
-│       │   ├── r3-data-files.e2e.mjs   # Ficheiros de dados R3
-│       │   └── nest-workspace.e2e.mjs  # Massa Nest (cwd no workspace irmão)
-│       ├── src/rules/                  # Implementação das regras ESLint
-│       ├── src/utils/                  # Utilitários (ex.: r2-literal-index.ts, r3-data-file-writers.ts)
+│       │   ├── r2-multi-file.e2e.mjs   # Cross-file duplicates (R2)
+│       │   ├── r3-data-files.e2e.mjs   # R3 data files
+│       │   └── nest-workspace.e2e.mjs  # Nest fixture (cwd on sibling workspace)
+│       ├── src/rules/                  # ESLint rule implementations
+│       ├── src/utils/                  # Utilities (e.g. r2-literal-index.ts, r3-data-file-writers.ts)
 │       ├── tests/                      # RuleTester + node:test
 │       │   ├── index.test.mjs          # hello-world + no-hardcoded-strings (base)
-│       │   ├── no-hardcoded-strings-r1.test.mjs  # Remediação R1 (marco M1 / S-R1-*)
-│       │   ├── no-hardcoded-strings-secrets.test.mjs  # M4 / secretRemediationMode (defaults seguros)
-│       │   ├── no-hardcoded-strings-r2.test.mjs  # Índice R2 / lintFiles multi-ficheiro
-│       │   └── r3-data-file-writers.test.mjs  # Merge determinístico JSON/YAML (R3)
-│       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
-├── reference/                # Somente referência; não é dependência do pacote
+│       │   ├── no-hardcoded-strings-r1.test.mjs  # R1 remediation (M1 milestone / S-R1-*)
+│       │   ├── no-hardcoded-strings-secrets.test.mjs  # M4 / secretRemediationMode (safe defaults)
+│       │   ├── no-hardcoded-strings-r2.test.mjs  # R2 index / lintFiles multi-file
+│       │   └── r3-data-file-writers.test.mjs  # Deterministic JSON/YAML merge (R3)
+│       └── eslint.config.mjs           # Lint of the plugin itself (flat config)
+├── reference/                # Reference only; not a package dependency
 │   ├── README.md
-│   ├── agents-ref/           # Portfólio de referência de instruções para agentes (mapear via specs/agent-reference-agents.md)
-│   ├── Clippings/            # Trechos da documentação oficial (ESLint, npm, etc.)
+│   ├── agents-ref/           # Reference portfolio of agent instructions (map via specs/agent-reference-agents.md)
+│   ├── Clippings/            # Official documentation excerpts (ESLint, npm, etc.)
 │   │   ├── README.md
 │   │   ├── dev/
 │   │   │   └── javascript/
-│   │   │       ├── eslint/   # Recortes ESLint (API, regras, plugins, etc.)
-│   │   │       └── npm/      # Recortes npm
-│   │   └── standards/        # Padrões (ex.: Conventional Commits)
-│   ├── hardcoded-check.yml   # Workflow de exemplo (referência; não em .github/workflows/)
-│   └── legacy-snapshot/      # Snapshot histórico (ESLint local, action de exemplo)
-└── specs/                    # Contratos e visão
-    ├── agent-docker-compose.md         # Docker Compose, .docker/ e action ops-eslint
-    ├── agent-error-messaging-triple.md # Falhas relatadas em três partes (agentes de IA)
+│   │   │       ├── eslint/   # ESLint clippings (API, rules, plugins, etc.)
+│   │   │       └── npm/      # npm clippings
+│   │   └── standards/        # Standards (e.g. Conventional Commits)
+│   ├── hardcoded-check.yml   # Example workflow (reference; not under .github/workflows/)
+│   └── legacy-snapshot/      # Historical snapshot (local ESLint, example action)
+└── specs/                    # Contracts and vision
+    ├── agent-docker-compose.md         # Docker Compose, .docker/, and ops-eslint action
+    ├── agent-error-messaging-triple.md # Failures reported in three parts (AI agents)
     ├── agent-documentation-workflow.md
     ├── agent-git-workflow.md
     ├── agent-ia-governance.md
-    ├── agent-integration-testing-policy.md  # Integrações: sandboxes; sem mocks no repo
-    ├── agent-remediation-micro-roles.md  # Sub-micro-tarefas por papel (foco único)
+    ├── agent-integration-testing-policy.md  # Integrations: sandboxes; no mocks in repo
+    ├── agent-remediation-micro-roles.md  # Sub-micro-tasks by role (single focus)
     ├── agent-reference-agents.md
     ├── agent-reference-clippings.md
     ├── agent-session-workflow.md
-    ├── agent-tooling-ecosystem-map.md  # Copilot/Awesome vs Cursor; precedência; pontes .github/
-    ├── e2e-fixture-nest.md     # Massa e2e NestJS (workspace auxiliar)
+    ├── agent-tooling-ecosystem-map.md  # Copilot/Awesome vs Cursor; precedence; .github/ bridges
+    ├── e2e-fixture-nest.md     # NestJS e2e fixture (auxiliary workspace)
     ├── plugin-contract.md
     └── vision-hardcode-plugin.md
 ```
 
-## Relações
+## Relationships
 
-- **Implementação**: `packages/eslint-plugin-hardcode-detect/`.
-- **Massa e2e Nest**: `packages/e2e-fixture-nest/` (ver [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md)).
-- **Normas de produto e agente**: `specs/` + `AGENTS.md` + `.cursor/rules/`; pontes opcionais GitHub Copilot em `.github/agents/` e `.github/instructions/` (ver [`specs/agent-tooling-ecosystem-map.md`](../specs/agent-tooling-ecosystem-map.md)).
-- **Automação Codex local**: `.codex/hooks.json` + `.codex/hooks/` + `.codex/mcp/` (equivalência do fluxo Cursor em [`docs/codex-cli-hooks-equivalence.md`](codex-cli-hooks-equivalence.md)).
-- **Referência**: `reference/Clippings/` (documentação oficial espelhada), `reference/legacy-snapshot/` (histórico); somente leitura para código em `packages/`.
+- **Implementation**: `packages/eslint-plugin-hardcode-detect/`.
+- **Nest e2e fixture**: `packages/e2e-fixture-nest/` (see [`specs/e2e-fixture-nest.md`](../specs/e2e-fixture-nest.md)).
+- **Product and agent norms**: `specs/` + `AGENTS.md` + `.cursor/rules/`; optional GitHub Copilot bridges under `.github/agents/` and `.github/instructions/` (see [`specs/agent-tooling-ecosystem-map.md`](../specs/agent-tooling-ecosystem-map.md)).
+- **Local Codex automation**: `.codex/hooks.json` + `.codex/hooks/` + `.codex/mcp/` (Cursor flow equivalence in [`docs/codex-cli-hooks-equivalence.md`](codex-cli-hooks-equivalence.md)).
+- **Reference**: `reference/Clippings/` (mirrored official documentation), `reference/legacy-snapshot/` (history); read-only for code under `packages/`.
 
-## Diagrama (visão lógica)
+## Diagram (logical view)
 
 ```mermaid
 flowchart LR
-  subgraph public [Publicavel]
+  subgraph public [Publishable]
     pkg[packages/eslint-plugin-hardcode-detect]
   end
-  subgraph e2eNest [Massa e2e]
+  subgraph e2eNest [E2e fixture]
     nest[packages/e2e-fixture-nest]
   end
-  subgraph norms [Normativo]
+  subgraph norms [Normative]
     sp[specs]
     agents[AGENTS.md]
   end
-  subgraph frozen [Congelado]
+  subgraph frozen [Frozen]
     ref[reference]
   end
-  subgraph ci [Automacao]
+  subgraph ci [Automation]
     gh[.github]
   end
   pkg --> sp
   agents --> pkg
   nest --> pkg
-  ref -.->|inspiracao| pkg
+  ref -.->|inspiration| pkg
   gh --> pkg
 ```
