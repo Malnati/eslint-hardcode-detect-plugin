@@ -1249,3 +1249,21 @@ _Nenhum ficheiro elegível acumulado neste turno._
 - `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L54
 - `packages/eslint-plugin-hardcode-detect/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T16:41:51Z`
+- `conversation_id`: `11ec66ab-45a1-4ecd-969d-c0297f531dae`
+- `generation_id`: `72cae012-9f72-44ea-83e2-866fc192bf6b`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/11ec66ab-45a1-4ecd-969d-c0297f531dae/11ec66ab-45a1-4ecd-969d-c0297f531dae.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L60
