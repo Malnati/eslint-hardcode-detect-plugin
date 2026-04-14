@@ -116,7 +116,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 Esta secção fixa **vocabulário e semântica** das opções públicas para remediação assistida alinhadas a [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md) e à visão em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md). As trilhas **R1** (por ficheiro), **R2** (multi-ficheiro / módulo partilhado) e **R3** (ficheiros de dados e ambiente) podem corresponder a **regras distintas** ou a **modos / sub-opções** da mesma família (`no-hardcoded-strings` ou nomes estáveis futuros); o contrato previne ambiguidade de schema **antes** do merge de implementação correspondente.
 
-**Estado:** **misto** — **R1** e **detecção R2 por índice** (duplicados cross-file com `remediationMode: "r2"`, `messageId` `hardcodedDuplicateCrossFile`) estão **implementados** no schema e no código conforme subsecções acima. **Autofix R2** (módulo partilhado) permanece por integrar. **R3** (opções `dataFile*`, merge em JSON/YAML e escrita em `Program:exit` quando `dataFileTargets` não está vazio) está **implementado** no schema e no código; `r3` como `remediationMode` **não** activa autofix R1. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
+**Estado:** **misto** — **R1** e **detecção R2 por índice** (duplicados cross-file com `remediationMode: "r2"`, `messageId` `hardcodedDuplicateCrossFile`) estão **implementados** no schema e no código conforme subsecções acima. **Autofix R2** (módulo partilhado) permanece por integrar. **R3** (opções `dataFile*`, merge em JSON/YAML e escrita em `Program:exit` quando `dataFileTargets` não está vazio) está **implementado** no schema e no código; `r3` como `remediationMode` **não** activa autofix R1. **`secretRemediationMode`** (M4) está **implementado** no schema e na regra para política de remediação de candidatos a segredo em R1; escrita R3 **não** inclui esses literais. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
 
 ### Tabela de opções (nomes estáveis)
 
@@ -134,7 +134,7 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 | `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | **Sim** (schema) | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
 | `dataFileTargets` | string[] | `[]` | R3 | M3 | **Sim** (schema) | Caminhos relativos ao `cwd` do ESLint e padrões `dir/*.ext` simples; vazio = sem escrita em ficheiros de dados. |
 | `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | **Sim** (schema) | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
-| `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | **Não** | Modo seguro por defeito: sem copiar valores sensíveis em claro; fix agressivo exige opt-in explícito. Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
+| `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | **Sim** (schema) | Política para literais classificados como **candidatos a segredo** pela heurística interna da regra (comprimento e charset; ver subsecção *Segredos — `secretRemediationMode`*). Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
 | `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Transversal | M1–M3 | **Sim** | Tratamento de literais que são fallbacks de `process.env` (operadores `??` ou `||`) ou espelhos em constantes; mesma classe de hardcode que o literal de default (ver macro-plan). |
 
 ### R1 — constantes no mesmo ficheiro
@@ -154,13 +154,25 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 - **Objectivo:** externalizar valores para `.json`, `.yaml`/`.yml`, `.toml`, `.properties` (ou subset em `dataFileFormats`) e código de leitura adequado à stack.
 - **Implementação (M3):** com `remediationMode: "r3"` e `dataFileTargets` não vazio, os literais elegíveis são fundidos sob a chave aninhada `hardcodeDetect.strings` (mapa nome estável → valor), com nomes de chave alinhados ao mesmo critério que constantes R1 e estáveis entre ficheiros via `settings.hardcodeDetect` (registo R3). A escrita ocorre no fim da visita ao `Program` (efeito lateral; não passa pelo `fix` do ESLint no ficheiro fonte).
 - **Caminhos:** cada entrada em `dataFileTargets` é interpretada em relação a `context.cwd`; padrões com metacaracteres glob usam expansão limitada (`dir/*.ext` com um `*` no último segmento). Ficheiros cujo sufixo não corresponde a um formato em `dataFileFormats` são ignorados. TOML e `.properties` não são escritos na versão actual.
-- **Segredos:** valores classificados como sensíveis **não** são escritos em claro em ficheiros de dados; segue `secretRemediationMode` e a política de segredos do macro-plan.
+- **Segredos (R3):** valores classificados como candidatos a segredo **não** são escritos em ficheiros de dados (merge R3 ignora esses literais em qualquer `secretRemediationMode`). Orientação: env / cofre; ver [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md).
 - **Merge:** `dataFileMergeStrategy` define expectativa mínima ante chaves duplicadas ou conflitos de escrita.
 
 ### Segredos e literais de default de ambiente
 
 - **Segredos:** heurísticas e gravidade alinhadas ao mapa; sugestões devem orientar env / cofres / gestão de segredos da plataforma **sem** simular fornecedores externos no repositório ([`specs/agent-integration-testing-policy.md`](agent-integration-testing-policy.md)).
 - **Literais de default:** expressões com `process.env`, operadores `??` ou `||` e um literal de string como fallback tratam esse literal como candidato a remediação segundo `envDefaultLiteralPolicy` e a trilha efectiva após classificação.
+
+#### Segredos — `secretRemediationMode` (R1 e relatório)
+
+Aplica-se a literais para os quais a regra activa a classificação interna de «candidato a segredo» (heurística documentada na página da regra). **Não** substitui scanners dedicados nem políticas de repositório.
+
+| Valor | Autofix R1 (`fix` / `output`) | `suggestions` | Notas |
+|-------|------------------------------|---------------|--------|
+| `suggest-only` | **Não** injecta constante nem substitui o literal do segredo por identificador com o valor sensível em claro. | Permitidas apenas quando o *fix* sugerido **não** reproduz o valor sensível nos trechos injectados (ex.: ficheiro com outros literais seguros; o literal classificado como segredo permanece no relatório sem remediação automática que o copie). | Comportamento seguro por defeito. |
+| `placeholder-default` | Pode injectar `const NAME = "<HCD_SECRET_PLACEHOLDER>"` (sentinel estável documentado na implementação) e substituir o literal pelo identificador, **sem** copiar o valor sensível para a nova declaração. | Coerente com o mesmo princípio: qualquer texto sugerido **não** deve reintroduzir o valor sensível em claro nas declarações injectadas. | Alinhado ao macro-plan (*placeholder* sem valor sensível). |
+| `aggressive-autofix-opt-in` | **Opt-in:** autofix R1 pode injectar constante com o **valor literal completo** e substituir ocorrências (como para literais não classificados como segredo). | Mesma matriz *suggest* vs *fix* que R1 para ficheiros excluídos por glob, etc. | Uso consciente; revisar diffs antes de commit. |
+
+**R3:** independentemente deste modo, literais classificados como candidatos a segredo **não** entram no mapa escrito em ficheiros JSON/YAML (não há cópia para `dataFileTargets`).
 
 ## Compatibilidade
 
@@ -175,6 +187,7 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 
 ## Versão do documento
 
+- **1.2.0** — M4: `secretRemediationMode` no schema da regra `no-hardcoded-strings`; semântica `suggest-only` / `placeholder-default` / `aggressive-autofix-opt-in`; sentinel `<HCD_SECRET_PLACEHOLDER>`; R3 continua a não gravar candidatos a segredo em ficheiros de dados.
 - **1.1.0** — M3 R3: opções `dataFileFormats`, `dataFileTargets`, `dataFileMergeStrategy` no schema; remediação R3 com escrita em JSON/YAML; utilitários e e2e `r3-data-files`.
 - **1.0.0** — M2 R2: detecção cross-file (`hardcodedDuplicateCrossFile`), opções R2 no schema, `settings.hardcodeDetect`, documentação de índice e ADR de paralelismo; autofix R2 (módulo partilhado) ainda não integrado.
 - **0.9.0** — M1 / tarefa A3: `no-hardcoded-strings` com schema object (opções R1 M1), `messageId`s `hardcoded` e `hardcodedEnvDefault`, modo efectivo de remediação e secção de remediação com estado **misto** (implementado vs vocabulário futuro); alinhado à implementação em [`packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`](../packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts).

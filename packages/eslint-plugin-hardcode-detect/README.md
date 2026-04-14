@@ -45,6 +45,14 @@ Com `remediationMode: "r1"` em `no-hardcoded-strings`, a regra pode aplicar reme
 
 Para validar o pacote a partir da raiz do monorepo: `npm test -w eslint-plugin-hardcode-detect`.
 
+## Segredos, ambiente e cofres
+
+Literais que parecem tokens ou segredos (heurística da regra, alinhada a L1 em [`docs/hardcoding-map.md`](../../docs/hardcoding-map.md)) devem ser tratados com cuidado: **não** commite valores sensíveis; prefira **variáveis de ambiente** e **cofres** ou gestão de segredos da sua plataforma (documentação oficial do fornecedor cloud / CI).
+
+- **Política do repositório:** não simulamos fornecedores externos nem gravamos credenciais reais em testes — ver [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md).
+- **Plugin:** a opção `secretRemediationMode` em `no-hardcoded-strings` controla se o autofix R1 pode copiar o valor em claro (`aggressive-autofix-opt-in`), usar um placeholder estável (`placeholder-default`) ou manter o modo seguro por defeito (`suggest-only`). Detalhes e sentinel: [`specs/plugin-contract.md`](../../specs/plugin-contract.md) e [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
+- **Leitura recomendada (externa):** [OWASP — Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) e a documentação oficial do seu runtime (Node.js `process.env`, gestão de segredos em Kubernetes, etc.).
+
 ## Desenvolvimento
 
 - `npm run build` — compila `src/` para `dist/`.

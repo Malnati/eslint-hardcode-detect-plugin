@@ -69,15 +69,22 @@ Literais que são *fallback* de `process.env` com `??` ou `||` são tratados con
 | `"include"` | Reporta `hardcoded` e aplica autofix R1 quando o restante da política permitir. **S-R1-07**. |
 | `"report-separate"` | Usa `messageId: "hardcodedEnvDefault"`; autofix alinhado a **S-R1-07** na suite. |
 
-### Segredos e contrato
+### Segredos e `secretRemediationMode`
 
-O contrato prevê `secretRemediationMode` para modos seguros e *opt-in* a autofix agressivo ([`specs/plugin-contract.md`](../../../../specs/plugin-contract.md)). A implementação actual usa uma heurística interna (`looksLikeSecretCandidate`) para **não** oferecer autofix nem *suggest* quando o único literal (ou o conjunto de alvos) não permite construir o fix sem expor o valor — ver caso de literal longo estilo token na suite R1.
+- **Heurística:** `looksLikeSecretCandidate` (comprimento mínimo e charset) classifica candidatos a segredo; não substitui um *secret scanner* dedicado.
+- **`suggest-only` (padrão):** sem autofix R1 que copie o valor sensível para uma nova `const`; com literais mistos, o fix aplica-se só aos alvos «seguros». *Suggestions* só constroem trechos a partir de alvos seguros (o literal classificado como segredo pode permanecer inalterado no ficheiro até acção manual).
+- **`placeholder-default`:** autofix R1 pode injectar `const NAME = "<HCD_SECRET_PLACEHOLDER>"` (exportado como `HCD_SECRET_PLACEHOLDER` no pacote) e substituir o literal pelo identificador, **sem** repetir o valor sensível na declaração injectada.
+- **`aggressive-autofix-opt-in`:** *opt-in* explícito — autofix R1 pode injectar o valor literal completo como nas constantes normais; rever diffs antes de commit.
+- **R3:** candidatos a segredo **não** são escritos em ficheiros de dados (JSON/YAML), em qualquer modo.
+
+Semântica completa: subsecção *Segredos — `secretRemediationMode`* em [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). Suite dedicada: [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs) (complementa o caso «segredo provável» em [`no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs)).
 
 ---
 
 ## Prova automatizada e comando
 
 - **Suite R1 (cenários S-R1-01 … S-R1-08 e segredo):** [`tests/no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs).
+- **Suite M4 (`secretRemediationMode`):** [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs).
 - **Comando canónico (raiz do monorepo):** `npm test -w eslint-plugin-hardcode-detect` — ver também [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md).
 
 ## Rastreabilidade de negócio

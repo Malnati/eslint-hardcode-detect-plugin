@@ -188,6 +188,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── tests/                      # RuleTester + node:test
 │       │   ├── index.test.mjs          # hello-world + no-hardcoded-strings (base)
 │       │   ├── no-hardcoded-strings-r1.test.mjs  # Remediação R1 (marco M1 / S-R1-*)
+│       │   ├── no-hardcoded-strings-secrets.test.mjs  # M4 / secretRemediationMode (defaults seguros)
 │       │   ├── no-hardcoded-strings-r2.test.mjs  # Índice R2 / lintFiles multi-ficheiro
 │       │   └── r3-data-file-writers.test.mjs  # Merge determinístico JSON/YAML (R3)
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)

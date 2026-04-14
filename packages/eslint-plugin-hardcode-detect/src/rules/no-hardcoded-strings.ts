@@ -31,6 +31,19 @@ export type ParallelLintingCompatibility =
 
 export type SharedModuleImportStyle = "esm" | "cjs" | "project";
 
+/** Valores alinhados a `secretRemediationMode` em `specs/plugin-contract.md`. */
+export type SecretRemediationMode =
+  | "suggest-only"
+  | "placeholder-default"
+  | "aggressive-autofix-opt-in";
+
+/**
+ * Valor injectado em `const NAME = "…"` quando o literal foi classificado como
+ * segredo provável e `secretRemediationMode` é `placeholder-default`.
+ * Não substitui documentação nem gestão de segredos em runtime.
+ */
+export const HCD_SECRET_PLACEHOLDER = "<HCD_SECRET_PLACEHOLDER>";
+
 export type NoHardcodedStringsOptions = {
   remediationMode: RemediationMode;
   constantNamingConvention: "UPPER_SNAKE_CASE";
@@ -49,6 +62,8 @@ export type NoHardcodedStringsOptions = {
   dataFileTargets: string[];
   /** R3 — estratégia de merge com ficheiros existentes. */
   dataFileMergeStrategy: DataFileMergeStrategy;
+  /** M4 — política de remediação para candidatos a segredo (heurística interna). */
+  secretRemediationMode: SecretRemediationMode;
 };
 
 const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
@@ -58,6 +73,7 @@ const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
   remediationIncludeGlobs: [],
   remediationExcludeGlobs: [],
   envDefaultLiteralPolicy: "include",
+  secretRemediationMode: "suggest-only",
   sharedModuleImportStyle: "project",
   literalIndexRebuildPolicy: "every-run",
   parallelLintingCompatibility: "documented-limitations",
@@ -153,6 +169,13 @@ export function normalizeNoHardcodedStringsOptions(
       ? o.dataFileMergeStrategy
       : DEFAULT_OPTIONS.dataFileMergeStrategy;
 
+  const secretRemediationMode =
+    o.secretRemediationMode === "suggest-only" ||
+    o.secretRemediationMode === "placeholder-default" ||
+    o.secretRemediationMode === "aggressive-autofix-opt-in"
+      ? o.secretRemediationMode
+      : DEFAULT_OPTIONS.secretRemediationMode;
+
   return {
     remediationMode,
     constantNamingConvention,
@@ -168,6 +191,7 @@ export function normalizeNoHardcodedStringsOptions(
       dataFileFormats.length > 0 ? dataFileFormats : DEFAULT_OPTIONS.dataFileFormats,
     dataFileTargets,
     dataFileMergeStrategy,
+    secretRemediationMode,
   };
 }
 
@@ -223,6 +247,19 @@ function looksLikeSecretCandidate(value: string): boolean {
     return false;
   }
   return /^[A-Za-z0-9+/=_-]+$/.test(value);
+}
+
+/** Inclui o literal em autofix/suggest R1 quando é segredo provável e o modo o permite. */
+function isSecretEligibleForR1Remediation(
+  mode: SecretRemediationMode,
+  value: string,
+): boolean {
+  if (!looksLikeSecretCandidate(value)) {
+    return true;
+  }
+  return (
+    mode === "placeholder-default" || mode === "aggressive-autofix-opt-in"
+  );
 }
 
 function containsProcessEnvReference(node: Node | null | undefined): boolean {
@@ -315,6 +352,8 @@ type GroupInfo = {
   key: string;
   occurrences: Occurrence[];
   constName: string;
+  /** Valor na declaração `const` (placeholder para segredo + `placeholder-default`). */
+  remediationValue: string;
 };
 
 function buildFullFileR1Fix(
@@ -328,7 +367,7 @@ function buildFullFileR1Fix(
   const decls = groups
     .map((g) => ({
       name: g.constName,
-      value: g.occurrences[0].value,
+      value: g.remediationValue,
     }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -446,6 +485,15 @@ const rule: Rule.RuleModule = {
               "R3: merge com ficheiros existentes (merge-keys ou falha em conflito).",
             enum: ["merge-keys", "fail-on-conflict"],
           },
+          secretRemediationMode: {
+            description:
+              "M4: candidatos a segredo — suggest-only (sem copiar valor), placeholder-default (const com sentinel), aggressive-autofix-opt-in (copia literal; R3 nunca grava segredos em ficheiros de dados).",
+            enum: [
+              "suggest-only",
+              "placeholder-default",
+              "aggressive-autofix-opt-in",
+            ],
+          },
         },
         additionalProperties: false,
       },
@@ -465,6 +513,7 @@ const rule: Rule.RuleModule = {
         dataFileFormats: DEFAULT_OPTIONS.dataFileFormats,
         dataFileTargets: DEFAULT_OPTIONS.dataFileTargets,
         dataFileMergeStrategy: DEFAULT_OPTIONS.dataFileMergeStrategy,
+        secretRemediationMode: DEFAULT_OPTIONS.secretRemediationMode,
       },
     ],
     fixable: "code",
@@ -543,6 +592,7 @@ const rule: Rule.RuleModule = {
         const groups: GroupInfo[] = [];
         for (const key of groupKeys) {
           const ocs = groupOcc.get(key)!;
+          const rawVal = ocs[0].value;
           const constName = r3Reg
             ? stableConstNameForGroup(
                 ocs[0].value,
@@ -550,7 +600,17 @@ const rule: Rule.RuleModule = {
                 r3Reg,
               )
             : uniqueConstantName(ocs[0].value, usedNames);
-          groups.push({ key, occurrences: ocs, constName });
+          const isSec = looksLikeSecretCandidate(rawVal);
+          let remediationValue = rawVal;
+          if (isSec && options.secretRemediationMode === "placeholder-default") {
+            remediationValue = HCD_SECRET_PLACEHOLDER;
+          }
+          groups.push({
+            key,
+            occurrences: ocs,
+            constName,
+            remediationValue,
+          });
         }
 
         const replaceTargets: { node: Literal; constName: string }[] = [];
@@ -560,11 +620,17 @@ const rule: Rule.RuleModule = {
           }
         }
 
-        const replaceTargetsSafe = replaceTargets.filter(
-          (t) => !looksLikeSecretCandidate(t.node.value as string),
+        const replaceTargetsSafe = replaceTargets.filter((t) =>
+          isSecretEligibleForR1Remediation(
+            options.secretRemediationMode,
+            t.node.value as string,
+          ),
         );
-        const groupsSafe = groups.filter(
-          (g) => !looksLikeSecretCandidate(g.occurrences[0].value),
+        const groupsSafe = groups.filter((g) =>
+          isSecretEligibleForR1Remediation(
+            options.secretRemediationMode,
+            g.occurrences[0].value,
+          ),
         );
 
         let firstFixNode: Literal | null = null;
@@ -618,12 +684,14 @@ const rule: Rule.RuleModule = {
           const messageId = resolveMessageId(occ);
 
           const secret = looksLikeSecretCandidate(occ.value);
+          const secretBlocksAutofix =
+            secret && options.secretRemediationMode === "suggest-only";
           const riskyPath = looksRiskyFilePath(relativePath);
           const noAutofixContext =
             !r1Active ||
             !includedRemediation ||
             excludedRemediation ||
-            secret ||
+            secretBlocksAutofix ||
             riskyPath;
 
           if (noAutofixContext) {
@@ -695,9 +763,13 @@ const rule: Rule.RuleModule = {
           !excludedRemediation &&
           !looksRiskyFilePath(relativePath);
 
-        if (r3Eligible && groupsSafe.length > 0) {
+        const groupsR3DataWrite = groups.filter(
+          (g) => !looksLikeSecretCandidate(g.occurrences[0].value),
+        );
+
+        if (r3Eligible && groupsR3DataWrite.length > 0) {
           const strings: Record<string, string> = {};
-          for (const g of groupsSafe) {
+          for (const g of groupsR3DataWrite) {
             strings[g.constName] = g.occurrences[0]!.value;
           }
           writeR3PatchesToDataFiles({
