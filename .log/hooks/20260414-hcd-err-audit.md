@@ -899,3 +899,27 @@ _Nenhum ficheiro elegível acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro elegível acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T14:23:03Z`
+- `session_id`: `019d8c3e-371d-7d90-8e8e-fbab06cd1955`
+- `turn_id`: `019d8c4f-c9cf-7ba3-a9ad-afe2f8b89467`
+- `model`: `gpt-5.3-codex`
+- `transcript_path`: `/Users/mal/.codex/sessions/2026/04/14/rollout-2026-04-14T10-46-20-019d8c3e-371d-7d90-8e8e-fbab06cd1955.jsonl`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `1`
+- `dirty_after`: `0`
+- `touched_in_turn`: `0`
+- `failure_signal_from_post_tool`: `True`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
