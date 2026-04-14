@@ -1305,3 +1305,75 @@ _Nenhum ficheiro elegível acumulado neste turno._
 ### Ficheiros auditados
 
 - `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L76
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T17:15:59Z`
+- `session_id`: `019d8cfd-e917-7662-956b-8f916c44fed4`
+- `turn_id`: `019d8cfd-ecc2-72f1-9c67-02b9647e8f90`
+- `model`: `gpt-5.4-mini`
+- `transcript_path`: `None`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `1`
+- `dirty_after`: `2`
+- `touched_in_turn`: `1`
+- `failure_signal_from_post_tool`: `False`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T17:35:46Z`
+- `session_id`: `019d8cfd-ad59-7a23-b3fd-6f7182a732cb`
+- `turn_id`: `019d8cfe-d9f1-7312-b53d-09149c31b8d2`
+- `model`: `gpt-5.3-codex`
+- `transcript_path`: `/Users/mal/.codex/sessions/2026/04/14/rollout-2026-04-14T14-15-28-019d8cfd-ad59-7a23-b3fd-6f7182a732cb.jsonl`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `False`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `2`
+- `dirty_after`: `3`
+- `touched_in_turn`: `1`
+- `failure_signal_from_post_tool`: `False`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T17:45:56Z`
+- `session_id`: `019d8cfd-ad59-7a23-b3fd-6f7182a732cb`
+- `turn_id`: `019d8d10-5ba5-7793-9af2-f33a6ff3ad39`
+- `model`: `gpt-5.3-codex`
+- `transcript_path`: `/Users/mal/.codex/sessions/2026/04/14/rollout-2026-04-14T14-15-28-019d8cfd-ad59-7a23-b3fd-6f7182a732cb.jsonl`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `4`
+- `dirty_after`: `4`
+- `touched_in_turn`: `0`
+- `failure_signal_from_post_tool`: `True`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
