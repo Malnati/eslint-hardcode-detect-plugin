@@ -9,11 +9,12 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 ├── LICENSE                   # Licença do projeto
 ├── README.md                 # Entrada principal no GitHub
 ├── package.json              # Monorepo npm (workspaces)
-├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, smoke Cursor/Codex de hook HCD-ERR, verify ficheiros normativos T5, Cursor headless micro M1)
+├── scripts/                  # Scripts auxiliares na raiz (ex.: validação cobertura planos M0/M1, release npm, smoke Cursor/Codex de hook HCD-ERR, verify ficheiros normativos T5, Cursor headless micro M1)
 │   ├── fixtures/             # Massa para smoke (ex.: corpo inválido HCD-ERR para o hook)
 │   │   └── smoke-hcd-err-violation-body.md
 │   ├── validate-milestone-plan-coverage.mjs
 │   ├── verify-normative-agent-files.mjs
+│   ├── npm-release.mjs       # Orquestra precheck/auth/check-version/publish/smoke com NPM_ACCESS_TOKEN
 │   ├── run-m1-remediation-micro-cursor-headless.sh  # Sequência headless das micro M1 (Cursor CLI agent -p)
 │   ├── smoke-cursor-hcd-err-hook.sh
 │   └── smoke-codex-hcd-err-hooks.sh
@@ -59,7 +60,7 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── agents/               # Agentes GitHub Copilot (pontes: eslint-hardcode-plugin, docker-tooling, hcd-err-messaging)
 │   ├── instructions/         # Instruções Copilot (applyTo: pacote, docker-compose, marcos *-milestones)
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
-│   └── workflows/            # CI (ex.: ci.yml)
+│   └── workflows/            # CI e release (ex.: ci.yml, release-npm.yml)
 ├── docs/                     # Documentação complementar
 │   ├── README.md             # Índice dos guias em docs/
 │   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, verificação de hooks e smoke

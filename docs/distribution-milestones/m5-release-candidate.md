@@ -107,6 +107,21 @@ gantt
 
 ---
 
+## 8.1 Automação de publicação npm (workflow + scripts)
+
+- Workflow dedicado: [`.github/workflows/release-npm.yml`](../../.github/workflows/release-npm.yml) com `workflow_dispatch`.
+- Token obrigatório no runtime: `NPM_ACCESS_TOKEN` (mapeado para `NODE_AUTH_TOKEN` em execução; sem commitar `.npmrc` com segredo).
+- Pipeline de release automatizada (raiz): `npm run release:npm`, com etapas:
+  1. `release:npm:precheck` (`npm whoami`);
+  2. `release:npm:test` (lint + testes workspace);
+  3. `release:npm:check-version` (`npm view <pkg>@<version>`);
+  4. `release:npm:pack` (`npm pack` no workspace do plugin);
+  5. `release:npm:publish` (publish real);
+  6. `release:npm:smoke` (instalação temporária e import do plugin publicado).
+- Diagnóstico de falha de publish: o script [`scripts/npm-release.mjs`](../../scripts/npm-release.mjs) reporta erro explícito quando o registry recusa `PUT` (`E404`) por provável falta de permissão/ownership do nome.
+
+---
+
 ## 9. Plano GitHub (PR, branch, semver)
 
 - **PR:** `chore(release): milestone M5 — version bump and notes` (ajustar)

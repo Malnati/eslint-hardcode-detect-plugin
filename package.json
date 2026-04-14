@@ -9,6 +9,13 @@
     "test": "npm test -w eslint-plugin-hardcode-detect",
     "test:docs-m0": "node scripts/validate-milestone-plan-coverage.mjs",
     "test:docs-milestones": "node scripts/validate-milestone-plan-coverage.mjs",
-    "verify:agent-files": "node scripts/verify-normative-agent-files.mjs"
+    "verify:agent-files": "node scripts/verify-normative-agent-files.mjs",
+    "release:npm:precheck": "node scripts/npm-release.mjs precheck",
+    "release:npm:test": "npm run lint && npm test -w eslint-plugin-hardcode-detect",
+    "release:npm:check-version": "node scripts/npm-release.mjs check-version",
+    "release:npm:pack": "npm run release:pack -w eslint-plugin-hardcode-detect",
+    "release:npm:publish": "node scripts/npm-release.mjs publish",
+    "release:npm:smoke": "node scripts/npm-release.mjs smoke",
+    "release:npm": "npm run release:npm:precheck && npm run release:npm:test && npm run release:npm:check-version && npm run release:npm:pack && npm run release:npm:publish && npm run release:npm:smoke"
   }
 }
