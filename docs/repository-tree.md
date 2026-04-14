@@ -250,7 +250,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 
 ```mermaid
 flowchart LR
-  subgraph public [Publishable]
+  subgraph publishableArea [Publishable]
     pkg[packages/eslint-plugin-hardcode-detect]
   end
   subgraph e2eNest [E2e fixture]

@@ -136,7 +136,7 @@ gantt
   M4_agentes :m4, after m3a, 18d
   section M3_onda2_T6
   M3_hooks :m3b, after m4, 10d
-  section Close
+  section Fechamento_M5
   M5_release :m5, after m3b, 14d
 ```
 
@@ -185,7 +185,7 @@ Para cada entrega de trilha (ou sub-marco), repetir o ciclo abaixo e arquivar ev
 
 ```mermaid
 flowchart TB
-  subgraph docs [Documentacao]
+  subgraph docLayer [Documentacao]
     map[hardcoding-map]
     channels[solution-distribution-channels]
     macro[distribution-channels-macro-plan]

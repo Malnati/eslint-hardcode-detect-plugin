@@ -47,7 +47,7 @@ flowchart LR
     T4IDE[T4_IDE_local]
     T6local[T6_hooks_validacao_local]
   end
-  subgraph opt [Opcional monorepo]
+  subgraph optionalMonorepo [Opcional monorepo]
     ComposeE2e["docker_compose_profile_e2e"]
   end
   T4IDE -.->|"paridade opcional"| ComposeE2e

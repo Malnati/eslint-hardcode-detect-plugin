@@ -81,30 +81,36 @@ sequenceDiagram
 ## Roadmap timeline
 
 ```mermaid
-timeline
-  title HardcodeDetect plugin timeline
-  0.1.0 : Baseline package structure
-  0.1.1 : Rule coverage stabilization
-  0.1.2 : Remediation tracks maturity
-  0.1.3 : Nest e2e smoke and docs alignment
-  0.1.4 : OSS onboarding and community templates
-  Next : standardize-error-messages export
+flowchart LR
+  v010["0.1.0 baseline"] --> v011["0.1.1 coverage"]
+  v011 --> v012["0.1.2 remediation tracks"]
+  v012 --> v013["0.1.3 Nest e2e"]
+  v013 --> v014["0.1.4 OSS onboarding"]
+  v014 --> nextRel["Next: standardize-error-messages"]
 ```
 
 ## Contributor journey
 
 ```mermaid
-journey
-  title Community contributor journey
-  section Discover
-    Read README and quickstart: 5: Contributor
-    Run first lint in local project: 4: Contributor
-  section Improve
-    Open issue with reproduction: 4: Contributor
-    Submit focused pull request: 4: Contributor
-  section Maintain
-    Receive review and iterate: 3: Contributor,Maintainer
-    Ship release notes and celebrate: 5: Maintainer
+flowchart TD
+  subgraph discover [Discover]
+    d1[Ler README e quickstart]
+    d2[Executar primeiro lint no projeto local]
+  end
+  subgraph improve [Improve]
+    i1[Abrir issue com reprodução]
+    i2[Pull request focado]
+  end
+  subgraph maintain [Maintain]
+    m1[Iterar após review]
+    m2[Notas de release e release]
+  end
+  d1 --> d2
+  d1 --> i1
+  d2 --> i1
+  i1 --> i2
+  i2 --> m1
+  m1 --> m2
 ```
 
 ## Rules and maturity
