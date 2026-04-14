@@ -4,6 +4,12 @@ Todas as alterações notáveis neste projeto serão documentadas neste ficheiro
 
 O formato é inspirado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/), e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/) na linha **0.y.z** até estabilização da API pública do plugin (ver [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.1.1] - 2026-04-14
+
+### Changed
+
+- Patch release: documentation only (repository and `docs/` guides in US English). No changes to exported rules, options, or runtime behavior.
+
 ## [0.1.0] - 2026-04-14
 
 ### Added
