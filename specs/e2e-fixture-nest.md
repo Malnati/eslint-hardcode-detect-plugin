@@ -44,7 +44,6 @@ Para o glob `src/fixture-hardcodes/**/*.ts`, o teste e2e fixa:
 | Métrica | Valor |
 |---------|------:|
 | Arquivos lintados | 5 |
-| `hardcode-detect/hello-world` | 5 (um por arquivo) |
 | `hardcode-detect/no-hardcoded-strings` | 31 |
 
 Qualquer alteração em `src/fixture-hardcodes/**` deve atualizar estes números em [`nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs) e nesta tabela.

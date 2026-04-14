@@ -11,7 +11,6 @@ const fixtureDir = path.join(__dirname, "..", "..", "e2e-fixture-nest");
 // Contagens estáveis para o glob fixture-hardcodes (ver specs/e2e-fixture-nest.md)
 const EXPECTED = {
   fixtureFileCount: 5,
-  helloWorld: 5,
   noHardcodedStrings: 31,
 };
 
@@ -32,10 +31,8 @@ test("e2e nest workspace: ESLint API + flat config na massa Nest (fixture-hardco
   const results = await eslint.lintFiles(["src/fixture-hardcodes/**/*.ts"]);
 
   assert.equal(results.length, EXPECTED.fixtureFileCount);
-  const helloWorld = countRuleHits(results, "hardcode-detect/hello-world");
   const noHardcoded = countRuleHits(results, "hardcode-detect/no-hardcoded-strings");
 
-  assert.equal(helloWorld, EXPECTED.helloWorld);
   assert.equal(noHardcoded, EXPECTED.noHardcodedStrings);
 });
 
@@ -97,10 +94,8 @@ test("e2e nest workspace: fix=true aplica autofix R1 em arquivo temporário", as
       verifyResults,
       "hardcode-detect/no-hardcoded-strings",
     );
-    const helloWorld = countRuleHits(verifyResults, "hardcode-detect/hello-world");
 
     assert.ok(noHardcoded < baselineNoHardcoded);
-    assert.equal(helloWorld, 1);
   } finally {
     rmSync(targetPath, { force: true });
   }

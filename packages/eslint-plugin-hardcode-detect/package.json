@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-hardcode-detect",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "ESLint plugin: hardcoded value detection and error-message standardization (implementation in progress).",
   "homepage": "https://github.com/malnati/eslint-hardcode-detect-plugin/tree/main/packages/eslint-plugin-hardcode-detect#readme",
   "bugs": {
@@ -27,7 +27,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "lint": "eslint .",
-    "test": "npm run build && node --test tests/index.test.mjs tests/no-hardcoded-strings-r1.test.mjs tests/no-hardcoded-strings-r2.test.mjs tests/no-hardcoded-strings-secrets.test.mjs tests/r3-data-file-writers.test.mjs e2e/hello-world.e2e.mjs e2e/r2-multi-file.e2e.mjs e2e/r3-data-files.e2e.mjs e2e/nest-workspace.e2e.mjs",
+    "test": "npm run build && node --test tests/index.test.mjs tests/no-hardcoded-strings-r1.test.mjs tests/no-hardcoded-strings-r2.test.mjs tests/no-hardcoded-strings-secrets.test.mjs tests/r3-data-file-writers.test.mjs e2e/r2-multi-file.e2e.mjs e2e/r3-data-files.e2e.mjs e2e/nest-workspace.e2e.mjs",
     "release:pack": "npm pack",
     "release:publish": "npm publish --access public"
   },

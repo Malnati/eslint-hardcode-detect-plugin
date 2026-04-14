@@ -189,19 +189,17 @@ Documentation of repository layout. **Update this file when you create, move, or
 │   │   └── eslint.config.mjs           # Flat config + plugin via sibling package dist
 │   └── eslint-plugin-hardcode-detect/  # npm plugin package (official implementation)
 │       ├── CHANGELOG.md                # Semver history of publishable package
-│       ├── docs/rules/                 # One page per contract rule (hello-world, no-hardcoded-strings, standardize-error-messages)
+│       ├── docs/rules/                 # One page per contract rule (`no-hardcoded-strings`, `standardize-error-messages`)
 │       ├── e2e/                        # e2e smoke (ESLint API + consumer fixtures)
-│       │   ├── fixtures/hello-world/   # Minimal flat config + sample
 │       │   ├── fixtures/r2-dup/        # Two .mjs files, same literal (R2 track)
 │       │   ├── fixtures/r3-data/      # R3 track: JSON/YAML merge (r3-out/ generated; see .gitignore)
-│       │   ├── hello-world.e2e.mjs
 │       │   ├── r2-multi-file.e2e.mjs   # Cross-file duplicates (R2)
 │       │   ├── r3-data-files.e2e.mjs   # R3 data files
 │       │   └── nest-workspace.e2e.mjs  # Nest fixture (cwd on sibling workspace)
 │       ├── src/rules/                  # ESLint rule implementations
 │       ├── src/utils/                  # Utilities (e.g. r2-literal-index.ts, r3-data-file-writers.ts)
 │       ├── tests/                      # RuleTester + node:test
-│       │   ├── index.test.mjs          # hello-world + no-hardcoded-strings (base)
+│       │   ├── index.test.mjs          # no-hardcoded-strings base assertions
 │       │   ├── no-hardcoded-strings-r1.test.mjs  # R1 remediation (M1 milestone / S-R1-*)
 │       │   ├── no-hardcoded-strings-secrets.test.mjs  # M4 / secretRemediationMode (safe defaults)
 │       │   ├── no-hardcoded-strings-r2.test.mjs  # R2 index / lintFiles multi-file

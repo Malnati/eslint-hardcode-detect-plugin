@@ -1,0 +1,4 @@
+{
+  "failure_signal_detected": true,
+  "last_failing_command": "sed -n '172,214p' specs/plugin-contract.md"
+}

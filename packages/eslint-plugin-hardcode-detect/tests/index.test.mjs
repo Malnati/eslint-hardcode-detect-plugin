@@ -7,22 +7,6 @@ const ruleTester = new RuleTester({
   languageOptions: { ecmaVersion: 2022, sourceType: "module" },
 });
 
-test("hello-world: relatório único por arquivo (sem casos válidos quando a regra está ativa)", () => {
-  ruleTester.run("hello-world", hardcodeDetect.rules["hello-world"], {
-    valid: [],
-    invalid: [
-      {
-        code: "export const x = 1;",
-        errors: [{ messageId: "hello" }],
-      },
-      {
-        code: "// apenas comentário",
-        errors: [{ messageId: "hello" }],
-      },
-    ],
-  });
-});
-
 test("no-hardcoded-strings", () => {
   ruleTester.run(
     "no-hardcoded-strings",

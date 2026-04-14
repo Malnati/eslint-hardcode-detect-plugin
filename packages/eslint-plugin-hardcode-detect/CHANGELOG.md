@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.2.0] - 2026-04-14
+
+### Changed
+
+- Removed the exported demo rule `hello-world` from the runtime plugin surface.
+- Removed `hello-world` tests and fixtures (`e2e/hello-world.e2e.mjs`, `e2e/fixtures/hello-world/`) and updated Nest e2e assertions to focus on `no-hardcoded-strings`.
+- Updated active contract/spec/package docs to reflect the current public rule surface.
+
 ## [0.1.4] - 2026-04-14
 
 ### Changed

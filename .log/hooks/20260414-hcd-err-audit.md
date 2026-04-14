@@ -875,3 +875,27 @@ _Nenhum ficheiro elegível acumulado neste turno._
 
 - `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L21
 - `packages/eslint-plugin-hardcode-detect/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T14:05:26Z`
+- `session_id`: `019d8c3e-371d-7d90-8e8e-fbab06cd1955`
+- `turn_id`: `019d8c4e-bdfa-7831-86cc-dfcd3b71d6ce`
+- `model`: `gpt-5.3-codex`
+- `transcript_path`: `/Users/mal/.codex/sessions/2026/04/14/rollout-2026-04-14T10-46-20-019d8c3e-371d-7d90-8e8e-fbab06cd1955.jsonl`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `False`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `2`
+- `dirty_after`: `2`
+- `touched_in_turn`: `2`
+- `failure_signal_from_post_tool`: `True`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._

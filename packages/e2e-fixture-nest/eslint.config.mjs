@@ -43,7 +43,6 @@ export default tseslint.config(
       'hardcode-detect': hardcodeDetect,
     },
     rules: {
-      'hardcode-detect/hello-world': 'error',
       'hardcode-detect/no-hardcoded-strings': 'error',
     },
   },

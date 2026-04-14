@@ -18,7 +18,7 @@ Reduzir strings e valores fixos inadequados no código, com relatórios **classi
 
 ## Relação com o contrato atual
 
-As regras `no-hardcoded-strings` e `standardize-error-messages` são a **base**. A regra `standardize-error-messages` (quando implementada) deve usar o catálogo com três campos por código (`seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround`), alinhados semanticamente a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md), para separar diagnóstico técnico, correção definitiva e contorno operacional nas mensagens padronizadas; recomenda-se que cada string comece pelo prefixo correspondente do spec (auditoria unificada com respostas de agentes). **Definições de sistema para agentes:** o mesmo spec fixa prefixos obrigatórios e três **níveis de conformidade** (presença mecânica, balanceamento por contagens, análise qualitativa) para relatórios de falha. A regra `hello-world` é apenas **demonstração** para validar o carregamento do plugin; não entra no roadmap funcional de hardcode. Novas regras ou opções devem atualizar `plugin-contract.md` e este documento quando afetarem a visão macro.
+As regras `no-hardcoded-strings` e `standardize-error-messages` são a **base**. A regra `standardize-error-messages` (quando implementada) deve usar o catálogo com três campos por código (`seniorDiagnostic`, `systemicRemediation`, `operationalWorkaround`), alinhados semanticamente a [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md), para separar diagnóstico técnico, correção definitiva e contorno operacional nas mensagens padronizadas; recomenda-se que cada string comece pelo prefixo correspondente do spec (auditoria unificada com respostas de agentes). **Definições de sistema para agentes:** o mesmo spec fixa prefixos obrigatórios e três **níveis de conformidade** (presença mecânica, balanceamento por contagens, análise qualitativa) para relatórios de falha. Novas regras ou opções devem atualizar `plugin-contract.md` e este documento quando afetarem a visão macro.
 
 ## Mapa conceitual de categorias
 
@@ -61,5 +61,5 @@ Nomes de opções, tipos, valores por defeito planeáveis e marcos alvo (M1–M4
 - **0.5.0** — mensagens de agente: prefixos HCD-ERR-* e níveis de conformidade em [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md); catálogo do plugin alinhado.
 - **0.4.0** — `standardize-error-messages` e alinhamento com [`agent-error-messaging-triple.md`](agent-error-messaging-triple.md).
 - **0.3.0** — referência ao mapa conceitual em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md).
-- **0.2.0** — distinção explícita da regra de demonstração `hello-world` em relação à base de produto.
+- **0.2.0** — distinção explícita entre regras de base de produto e itens de demonstração.
 - **0.1.0** — primeira definição da visão multi-nível.

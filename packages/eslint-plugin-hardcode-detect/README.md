@@ -109,11 +109,10 @@ journey
 
 ## Rules and maturity
 
-The contract defines three rules. Current published exports are `hello-world` and `no-hardcoded-strings`.
+The contract defines two current tracks: implemented `no-hardcoded-strings` and planned `standardize-error-messages`.
 
 | Rule | Status | In `recommended` | Description |
 |------|--------|------------------|-------------|
-| `hello-world` | Demo | No | Minimal rule for integration smoke and examples. |
 | `no-hardcoded-strings` | Stable | Yes | Detects hardcoded literals and supports R1/R2/R3 modes. |
 | `standardize-error-messages` | Planned export | No | Contract documented, not exported in current artifact. |
 

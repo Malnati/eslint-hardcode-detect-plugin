@@ -4,7 +4,6 @@
  */
 
 import { readFileSync } from "node:fs";
-import helloWorld from "./rules/hello-world.js";
 import noHardcodedStrings from "./rules/no-hardcoded-strings.js";
 
 const pkg = JSON.parse(
@@ -19,7 +18,6 @@ const plugin = {
   },
   configs: {} as Record<string, unknown>,
   rules: {
-    "hello-world": helloWorld,
     "no-hardcoded-strings": noHardcodedStrings,
   },
 };
