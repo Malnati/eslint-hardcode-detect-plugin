@@ -134,3 +134,87 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T05:17:05Z`
+- `session_id`: `smoke-codex`
+- `turn_id`: `turn-1`
+- `model`: `smoke`
+- `transcript_path`: `None`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `22`
+- `dirty_after`: `23`
+- `touched_in_turn`: `1`
+- `failure_signal_from_post_tool`: `True`
+
+### Ficheiros auditados
+
+- `.log/hooks/_smoke-codex-hcd-err-violation.md`: **VIOLAÇÃO** (Nível 1: falta pelo menos um prefixo) — contagens 1/0/0; linhas: L7
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T05:17:11Z`
+- `conversation_id`: `smoke2c`
+- `generation_id`: `smoke2g`
+- `model`: ``
+- `cursor_version`: ``
+- `transcript_path`: ``
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T05:17:11Z`
+- `conversation_id`: `smoke3c`
+- `generation_id`: `smoke3g`
+- `model`: ``
+- `cursor_version`: ``
+- `transcript_path`: ``
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `.log/hooks/_smoke-hcd-err-violation.md`: **VIOLAÇÃO** (Nível 1: falta pelo menos um prefixo) — contagens 1/0/0; linhas: L7
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T05:21:49Z`
+- `conversation_id`: `d2dec1bb-1ef2-4c09-ab0d-ffefb8b36778`
+- `generation_id`: `3034677d-1151-4f28-9b88-e94fffb6f333`
+- `model`: `default`
+- `cursor_version`: `3.0.16`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d2dec1bb-1ef2-4c09-ab0d-ffefb8b36778/d2dec1bb-1ef2-4c09-ab0d-ffefb8b36778.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/index.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-secrets.test.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/plugin-contract.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L93
