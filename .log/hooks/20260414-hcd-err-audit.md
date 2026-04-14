@@ -559,3 +559,47 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T13:15:09Z`
+- `session_id`: `019d8c21-7931-7651-ac44-0c93f2296ca6`
+- `turn_id`: `019d8c21-7d2c-7b21-825b-d6b3aabb4b97`
+- `model`: `gpt-5.4-mini`
+- `transcript_path`: `None`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `5`
+- `dirty_after`: `7`
+- `touched_in_turn`: `2`
+- `failure_signal_from_post_tool`: `False`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T13:15:44Z`
+- `conversation_id`: `697547d6-a124-4d09-9dfe-500f255a3f02`
+- `generation_id`: `01d4dcc7-95e4-481c-baa4-396154dff58b`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/697547d6-a124-4d09-9dfe-500f255a3f02/697547d6-a124-4d09-9dfe-500f255a3f02.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `packages/eslint-plugin-hardcode-detect/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/e2e-fixture-nest.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
