@@ -520,11 +520,11 @@ const rule: Rule.RuleModule = {
     hasSuggestions: true,
     messages: {
       hardcoded:
-        "Evite string literal hardcoded; prefira constantes ou catálogo de mensagens.",
+        "[HCD-ERR-SENIOR] Literal de string hardcoded detectado no código.\n[HCD-ERR-FIX] Extraia para constante, catálogo ou mecanismo de configuração apropriado.\n[HCD-ERR-OPS] Enquanto a correção definitiva não entra, rastreie e documente ocorrências para evitar novas cópias.",
       hardcodedEnvDefault:
-        "Literal de fallback de process.env (?? ou ||); prefira constantes ou catálogo de mensagens.",
+        "[HCD-ERR-SENIOR] Literal hardcoded usado como fallback de process.env (?? ou ||).\n[HCD-ERR-FIX] Mova o fallback para constante/catálogo e padronize a leitura de configuração.\n[HCD-ERR-OPS] Até corrigir, mantenha o fallback explicitamente documentado e sob revisão.",
       hardcodedDuplicateCrossFile:
-        "Mesmo valor normalizado que noutro ficheiro do conjunto lintado (trilha R2); considere módulo partilhado ou catálogo.",
+        "[HCD-ERR-SENIOR] Mesmo valor normalizado já apareceu noutro ficheiro no mesmo lint (trilha R2).\n[HCD-ERR-FIX] Centralize em módulo partilhado ou catálogo único para eliminar duplicação.\n[HCD-ERR-OPS] Como contorno, rastreie os pontos duplicados e evite introduzir novos até a centralização.",
     },
   },
 

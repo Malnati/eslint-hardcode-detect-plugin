@@ -1,4 +1,0 @@
-{
-  "failure_signal_detected": true,
-  "last_failing_command": "rg -n \"HCD-ERR-SENIOR|HCD-ERR-FIX|HCD-ERR-OPS|hardcodedEnvDefault|hardcodedDuplicateCrossFile|0\\.1\\.3|0\\.1\\.2\" packages/eslint-plugin-hardcode-detect specs docs | head -n 300"
-}

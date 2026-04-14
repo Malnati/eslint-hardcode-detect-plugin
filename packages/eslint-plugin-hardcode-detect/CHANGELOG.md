@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.1.3] - 2026-04-14
+
+### Changed
+
+- `no-hardcoded-strings` now emits tripartite HCD-ERR messages (`[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`) for `hardcoded`, `hardcodedEnvDefault`, and `hardcodedDuplicateCrossFile`.
+- Package docs now describe the HCD-ERR triplet messaging and the Nest smoke e2e coverage (detection path + controlled R1 autofix path).
+
 ## [0.1.2] - 2026-04-14
 
 ### Changed

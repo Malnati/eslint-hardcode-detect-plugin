@@ -3,7 +3,7 @@
 Product rule (`problem`): discourages hardcoded string literals in code, except very short trivial strings.
 
 - On `Literal` nodes whose value is `string`, if `value.length >= 2`, the rule reports with the configured message (equivalent to: avoid string literal; move to constants or a catalog). Strings shorter than length 2 are ignored.
-- **Messages**: at least `hardcoded`, with text steering toward constants or a catalog; with `envDefaultLiteralPolicy: "report-separate"` and `process.env` *fallback* literals, `hardcodedEnvDefault` may be used (see below).
+- **Messages**: `hardcoded`, `hardcodedEnvDefault`, and `hardcodedDuplicateCrossFile` emit content in three lines with `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, and `[HCD-ERR-OPS]`; `envDefaultLiteralPolicy: "report-separate"` still selects `hardcodedEnvDefault` for `process.env` *fallback* literals (see below).
 - Part of the plugin `recommended` preset (`hardcode-detect/recommended`).
 
 The full vocabulary of options planned in the repository (including R2/R3 tracks and `secretRemediationMode`) is in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). **In this package**, the automatic remediation described below applies to the **R1** track with `remediationMode: "r1"` and the subset of options already supported in the rule (see schema in `src/rules/no-hardcoded-strings.ts`).
