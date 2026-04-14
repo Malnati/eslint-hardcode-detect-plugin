@@ -19,6 +19,15 @@ O vocabulário completo de opções planeadas no repositório (incluindo trilhas
 
 ---
 
+## Remediação R3 (`remediationMode: "r3"`)
+
+- **Sem autofix R1** (igual a `off` para constantes no mesmo ficheiro).
+- Com **`dataFileTargets` não vazio** e caminho de origem não excluído pelas mesmas regras que limitam autofix R1 (`remediationIncludeGlobs` / `remediationExcludeGlobs`, caminho “arriscado”, segredo provável), em `Program:exit` a regra **escreve** (merge) literais elegíveis em ficheiros JSON/YAML listados, sob `hardcodeDetect.strings`, com nomes de chave estáveis entre ficheiros via `settings.hardcodeDetect`. Com **`dataFileTargets: []`**, não há escrita — apenas detecção.
+- **Formatos e merge:** `dataFileFormats`, `dataFileMergeStrategy`; caminhos relativos ao `cwd` do ESLint (ver [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md)).
+- Testes utilitários: [`tests/r3-data-file-writers.test.mjs`](../../tests/r3-data-file-writers.test.mjs); e2e [`e2e/r3-data-files.e2e.mjs`](../../e2e/r3-data-files.e2e.mjs).
+
+---
+
 ## Remediação R1 (`remediationMode: "r1"`)
 
 Com R1 activo, a regra pode **injectar constantes no topo do mesmo ficheiro** e substituir ocorrências no mesmo `SourceCode`, sujeita a globs, risco de caminho e heurísticas de segredo (ver matriz).

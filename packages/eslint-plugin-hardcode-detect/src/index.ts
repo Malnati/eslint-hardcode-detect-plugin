@@ -44,3 +44,17 @@ Object.assign(plugin.configs, {
 
 export const rules = plugin.rules;
 export default plugin;
+
+export {
+  mergePlainObjectDeep,
+  parseJsonRootObject,
+  parseYamlRootObject,
+  parseYamlToJs,
+  sortKeysDeep,
+  stableStringifyJson,
+  stableStringifyYaml,
+} from "./utils/r3-data-file-writers.js";
+export type {
+  DataFileMergeStrategy,
+  MergePlainObjectResult,
+} from "./utils/r3-data-file-writers.js";

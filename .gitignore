@@ -1,10 +1,9 @@
 node_modules/
 dist/
+packages/eslint-plugin-hardcode-detect/e2e/fixtures/r3-data/r3-out/
 coverage/
 *.log
 # `*.log` casa também com o segmento de caminho `.log`; permitir versionar `.log/` (auditoria do hook).
 !.log/
 !.log/**
-# Estado efémero do hook (acumula paths por conversa); não versionar.
-.log/hooks/.state/
 .DS_Store

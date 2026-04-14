@@ -10,6 +10,13 @@ import {
   getCrossFileLiteralIndex,
   r2NormalizedLiteralKey,
 } from "../utils/r2-literal-index.js";
+import {
+  getR3ConstRegistry,
+  stableConstNameForGroup,
+} from "../utils/r3-const-registry.js";
+import type { DataFileMergeStrategy } from "../utils/r3-data-file-writers.js";
+import { writeR3PatchesToDataFiles } from "../utils/r3-write-data-files.js";
+import type { DataFileFormat } from "../utils/r3-write-data-files.js";
 
 /** Opções públicas M1 (subset do contrato; R2/R3 reservados sem fix). */
 export type RemediationMode = "off" | "r1" | "r2" | "r3" | "auto";
@@ -36,6 +43,12 @@ export type NoHardcodedStringsOptions = {
   sharedModuleImportStyle: SharedModuleImportStyle;
   literalIndexRebuildPolicy: LiteralIndexRebuildPolicy;
   parallelLintingCompatibility: ParallelLintingCompatibility;
+  /** R3 — formatos de ficheiro de dados permitidos para merge. */
+  dataFileFormats: DataFileFormat[];
+  /** R3 — caminhos relativos ao cwd e/ou globs (ver contrato). */
+  dataFileTargets: string[];
+  /** R3 — estratégia de merge com ficheiros existentes. */
+  dataFileMergeStrategy: DataFileMergeStrategy;
 };
 
 const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
@@ -48,7 +61,18 @@ const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
   sharedModuleImportStyle: "project",
   literalIndexRebuildPolicy: "every-run",
   parallelLintingCompatibility: "documented-limitations",
+  dataFileFormats: ["json", "yaml"],
+  dataFileTargets: [],
+  dataFileMergeStrategy: "merge-keys",
 };
+
+const ALLOWED_DATA_FILE_FORMATS = new Set<DataFileFormat>([
+  "json",
+  "yaml",
+  "yml",
+  "toml",
+  "properties",
+]);
 
 export function normalizeNoHardcodedStringsOptions(
   raw: unknown,
@@ -112,6 +136,23 @@ export function normalizeNoHardcodedStringsOptions(
       ? o.parallelLintingCompatibility
       : DEFAULT_OPTIONS.parallelLintingCompatibility;
 
+  const dataFileFormatsRaw = Array.isArray(o.dataFileFormats)
+    ? o.dataFileFormats
+    : DEFAULT_OPTIONS.dataFileFormats;
+  const dataFileFormats = dataFileFormatsRaw.filter((x): x is DataFileFormat =>
+    typeof x === "string" && ALLOWED_DATA_FILE_FORMATS.has(x as DataFileFormat),
+  );
+
+  const dataFileTargets = Array.isArray(o.dataFileTargets)
+    ? o.dataFileTargets.filter((x): x is string => typeof x === "string")
+    : DEFAULT_OPTIONS.dataFileTargets;
+
+  const dataFileMergeStrategy =
+    o.dataFileMergeStrategy === "merge-keys" ||
+    o.dataFileMergeStrategy === "fail-on-conflict"
+      ? o.dataFileMergeStrategy
+      : DEFAULT_OPTIONS.dataFileMergeStrategy;
+
   return {
     remediationMode,
     constantNamingConvention,
@@ -123,6 +164,10 @@ export function normalizeNoHardcodedStringsOptions(
     sharedModuleImportStyle,
     literalIndexRebuildPolicy,
     parallelLintingCompatibility,
+    dataFileFormats:
+      dataFileFormats.length > 0 ? dataFileFormats : DEFAULT_OPTIONS.dataFileFormats,
+    dataFileTargets,
+    dataFileMergeStrategy,
   };
 }
 
@@ -382,6 +427,25 @@ const rule: Rule.RuleModule = {
               "Compatibilidade com lint paralelo ESLint; ver documentação da regra e ADR.",
             enum: ["require-serial", "documented-limitations"],
           },
+          dataFileFormats: {
+            description:
+              "R3: formatos de ficheiros de dados permitidos para merge (extensão vs lista).",
+            type: "array",
+            items: {
+              enum: ["json", "yaml", "yml", "toml", "properties"],
+            },
+          },
+          dataFileTargets: {
+            description:
+              "R3: caminhos relativos ao cwd do ESLint e/ou globs de ficheiros de dados.",
+            type: "array",
+            items: { type: "string" },
+          },
+          dataFileMergeStrategy: {
+            description:
+              "R3: merge com ficheiros existentes (merge-keys ou falha em conflito).",
+            enum: ["merge-keys", "fail-on-conflict"],
+          },
         },
         additionalProperties: false,
       },
@@ -398,6 +462,9 @@ const rule: Rule.RuleModule = {
         literalIndexRebuildPolicy: DEFAULT_OPTIONS.literalIndexRebuildPolicy,
         parallelLintingCompatibility:
           DEFAULT_OPTIONS.parallelLintingCompatibility,
+        dataFileFormats: DEFAULT_OPTIONS.dataFileFormats,
+        dataFileTargets: DEFAULT_OPTIONS.dataFileTargets,
+        dataFileMergeStrategy: DEFAULT_OPTIONS.dataFileMergeStrategy,
       },
     ],
     fixable: "code",
@@ -422,6 +489,9 @@ const rule: Rule.RuleModule = {
 
     const effMode = effectiveRemediationMode(options.remediationMode);
     const r1Active = effMode === "r1";
+
+    const r3Reg =
+      options.remediationMode === "r3" ? getR3ConstRegistry(context) : null;
 
     const excludedRemediation = isExcludedByGlobs(
       relativePath,
@@ -473,7 +543,13 @@ const rule: Rule.RuleModule = {
         const groups: GroupInfo[] = [];
         for (const key of groupKeys) {
           const ocs = groupOcc.get(key)!;
-          const constName = uniqueConstantName(ocs[0].value, usedNames);
+          const constName = r3Reg
+            ? stableConstNameForGroup(
+                ocs[0].value,
+                ocs[0].isEnvDefault,
+                r3Reg,
+              )
+            : uniqueConstantName(ocs[0].value, usedNames);
           groups.push({ key, occurrences: ocs, constName });
         }
 
@@ -610,6 +686,27 @@ const rule: Rule.RuleModule = {
             }
             crossFileIndex.get(k)!.add(relativePath);
           }
+        }
+
+        const r3Eligible =
+          options.remediationMode === "r3" &&
+          options.dataFileTargets.length > 0 &&
+          includedRemediation &&
+          !excludedRemediation &&
+          !looksRiskyFilePath(relativePath);
+
+        if (r3Eligible && groupsSafe.length > 0) {
+          const strings: Record<string, string> = {};
+          for (const g of groupsSafe) {
+            strings[g.constName] = g.occurrences[0]!.value;
+          }
+          writeR3PatchesToDataFiles({
+            cwd,
+            dataFileFormats: options.dataFileFormats,
+            dataFileTargets: options.dataFileTargets,
+            dataFileMergeStrategy: options.dataFileMergeStrategy,
+            patch: { hardcodeDetect: { strings } },
+          });
         }
       },
     };

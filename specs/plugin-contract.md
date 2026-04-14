@@ -38,6 +38,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 - Valores de opção `remediationMode`: `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"`.
 - **Remediação R1 por autofix** só está activa quando o modo efectivo é **R1**: `"r1"` ou `"auto"` (este último mapeia para R1 na implementação actual). Com `"off"`, ou com `"r2"` / `"r3"` (**sem** autofix R1 nesta versão), mantém-se detecção e relatórios; não há reescrita R1 automática.
 - Com **`remediationMode: "r2"`**, activa-se a **detecção de duplicados cross-file** (ver abaixo): quando o mesmo **valor normalizado** já foi visto noutro ficheiro processado **antes** no mesmo `lintFiles`, usa-se `messageId` `hardcodedDuplicateCrossFile` em vez de `hardcoded` / `hardcodedEnvDefault` quando aplicável. O **primeiro** ficheiro que introduz um valor mantém o relatório base até esse momento; os **seguintes** com o mesmo valor normalizado recebem o diagnóstico R2. Autofix R2 (módulo partilhado) **ainda não** faz parte da implementação actual.
+- Com **`remediationMode: "r3"`**, mantém-se a detecção (sem autofix R1). Se `dataFileTargets` **não** estiver vazio e o caminho do ficheiro fonte não estiver excluído pelas mesmas heurísticas que impedem autofix R1 em caminhos arriscados / `remediationExcludeGlobs` / `remediationIncludeGlobs`, em `Program:exit` a regra **fund**e literais não classificados como segredo provável em ficheiros de dados (JSON/YAML) conforme `dataFileFormats`, `dataFileMergeStrategy` e política de caminhos (ver subsecção R3 e schema). Com `dataFileTargets: []`, não há escrita em ficheiros de dados (só detecção).
 
 #### Remediação R1 (constantes no mesmo ficheiro)
 
@@ -68,8 +69,9 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 | `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | Estilo de import ao referenciar `sharedConstantsModule` (futuro). |
 | `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | Política normativa: o índice R2 coerente com a invocação actual; sem cache stale entre corridas sem política explícita. |
 | `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | Ver ADR de paralelismo; a opção documenta expectativa, não altera sózinha o motor ESLint. |
-
-- Opções R3 e segredos na tabela global abaixo permanecem **fora** do schema desta regra até marcos posteriores.
+| `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3: formatos cujo mapeamento por extensão de ficheiro está permitido para merge (TOML e `.properties` reservados; não escritos na implementação actual). |
+| `dataFileTargets` | string[] | `[]` | R3: caminhos relativos ao `cwd` do ESLint (`context.cwd`) e, em versão limitada, padrões `dir/*.ext` com um único `*` no último segmento; lista vazia = sem escrita em ficheiros de dados. |
+| `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3: merge profundo; ver utilitários e documentação da regra. |
 
 #### Mensagens (IDs estáveis)
 
@@ -114,7 +116,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 Esta secção fixa **vocabulário e semântica** das opções públicas para remediação assistida alinhadas a [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md) e à visão em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md). As trilhas **R1** (por ficheiro), **R2** (multi-ficheiro / módulo partilhado) e **R3** (ficheiros de dados e ambiente) podem corresponder a **regras distintas** ou a **modos / sub-opções** da mesma família (`no-hardcoded-strings` ou nomes estáveis futuros); o contrato previne ambiguidade de schema **antes** do merge de implementação correspondente.
 
-**Estado:** **misto** — **R1** e **detecção R2 por índice** (duplicados cross-file com `remediationMode: "r2"`, `messageId` `hardcodedDuplicateCrossFile`) estão **implementados** no schema e no código conforme subsecções acima. **Autofix R2** (módulo partilhado) e **R3** permanecem por integrar; `r3` como `remediationMode` segue sem autofix R1. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
+**Estado:** **misto** — **R1** e **detecção R2 por índice** (duplicados cross-file com `remediationMode: "r2"`, `messageId` `hardcodedDuplicateCrossFile`) estão **implementados** no schema e no código conforme subsecções acima. **Autofix R2** (módulo partilhado) permanece por integrar. **R3** (opções `dataFile*`, merge em JSON/YAML e escrita em `Program:exit` quando `dataFileTargets` não está vazio) está **implementado** no schema e no código; `r3` como `remediationMode` **não** activa autofix R1. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
 
 ### Tabela de opções (nomes estáveis)
 
@@ -129,9 +131,9 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 | `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | R2 | M2 | **Sim** (futuro autofix) | Estilo de import a gerar ao referenciar `sharedConstantsModule`. |
 | `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | R2 | M2 | **Sim** | O índice de valores para duplicados no âmbito do lint **reconstrói-se** (ou invalida-se correctamente) em cada invocação `lintFiles` sobre o conjunto definido pelo `eslint.config`; não há cache stale entre execuções sem política explícita. |
 | `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | R2 | M2 | **Sim** (documental) | Quando a API ESLint usar `concurrency` / workers, o desenho deve documentar: desactivar paralelismo para regras com estado global, segunda passagem determinística, ou índice em ficheiro idempotente (ver macro-plan). |
-| `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | **Não** | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
-| `dataFileTargets` | string[] | `[]` | R3 | M3 | **Não** | Caminhos ou globs dos ficheiros de dados (vazio = derivação por convenção documentada na implementação). |
-| `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | **Não** | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
+| `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | **Sim** (schema) | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
+| `dataFileTargets` | string[] | `[]` | R3 | M3 | **Sim** (schema) | Caminhos relativos ao `cwd` do ESLint e padrões `dir/*.ext` simples; vazio = sem escrita em ficheiros de dados. |
+| `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | **Sim** (schema) | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
 | `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | **Não** | Modo seguro por defeito: sem copiar valores sensíveis em claro; fix agressivo exige opt-in explícito. Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
 | `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Transversal | M1–M3 | **Sim** | Tratamento de literais que são fallbacks de `process.env` (operadores `??` ou `||`) ou espelhos em constantes; mesma classe de hardcode que o literal de default (ver macro-plan). |
 
@@ -150,6 +152,8 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 ### R3 — ficheiros de dados e ambiente
 
 - **Objectivo:** externalizar valores para `.json`, `.yaml`/`.yml`, `.toml`, `.properties` (ou subset em `dataFileFormats`) e código de leitura adequado à stack.
+- **Implementação (M3):** com `remediationMode: "r3"` e `dataFileTargets` não vazio, os literais elegíveis são fundidos sob a chave aninhada `hardcodeDetect.strings` (mapa nome estável → valor), com nomes de chave alinhados ao mesmo critério que constantes R1 e estáveis entre ficheiros via `settings.hardcodeDetect` (registo R3). A escrita ocorre no fim da visita ao `Program` (efeito lateral; não passa pelo `fix` do ESLint no ficheiro fonte).
+- **Caminhos:** cada entrada em `dataFileTargets` é interpretada em relação a `context.cwd`; padrões com metacaracteres glob usam expansão limitada (`dir/*.ext` com um `*` no último segmento). Ficheiros cujo sufixo não corresponde a um formato em `dataFileFormats` são ignorados. TOML e `.properties` não são escritos na versão actual.
 - **Segredos:** valores classificados como sensíveis **não** são escritos em claro em ficheiros de dados; segue `secretRemediationMode` e a política de segredos do macro-plan.
 - **Merge:** `dataFileMergeStrategy` define expectativa mínima ante chaves duplicadas ou conflitos de escrita.
 
@@ -165,11 +169,13 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 - **Fumaça e2e**: além do RuleTester, o pacote mantém testes de integração em `e2e/` que usam a API Node.js do ESLint (`ESLint`, `lintFiles`) contra fixtures com flat config e o plugin carregado a partir de `dist/`:
   - **Hello World mínimo** (`e2e/fixtures/hello-world/`): valida carregamento do plugin e a regra `hello-world`.
   - **R2 dois ficheiros** (`e2e/fixtures/r2-dup/`): mesmo literal em `one.mjs` e `two.mjs` com `remediationMode: "r2"`; o e2e `r2-multi-file.e2e.mjs` verifica `hardcodedDuplicateCrossFile`.
+  - **R3 ficheiros de dados** (`e2e/fixtures/r3-data/`): `remediationMode: "r3"` com `dataFileTargets` apontando para ficheiros sob `r3-out/`; o e2e `r3-data-files.e2e.mjs` verifica geração/merge de `.json` e `.yml`.
   - **Massa NestJS** (workspace auxiliar [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/), ver [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md)): aplicação Nest real; o e2e `nest-workspace.e2e.mjs` linta `src/fixture-hardcodes/**/*.ts` e fixa contagens de `hello-world` e `no-hardcoded-strings` como fumaça adicional. Alterar essa massa exige atualizar o e2e e o spec.
 - Esses fluxos **não substituem** os testes por regra com RuleTester.
 
 ## Versão do documento
 
+- **1.1.0** — M3 R3: opções `dataFileFormats`, `dataFileTargets`, `dataFileMergeStrategy` no schema; remediação R3 com escrita em JSON/YAML; utilitários e e2e `r3-data-files`.
 - **1.0.0** — M2 R2: detecção cross-file (`hardcodedDuplicateCrossFile`), opções R2 no schema, `settings.hardcodeDetect`, documentação de índice e ADR de paralelismo; autofix R2 (módulo partilhado) ainda não integrado.
 - **0.9.0** — M1 / tarefa A3: `no-hardcoded-strings` com schema object (opções R1 M1), `messageId`s `hardcoded` e `hardcodedEnvDefault`, modo efectivo de remediação e secção de remediação com estado **misto** (implementado vs vocabulário futuro); alinhado à implementação em [`packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`](../packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts).
 - **0.8.0** — M0: secção *Remediação assistida — opções públicas planeadas (R1–R3)* com tabela de opções estáveis (caminhos partilhados R2, formatos R3, `secretRemediationMode`, `envDefaultLiteralPolicy`, índice e paralelismo); ligação do schema planeado à regra `no-hardcoded-strings`.
