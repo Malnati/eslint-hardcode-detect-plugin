@@ -541,3 +541,21 @@ _Nenhum ficheiro acumulado neste turno._
 - `packages/eslint-plugin-hardcode-detect/docs/rules/hello-world.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `packages/eslint-plugin-hardcode-detect/docs/rules/standardize-error-messages.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L9, L10, L11
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T13:09:48Z`
+- `conversation_id`: `697547d6-a124-4d09-9dfe-500f255a3f02`
+- `generation_id`: `92d8546c-cc3b-4ae9-8374-59cc329a2d0b`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/697547d6-a124-4d09-9dfe-500f255a3f02/697547d6-a124-4d09-9dfe-500f255a3f02.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
