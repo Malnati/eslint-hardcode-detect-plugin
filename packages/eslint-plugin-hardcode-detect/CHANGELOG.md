@@ -1,26 +1,32 @@
 # Changelog
 
-Todas as alterações notáveis neste projeto serão documentadas neste ficheiro.
+All notable changes to this project are documented in this file.
 
-O formato é inspirado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/), e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/) na linha **0.y.z** até estabilização da API pública do plugin (ver [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
+
+## [0.1.2] - 2026-04-14
+
+### Changed
+
+- US English for all package Markdown (`README.md`, `docs/rules/*.md`) and `package.json` description. No changes to exported rules, options, or runtime behavior.
 
 ## [0.1.1] - 2026-04-14
 
 ### Changed
 
-- Patch release: documentation only (repository and `docs/` guides in US English). No changes to exported rules, options, or runtime behavior.
+- Patch release: documentation only (repository and root `docs/` guides in US English). No changes to exported rules, options, or runtime behavior.
 
 ## [0.1.0] - 2026-04-14
 
 ### Added
 
-- Primeira versão numerada do pacote publicável após `0.0.0` de desenvolvimento.
-- Regras exportadas: `hello-world` (demonstração), `no-hardcoded-strings` (detecção e remediação conforme contrato).
-- Config `hardcode-detect/recommended` com `settings.hardcodeDetect` para índice R2 na mesma invocação `lintFiles`.
-- Modos de remediação `remediationMode`: `off`, `r1` (constantes no mesmo ficheiro), `r2` (duplicados cross-file — detecção; autofix R2 reservado), `r3` (merge em ficheiros de dados JSON/YAML quando configurado), `auto` (mapeado para R1 na implementação actual).
-- Opções de segredo e literais de fallback de ambiente alinhadas a [`specs/plugin-contract.md`](../../specs/plugin-contract.md).
-- Exportação de utilitários e tipos para writers R3 (`mergePlainObjectDeep`, `parseJsonRootObject`, parsers YAML, `stableStringifyJson` / `stableStringifyYaml`, tipos associados) conforme entrada pública do pacote.
+- First numbered version of the publishable package after `0.0.0` development.
+- Exported rules: `hello-world` (demo), `no-hardcoded-strings` (detection and remediation per contract).
+- `hardcode-detect/recommended` config with `settings.hardcodeDetect` for the R2 index in the same `lintFiles` invocation.
+- `remediationMode` values: `off`, `r1` (constants in the same file), `r2` (cross-file duplicates — detection; R2 autofix reserved), `r3` (merge into JSON/YAML data files when configured), `auto` (mapped to R1 in the current implementation).
+- Secret options and env fallback literals aligned with [`specs/plugin-contract.md`](../../specs/plugin-contract.md).
+- Exported utilities and types for R3 writers (`mergePlainObjectDeep`, `parseJsonRootObject`, YAML parsers, `stableStringifyJson` / `stableStringifyYaml`, related types) per the package public entry.
 
 ### Notes
 
-- A regra `standardize-error-messages` permanece **no contrato** e **fora** do artefacto exportado até implementação dedicada (ver README do pacote).
+- The `standardize-error-messages` rule remains **in the contract** and **outside** the exported artifact until dedicated implementation (see package README).

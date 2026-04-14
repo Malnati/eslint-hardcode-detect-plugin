@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-hardcode-detect",
-  "version": "0.1.1",
-  "description": "ESLint plugin: detecção de hardcodes e padronização de mensagens de erro (implementação em andamento).",
+  "version": "0.1.2",
+  "description": "ESLint plugin: hardcoded value detection and error-message standardization (implementation in progress).",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

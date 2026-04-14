@@ -1,100 +1,100 @@
 # `no-hardcoded-strings`
 
-Regra de produto (`problem`): desencoraja literais de string hardcoded no código, exceto strings triviais muito curtas.
+Product rule (`problem`): discourages hardcoded string literals in code, except very short trivial strings.
 
-- Em nós `Literal` cujo valor é `string`, se `value.length >= 2`, a regra reporta com a mensagem configurada (equivalente a: evitar string literal; mover para constantes ou catálogo). Strings com comprimento menor que 2 são ignoradas.
-- **Mensagens**: pelo menos `hardcoded`, com texto orientando uso de constantes ou catálogo; com `envDefaultLiteralPolicy: "report-separate"` e literais de *fallback* de `process.env`, pode usar-se `hardcodedEnvDefault` (ver abaixo).
-- Faz parte do preset `recommended` do plugin (`hardcode-detect/recommended`).
+- On `Literal` nodes whose value is `string`, if `value.length >= 2`, the rule reports with the configured message (equivalent to: avoid string literal; move to constants or a catalog). Strings shorter than length 2 are ignored.
+- **Messages**: at least `hardcoded`, with text steering toward constants or a catalog; with `envDefaultLiteralPolicy: "report-separate"` and `process.env` *fallback* literals, `hardcodedEnvDefault` may be used (see below).
+- Part of the plugin `recommended` preset (`hardcode-detect/recommended`).
 
-O vocabulário completo de opções planeadas no repositório (incluindo trilhas R2/R3 e `secretRemediationMode`) está em [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). **Neste pacote**, a remediação automática descrita abaixo aplica-se à trilha **R1** com `remediationMode: "r1"` e ao subconjunto de opções já suportado na regra (ver schema em `src/rules/no-hardcoded-strings.ts`).
-
----
-
-## Detecção R2 (`remediationMode: "r2"`)
-
-- **Sem autofix R1** (igual a `off` para remediação no mesmo ficheiro).
-- Com o **mesmo valor normalizado** (valor da string + flag de fallback de ambiente, alinhado a R1) em **mais do que um ficheiro** na mesma invocação `lintFiles`, os ficheiros processados **depois** do primeiro com esse valor recebem `messageId` **`hardcodedDuplicateCrossFile`** em vez de `hardcoded` / `hardcodedEnvDefault` (o primeiro ficheiro mantém o relatório base até esse ponto).
-- O índice partilhado usa `settings.hardcodeDetect` (o preset `recommended` injecta um objecto vazio mutável). **Paralelismo ESLint:** ver [`docs/adr-eslint-concurrency-r2.md`](../../../../docs/adr-eslint-concurrency-r2.md).
-- Testes: [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs), e2e [`e2e/r2-multi-file.e2e.mjs`](../../e2e/r2-multi-file.e2e.mjs).
+The full vocabulary of options planned in the repository (including R2/R3 tracks and `secretRemediationMode`) is in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). **In this package**, the automatic remediation described below applies to the **R1** track with `remediationMode: "r1"` and the subset of options already supported in the rule (see schema in `src/rules/no-hardcoded-strings.ts`).
 
 ---
 
-## Remediação R3 (`remediationMode: "r3"`)
+## R2 detection (`remediationMode: "r2"`)
 
-- **Sem autofix R1** (igual a `off` para constantes no mesmo ficheiro).
-- Com **`dataFileTargets` não vazio** e caminho de origem não excluído pelas mesmas regras que limitam autofix R1 (`remediationIncludeGlobs` / `remediationExcludeGlobs`, caminho “arriscado”, segredo provável), em `Program:exit` a regra **escreve** (merge) literais elegíveis em ficheiros JSON/YAML listados, sob `hardcodeDetect.strings`, com nomes de chave estáveis entre ficheiros via `settings.hardcodeDetect`. Com **`dataFileTargets: []`**, não há escrita — apenas detecção.
-- **Formatos e merge:** `dataFileFormats`, `dataFileMergeStrategy`; caminhos relativos ao `cwd` do ESLint (ver [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md)).
-- Testes utilitários: [`tests/r3-data-file-writers.test.mjs`](../../tests/r3-data-file-writers.test.mjs); e2e [`e2e/r3-data-files.e2e.mjs`](../../e2e/r3-data-files.e2e.mjs).
+- **No R1 autofix** (same as `off` for remediation in the same file).
+- With the **same normalized value** (string value + env-fallback flag, aligned with R1) in **more than one file** in the same `lintFiles` invocation, files processed **after** the first with that value get `messageId` **`hardcodedDuplicateCrossFile`** instead of `hardcoded` / `hardcodedEnvDefault` (the first file keeps the base report up to that point).
+- The shared index uses `settings.hardcodeDetect` (the `recommended` preset injects a mutable empty object). **ESLint parallelism:** see [`docs/adr-eslint-concurrency-r2.md`](../../../../docs/adr-eslint-concurrency-r2.md).
+- Tests: [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs), e2e [`e2e/r2-multi-file.e2e.mjs`](../../e2e/r2-multi-file.e2e.mjs).
 
 ---
 
-## Remediação R1 (`remediationMode: "r1"`)
+## R3 remediation (`remediationMode: "r3"`)
 
-Com R1 activo, a regra pode **injectar constantes no topo do mesmo ficheiro** e substituir ocorrências no mesmo `SourceCode`, sujeita a globs, risco de caminho e heurísticas de segredo (ver matriz).
+- **No R1 autofix** (same as `off` for constants in the same file).
+- With **non-empty `dataFileTargets`** and source path not excluded by the same rules that limit R1 autofix (`remediationIncludeGlobs` / `remediationExcludeGlobs`, “risky” path, likely secret), on `Program:exit` the rule **writes** (merges) eligible literals into listed JSON/YAML files under `hardcodeDetect.strings`, with stable key names across files via `settings.hardcodeDetect`. With **`dataFileTargets: []`**, there is no write — detection only.
+- **Formats and merge:** `dataFileFormats`, `dataFileMergeStrategy`; paths relative to ESLint `cwd` (see [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md)).
+- Utility tests: [`tests/r3-data-file-writers.test.mjs`](../../tests/r3-data-file-writers.test.mjs); e2e [`e2e/r3-data-files.e2e.mjs`](../../e2e/r3-data-files.e2e.mjs).
 
-### Semântica no ESLint e no RuleTester
+---
 
-| Evidência no teste | Significado para o utilizador |
-|--------------------|-------------------------------|
-| `output` esperado | Autofix compatível com `eslint --fix` naquele reporte. |
-| `suggestions` **sem** `output` no mesmo reporte | Apenas *suggest*; o utilizador aplica manualmente se quiser. |
-| Só `errors` (sem `output` nem `suggestions` quando a política não oferece remediação) | Detecção sem autofix nem sugestão alinhada à remediação R1 (ex.: literal classificado como segredo provável sem outros alvos seguros no fix). |
+## R1 remediation (`remediationMode: "r1"`)
 
-Com `remediationMode: "off"`, mantém-se a detecção; não há autofix R1 (ver **S-R1-04** na suite).
+With R1 active, the rule may **inject constants at the top of the same file** and replace occurrences in the same `SourceCode`, subject to globs, path risk, and secret heuristics (see matrix).
 
-### Matriz de política de risco (P-SVF-*) → outcome
+### Semantics in ESLint and RuleTester
 
-Cada linha liga o critério de negócio [A2](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md) ao comportamento **reproduzido** na implementação e nos testes. Prioridade em sobreposição: exclusão por glob e candidatos a segredo prevalecem sobre o *happy path* de fix quando ambos se aplicam.
+| Test evidence | Meaning for the user |
+|---------------|----------------------|
+| Expected `output` | Autofix compatible with `eslint --fix` on that report. |
+| `suggestions` **without** `output` on the same report | Suggest-only; the user applies manually if desired. |
+| Only `errors` (no `output` or `suggestions` when policy offers no remediation) | Detection without R1-aligned autofix or suggestion (e.g. literal classified as likely secret with no other safe targets for the fix). |
 
-| ID | Contexto | Outcome (implementação actual) | Cenários na suite |
-|----|----------|----------------------------------|-------------------|
-| P-SVF-01 | Literal de aplicação sem segredo provável, caminho não excluído, não “arriscado”, inclusão satisfeita | Autofix R1 (`output`) | S-R1-01, S-R1-02, S-R1-03 |
-| P-SVF-02 | `remediationExcludeGlobs` casa com o caminho do ficheiro | Sem autofix R1; reporte mantém-se; **suggest** oferecido quando existe pelo menos um alvo seguro para o fix sugerido | S-R1-05 |
-| P-SVF-03 | `remediationIncludeGlobs` não vazio | Autofix só se o caminho estiver incluído; caso contrário sem autofix, com **suggest** como em P-SVF-02 | S-R1-06 |
-| P-SVF-04 | Candidato a segredo (heurística: comprimento e charset alfanumérico; ver código) | Sem autofix nem **suggestions** quando não há alvos seguros para construir o fix sugerido | Caso “segredo provável” em [`no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs) |
-| P-SVF-05 | Literal de *fallback* de `process.env` (`??` / `||`) | Depende de `envDefaultLiteralPolicy` (tabela abaixo) | S-R1-07 |
-| P-SVF-06 | Ficheiros “i18n” (ex.: `.i18n.` no caminho) | Sem autofix por caminho arriscado; **suggest** se aplicável | S-R1-05 (exemplo `strings.i18n.ts` + exclude); heurística de caminho alinha a i18n a *suggest-only* |
-| P-SVF-07 | Testes / fixtures (ex.: `.test.`, `.spec.`, `__tests__`, `test/`) | Sem autofix; **suggest** se aplicável | S-R1-08 |
-| P-SVF-08 | Outros caminhos ou strings semânticas onde o fix não é neutro | *Suggest-only* ou exclusão por glob conforme configuração; pormenores alinhados a **S-R1-08** e extensível à heurística de caminho | S-R1-08 |
+With `remediationMode: "off"`, detection remains; there is no R1 autofix (see **S-R1-04** in the suite).
 
-**Caminhos “arriscados” (implementação):** sem autofix R1; pode haver *suggest*. Inclui, entre outros, `__tests__/`, `/test/`, `.test.`, `.spec.`, `.i18n.` no caminho relativo (ver `looksRiskyFilePath` em `src/rules/no-hardcoded-strings.ts`).
+### Risk policy matrix (P-SVF-*) → outcome
+
+Each row links the business criterion [A2](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md) to **reproduced** behavior in implementation and tests. Priority on overlap: glob exclusion and secret candidates override the fix *happy path* when both apply.
+
+| ID | Context | Outcome (current implementation) | Suite scenarios |
+|----|---------|-----------------------------------|-------------------|
+| P-SVF-01 | Application literal without likely secret, path not excluded, not “risky”, inclusion satisfied | R1 autofix (`output`) | S-R1-01, S-R1-02, S-R1-03 |
+| P-SVF-02 | `remediationExcludeGlobs` matches file path | No R1 autofix; report remains; **suggest** offered when at least one safe target exists for the suggested fix | S-R1-05 |
+| P-SVF-03 | Non-empty `remediationIncludeGlobs` | Autofix only if path is included; otherwise no autofix, with **suggest** as in P-SVF-02 | S-R1-06 |
+| P-SVF-04 | Secret candidate (heuristic: length and alphanumeric charset; see code) | No autofix or **suggestions** when there are no safe targets to build the suggested fix | “Likely secret” case in [`no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs) |
+| P-SVF-05 | `process.env` *fallback* literal (`??` / `||`) | Depends on `envDefaultLiteralPolicy` (table below) | S-R1-07 |
+| P-SVF-06 | “i18n” files (e.g. `.i18n.` in path) | No autofix for risky path; **suggest** if applicable | S-R1-05 (example `strings.i18n.ts` + exclude); path heuristic aligns i18n to *suggest-only* |
+| P-SVF-07 | Tests / fixtures (e.g. `.test.`, `.spec.`, `__tests__`, `test/`) | No autofix; **suggest** if applicable | S-R1-08 |
+| P-SVF-08 | Other paths or semantic strings where fix is not neutral | *Suggest-only* or glob exclusion per configuration; detail aligned with **S-R1-08** and extensible path heuristic | S-R1-08 |
+
+**“Risky” paths (implementation):** no R1 autofix; *suggest* may apply. Includes, among others, `__tests__/`, `/test/`, `.test.`, `.spec.`, `.i18n.` in the relative path (see `looksRiskyFilePath` in `src/rules/no-hardcoded-strings.ts`).
 
 ### `envDefaultLiteralPolicy`
 
-Literais que são *fallback* de `process.env` com `??` ou `||` são tratados conforme a política:
+Literals that are `process.env` *fallbacks* with `??` or `||` are handled per policy:
 
-| Valor | Comportamento reproduzível na suite |
-|-------|-------------------------------------|
-| `"ignore"` | Não reporta o literal de *fallback* (não entra na regra para esse nó). Casos válidos **S-R1-07**. |
-| `"include"` | Reporta `hardcoded` e aplica autofix R1 quando o restante da política permitir. **S-R1-07**. |
-| `"report-separate"` | Usa `messageId: "hardcodedEnvDefault"`; autofix alinhado a **S-R1-07** na suite. |
+| Value | Behavior reproduced in the suite |
+|-------|----------------------------------|
+| `"ignore"` | Does not report the *fallback* literal (rule does not apply to that node). Valid cases **S-R1-07**. |
+| `"include"` | Reports `hardcoded` and applies R1 autofix when the rest of the policy allows. **S-R1-07**. |
+| `"report-separate"` | Uses `messageId: "hardcodedEnvDefault"`; autofix aligned with **S-R1-07** in the suite. |
 
-### Segredos e `secretRemediationMode`
+### Secrets and `secretRemediationMode`
 
-- **Heurística:** `looksLikeSecretCandidate` (comprimento mínimo e charset) classifica candidatos a segredo; não substitui um *secret scanner* dedicado.
-- **`suggest-only` (padrão):** sem autofix R1 que copie o valor sensível para uma nova `const`; com literais mistos, o fix aplica-se só aos alvos «seguros». *Suggestions* só constroem trechos a partir de alvos seguros (o literal classificado como segredo pode permanecer inalterado no ficheiro até acção manual).
-- **`placeholder-default`:** autofix R1 pode injectar `const NAME = "<HCD_SECRET_PLACEHOLDER>"` (exportado como `HCD_SECRET_PLACEHOLDER` no pacote) e substituir o literal pelo identificador, **sem** repetir o valor sensível na declaração injectada.
-- **`aggressive-autofix-opt-in`:** *opt-in* explícito — autofix R1 pode injectar o valor literal completo como nas constantes normais; rever diffs antes de commit.
-- **R3:** candidatos a segredo **não** são escritos em ficheiros de dados (JSON/YAML), em qualquer modo.
+- **Heuristic:** `looksLikeSecretCandidate` (minimum length and charset) classifies secret candidates; does not replace a dedicated *secret scanner*.
+- **`suggest-only` (default):** no R1 autofix that copies the sensitive value into a new `const`; with mixed literals, fix applies only to “safe” targets. *Suggestions* only build snippets from safe targets (the literal classified as secret may stay unchanged until manual action).
+- **`placeholder-default`:** R1 autofix may inject `const NAME = "<HCD_SECRET_PLACEHOLDER>"` (exported as `HCD_SECRET_PLACEHOLDER` from the package) and replace the literal with the identifier, **without** repeating the sensitive value in the injected declaration.
+- **`aggressive-autofix-opt-in`:** explicit *opt-in* — R1 autofix may inject the full literal value like normal constants; review diffs before commit.
+- **R3:** secret candidates are **not** written to data files (JSON/YAML), in any mode.
 
-Semântica completa: subsecção *Segredos — `secretRemediationMode`* em [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). Suite dedicada: [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs) (complementa o caso «segredo provável» em [`no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs)).
+Full semantics: *Secrets — `secretRemediationMode`* subsection in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). Dedicated suite: [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs) (complements the “likely secret” case in [`no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs)).
 
 ---
 
-## Prova automatizada e comando
+## Automated proof and command
 
-- **Suite R1 (cenários S-R1-01 … S-R1-08 e segredo):** [`tests/no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs).
-- **Suite M4 (`secretRemediationMode`):** [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs).
-- **Comando canónico (raiz do monorepo):** `npm test -w eslint-plugin-hardcode-detect` — ver também [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md).
+- **R1 suite (scenarios S-R1-01 … S-R1-08 and secret):** [`tests/no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs).
+- **M4 suite (`secretRemediationMode`):** [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs).
+- **Canonical command (monorepo root):** `npm test -w eslint-plugin-hardcode-detect` — see also [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md).
 
-## Rastreabilidade de negócio
+## Business traceability
 
-- Política e critérios C-SVF-* / P-SVF-* (analista de negócio): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md).
-- Parecer do revisor de negócio: [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
-- Parecer do revisor de desenvolvimento (doc da regra ↔ suite R1): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md).
-- Matriz técnica e critérios de evidência (analista de testes, P-SVF → asserções RuleTester / e2e): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md).
-- Parecer do revisor de testes (matriz P-SVF ↔ suite; critérios de evidência M1-A2-08): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md).
-- Execução e evidências do testador (gate `npm test`; M1-A2-08): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md).
-- Encerramento do dev especialista em correcções (re-validação pós-gate; M1-A2-09): [`docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-09-papel-dev-especialista-correcoes-suggest-vs-fix-policy.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-09-papel-dev-especialista-correcoes-suggest-vs-fix-policy.md).
+- Policy and C-SVF-* / P-SVF-* criteria (business analyst): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-analyst-suggest-vs-fix-policy-acceptance.md).
+- Business reviewer sign-off: [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-business-reviewer-suggest-vs-fix-policy-signoff.md).
+- Development reviewer sign-off (rule doc ↔ R1 suite): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-development-reviewer-suggest-vs-fix-policy-signoff.md).
+- Technical matrix and evidence criteria (test analyst, P-SVF → RuleTester / e2e assertions): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md).
+- Test reviewer sign-off (P-SVF matrix ↔ suite; M1-A2-08 evidence criteria): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md).
+- Test runner execution and evidence (`npm test` gate; M1-A2-08): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md).
+- Remediation dev specialist close-out (re-validation post-gate; M1-A2-09): [`docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-09-papel-dev-especialista-correcoes-suggest-vs-fix-policy.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/micro/M1-A2-09-papel-dev-especialista-correcoes-suggest-vs-fix-policy.md).
 
-Se o comportamento implementado divergir do contrato planeado, a sincronização formal do spec é a tarefa **A3** ([`docs/remediation-milestones/tasks/m1-remediation-r1/A3-contract-sync-post-r1.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A3-contract-sync-post-r1.md)).
+If implemented behavior diverges from the planned contract, formal spec sync is task **A3** ([`docs/remediation-milestones/tasks/m1-remediation-r1/A3-contract-sync-post-r1.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A3-contract-sync-post-r1.md)).

@@ -1,17 +1,17 @@
 # `standardize-error-messages`
 
-Regra (`problem`) definida no contrato do plugin: padronizar mensagens de erro e de log com código identificável e, quando houver catálogo, validar contra o catálogo no flat config. Inclui opções (`messages`, `codePattern`, `loggers`, `errorConstructors`) e `messageId`s de relatório (`missingCode`, `unknownCode`, `invalidCatalogEntry`, `dynamicMessage`).
+Rule (`problem`) defined in the plugin contract: standardize error and log messages with an identifiable code and, when a catalog exists, validate against the catalog in flat config. Includes options (`messages`, `codePattern`, `loggers`, `errorConstructors`) and report `messageId`s (`missingCode`, `unknownCode`, `invalidCatalogEntry`, `dynamicMessage`).
 
-Cada entrada do catálogo `messages` (mapa código → objeto) deve definir três strings não vazias, alinhadas semanticamente a [`specs/agent-error-messaging-triple.md`](../../../../specs/agent-error-messaging-triple.md):
+Each `messages` catalog entry (code → object map) must define three non-empty strings, semantically aligned with [`specs/agent-error-messaging-triple.md`](../../../../specs/agent-error-messaging-triple.md):
 
-| Campo | Papel |
-|-------|--------|
-| `seniorDiagnostic` | Texto para diagnóstico técnico (tracing, correlação, causa imediata). **Recomenda-se** iniciar por `[HCD-ERR-SENIOR]`. |
-| `systemicRemediation` | Texto para correção definitiva (causa raiz, automação, proteções, testes). **Recomenda-se** iniciar por `[HCD-ERR-FIX]`. |
-| `operationalWorkaround` | Texto para contorno operacional seguro em paralelo à correção definitiva. **Recomenda-se** iniciar por `[HCD-ERR-OPS]`. |
+| Field | Role |
+|-------|------|
+| `seniorDiagnostic` | Text for technical diagnosis (tracing, correlation, immediate cause). **Recommended** to start with `[HCD-ERR-SENIOR]`. |
+| `systemicRemediation` | Text for definitive remediation (root cause, automation, guardrails, tests). **Recommended** to start with `[HCD-ERR-FIX]`. |
+| `operationalWorkaround` | Text for a safe operational workaround alongside definitive remediation. **Recommended** to start with `[HCD-ERR-OPS]`. |
 
-Os prefixos são os mesmos do spec de agentes; permitem auditoria unificada (Níveis 1–2) entre mensagens emitidas pelo código e relatórios de falha de agentes.
+Prefixes match the agent spec; they enable unified auditing (Levels 1–2) across messages emitted by code and agent failure reports.
 
-**Neste pacote**, a regra consta do contrato público mas **ainda não** está incluída no artefacto publicável exportado por `eslint-plugin-hardcode-detect` — implementação futura alinhada ao spec.
+**In this package**, the rule is in the public contract but is **not** yet included in the publishable artifact exported by `eslint-plugin-hardcode-detect` — future implementation aligned with the spec.
 
-Ver contrato em [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md).
+See contract in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md).

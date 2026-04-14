@@ -1,10 +1,10 @@
 # eslint-plugin-hardcode-detect
 
-Implementação oficial do plugin. O contrato das regras está em [`specs/plugin-contract.md`](../../specs/plugin-contract.md); a visão multi-nível em [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
+Official plugin implementation. Rule contract: [`specs/plugin-contract.md`](../../specs/plugin-contract.md); multi-level vision: [`specs/vision-hardcode-plugin.md`](../../specs/vision-hardcode-plugin.md).
 
-O contrato descreve **três** regras (`hello-world`, `no-hardcoded-strings`, `standardize-error-messages`). **Neste pacote**, a build publicável exporta hoje apenas `hello-world` e `no-hardcoded-strings`. A regra `standardize-error-messages` consta do contrato (opções e `messageId`s) mas **ainda não** está incluída no artefacto publicável — implementação futura alinhada ao spec.
+The contract describes **three** rules (`hello-world`, `no-hardcoded-strings`, `standardize-error-messages`). **In this package**, the publishable build currently exports only `hello-world` and `no-hardcoded-strings`. The `standardize-error-messages` rule is in the contract (options and `messageId`s) but is **not** yet part of the publishable artifact — future implementation aligned with the spec.
 
-## Uso rápido (ESLint 9 flat config)
+## Quick start (ESLint 9 flat config)
 
 ```javascript
 import { defineConfig } from "eslint/config";
@@ -20,7 +20,7 @@ export default defineConfig([
 ]);
 ```
 
-Ou habilite regras manualmente (ex.: regra de demonstração `hello-world`):
+Or enable rules manually (e.g. demo rule `hello-world`):
 
 ```javascript
 rules: {
@@ -29,19 +29,19 @@ rules: {
 },
 ```
 
-O plugin expõe `meta.name`, `meta.version` e `meta.namespace` (`hardcode-detect`), conforme a documentação oficial de [plugins](https://eslint.org/docs/latest/extend/plugins).
+The plugin exposes `meta.name`, `meta.version`, and `meta.namespace` (`hardcode-detect`), per official [plugins](https://eslint.org/docs/latest/extend/plugins) documentation.
 
-## Adopção da remediação
+## Adopting remediation
 
-Objetivo: activar **R1** (constantes no mesmo ficheiro), **R2** (duplicados entre ficheiros na mesma execução) ou **R3** (escrita em ficheiros de dados) com passos copiáveis. Semântica exacta das opções: [`specs/plugin-contract.md`](../../specs/plugin-contract.md); detalhes e matrizes: [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
+Goal: enable **R1** (constants in the same file), **R2** (duplicates across files in the same run), or **R3** (writing to data files) with copy-pasteable steps. Exact option semantics: [`specs/plugin-contract.md`](../../specs/plugin-contract.md); detail and matrices: [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
 
-1. **Parta do preset** `hardcode-detect/recommended` (injecta `settings.hardcodeDetect: {}`, necessário para o índice R2 quando sobrescreve a regra).
-2. **Sobrescreva** `hardcode-detect/no-hardcoded-strings` com um array `[severidade, opções]` conforme os exemplos abaixo.
-3. **Segredos:** use `secretRemediationMode` conforme o seu risco (`suggest-only` por defeito no contrato). Resumo na secção [Segredos, ambiente e cofres](#segredos-ambiente-e-cofres).
+1. **Start from** the `hardcode-detect/recommended` preset (injects `settings.hardcodeDetect: {}`, required for the R2 index when overriding the rule).
+2. **Override** `hardcode-detect/no-hardcoded-strings` with an array `[severity, options]` as in the examples below.
+3. **Secrets:** use `secretRemediationMode` according to your risk (`suggest-only` is the contract default). Summary in [Secrets, environment, and vaults](#secrets-environment-and-vaults).
 
-### Remediação R1 (`remediationMode: "r1"`)
+### R1 remediation (`remediationMode: "r1"`)
 
-Autofix de constantes no **mesmo** ficheiro (quando o contexto for seguro para fix; caso contrário podem aplicar-se só *suggestions*).
+Autofix constants in the **same** file (when context is safe for fix; otherwise only *suggestions* may apply).
 
 ```javascript
 import { defineConfig } from "eslint/config";
@@ -64,9 +64,9 @@ export default defineConfig([
 ]);
 ```
 
-### Remediação R2 (`remediationMode: "r2"`)
+### R2 remediation (`remediationMode: "r2"`)
 
-**Detecção** de duplicados **entre** ficheiros: o mesmo valor normalizado visto noutro ficheiro já processado na **mesma** invocação `lintFiles` produz `messageId` `hardcodedDuplicateCrossFile`. O autofix R2 (módulo partilhado) **ainda não** está na implementação actual. Requer `settings.hardcodeDetect` objecto mutável — o `recommended` já o injecta.
+**Detection** of duplicates **across** files: the same normalized value seen in another file already processed in the **same** `lintFiles` invocation yields `messageId` `hardcodedDuplicateCrossFile`. R2 autofix (shared module) is **not** in the current implementation. Requires a mutable `settings.hardcodeDetect` object — `recommended` already injects it.
 
 ```javascript
 import { defineConfig } from "eslint/config";
@@ -83,9 +83,9 @@ export default defineConfig([
 ]);
 ```
 
-### Remediação R3 (`remediationMode: "r3"`)
+### R3 remediation (`remediationMode: "r3"`)
 
-Escrita / merge de entradas em ficheiros **JSON** ou **YAML** listados em `dataFileTargets` (caminhos relativos ao `cwd` do ESLint). Com `dataFileTargets: []` não há escrita — só detecção.
+Write / merge entries into **JSON** or **YAML** files listed in `dataFileTargets` (paths relative to ESLint `cwd`). With `dataFileTargets: []` there is no write — detection only.
 
 ```javascript
 import { defineConfig } from "eslint/config";
@@ -110,43 +110,43 @@ export default defineConfig([
 ]);
 ```
 
-### Ferramentas e limites R2
+### R2 tooling and limits
 
-- **Sem `bin` no pacote:** agregação em duas fases via CLI dedicada **não** faz parte deste release; o desenho suportado é índice in-process + `settings.hardcodeDetect` (ver [`docs/adr-hardcode-bin-r2-aggregation.md`](../../docs/adr-hardcode-bin-r2-aggregation.md)).
-- **Paralelismo ESLint:** com lint multithread, o índice R2 pode ser incompleto; ver [`docs/adr-eslint-concurrency-r2.md`](../../docs/adr-eslint-concurrency-r2.md).
+- **No `bin` in this package:** two-phase aggregation via a dedicated CLI is **not** part of this release; the supported design is in-process index + `settings.hardcodeDetect` (see [`docs/adr-hardcode-bin-r2-aggregation.md`](../../docs/adr-hardcode-bin-r2-aggregation.md)).
+- **ESLint parallelism:** with multithreaded lint, the R2 index may be incomplete; see [`docs/adr-eslint-concurrency-r2.md`](../../docs/adr-eslint-concurrency-r2.md).
 
-## Regras
+## Rules
 
-O preset `hardcode-detect/recommended` aplica apenas `no-hardcoded-strings`. A regra `hello-world` é **demonstração** e **não** faz parte de `recommended` (evita ruído em projetos reais).
+The `hardcode-detect/recommended` preset applies only `no-hardcoded-strings`. The `hello-world` rule is a **demo** and is **not** part of `recommended` (avoids noise in real projects).
 
-| ID | Descrição |
-|----|-----------|
-| `hello-world` | Demonstração mínima (um aviso por arquivo); ver [`docs/rules/hello-world.md`](docs/rules/hello-world.md). |
-| `no-hardcoded-strings` | Desencoraja literais de string com comprimento ≥ 2; ver [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md). |
-| `standardize-error-messages` | Contrato e página de referência; ainda não exportada no pacote; ver [`docs/rules/standardize-error-messages.md`](docs/rules/standardize-error-messages.md). |
+| ID | Description |
+|----|-------------|
+| `hello-world` | Minimal demo (one warning per file); see [`docs/rules/hello-world.md`](docs/rules/hello-world.md). |
+| `no-hardcoded-strings` | Discourages string literals with length ≥ 2; see [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md). |
+| `standardize-error-messages` | Contract and reference page; not yet exported from the package; see [`docs/rules/standardize-error-messages.md`](docs/rules/standardize-error-messages.md). |
 
-Com `remediationMode: "r1"` em `no-hardcoded-strings`, a regra pode aplicar remediação **R1** (constantes no topo do mesmo ficheiro). A política de **autofix** (`eslint --fix` / `output` no RuleTester) face a **apenas sugestões** (`suggestions` sem `output`) e aos casos só com erro está documentada em [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md), com matriz P-SVF-* e cenários S-R1-* espelhados na suite [`tests/no-hardcoded-strings-r1.test.mjs`](tests/no-hardcoded-strings-r1.test.mjs). Critérios normativos de prova (P-SVF → tipo de asserção; papel dos e2e na cadeia `npm test`): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md). Parecer do revisor de testes (A2): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md). Evidências de execução do testador (gate `npm test`; M1-A2-08): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md).
+With `remediationMode: "r1"` on `no-hardcoded-strings`, the rule may apply **R1** remediation (constants at the top of the same file). **Autofix** policy (`eslint --fix` / RuleTester `output`) vs **suggestions-only** (`suggestions` without `output`) and error-only cases is documented in [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md), with P-SVF-* matrix and S-R1-* scenarios mirrored in [`tests/no-hardcoded-strings-r1.test.mjs`](tests/no-hardcoded-strings-r1.test.mjs). Normative proof criteria (P-SVF → assertion type; e2e role in the `npm test` chain): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-testing-analyst-suggest-vs-fix-policy-matrix-evidence.md). Test reviewer sign-off (A2): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-reviewer-suggest-vs-fix-policy-signoff.md). Test runner execution evidence (`npm test` gate; M1-A2-08): [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md`](../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-test-runner-suggest-vs-fix-policy-evidence.md).
 
-Para validar o pacote a partir da raiz do monorepo: `npm test -w eslint-plugin-hardcode-detect`.
+To validate the package from the monorepo root: `npm test -w eslint-plugin-hardcode-detect`.
 
-## Segredos, ambiente e cofres
+## Secrets, environment, and vaults
 
-Literais que parecem tokens ou segredos (heurística da regra, alinhada a L1 em [`docs/hardcoding-map.md`](../../docs/hardcoding-map.md)) devem ser tratados com cuidado: **não** commite valores sensíveis; prefira **variáveis de ambiente** e **cofres** ou gestão de segredos da sua plataforma (documentação oficial do fornecedor cloud / CI).
+Literals that look like tokens or secrets (rule heuristic, aligned with L1 in [`docs/hardcoding-map.md`](../../docs/hardcoding-map.md)) must be handled carefully: **do not** commit sensitive values; prefer **environment variables** and **vaults** or your platform’s secret management (official cloud / CI vendor documentation).
 
-- **Política do repositório:** não simulamos fornecedores externos nem gravamos credenciais reais em testes — ver [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md).
-- **Plugin:** a opção `secretRemediationMode` em `no-hardcoded-strings` controla se o autofix R1 pode copiar o valor em claro (`aggressive-autofix-opt-in`), usar um placeholder estável (`placeholder-default`) ou manter o modo seguro por defeito (`suggest-only`). Detalhes e sentinel: [`specs/plugin-contract.md`](../../specs/plugin-contract.md) e [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
-- **Leitura recomendada (externa):** [OWASP — Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) e a documentação oficial do seu runtime (Node.js `process.env`, gestão de segredos em Kubernetes, etc.).
+- **Repository policy:** we do not simulate external vendors or store real credentials in tests — see [`specs/agent-integration-testing-policy.md`](../../specs/agent-integration-testing-policy.md).
+- **Plugin:** the `secretRemediationMode` option on `no-hardcoded-strings` controls whether R1 autofix may copy the plaintext value (`aggressive-autofix-opt-in`), use a stable placeholder (`placeholder-default`), or keep the safe default (`suggest-only`). Detail and sentinel: [`specs/plugin-contract.md`](../../specs/plugin-contract.md) and [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
+- **Recommended reading (external):** [OWASP — Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) and your runtime’s official documentation (Node.js `process.env`, Kubernetes secrets management, etc.).
 
-## Desenvolvimento
+## Development
 
-- `npm run build` — compila `src/` para `dist/`.
-- `npm run lint` — ESLint no código do plugin (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`, `typescript-eslint`).
-- `npm test` — compila e executa testes com `RuleTester` + `node:test` + fumaça e2e ([`e2e/hello-world.e2e.mjs`](e2e/hello-world.e2e.mjs), [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs); ver secção seguinte).
+- `npm run build` — compile `src/` to `dist/`.
+- `npm run lint` — ESLint on the plugin code (`eslint-plugin-eslint-plugin`, `eslint-plugin-n`, `typescript-eslint`).
+- `npm test` — compile and run tests with `RuleTester` + `node:test` + e2e smoke ([`e2e/hello-world.e2e.mjs`](e2e/hello-world.e2e.mjs), [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs); see next section).
 
-### Fumaça e2e (Nest)
+### Nest e2e smoke
 
-Alinhado a [`specs/plugin-contract.md`](../../specs/plugin-contract.md) (Compatibilidade / fumaça e2e), a **massa NestJS** é o workspace auxiliar [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) (aplicação Nest real). O runner está em [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs) — caminho à raiz do repositório: `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`. Esse teste instancia a API `ESLint` com `cwd` no workspace Nest, chama `lintFiles` em `src/fixture-hardcodes/**/*.ts` com o plugin a partir de `dist/` e fixa contagens de `hardcode-detect/hello-world` e `hardcode-detect/no-hardcoded-strings`. Normas e tabela de contagens: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
+Per [`specs/plugin-contract.md`](../../specs/plugin-contract.md) (Compatibility / e2e smoke), the **NestJS fixture** is the auxiliary workspace [`packages/e2e-fixture-nest`](../../packages/e2e-fixture-nest) (real Nest app). The runner is [`e2e/nest-workspace.e2e.mjs`](e2e/nest-workspace.e2e.mjs) — path from repo root: `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs`. That test instantiates the ESLint API with `cwd` on the Nest workspace, calls `lintFiles` on `src/fixture-hardcodes/**/*.ts` with the plugin from `dist/`, and asserts counts for `hardcode-detect/hello-world` and `hardcode-detect/no-hardcoded-strings`. Norms and count table: [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md).
 
-Requer **Node.js ≥ 22** (alinhado ao CI e ao campo `engines` do pacote).
+Requires **Node.js ≥ 22** (aligned with CI and the package `engines` field).
 
-Instale dependências a partir da raiz do monorepo (`npm install`) ou apenas neste pacote, conforme sua política de ambiente.
+Install dependencies from the monorepo root (`npm install`) or only in this package, per your environment policy.

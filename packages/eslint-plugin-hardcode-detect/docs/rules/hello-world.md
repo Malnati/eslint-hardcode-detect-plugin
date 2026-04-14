@@ -1,8 +1,8 @@
 # `hello-world`
 
-Regra de **demonstração** (“Hello World”): na visita ao nó `Program`, emite um único relatório por arquivo com `messageId` `hello`, para confirmar que `eslint-plugin-hardcode-detect` está carregado.
+**Demonstration** rule (“Hello World”): on the `Program` node visit, emits a single report per file with `messageId` `hello`, to confirm `eslint-plugin-hardcode-detect` is loaded.
 
-- **Não** está incluída no preset `recommended` do plugin (evita ruído).
-- Ative explicitamente no flat config, por exemplo: `"hardcode-detect/hello-world": "warn"`.
+- **Not** included in the plugin’s `recommended` preset (avoids noise).
+- Enable explicitly in flat config, for example: `"hardcode-detect/hello-world": "warn"`.
 
-Ver contrato em [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md).
+See contract in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md).
