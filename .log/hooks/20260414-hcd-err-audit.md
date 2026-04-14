@@ -1267,3 +1267,23 @@ _Nenhum ficheiro elegível acumulado neste turno._
 ### Ficheiros auditados
 
 - `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L60
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-14T16:54:57Z`
+- `conversation_id`: `11ec66ab-45a1-4ecd-969d-c0297f531dae`
+- `generation_id`: `008f5567-a97a-41fd-a26c-f3277511686b`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/11ec66ab-45a1-4ecd-969d-c0297f531dae/11ec66ab-45a1-4ecd-969d-c0297f531dae.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L70
+- `scripts/generate-mermaid-svgs.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
