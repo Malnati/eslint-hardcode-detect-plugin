@@ -191,6 +191,11 @@ Documentation of repository layout. **Update this file when you create, move, or
 │   ├── repository-tree.md    # This file
 │   └── versioning-for-agents.md
 ├── packages/
+│   ├── chatbot/                        # Git subtree from https://github.com/tookyn/chatboot.git (main)
+│   │   ├── ESLINT.md                   # Build + lint execution report for subtree integration
+│   │   └── api/                        # Imported backend service (NestJS-based)
+│   │       ├── eslint.config.mjs       # Flat ESLint config (ESLint 9 + hardcode-detect)
+│   │       └── package.json            # Scripts/deps updated for ESLint 9 migration
 │   ├── e2e-fixture-nest/               # NestJS workspace: e2e fixture (not publishable as the plugin)
 │   │   ├── src/fixture-hardcodes/      # Fixed literals with e2e counts
 │   │   └── eslint.config.mjs           # Flat config + plugin via sibling package dist
