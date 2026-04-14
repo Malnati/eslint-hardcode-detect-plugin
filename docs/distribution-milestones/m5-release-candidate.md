@@ -107,9 +107,8 @@ gantt
 
 ---
 
-## 8.1 Automação de publicação npm (workflow + scripts)
+## 8.1 Automação de publicação npm (scripts)
 
-- Workflow dedicado: [`.github/workflows/release-npm.yml`](../../.github/workflows/release-npm.yml) com `workflow_dispatch`.
 - Token obrigatório no runtime: `NPM_ACCESS_TOKEN` (mapeado para `NODE_AUTH_TOKEN` em execução; sem commitar `.npmrc` com segredo).
 - Pipeline de release automatizada (raiz): `npm run release:npm`, com etapas:
   1. `release:npm:precheck` (`npm whoami`);

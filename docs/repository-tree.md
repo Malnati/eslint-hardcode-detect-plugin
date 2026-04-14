@@ -65,7 +65,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 │   ├── ISSUE_TEMPLATE/       # Community intake templates (bug, feature, docs, config)
 │   ├── pull_request_template.md  # Default PR checklist and validation prompts
 │   ├── actions/ops-eslint/   # Composite Action (action.yml + assets/run.sh)
-│   └── workflows/            # CI and release (e.g. ci.yml, release-npm.yml)
+│   └── workflows/            # CI workflows (e.g. ci.yml)
 ├── docs/                     # Supplementary documentation
 │   ├── README.md             # Index of guides under docs/
 │   ├── cursor-vps-cli-parity.md  # IDE vs CLI/VPS, hook verification and smoke

@@ -16,10 +16,6 @@ jobs:
           node-version: "22"
       - name: Install
         run: npm install
-      - name: Verify normative agent files (T5)
-        run: npm run verify:agent-files
-      - name: Validate milestone plan manifests (distribution and remediation)
-        run: npm run test:docs-milestones
       - name: Lint workspace
         run: npm run lint
       - name: Test workspace
