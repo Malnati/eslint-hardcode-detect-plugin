@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.2.4] - 2026-04-14
+
+### Changed
+
+- Patch version bump; no changes to exported rules, options, or plugin runtime behavior.
+
 ## [0.2.3] - 2026-04-14
 
 ### Fixed

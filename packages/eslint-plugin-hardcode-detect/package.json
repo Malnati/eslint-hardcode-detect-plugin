@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-hardcode-detect",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "ESLint plugin: hardcoded value detection and error-message standardization (implementation in progress).",
   "homepage": "https://github.com/malnati/eslint-hardcode-detect-plugin/tree/main/packages/eslint-plugin-hardcode-detect#readme",
   "bugs": {
