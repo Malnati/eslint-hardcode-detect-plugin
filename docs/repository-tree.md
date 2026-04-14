@@ -60,6 +60,8 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │   ├── architecture.md
 │   ├── documentation-policy.md
 │   ├── hardcoding-map.md     # Taxonomia e níveis de hardcoding (mapa conceitual)
+│   ├── architecture-r2-global-index.md  # Índice R2, CI, settings (marco M2)
+│   ├── adr-eslint-concurrency-r2.md  # ADR paralelismo ESLint vs estado R2
 │   ├── solution-distribution-channels.md  # Canais npm/CI/Docker/IDE/agentes
 │   ├── hardcode-remediation-macro-plan.md  # Plano macro remediação R1–R3, segredos, env, marcos M0–M5
 │   ├── distribution-channels-macro-plan.md  # Plano macro e2e por trilha, diagramas, marcos, durações
@@ -168,12 +170,16 @@ Documentação da organização do repositório. **Atualize este arquivo quando 
 │       ├── docs/rules/                 # Uma página por regra do contrato (hello-world, no-hardcoded-strings, standardize-error-messages)
 │       ├── e2e/                        # Fumaça e2e (ESLint API + fixtures consumidor)
 │       │   ├── fixtures/hello-world/   # Flat config mínimo + amostra
+│       │   ├── fixtures/r2-dup/        # Dois .mjs, mesmo literal (trilha R2)
 │       │   ├── hello-world.e2e.mjs
+│       │   ├── r2-multi-file.e2e.mjs   # Duplicados cross-file (R2)
 │       │   └── nest-workspace.e2e.mjs  # Massa Nest (cwd no workspace irmão)
 │       ├── src/rules/                  # Implementação das regras ESLint
+│       ├── src/utils/                  # Utilitários (ex.: r2-literal-index.ts)
 │       ├── tests/                      # RuleTester + node:test
 │       │   ├── index.test.mjs          # hello-world + no-hardcoded-strings (base)
-│       │   └── no-hardcoded-strings-r1.test.mjs  # Remediação R1 (marco M1 / S-R1-*)
+│       │   ├── no-hardcoded-strings-r1.test.mjs  # Remediação R1 (marco M1 / S-R1-*)
+│       │   └── no-hardcoded-strings-r2.test.mjs  # Índice R2 / lintFiles multi-ficheiro
 │       └── eslint.config.mjs           # Lint do próprio plugin (flat config)
 ├── reference/                # Somente referência; não é dependência do pacote
 │   ├── README.md

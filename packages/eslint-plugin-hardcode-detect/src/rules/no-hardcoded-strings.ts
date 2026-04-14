@@ -6,11 +6,23 @@ import type { SourceCode } from "eslint";
 import type { Comment, Literal, Node, Program } from "estree";
 import { uniqueConstantName } from "../utils/constant-name.js";
 import { globMatch } from "../utils/glob-match.js";
+import {
+  getCrossFileLiteralIndex,
+  r2NormalizedLiteralKey,
+} from "../utils/r2-literal-index.js";
 
 /** Opções públicas M1 (subset do contrato; R2/R3 reservados sem fix). */
 export type RemediationMode = "off" | "r1" | "r2" | "r3" | "auto";
 
 export type EnvDefaultLiteralPolicy = "include" | "report-separate" | "ignore";
+
+export type LiteralIndexRebuildPolicy = "every-run";
+
+export type ParallelLintingCompatibility =
+  | "require-serial"
+  | "documented-limitations";
+
+export type SharedModuleImportStyle = "esm" | "cjs" | "project";
 
 export type NoHardcodedStringsOptions = {
   remediationMode: RemediationMode;
@@ -19,6 +31,11 @@ export type NoHardcodedStringsOptions = {
   remediationIncludeGlobs: string[];
   remediationExcludeGlobs: string[];
   envDefaultLiteralPolicy: EnvDefaultLiteralPolicy;
+  /** R2 — destino do módulo partilhado (futuro autofix); opcional na detecção por índice. */
+  sharedConstantsModule?: string;
+  sharedModuleImportStyle: SharedModuleImportStyle;
+  literalIndexRebuildPolicy: LiteralIndexRebuildPolicy;
+  parallelLintingCompatibility: ParallelLintingCompatibility;
 };
 
 const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
@@ -28,6 +45,9 @@ const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
   remediationIncludeGlobs: [],
   remediationExcludeGlobs: [],
   envDefaultLiteralPolicy: "include",
+  sharedModuleImportStyle: "project",
+  literalIndexRebuildPolicy: "every-run",
+  parallelLintingCompatibility: "documented-limitations",
 };
 
 export function normalizeNoHardcodedStringsOptions(
@@ -69,6 +89,29 @@ export function normalizeNoHardcodedStringsOptions(
       ? o.envDefaultLiteralPolicy
       : DEFAULT_OPTIONS.envDefaultLiteralPolicy;
 
+  const sharedConstantsModule =
+    typeof o.sharedConstantsModule === "string" && o.sharedConstantsModule.length > 0
+      ? o.sharedConstantsModule
+      : undefined;
+
+  const sharedModuleImportStyle =
+    o.sharedModuleImportStyle === "esm" ||
+    o.sharedModuleImportStyle === "cjs" ||
+    o.sharedModuleImportStyle === "project"
+      ? o.sharedModuleImportStyle
+      : DEFAULT_OPTIONS.sharedModuleImportStyle;
+
+  const literalIndexRebuildPolicy =
+    o.literalIndexRebuildPolicy === "every-run"
+      ? o.literalIndexRebuildPolicy
+      : DEFAULT_OPTIONS.literalIndexRebuildPolicy;
+
+  const parallelLintingCompatibility =
+    o.parallelLintingCompatibility === "require-serial" ||
+    o.parallelLintingCompatibility === "documented-limitations"
+      ? o.parallelLintingCompatibility
+      : DEFAULT_OPTIONS.parallelLintingCompatibility;
+
   return {
     remediationMode,
     constantNamingConvention,
@@ -76,6 +119,10 @@ export function normalizeNoHardcodedStringsOptions(
     remediationIncludeGlobs,
     remediationExcludeGlobs,
     envDefaultLiteralPolicy,
+    sharedConstantsModule,
+    sharedModuleImportStyle,
+    literalIndexRebuildPolicy,
+    parallelLintingCompatibility,
   };
 }
 
@@ -316,6 +363,25 @@ const rule: Rule.RuleModule = {
               "Tratamento do literal à direita de process.env ?? ou ||.",
             enum: ["include", "report-separate", "ignore"],
           },
+          sharedConstantsModule: {
+            description:
+              "Caminho ou padrão do módulo partilhado para constantes R2 (futuro autofix).",
+            type: "string",
+          },
+          sharedModuleImportStyle: {
+            description: "Estilo de import ao referenciar sharedConstantsModule.",
+            enum: ["esm", "cjs", "project"],
+          },
+          literalIndexRebuildPolicy: {
+            description:
+              "Política de reconstrução do índice de literais R2 (hoje só every-run).",
+            enum: ["every-run"],
+          },
+          parallelLintingCompatibility: {
+            description:
+              "Compatibilidade com lint paralelo ESLint; ver documentação da regra e ADR.",
+            enum: ["require-serial", "documented-limitations"],
+          },
         },
         additionalProperties: false,
       },
@@ -328,6 +394,10 @@ const rule: Rule.RuleModule = {
         remediationIncludeGlobs: DEFAULT_OPTIONS.remediationIncludeGlobs,
         remediationExcludeGlobs: DEFAULT_OPTIONS.remediationExcludeGlobs,
         envDefaultLiteralPolicy: DEFAULT_OPTIONS.envDefaultLiteralPolicy,
+        sharedModuleImportStyle: DEFAULT_OPTIONS.sharedModuleImportStyle,
+        literalIndexRebuildPolicy: DEFAULT_OPTIONS.literalIndexRebuildPolicy,
+        parallelLintingCompatibility:
+          DEFAULT_OPTIONS.parallelLintingCompatibility,
       },
     ],
     fixable: "code",
@@ -337,6 +407,8 @@ const rule: Rule.RuleModule = {
         "Evite string literal hardcoded; prefira constantes ou catálogo de mensagens.",
       hardcodedEnvDefault:
         "Literal de fallback de process.env (?? ou ||); prefira constantes ou catálogo de mensagens.",
+      hardcodedDuplicateCrossFile:
+        "Mesmo valor normalizado que noutro ficheiro do conjunto lintado (trilha R2); considere módulo partilhado ou catálogo.",
     },
   },
 
@@ -435,13 +507,39 @@ const rule: Rule.RuleModule = {
 
         const insertPos = getInsertPositionAfterImports(program, sourceCode);
 
-        for (let i = 0; i < occurrences.length; i++) {
-          const occ = occurrences[i];
-          const messageId =
+        const crossFileIndex =
+          options.remediationMode === "r2"
+            ? getCrossFileLiteralIndex(context)
+            : null;
+
+        const resolveMessageId = (
+          occ: Occurrence,
+        ):
+          | "hardcoded"
+          | "hardcodedEnvDefault"
+          | "hardcodedDuplicateCrossFile" => {
+          if (crossFileIndex) {
+            const normKey = r2NormalizedLiteralKey(occ.value, occ.isEnvDefault);
+            const filesFor = crossFileIndex.get(normKey);
+            const cross =
+              filesFor !== undefined &&
+              [...filesFor].some((p) => p !== relativePath);
+            if (cross) {
+              return "hardcodedDuplicateCrossFile";
+            }
+          }
+          if (
             occ.isEnvDefault &&
             options.envDefaultLiteralPolicy === "report-separate"
-              ? "hardcodedEnvDefault"
-              : "hardcoded";
+          ) {
+            return "hardcodedEnvDefault";
+          }
+          return "hardcoded";
+        };
+
+        for (let i = 0; i < occurrences.length; i++) {
+          const occ = occurrences[i];
+          const messageId = resolveMessageId(occ);
 
           const secret = looksLikeSecretCandidate(occ.value);
           const riskyPath = looksRiskyFilePath(relativePath);
@@ -498,6 +596,20 @@ const rule: Rule.RuleModule = {
             messageId,
             ...(fix ? { fix } : {}),
           });
+        }
+
+        if (crossFileIndex) {
+          const keys = new Set(
+            occurrences.map((o) =>
+              r2NormalizedLiteralKey(o.value, o.isEnvDefault),
+            ),
+          );
+          for (const k of keys) {
+            if (!crossFileIndex.has(k)) {
+              crossFileIndex.set(k, new Set());
+            }
+            crossFileIndex.get(k)!.add(relativePath);
+          }
         }
       },
     };

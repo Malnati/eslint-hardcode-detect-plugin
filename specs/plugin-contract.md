@@ -36,7 +36,8 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 #### Modo de remediação efectivo
 
 - Valores de opção `remediationMode`: `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"`.
-- **Remediação R1 por autofix** só está activa quando o modo efectivo é **R1**: `"r1"` ou `"auto"` (este último mapeia para R1 na implementação actual). Com `"off"`, ou com `"r2"` / `"r3"` (reservados: **sem** autofix R1 nesta versão), mantém-se detecção e relatórios; não há reescrita R1 automática.
+- **Remediação R1 por autofix** só está activa quando o modo efectivo é **R1**: `"r1"` ou `"auto"` (este último mapeia para R1 na implementação actual). Com `"off"`, ou com `"r2"` / `"r3"` (**sem** autofix R1 nesta versão), mantém-se detecção e relatórios; não há reescrita R1 automática.
+- Com **`remediationMode: "r2"`**, activa-se a **detecção de duplicados cross-file** (ver abaixo): quando o mesmo **valor normalizado** já foi visto noutro ficheiro processado **antes** no mesmo `lintFiles`, usa-se `messageId` `hardcodedDuplicateCrossFile` em vez de `hardcoded` / `hardcodedEnvDefault` quando aplicável. O **primeiro** ficheiro que introduz um valor mantém o relatório base até esse momento; os **seguintes** com o mesmo valor normalizado recebem o diagnóstico R2. Autofix R2 (módulo partilhado) **ainda não** faz parte da implementação actual.
 
 #### Remediação R1 (constantes no mesmo ficheiro)
 
@@ -45,7 +46,13 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 - **`remediationIncludeGlobs`** / **`remediationExcludeGlobs`**: padrões glob sobre o caminho **relativo** ao `cwd` do ESLint (`context.cwd`). Lista de inclusão vazia = sem filtro extra; exclusão impede autofix R1 nos ficheiros que casam (detecção mantém-se; podem aplicar-se *suggestions* onde a implementação o permitir).
 - **Heurísticas de segurança**: caminhos de ficheiro considerados arriscados (ex. testes, i18n) e literais que coincidem com heurística de **segredo provável** não recebem autofix R1 nem *suggestion* quando não existem alvos seguros para construir o fix; detalhe em código e na documentação da regra.
 
-#### Schema (implementação actual, M1)
+#### Valor normalizado e chave R2 (duplicados entre ficheiros)
+
+- **Valor normalizado** para comparação R2 alinha ao agrupamento R1 quando `dedupeWithinFile` é `true`: o par **valor da string** + **classificação de fallback de ambiente** (`isEnvDefault`, o mesmo critério que separa literais de `process.env` com `??` ou `||` em R1).
+- **Chave de índice** (implementação): concatenação estável desses dois eixos (equivalente semântico a um identificador por par valor + flag de fallback). Literais com `envDefaultLiteralPolicy: "ignore"` não entram no fluxo de ocorrências e **não** participam do índice R2.
+- O índice de ficheiros por chave é mantido **no âmbito da execução** `lintFiles` sobre o conjunto de ficheiros pedido, usando `context.settings.hardcodeDetect` como bolsa mutável quando o flat config a expõe (o config `recommended` do plugin injecta `settings.hardcodeDetect: {}`). Ver [`docs/architecture-r2-global-index.md`](../docs/architecture-r2-global-index.md) e [`docs/adr-eslint-concurrency-r2.md`](../docs/adr-eslint-concurrency-r2.md).
+
+#### Schema (implementação actual, M1 + R2 índice)
 
 - Um único objecto opcional em `options[0]`; propriedades não listadas são rejeitadas (`additionalProperties: false` no JSON Schema da regra).
 
@@ -57,15 +64,20 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 | `remediationIncludeGlobs` | string[] | `[]` | Se não vazio, só ficheiros cujo caminho relativo casa recebem autofix R1 quando o restante contexto o permitir. |
 | `remediationExcludeGlobs` | string[] | `[]` | Caminhos que casam não recebem autofix R1. |
 | `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Política para literais de fallback de `process.env` (`??` / `||`). |
+| `sharedConstantsModule` | string (opcional) | — | Destino do módulo partilhado para constantes R2 (reservado a autofix futuro; opcional na detecção). |
+| `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | Estilo de import ao referenciar `sharedConstantsModule` (futuro). |
+| `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | Política normativa: o índice R2 coerente com a invocação actual; sem cache stale entre corridas sem política explícita. |
+| `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | Ver ADR de paralelismo; a opção documenta expectativa, não altera sózinha o motor ESLint. |
 
-- Opções adicionais da tabela global (R2, R3, segredos, etc.) na secção seguinte **ainda não** fazem parte do schema desta regra até aos marcos indicados.
+- Opções R3 e segredos na tabela global abaixo permanecem **fora** do schema desta regra até marcos posteriores.
 
 #### Mensagens (IDs estáveis)
 
 | ID | Uso |
 |----|-----|
 | `hardcoded` | Literal reportável genérico (inclui fallback de ambiente quando `envDefaultLiteralPolicy` não é `report-separate`). |
-| `hardcodedEnvDefault` | Literal de fallback de `process.env` quando `envDefaultLiteralPolicy === "report-separate"`. |
+| `hardcodedEnvDefault` | Literal de fallback de `process.env` quando `envDefaultLiteralPolicy === "report-separate"` (excepto quando `remediationMode: "r2"` e há duplicado cross-file — prevalece `hardcodedDuplicateCrossFile`). |
+| `hardcodedDuplicateCrossFile` | Com `remediationMode: "r2"`, o valor normalizado já ocorreu noutro ficheiro processado antes nesta execução `lintFiles` (ver ordem de processamento). |
 
 ### `standardize-error-messages`
 
@@ -102,21 +114,21 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 
 Esta secção fixa **vocabulário e semântica** das opções públicas para remediação assistida alinhadas a [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md) e à visão em [`vision-hardcode-plugin.md`](vision-hardcode-plugin.md). As trilhas **R1** (por ficheiro), **R2** (multi-ficheiro / módulo partilhado) e **R3** (ficheiros de dados e ambiente) podem corresponder a **regras distintas** ou a **modos / sub-opções** da mesma família (`no-hardcoded-strings` ou nomes estáveis futuros); o contrato previne ambiguidade de schema **antes** do merge de implementação correspondente.
 
-**Estado:** **misto** — o subconjunto **R1** listado na subsecção `no-hardcoded-strings` acima está **implementado** no schema da regra (marco M1). As restantes linhas da tabela abaixo permanecem **vocabulário normativo** e marcos alvo (M2–M4) até integração no pacote; `r2` / `r3` como valores de `remediationMode` estão reservados (sem remediação por autofix além de R1 na implementação actual). A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
+**Estado:** **misto** — **R1** e **detecção R2 por índice** (duplicados cross-file com `remediationMode: "r2"`, `messageId` `hardcodedDuplicateCrossFile`) estão **implementados** no schema e no código conforme subsecções acima. **Autofix R2** (módulo partilhado) e **R3** permanecem por integrar; `r3` como `remediationMode` segue sem autofix R1. A taxonomia HC-* e níveis L1–L4 permanecem em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md) (sem duplicar aqui a tabela mestra).
 
 ### Tabela de opções (nomes estáveis)
 
-| Opção | Tipo | Padrão planeável | Trilha | Marco alvo | Na regra `no-hardcoded-strings` (M1) | Descrição |
+| Opção | Tipo | Padrão planeável | Trilha | Marco alvo | Na regra `no-hardcoded-strings` | Descrição |
 |-------|------|------------------|--------|------------|----------------------------------------|-----------|
-| `remediationMode` | `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"` | `"off"` | Transversal | M1+ | **Sim** (schema) | Selecciona trilha de remediação ou heurística. `"off"` mantém apenas detecção; `r2`/`r3` sem autofix R1 na versão actual. |
+| `remediationMode` | `"off"` \| `"r1"` \| `"r2"` \| `"r3"` \| `"auto"` | `"off"` | Transversal | M1+ | **Sim** (schema) | Selecciona trilha de remediação ou heurística. `"off"` mantém apenas detecção; `r2`/`r3` sem autofix R1 na versão actual; `r2` activa detecção de duplicados cross-file. |
 | `constantNamingConvention` | string (enum documentado) | `"UPPER_SNAKE_CASE"` | R1 | M1 | **Sim** (só `UPPER_SNAKE_CASE`) | Convenção para identificadores de constantes injectadas no topo do ficheiro. |
 | `dedupeWithinFile` | boolean | `true` | R1 | M1 | **Sim** | Uma constante por valor normalizado dentro do mesmo `SourceCode` (com desdobramento para literais de fallback de ambiente). |
 | `remediationIncludeGlobs` | string[] | `[]` | R1 | M1 | **Sim** | Limita remediação a caminhos relativos que casam com estes globs (lista vazia = sem filtro extra além do `files` do ESLint). |
 | `remediationExcludeGlobs` | string[] | `[]` | R1–R3 | M1+ | **Sim** | Exclui testes, i18n, exemplos (ex.: `**/*.i18n.ts`, `**/.env.example`). |
-| `sharedConstantsModule` | string (path ou padrão resolvível) | — | R2 | M2 | **Não** | Destino do módulo partilhado para constantes reutilizadas entre ficheiros (por pacote ou política de repositório). |
-| `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | R2 | M2 | **Não** | Estilo de import a gerar ao referenciar `sharedConstantsModule`. |
-| `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | R2 | M2 | **Não** | O índice de valores para duplicados no âmbito do lint **reconstrói-se** (ou invalida-se correctamente) em cada invocação `lintFiles` sobre o conjunto definido pelo `eslint.config`; não há cache stale entre execuções sem política explícita. |
-| `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | R2 | M2 | **Não** | Quando a API ESLint usar `concurrency` / workers, o desenho deve documentar: desactivar paralelismo para regras com estado global, segunda passagem determinística, ou índice em ficheiro idempotente (ver macro-plan). |
+| `sharedConstantsModule` | string (path ou padrão resolvível) | — | R2 | M2 | **Sim** (opcional; reservado a autofix futuro) | Destino do módulo partilhado para constantes reutilizadas entre ficheiros (por pacote ou política de repositório). |
+| `sharedModuleImportStyle` | `"esm"` \| `"cjs"` \| `"project"` | `"project"` | R2 | M2 | **Sim** (futuro autofix) | Estilo de import a gerar ao referenciar `sharedConstantsModule`. |
+| `literalIndexRebuildPolicy` | `"every-run"` | `"every-run"` | R2 | M2 | **Sim** | O índice de valores para duplicados no âmbito do lint **reconstrói-se** (ou invalida-se correctamente) em cada invocação `lintFiles` sobre o conjunto definido pelo `eslint.config`; não há cache stale entre execuções sem política explícita. |
+| `parallelLintingCompatibility` | `"require-serial"` \| `"documented-limitations"` | `"documented-limitations"` | R2 | M2 | **Sim** (documental) | Quando a API ESLint usar `concurrency` / workers, o desenho deve documentar: desactivar paralelismo para regras com estado global, segunda passagem determinística, ou índice em ficheiro idempotente (ver macro-plan). |
 | `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3 | M3 | **Não** | Formatos de ficheiros de dados onde chaves podem ser escritas ou fundidas. |
 | `dataFileTargets` | string[] | `[]` | R3 | M3 | **Não** | Caminhos ou globs dos ficheiros de dados (vazio = derivação por convenção documentada na implementação). |
 | `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | **Não** | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
@@ -130,9 +142,10 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 
 ### R2 — módulo partilhado e índice global no âmbito do lint
 
-- **Objectivo:** quando o **mesmo valor normalizado** aparece em **mais do que um** ficheiro do conjunto lintado, gerar ou actualizar um **módulo partilhado** (`sharedConstantsModule`) e reescrever imports e referências.
+- **Objectivo:** quando o **mesmo valor normalizado** aparece em **mais do que um** ficheiro do conjunto lintado, gerar ou actualizar um **módulo partilhado** (`sharedConstantsModule`) e reescrever imports e referências (**autofix R2 — futuro**).
+- **Implementado (M2):** detecção e relatório `hardcodedDuplicateCrossFile` com `remediationMode: "r2"` e índice por `context.settings.hardcodeDetect` (ver contrato na subsecção `no-hardcoded-strings`).
 - **Índice:** `literalIndexRebuildPolicy` obriga coerência com a execução actual do ESLint sobre `files` / `ignores` — “global” significa o âmbito do projecto segundo o flat config, não o universo da organização (ver macro-plan).
-- **Paralelismo:** `parallelLintingCompatibility` obriga a documentar a interacção com `concurrency` / workers (estado em memória partilhado pode ser inválido se vários workers processarem ficheiros em paralelo).
+- **Paralelismo:** `parallelLintingCompatibility` obriga a documentar a interacção com `concurrency` / workers (estado em memória partilhado pode ser inválido se vários workers processarem ficheiros em paralelo); ver [`docs/adr-eslint-concurrency-r2.md`](../docs/adr-eslint-concurrency-r2.md).
 
 ### R3 — ficheiros de dados e ambiente
 
@@ -151,11 +164,13 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 - Testes automatizados devem cobrir casos positivos e negativos por regra (ver skill em `.cursor/skills/eslint-plugin-workflow`).
 - **Fumaça e2e**: além do RuleTester, o pacote mantém testes de integração em `e2e/` que usam a API Node.js do ESLint (`ESLint`, `lintFiles`) contra fixtures com flat config e o plugin carregado a partir de `dist/`:
   - **Hello World mínimo** (`e2e/fixtures/hello-world/`): valida carregamento do plugin e a regra `hello-world`.
+  - **R2 dois ficheiros** (`e2e/fixtures/r2-dup/`): mesmo literal em `one.mjs` e `two.mjs` com `remediationMode: "r2"`; o e2e `r2-multi-file.e2e.mjs` verifica `hardcodedDuplicateCrossFile`.
   - **Massa NestJS** (workspace auxiliar [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/), ver [`specs/e2e-fixture-nest.md`](e2e-fixture-nest.md)): aplicação Nest real; o e2e `nest-workspace.e2e.mjs` linta `src/fixture-hardcodes/**/*.ts` e fixa contagens de `hello-world` e `no-hardcoded-strings` como fumaça adicional. Alterar essa massa exige atualizar o e2e e o spec.
 - Esses fluxos **não substituem** os testes por regra com RuleTester.
 
 ## Versão do documento
 
+- **1.0.0** — M2 R2: detecção cross-file (`hardcodedDuplicateCrossFile`), opções R2 no schema, `settings.hardcodeDetect`, documentação de índice e ADR de paralelismo; autofix R2 (módulo partilhado) ainda não integrado.
 - **0.9.0** — M1 / tarefa A3: `no-hardcoded-strings` com schema object (opções R1 M1), `messageId`s `hardcoded` e `hardcodedEnvDefault`, modo efectivo de remediação e secção de remediação com estado **misto** (implementado vs vocabulário futuro); alinhado à implementação em [`packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`](../packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts).
 - **0.8.0** — M0: secção *Remediação assistida — opções públicas planeadas (R1–R3)* com tabela de opções estáveis (caminhos partilhados R2, formatos R3, `secretRemediationMode`, `envDefaultLiteralPolicy`, índice e paralelismo); ligação do schema planeado à regra `no-hardcoded-strings`.
 - **0.7.0** — remissão ao plano macro de remediação em [`docs/hardcode-remediation-macro-plan.md`](../docs/hardcode-remediation-macro-plan.md); obrigação de alinhar opções públicas no marco M0 desse plano.

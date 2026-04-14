@@ -10,6 +10,15 @@ O vocabulário completo de opções planeadas no repositório (incluindo trilhas
 
 ---
 
+## Detecção R2 (`remediationMode: "r2"`)
+
+- **Sem autofix R1** (igual a `off` para remediação no mesmo ficheiro).
+- Com o **mesmo valor normalizado** (valor da string + flag de fallback de ambiente, alinhado a R1) em **mais do que um ficheiro** na mesma invocação `lintFiles`, os ficheiros processados **depois** do primeiro com esse valor recebem `messageId` **`hardcodedDuplicateCrossFile`** em vez de `hardcoded` / `hardcodedEnvDefault` (o primeiro ficheiro mantém o relatório base até esse ponto).
+- O índice partilhado usa `settings.hardcodeDetect` (o preset `recommended` injecta um objecto vazio mutável). **Paralelismo ESLint:** ver [`docs/adr-eslint-concurrency-r2.md`](../../../../docs/adr-eslint-concurrency-r2.md).
+- Testes: [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs), e2e [`e2e/r2-multi-file.e2e.mjs`](../../e2e/r2-multi-file.e2e.mjs).
+
+---
+
 ## Remediação R1 (`remediationMode: "r1"`)
 
 Com R1 activo, a regra pode **injectar constantes no topo do mesmo ficheiro** e substituir ocorrências no mesmo `SourceCode`, sujeita a globs, risco de caminho e heurísticas de segredo (ver matriz).

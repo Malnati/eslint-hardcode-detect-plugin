@@ -31,6 +31,10 @@ Object.assign(plugin.configs, {
       plugins: {
         "hardcode-detect": plugin,
       },
+      settings: {
+        // Objecto mutável partilhado entre ficheiros na mesma invocação lintFiles (índice R2).
+        hardcodeDetect: {},
+      },
       rules: {
         "hardcode-detect/no-hardcoded-strings": "warn",
       },
