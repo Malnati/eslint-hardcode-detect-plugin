@@ -590,3 +590,24 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 - `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T15:22:35Z`
+- `conversation_id`: `d7fccb34-a3e4-4d22-88d2-4cc0bae826b5`
+- `generation_id`: `9b1476b4-c9e8-4e74-92e9-02e8a298f083`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d7fccb34-a3e4-4d22-88d2-4cc0bae826b5/d7fccb34-a3e4-4d22-88d2-4cc0bae826b5.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L103
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.rule-core.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.rule-definition.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.rule.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
