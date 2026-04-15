@@ -1,0 +1,10 @@
+{
+  "session_id": "019d8cfd-ad59-7a23-b3fd-6f7182a732cb",
+  "turn_id": "019d8d23-e24a-7e23-a7fd-def5738bbe70",
+  "saved_at": "2026-04-14T17:57:16Z",
+  "dirty_paths": [
+    ".log/hooks/.state/codex_019d8cfd-ad59-7a23-b3fd-6f7182a732cb_019d8cfd-e900-79b2-beb4-57143a0f4952.snapshot.json",
+    ".log/hooks/20260414-hcd-err-audit.md",
+    "package-lock.json"
+  ]
+}

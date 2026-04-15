@@ -1419,3 +1419,51 @@ _Nenhum ficheiro elegível acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T18:34:24Z`
+- `session_id`: `019d8cfd-ad59-7a23-b3fd-6f7182a732cb`
+- `turn_id`: `019d8d45-24e4-7810-bfe3-2b5d3b4a63f9`
+- `model`: `gpt-5.3-codex`
+- `transcript_path`: `/Users/mal/.codex/sessions/2026/04/14/rollout-2026-04-14T14-15-28-019d8cfd-ad59-7a23-b3fd-6f7182a732cb.jsonl`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `2`
+- `dirty_after`: `4`
+- `touched_in_turn`: `2`
+- `failure_signal_from_post_tool`: `True`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
+
+---
+
+## codex stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `Stop`
+- `utc_time`: `2026-04-14T18:49:59Z`
+- `session_id`: `019d8cfd-ad59-7a23-b3fd-6f7182a732cb`
+- `turn_id`: `019d8d52-7b6a-75f1-a726-c44d78b5a21d`
+- `model`: `gpt-5.3-codex`
+- `transcript_path`: `/Users/mal/.codex/sessions/2026/04/14/rollout-2026-04-14T14-15-28-019d8cfd-ad59-7a23-b3fd-6f7182a732cb.jsonl`
+- `cwd`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+- `stop_hook_active`: `False`
+- `last_assistant_message_present`: `True`
+- `snapshot_loaded`: `True`
+- `dirty_before`: `3`
+- `dirty_after`: `5`
+- `touched_in_turn`: `2`
+- `failure_signal_from_post_tool`: `True`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro elegível acumulado neste turno._
