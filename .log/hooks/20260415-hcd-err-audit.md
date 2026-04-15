@@ -225,3 +225,41 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T12:07:15Z`
+- `conversation_id`: `34abe5f4-dfae-459e-8d33-105e89e06f17`
+- `generation_id`: `380a1e5a-c721-4bc0-b403-8649e578d69e`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/34abe5f4-dfae-459e-8d33-105e89e06f17/34abe5f4-dfae-459e-8d33-105e89e06f17.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/distribution-milestones/tasks/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/TASK_FILE_TEMPLATE.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m0-baseline/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m0-baseline/micro/M0-A3-01-diff-arvore-distribution-milestones.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m0-baseline/micro/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m1-channel-t1-t2/micro/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/A1-audit-ci-yml-vs-compose-prod.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/evidence/T3-ci-prod-parity-gap-matrix.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A1-02-tabela-paridade-prod-vs-ci.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/M2-A3-03-alinhamento-workflow-comentarios-manifest.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m2-channel-t3-ci/micro/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-02-passos-eslint-config-workspace-settings.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A1-03-cross-check-massa-nest-handoff-t3.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A2-02-alinhamento-cli-lint-ci-m2.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/M3-A3-03-matriz-sec6-e2e-compose-m3.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m3-channel-t4-t6/micro/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m4-channel-t5-agents/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/distribution-milestones/tasks/m4-channel-t5-agents/evidence/A2-verify-agent-files-handoff.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/remediation-milestones/tasks/TASK_FILE_TEMPLATE.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
