@@ -1,5 +1,5 @@
 /**
- * Excepções por contexto de chamada (`callSiteExceptions`) — issue #6 / contrato 1.6.0.
+ * Excepções por contexto de chamada (`callSiteExceptions`) — issue #6 / contrato 1.6.x.
  */
 import { RuleTester } from "eslint";
 import { test } from "node:test";
@@ -26,6 +26,10 @@ test("no-hardcoded-strings — callSiteExceptions", () => {
         {
           code: 'this.logger.warn("hi");',
           options: [{ callSiteExceptions: ["this.logger.warn"] }],
+        },
+        {
+          code: 'console?.log("optional");',
+          options: [{ callSiteExceptions: ["console.log"] }],
         },
       ],
       invalid: [

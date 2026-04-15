@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.2.9] - 2026-04-14
+
+### Changed
+
+- Documentation: `specs/plugin-contract.md` and rule docs now match implementation for `callSiteExceptions` when the callee uses optional chaining (`console?.log` normalizes to `console.log`).
+
+### Added
+
+- RuleTester case for `console?.log` with `callSiteExceptions: ["console.log"]`.
+
 ## [0.2.8] - 2026-04-14
 
 ### Added
