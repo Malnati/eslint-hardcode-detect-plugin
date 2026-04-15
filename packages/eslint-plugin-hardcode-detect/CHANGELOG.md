@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.3.1] - 2026-04-15
+
+### Changed
+
+- Patch version bump after full `npm test` validation (RuleTester + all e2e: R2, R3, call-site-exceptions, options-matrix, R3 fail-on-conflict, Nest workspace); no changes to exported rules, options, or runtime behavior.
+
 ## [0.3.0] - 2026-04-14
 
 ### Changed
