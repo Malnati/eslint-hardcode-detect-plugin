@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [0.3.0] - 2026-04-14
 
+### Changed
+
+- Internal: split `no-hardcoded-strings` into [`src/rules/no-hardcoded-strings.rule-core.ts`](src/rules/no-hardcoded-strings.rule-core.ts) (options, helpers, R1 fix builder) and [`src/rules/no-hardcoded-strings.rule-definition.ts`](src/rules/no-hardcoded-strings.rule-definition.ts) (`Rule.RuleModule` + `create`); [`src/rules/no-hardcoded-strings.rule.ts`](src/rules/no-hardcoded-strings.rule.ts) re-exports the same public surface and default rule.
+
 ### Added
 
 - e2e smoke [`e2e/call-site-exceptions.e2e.mjs`](e2e/call-site-exceptions.e2e.mjs): fixtures for `callSiteExceptions` baseline (no list), suppression paths, mixed/second-arg/env-nested reporting, optional chaining, `debug` identifier, and R2 index behaviour when `console.log` is listed.
