@@ -202,11 +202,12 @@ Documentation of repository layout. **Update this file when you create, move, or
 │       ├── CHANGELOG.md                # Semver history of publishable package
 │       ├── docs/rules/                 # One page per contract rule (`no-hardcoded-strings`, `standardize-error-messages`)
 │       ├── e2e/                        # e2e smoke (ESLint API + consumer fixtures)
+│       │   ├── helpers/                # copy-dir-recursive.mjs, temp-fixture.mjs (sandbox temp copies)
 │       │   ├── fixtures/r2-dup/        # Two .mjs files, same literal (R2 track)
 │       │   ├── fixtures/call-site-exceptions/   # callSiteExceptions (mixed cases)
 │       │   ├── fixtures/call-site-baseline/     # Same shape, no callSiteExceptions
 │       │   ├── fixtures/call-site-exceptions-r2/ # R2 + callSiteExceptions (index)
-│       │   ├── fixtures/r3-data/      # R3 track: JSON/YAML merge (r3-out/ generated; see .gitignore)
+│       │   ├── fixtures/r3-data/      # R3 track: JSON/YAML merge (e2e runs on temp copy; r3-out may exist locally)
 │       │   ├── fixtures/options-matrix/ # Matrix e2e: remediationMode auto, env policy, globs, secretRemediationMode
 │       │   ├── fixtures/r3-fail-conflict/ # R3 conflict fixture (fail-on-conflict)
 │       │   ├── r2-multi-file.e2e.mjs   # Cross-file duplicates (R2)

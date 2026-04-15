@@ -220,6 +220,8 @@ Sensitive-looking literals should not be committed as plaintext. Use environment
 - `npm run lint` — lint package source.
 - `npm test` — build + RuleTester + e2e smoke (including [`e2e/call-site-exceptions.e2e.mjs`](e2e/call-site-exceptions.e2e.mjs) for `callSiteExceptions` alongside R2/R3/Nest).
 
+**e2e e massa suja (violations intencionais):** cenários com `fix: true`, `ESLint.outputFixes` ou escrita R3 correm sobre **cópias em `os.tmpdir()`** (ver [`e2e/helpers/temp-fixture.mjs`](e2e/helpers/temp-fixture.mjs)) ou ficheiros efémeros, para autofix local não invalidar fixtures commitadas. Não executar `eslint --fix` com `cwd` em [`e2e/fixtures/`](e2e/fixtures/) nem apagar violações em [`packages/e2e-fixture-nest/src/fixture-hardcodes/`](../../packages/e2e-fixture-nest/src/fixture-hardcodes/) — o e2e Nest de detecção depende dessas ocorrências (ver [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md)).
+
 From monorepo root:
 
 ```bash

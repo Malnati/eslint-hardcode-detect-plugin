@@ -1,12 +1,11 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import { ESLint } from "eslint";
 import hardcodeDetect from "../dist/index.js";
-import { copyDirRecursive } from "./helpers/copy-dir-recursive.mjs";
+import { createTempFixtureCopy } from "./helpers/temp-fixture.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const fixtureRoot = path.join(__dirname, "fixtures", "options-matrix");
@@ -30,9 +29,7 @@ function createLintConfig(ruleOptions) {
 
 function createTempFixtureDir(fixtureName) {
   const sourceDir = path.join(fixtureRoot, fixtureName);
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "hcd-e2e-options-"));
-  copyDirRecursive(sourceDir, tempDir);
-  return tempDir;
+  return createTempFixtureCopy(sourceDir, "hcd-e2e-options-");
 }
 
 function countRuleHits(results, ruleId) {

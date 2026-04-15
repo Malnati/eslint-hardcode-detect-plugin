@@ -8,10 +8,19 @@ import { ESLint } from "eslint";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const fixtureDir = path.join(__dirname, "..", "..", "e2e-fixture-nest");
 
-// Contagens estáveis para o glob fixture-hardcodes (ver specs/e2e-fixture-nest.md)
+// Contagens por ficheiro + total (ver specs/e2e-fixture-nest.md); falhas localizam alterações na massa.
+const RULE_ID = "hardcode-detect/no-hardcoded-strings";
 const EXPECTED = {
   fixtureFileCount: 5,
   noHardcodedStrings: 31,
+  /** @type {Record<string, number>} */
+  noHardcodedByBasename: {
+    "catalog.ts": 7,
+    "create-item.dto.ts": 7,
+    "hardcoded-seed.controller.ts": 9,
+    "hardcoded-seed.module.ts": 3,
+    "hardcoded-seed.service.ts": 5,
+  },
 };
 
 function countRuleHits(results, ruleId) {
@@ -31,8 +40,21 @@ test("e2e nest workspace: ESLint API + flat config na massa Nest (fixture-hardco
   const results = await eslint.lintFiles(["src/fixture-hardcodes/**/*.ts"]);
 
   assert.equal(results.length, EXPECTED.fixtureFileCount);
-  const noHardcoded = countRuleHits(results, "hardcode-detect/no-hardcoded-strings");
-
+  const byBase = Object.fromEntries(
+    results.map((r) => [path.basename(r.filePath), r]),
+  );
+  for (const [basename, expectedHits] of Object.entries(
+    EXPECTED.noHardcodedByBasename,
+  )) {
+    assert.ok(byBase[basename], `falta resultado para ${basename}`);
+    const hits = countRuleHits([byBase[basename]], RULE_ID);
+    assert.equal(
+      hits,
+      expectedHits,
+      `${basename}: alinhar contagens com specs/e2e-fixture-nest.md`,
+    );
+  }
+  const noHardcoded = countRuleHits(results, RULE_ID);
   assert.equal(noHardcoded, EXPECTED.noHardcodedStrings);
 });
 

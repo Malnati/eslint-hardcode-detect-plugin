@@ -39,14 +39,24 @@ Os Clippings orientam **configuração e integração ESLint**; o contrato do pl
 
 ## Contagens esperadas (fumaça)
 
-Para o glob `src/fixture-hardcodes/**/*.ts`, o teste e2e fixa:
+Para o glob `src/fixture-hardcodes/**/*.ts`, o teste e2e fixa o número de ficheiros, o total de ocorrências da regra e **contagens por ficheiro** (falhas de teste indicam qual ficheiro mudou).
 
 | Métrica | Valor |
 |---------|------:|
 | Arquivos lintados | 5 |
-| `hardcode-detect/no-hardcoded-strings` | 31 |
+| `hardcode-detect/no-hardcoded-strings` (total) | 31 |
+
+| Ficheiro (basename) | Ocorrências `no-hardcoded-strings` |
+|---------------------|-----------------------------------:|
+| `catalog.ts` | 7 |
+| `create-item.dto.ts` | 7 |
+| `hardcoded-seed.controller.ts` | 9 |
+| `hardcoded-seed.module.ts` | 3 |
+| `hardcoded-seed.service.ts` | 5 |
 
 Qualquer alteração em `src/fixture-hardcodes/**` deve atualizar estes números em [`nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs) e nesta tabela.
+
+**Autofix:** não correr `eslint --fix` (nem equivalente no IDE) com alvo em `src/fixture-hardcodes/**` pensando em “limpar” o workspace — isso remove as violações que o e2e de detecção espera. O único autofix suportado no e2e é o ficheiro temporário `src/autofix-smoke.e2e.ts`, criado e removido pelo próprio teste.
 
 ## Reprodução a partir da raiz do repositório
 
@@ -82,6 +92,10 @@ Perfis `dev` / `prod`, comandos completos e variáveis de ambiente (`ESLINT_USE_
 2. Build do plugin: `npm run build` no pacote `eslint-plugin-hardcode-detect` — **redundante** se for logo a correr `npm test` nesse pacote ou `npm test` na raiz, porque o script `test` do plugin já faz `npm run build` antes dos testes.
 3. Testes: `npm test` na raiz **ou** no pacote `eslint-plugin-hardcode-detect` (inclui e2e Nest).
 
+## Massa e2e do plugin (sandbox)
+
+No pacote [`eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect/), os e2e que aplicam `fix: true`, `ESLint.outputFixes` ou escrita R3 usam **cópia em directório temporário** ou ficheiro efémero, para o repositório não depender de um “projeto sujo” mutável após autofix acidental. Não correr `eslint --fix` com `cwd` em [`e2e/fixtures/`](../packages/eslint-plugin-hardcode-detect/e2e/fixtures/) nem editar fixtures à mão para “passar” o lint — actualizar a massa commitada e as asserções em conjunto. Ver também o README do pacote (secção *Development and testing*).
+
 ## Regras para agentes
 
 - **Não** importar `reference/` no código do plugin nem em configs de produção do fixture.
@@ -91,6 +105,7 @@ Perfis `dev` / `prod`, comandos completos e variáveis de ambiente (`ESLINT_USE_
 
 ## Versão do documento
 
+- **1.3.0** — Contagens por ficheiro em `fixture-hardcodes`; aviso explícito contra autofix na massa de detecção; secção *Massa e2e do plugin (sandbox)* com política de cópias temporárias.
 - **1.2.0** — e2e Nest agora documenta cobertura explícita de autofix (`fix: true` + `ESLint.outputFixes`) em arquivo temporário controlado, além das contagens estáveis de detecção.
 - **1.1.1** — Alternativa com Docker Compose (perfil `e2e`), remissões a `agent-docker-compose` e matriz M0 secção 6.
 - **1.1.0** — Comandos explícitos da raiz (`npm install` / `npm test` e variante `--workspace`), relação API `ESLint` + `cwd` do fixture, nota sobre build incluído no `npm test`, pré-requisito Node `>=22`.
