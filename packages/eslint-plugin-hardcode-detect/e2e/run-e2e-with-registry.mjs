@@ -1,7 +1,9 @@
 /**
  * Preflight: instala `eslint-plugin-hardcode-detect@latest` em `e2e-registry-consumer/`,
  * deduplica execuções locais por (commit, versão npm), corre `node --test` só nos e2e
- * com HCD_E2E_REGISTRY_PLUGIN_ROOT definido e regista sucessos em `.e2e-registry-control.jsonl`.
+ * com HCD_E2E_REGISTRY_PLUGIN_ROOT definido e regista cada execução em `.e2e-registry-control.jsonl`
+ * com `outcome: "100%"` apenas quando todos os e2e passam; dedup local aborta só se já existir
+ * `100%` para o mesmo commit + npmVersion.
  */
 /* eslint-disable n/no-process-exit -- orquestrador CLI: códigos de saída explícitos */
 import { spawnSync } from "node:child_process";
@@ -23,6 +25,11 @@ const controlFile = path.join(
   "e2e",
   ".e2e-registry-control.jsonl",
 );
+
+/** Sucesso total dos e2e — único valor que bloqueia nova execução local (dedup). */
+const OUTCOME_FULL_PASS = "100%";
+/** Execução terminou com falhas nos testes e2e. */
+const OUTCOME_NOT_FULL_PASS = "0%";
 
 const E2E_FILES = [
   "e2e/r2-multi-file.e2e.mjs",
@@ -92,15 +99,22 @@ function getGitHead() {
   return r.stdout.trim();
 }
 
+/** Linhas antigas sem `outcome` equivalem a sucesso total (100%). */
+function outcomeMeansFullPass(outcome) {
+  if (outcome === OUTCOME_FULL_PASS) return true;
+  if (outcome === undefined) return true;
+  return false;
+}
+
 /**
- * @returns {Array<{ commit: string; npmVersion: string }>}
+ * @returns {Array<{ commit: string; npmVersion: string; outcome?: string }>}
  */
 function readControlEntries() {
   if (!fs.existsSync(controlFile)) {
     return [];
   }
   const lines = fs.readFileSync(controlFile, "utf8").split("\n");
-  /** @type {Array<{ commit: string; npmVersion: string }>} */
+  /** @type {Array<{ commit: string; npmVersion: string; outcome?: string }>} */
   const out = [];
   for (const line of lines) {
     const t = line.trim();
@@ -108,7 +122,12 @@ function readControlEntries() {
     try {
       const o = JSON.parse(t);
       if (o && typeof o.commit === "string" && typeof o.npmVersion === "string") {
-        out.push({ commit: o.commit, npmVersion: o.npmVersion });
+        out.push({
+          commit: o.commit,
+          npmVersion: o.npmVersion,
+          outcome:
+            typeof o.outcome === "string" ? o.outcome : undefined,
+        });
       }
     } catch {
       // ignora linhas corrompidas
@@ -123,14 +142,23 @@ function shouldAbortDuplicate(commit, npmVersion) {
   }
   const entries = readControlEntries();
   return entries.some(
-    (e) => e.commit === commit && e.npmVersion === npmVersion,
+    (e) =>
+      e.commit === commit &&
+      e.npmVersion === npmVersion &&
+      outcomeMeansFullPass(e.outcome),
   );
 }
 
-function appendControlRecord(commit, npmVersion) {
+/**
+ * @param {string} commit
+ * @param {string} npmVersion
+ * @param {typeof OUTCOME_FULL_PASS | typeof OUTCOME_NOT_FULL_PASS} outcome
+ */
+function appendControlRecord(commit, npmVersion, outcome) {
   const record = {
     commit,
     npmVersion,
+    outcome,
     recordedAt: new Date().toISOString(),
   };
   fs.appendFileSync(controlFile, `${JSON.stringify(record)}\n`, "utf8");
@@ -152,7 +180,7 @@ function main() {
   if (shouldAbortDuplicate(commit, npmVersion)) {
     const controlRel = path.relative(repoRoot, controlFile);
     console.error(
-      `[HCD-E2E-REGISTRY] Este par (commit + versão npm) já foi testado com sucesso anteriormente.`,
+      `[HCD-E2E-REGISTRY] Já existe registo com sucesso total (outcome ${OUTCOME_FULL_PASS}) para este commit e versão npm — não é necessário repetir.`,
     );
     console.error(`  commit:     ${commit}`);
     console.error(`  npmVersion: ${npmVersion}`);
@@ -176,9 +204,9 @@ function main() {
     shell: false,
   });
 
-  if (r.status === 0) {
-    appendControlRecord(commit, npmVersion);
-  }
+  const outcome =
+    r.status === 0 ? OUTCOME_FULL_PASS : OUTCOME_NOT_FULL_PASS;
+  appendControlRecord(commit, npmVersion, outcome);
 
   process.exit(r.status ?? 1);
 }
