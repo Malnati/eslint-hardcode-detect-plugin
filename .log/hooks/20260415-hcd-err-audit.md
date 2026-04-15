@@ -491,3 +491,21 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T14:59:47Z`
+- `conversation_id`: `d7fccb34-a3e4-4d22-88d2-4cc0bae826b5`
+- `generation_id`: `82babca3-a34f-4680-839f-63a7300e98c9`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/d7fccb34-a3e4-4d22-88d2-4cc0bae826b5/d7fccb34-a3e4-4d22-88d2-4cc0bae826b5.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
