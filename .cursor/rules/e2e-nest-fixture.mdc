@@ -9,6 +9,6 @@ alwaysApply: false
 # Fixture e2e Nest e testes de integração
 
 - Leia [`specs/e2e-fixture-nest.md`](../../specs/e2e-fixture-nest.md) antes de alterar `packages/e2e-fixture-nest/` ou contagens em [`nest-workspace.e2e.mjs`](../../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs).
-- O plugin consumido no flat config do fixture vem de [`../eslint-plugin-hardcode-detect/dist/index.js`](../../packages/eslint-plugin-hardcode-detect/dist/index.js): o **`npm test`** do pacote do plugin executa `build` antes dos e2e.
+- No **`npm test`** do pacote do plugin, o e2e define `HCD_E2E_REGISTRY_PLUGIN_ROOT` (pacote `eslint-plugin-hardcode-detect@latest` instalado em [`e2e-registry-consumer/`](../../e2e-registry-consumer/)); o [`eslint.config.mjs`](../../packages/e2e-fixture-nest/eslint.config.mjs) do Nest carrega o plugin a partir desse caminho. Sem essa variável (IDE local), o fallback continua a ser [`../eslint-plugin-hardcode-detect/dist/index.js`](../../packages/eslint-plugin-hardcode-detect/dist/index.js). O **`npm test`** executa `build` antes dos testes unitários; a fase e2e corre [`run-e2e-with-registry.mjs`](../../packages/eslint-plugin-hardcode-detect/e2e/run-e2e-with-registry.mjs).
 - **Não** importar `reference/` no código publicável do plugin nem em configs de produção do fixture.
 - Para escopo ESLint (flat config, API `ESLint`), consulte [`reference/Clippings/`](../../reference/Clippings/) conforme [`specs/agent-reference-clippings.md`](../../specs/agent-reference-clippings.md).

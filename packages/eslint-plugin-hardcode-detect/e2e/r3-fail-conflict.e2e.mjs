@@ -4,11 +4,13 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import { ESLint } from "eslint";
-import hardcodeDetect from "../dist/index.js";
+import { loadRegistryPlugin } from "./helpers/registry-plugin.mjs";
 import {
   createTempFixtureCopy,
   removeTempFixtureSync,
 } from "./helpers/temp-fixture.mjs";
+
+const hardcodeDetect = await loadRegistryPlugin();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const fixtureDir = path.join(__dirname, "fixtures", "r3-fail-conflict");

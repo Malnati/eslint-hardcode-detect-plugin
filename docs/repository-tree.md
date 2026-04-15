@@ -12,6 +12,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 ├── SECURITY.md               # Vulnerability reporting policy
 ├── SUPPORT.md                # Support channels and triage guidance
 ├── package.json              # npm monorepo (workspaces)
+├── e2e-registry-consumer/    # Isolated npm consumer (not a workspace): eslint-plugin-hardcode-detect@latest for e2e preflight
 ├── scripts/                  # Root helper scripts (npm release, Mermaid→SVG via Kroki, Cursor/Codex HCD-ERR hook smoke, Cursor headless M1 micro sequence)
 │   ├── fixtures/             # Smoke fixtures (e.g. invalid HCD-ERR body for the hook)
 │   │   └── smoke-hcd-err-violation-body.md

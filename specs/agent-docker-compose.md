@@ -12,7 +12,7 @@ Este documento normatiza o uso de [`docker-compose.yml`](../docker-compose.yml),
 | Perfil | Serviço | Comportamento |
 |--------|---------|----------------|
 | `dev` | `dev` | Shell interativo (`bash`) com o repositório montado em `/workspace`. O agente ou desenvolvedor executa `npm install` na raiz quando necessário e trabalha como no host. |
-| `e2e` | `e2e` | `npm ci` seguido de `npm test -w eslint-plugin-hardcode-detect` (build, RuleTester e fumaça e2e, incluindo massa Nest conforme o pacote). |
+| `e2e` | `e2e` | `npm ci` seguido de `npm test -w eslint-plugin-hardcode-detect` (build, RuleTester e fumaça e2e, incluindo massa Nest conforme o pacote). A fase e2e do pacote corre `npm install` no consumidor [`e2e-registry-consumer/`](../e2e-registry-consumer/) para obter `eslint-plugin-hardcode-detect@latest` do registry — o contentor precisa de **rede** para o npm. |
 | `prod` | `prod` | Verificação reprodutível tipo pipeline: `npm ci`, `npm run lint` (workspace) e `npm test -w eslint-plugin-hardcode-detect`. Variável `CI=true` para alinhar a ferramentas que mudam comportamento em CI. |
 | `e2e-ops` | `e2e-ops` | ESLint na imagem `malnati-ops-eslint:local` com o repositório montado em `/workspace`; `working_dir` em `packages/eslint-plugin-hardcode-detect`, relatório JSON em `.eslint/eslint-report.json` (paridade com **Smoke reprodutível (T2)**). Requer `npm ci` no host e imagem pré-construída (ver secção **`e2e-ops`** abaixo). |
 

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-O pacote [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/) é um **workspace npm auxiliar** com aplicação NestJS real (`@nestjs/*`) e dependências instaladas pelo monorepo. Ele serve de **massa realista** para a fumaça e2e do [`eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect/): motor ESLint 9, flat config, `typescript-eslint` e o plugin carregado a partir de `dist/` do pacote irmão.
+O pacote [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/) é um **workspace npm auxiliar** com aplicação NestJS real (`@nestjs/*`) e dependências instaladas pelo monorepo. Ele serve de **massa realista** para a fumaça e2e do [`eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect/): motor ESLint 9, flat config, `typescript-eslint` e o plugin. Quando se corre `npm test` no pacote do plugin, o orquestrador instala `eslint-plugin-hardcode-detect@latest` em [`e2e-registry-consumer/`](../e2e-registry-consumer/) e define `HCD_E2E_REGISTRY_PLUGIN_ROOT`; o [`eslint.config.mjs`](../packages/e2e-fixture-nest/eslint.config.mjs) carrega então o plugin **a partir do artefacto npm**. Sem essa variável (desenvolvimento local no IDE), o mesmo ficheiro usa o `dist/` do pacote irmão no monorepo.
 
 Não é pacote publicável no npm; o código publicável do plugin continua **somente** em [`packages/eslint-plugin-hardcode-detect`](../packages/eslint-plugin-hardcode-detect/).
 
@@ -17,7 +17,7 @@ O teste de fumaça **não** é executado a partir do diretório do Nest nem via 
 1. **Detecção (sem `fix`)**: instancia a API `ESLint` com `cwd` resolvido para [`packages/e2e-fixture-nest`](../packages/e2e-fixture-nest/) e chama `lintFiles` com o glob `src/fixture-hardcodes/**/*.ts`.
 2. **Autofix (`fix: true`) com arquivo temporário controlado**: cria `src/autofix-smoke.e2e.ts` dentro do fixture, aplica `overrideConfig` local para `remediationMode: "r1"` nesse arquivo de smoke, executa `ESLint({ fix: true })`, chama `ESLint.outputFixes(results)` e valida que o ficheiro foi reescrito sem manter diagnósticos `hardcode-detect/no-hardcoded-strings` no alvo. O arquivo temporário é removido no `finally` do teste.
 
-Assim o ESLint carrega o [`eslint.config.mjs`](../packages/e2e-fixture-nest/eslint.config.mjs) do fixture e o plugin em `dist/` do pacote irmão, sem mutar o workspace real do Nest.
+Assim o ESLint carrega o [`eslint.config.mjs`](../packages/e2e-fixture-nest/eslint.config.mjs) do fixture e o plugin (npm quando `HCD_E2E_REGISTRY_PLUGIN_ROOT` está definido; caso contrário `dist/` do irmão), sem mutar o workspace real do Nest.
 
 ## Hierarquia de referências (conflitos)
 
@@ -34,7 +34,7 @@ Os Clippings orientam **configuração e integração ESLint**; o contrato do pl
 | Caminho | Função |
 |---------|--------|
 | `packages/e2e-fixture-nest/src/fixture-hardcodes/` | Arquivos **controlados** com literais fixos (contagens esperadas no teste e2e). |
-| `packages/e2e-fixture-nest/eslint.config.mjs` | Flat config: `typescript-eslint` + plugin `hardcode-detect` via import relativo a `../eslint-plugin-hardcode-detect/dist/index.js`. |
+| `packages/e2e-fixture-nest/eslint.config.mjs` | Flat config: `typescript-eslint` + plugin `hardcode-detect` — com `HCD_E2E_REGISTRY_PLUGIN_ROOT` (e2e via `npm test`) usa o pacote instalado do registry; senão import relativo a `../eslint-plugin-hardcode-detect/dist/index.js`. |
 | `packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs` | Teste que usa `ESLint` / `lintFiles` com `cwd` no workspace Nest (detecção) e valida `fix: true` + `ESLint.outputFixes` em arquivo temporário controlado. |
 
 ## Contagens esperadas (fumaça)
@@ -75,6 +75,8 @@ npm test --workspace eslint-plugin-hardcode-detect
 ```
 
 O primeiro comando instala dependências de **todos** os workspaces sob `packages/`, incluindo `e2e-fixture-nest`. O segundo corre o `test` desse pacote, que executa `npm run build` e depois RuleTester e e2e (entre eles [`nest-workspace.e2e.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/nest-workspace.e2e.mjs)).
+
+A fase e2e usa [`e2e/run-e2e-with-registry.mjs`](../packages/eslint-plugin-hardcode-detect/e2e/run-e2e-with-registry.mjs): `npm install` em [`e2e-registry-consumer/`](../e2e-registry-consumer/) para obter `eslint-plugin-hardcode-detect@latest` do registry (rede necessária), define `HCD_E2E_REGISTRY_PLUGIN_ROOT` e regista execuções bem-sucedidas em `packages/eslint-plugin-hardcode-detect/e2e/.e2e-registry-control.jsonl` (gitignored). Em ambiente local, se o par (commit atual, versão npm resolvida) já constar desse ficheiro, a fase e2e aborta com mensagem `[HCD-E2E-REGISTRY]`; em CI (`CI` / `GITHUB_ACTIONS`) a deduplicação não se aplica. Para forçar nova corrida local: `HCD_E2E_FORCE=1` ou `HCD_E2E_SKIP_REGISTRY_DEDUP=1`.
 
 ### Alternativa via Docker Compose (perfil `e2e`)
 

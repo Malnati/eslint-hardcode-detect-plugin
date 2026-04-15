@@ -27,7 +27,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json && cp src/rules/no-hardcoded-strings.messages.json dist/rules/no-hardcoded-strings.messages.json",
     "lint": "eslint .",
-    "test": "npm run build && node --test tests/index.test.mjs tests/no-hardcoded-strings-r1.test.mjs tests/no-hardcoded-strings-call-sites.test.mjs tests/no-hardcoded-strings-r2.test.mjs tests/no-hardcoded-strings-secrets.test.mjs tests/r3-data-file-writers.test.mjs e2e/r2-multi-file.e2e.mjs e2e/r3-data-files.e2e.mjs e2e/call-site-exceptions.e2e.mjs e2e/options-matrix.e2e.mjs e2e/r3-fail-conflict.e2e.mjs e2e/nest-workspace.e2e.mjs",
+    "test": "npm run build && node --test tests/index.test.mjs tests/no-hardcoded-strings-r1.test.mjs tests/no-hardcoded-strings-call-sites.test.mjs tests/no-hardcoded-strings-r2.test.mjs tests/no-hardcoded-strings-secrets.test.mjs tests/r3-data-file-writers.test.mjs && node e2e/run-e2e-with-registry.mjs",
     "release:pack": "npm pack",
     "release:publish": "npm publish --access public"
   },

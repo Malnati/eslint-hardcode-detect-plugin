@@ -1,5 +1,5 @@
 /**
- * e2e: callSiteExceptions — motor ESLint + flat config + dist do plugin (cobertura profunda).
+ * e2e: callSiteExceptions — motor ESLint + flat config + plugin do registry npm (cobertura profunda).
  * Massa em cópia temporária (`withTempFixtureCopy`) para não depender de estado local após autofix acidental.
  */
 import assert from "node:assert/strict";
@@ -7,9 +7,14 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import { ESLint } from "eslint";
-import hardcodeDetect from "../dist/index.js";
-import { __resetR2FallbackIndexForTests } from "../dist/utils/r2-literal-index.js";
+import {
+  loadRegistryPlugin,
+  loadR2LiteralIndexForTests,
+} from "./helpers/registry-plugin.mjs";
 import { withTempFixtureCopy } from "./helpers/temp-fixture.mjs";
+
+const hardcodeDetect = await loadRegistryPlugin();
+const { __resetR2FallbackIndexForTests } = await loadR2LiteralIndexForTests();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const fixtureDir = path.join(__dirname, "fixtures", "call-site-exceptions");

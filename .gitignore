@@ -5,3 +5,6 @@ coverage/
 .codex/**/__pycache__/
 .DS_Store
 .env
+e2e-registry-consumer/node_modules/
+e2e-registry-consumer/package-lock.json
+packages/eslint-plugin-hardcode-detect/e2e/.e2e-registry-control.jsonl

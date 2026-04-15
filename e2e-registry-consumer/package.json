@@ -1,0 +1,10 @@
+{
+  "name": "e2e-registry-consumer",
+  "private": true,
+  "type": "module",
+  "description": "Consumidor isolado (fora de workspaces) para instalar eslint-plugin-hardcode-detect@latest do npm nos e2e.",
+  "dependencies": {
+    "eslint": "^9.18.0",
+    "eslint-plugin-hardcode-detect": "latest"
+  }
+}
