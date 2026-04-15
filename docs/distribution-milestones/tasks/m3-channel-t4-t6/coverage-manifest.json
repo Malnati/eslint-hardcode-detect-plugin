@@ -94,7 +94,7 @@
       "id": "m3-sec10-docs-milestones",
       "description": "Manifest M3 e índices de milestones válidos na branch",
       "documented_in": "docs/distribution-milestones/m3-channel-t4-t6.md",
-      "ci_command": "npm run test:docs-milestones && npm run lint && npm test -w eslint-plugin-hardcode-detect"
+      "ci_command": "npm run lint && npm test -w eslint-plugin-hardcode-detect"
     }
   ]
 }

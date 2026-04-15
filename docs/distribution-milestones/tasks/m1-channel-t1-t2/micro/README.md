@@ -37,7 +37,7 @@ Alinhamento ao grafo em [`../README.md`](../README.md): A1→A2→A3.
 Na raiz do repositório:
 
 ```bash
-npm run test:docs-m0
+npm run lint && npm test -w eslint-plugin-hardcode-detect
 ```
 
-Ver [`package.json`](../../../../../package.json).
+Ver [`package.json`](../../../../../package.json) e [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml).

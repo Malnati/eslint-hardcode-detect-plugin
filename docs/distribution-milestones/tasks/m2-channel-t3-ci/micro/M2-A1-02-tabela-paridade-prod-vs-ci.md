@@ -11,7 +11,7 @@
 
 ## Objetivo
 
-Comparar linha a linha o comando do serviço **prod** em [`docker-compose.yml`](../../../../../docker-compose.yml) (`npm ci && npm run lint && npm test -w eslint-plugin-hardcode-detect`) com a sequência de steps do job CI, incluindo o passo `npm run test:docs-m0` que não existe no Compose `prod`.
+Comparar linha a linha o comando do serviço **prod** em [`docker-compose.yml`](../../../../../docker-compose.yml) (`npm ci && npm run lint && npm test -w eslint-plugin-hardcode-detect`) com a sequência de steps do job CI.
 
 ## Definition of done
 

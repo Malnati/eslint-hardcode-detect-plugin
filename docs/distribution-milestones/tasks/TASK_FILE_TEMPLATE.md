@@ -27,5 +27,5 @@ Use uma tabela ou lista no topo de cada ficheiro:
 ## Secções opcionais
 
 - **Paths principais** — lista de paths relativos à raiz.
-- **Micro-tarefas (filhas de A{N})** — quando o marco tiver pasta `tasks/<slug>/micro/` com ficheiros `M{N}-A<1-5>-<nn>-<slug>.md` (prefixo do marco, ex. `M0-`, `M1-`), listar na âncora A{N} uma tabela com `micro_id` e links; manter `coverage-manifest.json` na pasta do marco (ex.: `docs/distribution-milestones/tasks/m0-baseline/coverage-manifest.json`) alinhado ao plano e validado por `scripts/validate-milestone-plan-coverage.mjs`.
+- **Micro-tarefas (filhas de A{N})** — quando o marco tiver pasta `tasks/<slug>/micro/` com ficheiros `M{N}-A<1-5>-<nn>-<slug>.md` (prefixo do marco, ex. `M0-`, `M1-`), listar na âncora A{N} uma tabela com `micro_id` e links; manter `coverage-manifest.json` na pasta do marco (ex.: `docs/distribution-milestones/tasks/m0-baseline/coverage-manifest.json`) alinhado ao plano e revisado no próprio marco.
 - **Notas**

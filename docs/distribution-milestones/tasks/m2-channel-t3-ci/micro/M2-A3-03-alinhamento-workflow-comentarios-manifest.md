@@ -11,15 +11,14 @@
 
 ## Objetivo
 
-Garantir que o nome dos steps em [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml) (ex.: validação `test:docs-m0`) reflecte os manifestos M0–M2 e que a documentação aponta para `npm run test:docs-m0` na raiz.
+Garantir que o nome dos steps em [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml) reflecte os comandos canónicos do pipeline (`npm run lint` e `npm test -w eslint-plugin-hardcode-detect`) e que a documentação aponta para os mesmos comandos na raiz.
 
 ## Definition of done
 
-- Comentários ou `name:` dos steps alinhados aos marcos cobertos pelo script [`scripts/validate-milestone-plan-coverage.mjs`](../../../../../scripts/validate-milestone-plan-coverage.mjs).
+- Comentários ou `name:` dos steps alinhados à matriz e ao handoff do marco M2.
 - Referência cruzada ao [`coverage-manifest.json`](../coverage-manifest.json) do M2 quando útil para revisores.
 
 ## Paths principais
 
 - `.github/workflows/ci.yml`
-- `scripts/validate-milestone-plan-coverage.mjs`
 - `docs/distribution-milestones/tasks/m2-channel-t3-ci/coverage-manifest.json`

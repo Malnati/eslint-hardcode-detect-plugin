@@ -101,7 +101,6 @@ O grafo lista explicitamente a raiz de `distribution-milestones/` (README, templ
 | `coverage-manifest.json` | Mencionado no comentário | Presente |
 | `evidence/` e respetivo `.md` | Pasta mencionada no comentário; ficheiro não nomeado | `A4-plugin-contract-gap-matrix.md` |
 | `micro/` | Pasta mencionada no comentário; ficheiros não listados | 16 ficheiros (README + 15 micro-tarefas) |
-| `scripts/validate-milestone-plan-coverage.mjs` na raiz do repo | Já aparece no grafo da raiz (secção `scripts/`) | Presente |
 
 **Renomes:** não há renomes conhecidos entre o estado atual do disco e o que o bloco do grafo descreve; apenas **omissão de detalhe** sob `tasks/m0-baseline/` (comentário agregador vs árvore completa).
 

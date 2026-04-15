@@ -12,11 +12,9 @@ Documentation of repository layout. **Update this file when you create, move, or
 ├── SECURITY.md               # Vulnerability reporting policy
 ├── SUPPORT.md                # Support channels and triage guidance
 ├── package.json              # npm monorepo (workspaces)
-├── scripts/                  # Root helper scripts (e.g. M0/M1 plan coverage validation, npm release, Mermaid→SVG via Kroki, Cursor/Codex HCD-ERR hook smoke, T5 normative file verify, Cursor headless M1 micro sequence)
+├── scripts/                  # Root helper scripts (npm release, Mermaid→SVG via Kroki, Cursor/Codex HCD-ERR hook smoke, Cursor headless M1 micro sequence)
 │   ├── fixtures/             # Smoke fixtures (e.g. invalid HCD-ERR body for the hook)
 │   │   └── smoke-hcd-err-violation-body.md
-│   ├── validate-milestone-plan-coverage.mjs
-│   ├── verify-normative-agent-files.mjs
 │   ├── generate-mermaid-svgs.mjs  # Extract Mermaid blocks from docs, POST to kroki.io, write docs/assets/diagrams/generated/*.svg
 │   ├── npm-release.mjs       # Orchestrates precheck/auth/check-version/publish/smoke with NPM_ACCESS_TOKEN
 │   ├── run-m1-remediation-micro-cursor-headless.sh  # Headless M1 micro sequence (Cursor CLI agent -p)

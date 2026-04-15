@@ -49,4 +49,3 @@ Execução fragmentada: [`micro/README.md`](micro/README.md).
 - `.github/workflows/ci.yml`
 - `docker-compose.yml`
 - `package.json` (raiz)
-- `scripts/validate-milestone-plan-coverage.mjs`

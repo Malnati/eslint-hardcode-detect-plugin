@@ -121,7 +121,7 @@
       "id": "m2-sec10-npm-test",
       "description": "Camada B: pipeline CI reprodutível na branch",
       "documented_in": "docs/distribution-milestones/m2-channel-t3-ci.md",
-      "ci_command": "npm run test:docs-milestones && npm run lint && npm test -w eslint-plugin-hardcode-detect"
+      "ci_command": "npm run lint && npm test -w eslint-plugin-hardcode-detect"
     }
   ]
 }

@@ -6,7 +6,7 @@ Marco: [`../../m4-channel-t5-agents.md`](../../m4-channel-t5-agents.md) · **Git
 
 **Evidência A1 (inventário T5):** [`evidence/T5-normative-files-inventory.md`](evidence/T5-normative-files-inventory.md) — tabelas por superfície (`.cursor/`, `.github/agents/`, `.github/instructions/`), checklist de coerência e gaps vs [`specs/agent-tooling-ecosystem-map.md`](../../../../specs/agent-tooling-ecosystem-map.md).
 
-**Evidência A2 (CI `verify-agent-files`):** [`evidence/A2-verify-agent-files-handoff.md`](evidence/A2-verify-agent-files-handoff.md) — decisão (automação na CI), remissões ao mapa de equivalências e handoff T6; script [`scripts/verify-normative-agent-files.mjs`](../../../../scripts/verify-normative-agent-files.mjs) e passo em [`.github/workflows/ci.yml`](../../../../.github/workflows/ci.yml).
+**Evidência A2 (CI `verify-agent-files`):** [`evidence/A2-verify-agent-files-handoff.md`](evidence/A2-verify-agent-files-handoff.md) — decisão, remissões ao mapa de equivalências e handoff T6 (script descontinuado neste ciclo).
 
 ## Grafo de dependências (Camada A)
 

@@ -46,7 +46,7 @@ Alinhamento ao grafo de âncoras em [`../README.md`](../README.md): A1→A2; A3 
 Na raiz do repositório:
 
 ```bash
-node scripts/validate-milestone-plan-coverage.mjs
+npm run lint && npm test -w eslint-plugin-hardcode-detect
 ```
 
-Ou `npm run test:docs-m0` / `npm run test:docs-m0` (ver [`package.json`](../../../../../package.json) na raiz).
+Ver [`package.json`](../../../../../package.json) e [`.github/workflows/ci.yml`](../../../../../.github/workflows/ci.yml).

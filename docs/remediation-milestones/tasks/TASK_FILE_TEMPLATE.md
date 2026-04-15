@@ -22,7 +22,7 @@ Quando a tarefa `A{N}` for substituída por ficheiros em `micro/` (ver [`README.
 
 | Campo | Exemplo |
 |-------|---------|
-| micro_id | `M1-A1-01` — na tabela Markdown, chave `micro_id` **sem** backticks (o validador de manifestos procura `\| micro_id \| M1-A1-01 \|`) |
+| micro_id | `M1-A1-01` — na tabela Markdown, chave `micro_id` **sem** backticks (facilita validação textual consistente) |
 | `role` | `arquiteto` … `dev-especialista-correcoes` |
 | `parent_task` | `A1` |
 | `single_focus` | Uma frase: o que este agente faz e o que **não** faz (evitar multi-foco) |
@@ -38,5 +38,5 @@ Quando a tarefa `A{N}` for substituída por ficheiros em `micro/` (ver [`README.
 ## Secções opcionais
 
 - **Paths principais** — lista de paths relativos à raiz.
-- **Micro-tarefas (filhas de A{N})** — quando o marco tiver pasta `micro/` e `coverage-manifest.json`, alinhar a [`docs/remediation-milestones/tasks/README.md`](README.md) (validação via `scripts/validate-milestone-plan-coverage.mjs` quando o manifesto estiver registado no script).
+- **Micro-tarefas (filhas de A{N})** — quando o marco tiver pasta `micro/` e `coverage-manifest.json`, alinhar a [`docs/remediation-milestones/tasks/README.md`](README.md) (validação por revisão documental local do marco).
 - **Notas**
