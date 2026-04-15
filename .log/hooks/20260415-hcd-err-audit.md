@@ -383,3 +383,21 @@ _Nenhum ficheiro acumulado neste turno._
 
 - `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.rule.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T12:52:56Z`
+- `conversation_id`: `f035c2a9-040e-4702-b2de-42cbe40918f7`
+- `generation_id`: `dde56018-4aa9-47f4-b69e-7662c11529fe`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/f035c2a9-040e-4702-b2de-42cbe40918f7/f035c2a9-040e-4702-b2de-42cbe40918f7.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
