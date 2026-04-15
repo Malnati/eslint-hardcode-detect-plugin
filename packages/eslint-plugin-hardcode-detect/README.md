@@ -218,7 +218,7 @@ Sensitive-looking literals should not be committed as plaintext. Use environment
 
 - `npm run build` — compile `src/` into `dist/`.
 - `npm run lint` — lint package source.
-- `npm test` — build + RuleTester + e2e smoke.
+- `npm test` — build + RuleTester + e2e smoke (including [`e2e/call-site-exceptions.e2e.mjs`](e2e/call-site-exceptions.e2e.mjs) for `callSiteExceptions` alongside R2/R3/Nest).
 
 From monorepo root:
 

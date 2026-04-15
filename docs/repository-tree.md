@@ -205,9 +205,13 @@ Documentation of repository layout. **Update this file when you create, move, or
 │       ├── docs/rules/                 # One page per contract rule (`no-hardcoded-strings`, `standardize-error-messages`)
 │       ├── e2e/                        # e2e smoke (ESLint API + consumer fixtures)
 │       │   ├── fixtures/r2-dup/        # Two .mjs files, same literal (R2 track)
+│       │   ├── fixtures/call-site-exceptions/   # callSiteExceptions (mixed cases)
+│       │   ├── fixtures/call-site-baseline/     # Same shape, no callSiteExceptions
+│       │   ├── fixtures/call-site-exceptions-r2/ # R2 + callSiteExceptions (index)
 │       │   ├── fixtures/r3-data/      # R3 track: JSON/YAML merge (r3-out/ generated; see .gitignore)
 │       │   ├── r2-multi-file.e2e.mjs   # Cross-file duplicates (R2)
 │       │   ├── r3-data-files.e2e.mjs   # R3 data files
+│       │   ├── call-site-exceptions.e2e.mjs  # callSiteExceptions deep smoke
 │       │   └── nest-workspace.e2e.mjs  # Nest fixture (cwd on sibling workspace)
 │       ├── src/rules/                  # ESLint rule implementations (incl. no-hardcoded-strings.messages.json)
 │       ├── src/utils/                  # Utilities (e.g. r2-literal-index.ts, r3-data-file-writers.ts)

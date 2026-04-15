@@ -86,7 +86,7 @@ Full semantics: *Secrets — `secretRemediationMode`* subsection in [`specs/plug
 
 - **R1 suite (scenarios S-R1-01 … S-R1-08 and secret):** [`tests/no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs).
 - **M4 suite (`secretRemediationMode`):** [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs).
-- **Call site exceptions (`callSiteExceptions`):** [`tests/no-hardcoded-strings-call-sites.test.mjs`](../../tests/no-hardcoded-strings-call-sites.test.mjs) and R2 index behaviour in [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs).
+- **Call site exceptions (`callSiteExceptions`):** [`tests/no-hardcoded-strings-call-sites.test.mjs`](../../tests/no-hardcoded-strings-call-sites.test.mjs), R2 index behaviour in [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs), and e2e [`e2e/call-site-exceptions.e2e.mjs`](../../e2e/call-site-exceptions.e2e.mjs) with fixtures under [`e2e/fixtures/call-site-exceptions/`](../../e2e/fixtures/call-site-exceptions/), [`call-site-baseline/`](../../e2e/fixtures/call-site-baseline/), and [`call-site-exceptions-r2/`](../../e2e/fixtures/call-site-exceptions-r2/).
 - **Canonical command (monorepo root):** `npm test -w eslint-plugin-hardcode-detect` — see also [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md).
 
 ## Business traceability

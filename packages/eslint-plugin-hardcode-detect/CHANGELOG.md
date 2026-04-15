@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.3.0] - 2026-04-14
+
+### Added
+
+- e2e smoke [`e2e/call-site-exceptions.e2e.mjs`](e2e/call-site-exceptions.e2e.mjs): fixtures for `callSiteExceptions` baseline (no list), suppression paths, mixed/second-arg/env-nested reporting, optional chaining, `debug` identifier, and R2 index behaviour when `console.log` is listed.
+
 ## [0.2.9] - 2026-04-14
 
 ### Changed
