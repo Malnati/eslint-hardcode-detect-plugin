@@ -19,6 +19,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 #### Detecção
 
 - Na saída do programa (`Program:exit`), consideram-se ocorrências em nós `Literal` cujo valor é `string` e `value.length >= 2`. Strings mais curtas são ignoradas.
+- **`callSiteExceptions`** (lista de strings, vazia por defeito): quando não vazia, um literal de string **não** entra nas ocorrências se for o **primeiro argumento** de uma `CallExpression` cujo callee, serializado como cadeia não computada (`console.log`, `logger.warn`, …) ou como identificador simples (`debug`, `print`), coincide com uma entrada da lista (formato alinhado ao campo `loggers` da regra `standardize-error-messages`). Callees computados (`console["log"]`), *optional chaining* no callee, ou outros nós que não serializam para esse formato **não** casam. Esses literais **não** são reportados nem participam do índice R2 nem da escrita R3.
 - Literais que são o operando **direito** de `??` ou `||` quando o ramo esquerdo referencia `process.env` são tratados como **fallback de ambiente**. O relatório e o agrupamento para R1 respeitam `envDefaultLiteralPolicy`:
   - **`include`**: participam do mesmo fluxo que outros literais (mensagem `hardcoded` por defeito).
   - **`report-separate`**: usa `messageId` `hardcodedEnvDefault` para esses literais.
@@ -41,7 +42,7 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 #### Valor normalizado e chave R2 (duplicados entre ficheiros)
 
 - **Valor normalizado** para comparação R2 alinha ao agrupamento R1 quando `dedupeWithinFile` é `true`: o par **valor da string** + **classificação de fallback de ambiente** (`isEnvDefault`, o mesmo critério que separa literais de `process.env` com `??` ou `||` em R1).
-- **Chave de índice** (implementação): concatenação estável desses dois eixos (equivalente semântico a um identificador por par valor + flag de fallback). Literais com `envDefaultLiteralPolicy: "ignore"` não entram no fluxo de ocorrências e **não** participam do índice R2.
+- **Chave de índice** (implementação): concatenação estável desses dois eixos (equivalente semântico a um identificador por par valor + flag de fallback). Literais com `envDefaultLiteralPolicy: "ignore"` não entram no fluxo de ocorrências e **não** participam do índice R2. O mesmo vale para literais abrangidos por **`callSiteExceptions`** (coincidência do callee com primeiro argumento string).
 - O índice de ficheiros por chave é mantido **no âmbito da execução** `lintFiles` sobre o conjunto de ficheiros pedido, usando `context.settings.hardcodeDetect` como bolsa mutável quando o flat config a expõe (o config `recommended` do plugin injecta `settings.hardcodeDetect: {}`). Ver [`docs/architecture-r2-global-index.md`](../docs/architecture-r2-global-index.md) e [`docs/adr-eslint-concurrency-r2.md`](../docs/adr-eslint-concurrency-r2.md).
 
 #### Schema (implementação actual, M1 + R2 índice)
@@ -63,6 +64,8 @@ Este documento define o comportamento público esperado do pacote em [`packages/
 | `dataFileFormats` | `("json" \| "yaml" \| "yml" \| "toml" \| "properties")[]` | `["json","yaml"]` | R3: formatos cujo mapeamento por extensão de ficheiro está permitido para merge (TOML e `.properties` reservados; não escritos na implementação actual). |
 | `dataFileTargets` | string[] | `[]` | R3: caminhos relativos ao `cwd` do ESLint (`context.cwd`) e, em versão limitada, padrões `dir/*.ext` com um único `*` no último segmento; lista vazia = sem escrita em ficheiros de dados. |
 | `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3: merge profundo; ver utilitários e documentação da regra. |
+| `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | M4: política de remediação para candidatos a segredo (heurística interna); ver subsecção *Segredos — `secretRemediationMode`*. |
+| `callSiteExceptions` | string[] | `[]` | Excepções por contexto de chamada: não reportar literais que são primeiro argumento string de callees listados (ver *Detecção*). |
 
 #### Mensagens (IDs estáveis)
 
@@ -129,6 +132,7 @@ Esta secção fixa **vocabulário e semântica** das opções públicas para rem
 | `dataFileMergeStrategy` | `"merge-keys"` \| `"fail-on-conflict"` | `"merge-keys"` | R3 | M3 | **Sim** (schema) | Comportamento ante chaves existentes e conflitos; preservar comentários YAML quando possível é objectivo de qualidade, não garantido em todas as versões. |
 | `secretRemediationMode` | `"suggest-only"` \| `"placeholder-default"` \| `"aggressive-autofix-opt-in"` | `"suggest-only"` | Transversal | M4 | **Sim** (schema) | Política para literais classificados como **candidatos a segredo** pela heurística interna da regra (comprimento e charset; ver subsecção *Segredos — `secretRemediationMode`*). Alinhado a L1 em [`docs/hardcoding-map.md`](../docs/hardcoding-map.md). |
 | `envDefaultLiteralPolicy` | `"include"` \| `"report-separate"` \| `"ignore"` | `"include"` | Transversal | M1–M3 | **Sim** | Tratamento de literais que são fallbacks de `process.env` (operadores `??` ou `||`) ou espelhos em constantes; mesma classe de hardcode que o literal de default (ver macro-plan). |
+| `callSiteExceptions` | string[] | `[]` | Transversal | — | **Sim** (schema) | Lista de callees (`objeto.método` ou identificador simples) para os quais um literal string no **primeiro** argumento da chamada é ignorado na detecção (e no índice R2); ver subsecção *Detecção* em `no-hardcoded-strings`. |
 
 ### R1 — constantes no mesmo ficheiro
 
@@ -179,6 +183,7 @@ Aplica-se a literais para os quais a regra activa a classificação interna de �
 
 ## Versão do documento
 
+- **1.6.0** — `no-hardcoded-strings`: opção `callSiteExceptions` (lista configurável de callees; primeiro argumento string ignorado na detecção e no índice R2); alinhamento ao vocabulário de `loggers` em `standardize-error-messages`.
 - **1.5.0** — remoção da regra de demonstração legada do contrato activo; compatibilidade e2e passa a focar apenas nas trilhas de produto (`no-hardcoded-strings`, R2, R3 e smoke Nest).
 - **1.4.0** — `no-hardcoded-strings`: mensagens (`hardcoded`, `hardcodedEnvDefault`, `hardcodedDuplicateCrossFile`) passam a exigir formato triplo em linhas com prefixos `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, `[HCD-ERR-OPS]`.
 - **1.3.0** — compatibilidade e2e/Nest passa a explicitar, no contrato, cobertura de dois caminhos no `nest-workspace.e2e.mjs`: detecção por contagens estáveis e autofix (`fix: true` + `ESLint.outputFixes`) em ficheiro temporário controlado com `remediationMode: "r1"` local.

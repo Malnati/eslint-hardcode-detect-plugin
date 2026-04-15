@@ -83,3 +83,48 @@ test("R2 — valor único por ficheiro mantém hardcoded (sem cross-file)", asyn
   assert.equal(first.messages.length, 1);
   assert.equal(first.messages[0].messageId, "hardcoded");
 });
+
+test("R2 — literal em console.log ignorado por callSiteExceptions não entra no índice", async () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "hcd-r2-callsite-"));
+  const a = path.join(dir, "a.mjs");
+  const b = path.join(dir, "b.mjs");
+  const c = path.join(dir, "c.mjs");
+  writeFileSync(a, 'console.log("shared-r2-value");\n', "utf8");
+  writeFileSync(b, 'export const x = "shared-r2-value";\n', "utf8");
+  writeFileSync(c, 'export const y = "shared-r2-value";\n', "utf8");
+
+  const eslint = new ESLint({
+    cwd: dir,
+    overrideConfigFile: true,
+    overrideConfig: [
+      {
+        name: "hcd-r2-callsite-test",
+        plugins: { "hardcode-detect": hardcodeDetect },
+        files: ["**/*.mjs"],
+        rules: {
+          "hardcode-detect/no-hardcoded-strings": [
+            "error",
+            {
+              remediationMode: "r2",
+              callSiteExceptions: ["console.log"],
+            },
+          ],
+        },
+        settings: { hardcodeDetect: {} },
+      },
+    ],
+  });
+
+  const results = await eslint.lintFiles([a, b, c]);
+  __resetR2FallbackIndexForTests(dir);
+
+  assert.equal(results.length, 3);
+  const msgs = results.flatMap((r) => r.messages);
+  const dup = msgs.filter((m) => m.messageId === "hardcodedDuplicateCrossFile");
+  const plain = msgs.filter((m) => m.messageId === "hardcoded");
+  const fromA = results.find((r) => r.filePath === a);
+  assert.ok(fromA);
+  assert.equal(fromA.messages.length, 0, "console.log com excepção não reporta");
+  assert.equal(plain.length, 1, "primeiro const com valor regista hardcoded");
+  assert.equal(dup.length, 1, "segundo ficheiro com mesmo valor recebe R2");
+});

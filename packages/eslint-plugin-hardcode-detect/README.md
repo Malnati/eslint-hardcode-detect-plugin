@@ -184,6 +184,21 @@ Optional write/merge to data files listed in `dataFileTargets`.
 ]
 ```
 
+## Call site exceptions
+
+To allow literals in logging or debug calls without turning off the rule globally, set **`callSiteExceptions`** to a list of callees (`object.method` or a single identifier, same shape as the planned `loggers` option for `standardize-error-messages`). Only the **first** string argument of the call is ignored.
+
+```js
+"hardcode-detect/no-hardcoded-strings": [
+  "warn",
+  {
+    callSiteExceptions: ["console.log", "console.debug", "logger.warn", "debug"],
+  },
+]
+```
+
+See [`specs/plugin-contract.md`](../../specs/plugin-contract.md) and [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
+
 ## Secrets and safe defaults
 
 Sensitive-looking literals should not be committed as plaintext. Use environment variables and your platform secret manager.

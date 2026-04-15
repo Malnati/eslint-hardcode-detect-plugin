@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.2.8] - 2026-04-14
+
+### Added
+
+- `no-hardcoded-strings`: option `callSiteExceptions` (string list, default `[]`) to skip reporting string literals that are the first argument of matching calls (callee serialized as `object.method` or a bare identifier), aligned with the planned `loggers` shape for `standardize-error-messages`. Ignored literals are excluded from the R2 cross-file index and from R3 data writes. Exported type `NoHardcodedStringsOptions` includes the new field.
+
 ## [0.2.6] - 2026-04-14
 
 ### Changed

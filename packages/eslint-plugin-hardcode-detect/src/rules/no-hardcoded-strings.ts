@@ -3,7 +3,15 @@ import type { Rule } from "eslint";
 import type { SourceCode } from "eslint";
 // Tipos ESTree via `@types/estree` (resolução TypeScript; não é pacote runtime).
 // eslint-disable-next-line n/no-missing-import -- módulo de tipos only
-import type { Comment, Literal, Node, Program } from "estree";
+import type {
+  CallExpression,
+  Comment,
+  Expression,
+  Literal,
+  Node,
+  Program,
+  Super,
+} from "estree";
 import { uniqueConstantName } from "../utils/constant-name.js";
 import { globMatch } from "../utils/glob-match.js";
 import {
@@ -64,6 +72,11 @@ export type NoHardcodedStringsOptions = {
   dataFileMergeStrategy: DataFileMergeStrategy;
   /** M4 — política de remediação para candidatos a segredo (heurística interna). */
   secretRemediationMode: SecretRemediationMode;
+  /**
+   * Não reportar literais que são primeiro argumento de chamadas cujo callee
+   * coincide com uma entrada (formato `objeto.método` ou identificador simples).
+   */
+  callSiteExceptions: string[];
 };
 
 const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
@@ -80,6 +93,7 @@ const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
   dataFileFormats: ["json", "yaml"],
   dataFileTargets: [],
   dataFileMergeStrategy: "merge-keys",
+  callSiteExceptions: [],
 };
 
 const ALLOWED_DATA_FILE_FORMATS = new Set<DataFileFormat>([
@@ -176,6 +190,13 @@ export function normalizeNoHardcodedStringsOptions(
       ? o.secretRemediationMode
       : DEFAULT_OPTIONS.secretRemediationMode;
 
+  const callSiteExceptions = Array.isArray(o.callSiteExceptions)
+    ? o.callSiteExceptions
+        .filter((x): x is string => typeof x === "string")
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0)
+    : DEFAULT_OPTIONS.callSiteExceptions;
+
   return {
     remediationMode,
     constantNamingConvention,
@@ -192,6 +213,7 @@ export function normalizeNoHardcodedStringsOptions(
     dataFileTargets,
     dataFileMergeStrategy,
     secretRemediationMode,
+    callSiteExceptions,
   };
 }
 
@@ -310,6 +332,59 @@ function isEnvDefaultLiteral(node: LiteralWithParent): boolean {
     return containsProcessEnvReference(parent.left);
   }
   return false;
+}
+
+/** Serializa callee para `console.log`, `debug`, `this.logger.warn`, etc.; `null` se não suportado. */
+function stringifyCalleeExpression(node: Expression): string | null {
+  if (node.type === "Identifier") {
+    return node.name;
+  }
+  if (node.type === "ThisExpression") {
+    return "this";
+  }
+  if (node.type === "ChainExpression") {
+    return stringifyCalleeExpression(node.expression as Expression);
+  }
+  if (node.type === "MemberExpression" && !node.computed) {
+    if (node.property.type !== "Identifier") {
+      return null;
+    }
+    const left = stringifyCalleeExpression(node.object as Expression);
+    if (left === null) {
+      return null;
+    }
+    return `${left}.${node.property.name}`;
+  }
+  return null;
+}
+
+function stringifyCallCallee(callee: Expression | Super): string | null {
+  if (callee.type === "Super") {
+    return null;
+  }
+  return stringifyCalleeExpression(callee);
+}
+
+function isLiteralIgnoredCallSite(
+  literal: LiteralWithParent,
+  exceptionSet: ReadonlySet<string>,
+): boolean {
+  if (exceptionSet.size === 0) {
+    return false;
+  }
+  const parent = literal.parent;
+  if (!parent || parent.type !== "CallExpression") {
+    return false;
+  }
+  const call = parent as CallExpression;
+  if (call.arguments[0] !== literal) {
+    return false;
+  }
+  const name = stringifyCallCallee(call.callee);
+  if (!name) {
+    return false;
+  }
+  return exceptionSet.has(name);
 }
 
 function getInsertPositionAfterImports(
@@ -494,6 +569,12 @@ const rule: Rule.RuleModule = {
               "aggressive-autofix-opt-in",
             ],
           },
+          callSiteExceptions: {
+            description:
+              "Lista de callees (objeto.metodo ou identificador): ignorar literal string no primeiro argumento.",
+            type: "array",
+            items: { type: "string" },
+          },
         },
         additionalProperties: false,
       },
@@ -514,6 +595,7 @@ const rule: Rule.RuleModule = {
         dataFileTargets: DEFAULT_OPTIONS.dataFileTargets,
         dataFileMergeStrategy: DEFAULT_OPTIONS.dataFileMergeStrategy,
         secretRemediationMode: DEFAULT_OPTIONS.secretRemediationMode,
+        callSiteExceptions: DEFAULT_OPTIONS.callSiteExceptions,
       },
     ],
     fixable: "code",
@@ -552,6 +634,7 @@ const rule: Rule.RuleModule = {
     );
 
     const occurrences: Occurrence[] = [];
+    const callSiteExceptionSet = new Set(options.callSiteExceptions);
 
     return {
       Literal(node: Literal) {
@@ -564,6 +647,12 @@ const rule: Rule.RuleModule = {
 
         const isEnvDefault = isEnvDefaultLiteral(node as LiteralWithParent);
         if (isEnvDefault && options.envDefaultLiteralPolicy === "ignore") {
+          return;
+        }
+
+        if (
+          isLiteralIgnoredCallSite(node as LiteralWithParent, callSiteExceptionSet)
+        ) {
           return;
         }
 

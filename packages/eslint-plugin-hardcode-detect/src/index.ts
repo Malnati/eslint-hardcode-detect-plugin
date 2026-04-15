@@ -56,5 +56,8 @@ export type {
   DataFileMergeStrategy,
   MergePlainObjectResult,
 } from "./utils/r3-data-file-writers.js";
-export type { SecretRemediationMode } from "./rules/no-hardcoded-strings.js";
+export type {
+  NoHardcodedStringsOptions,
+  SecretRemediationMode,
+} from "./rules/no-hardcoded-strings.js";
 export { HCD_SECRET_PLACEHOLDER } from "./rules/no-hardcoded-strings.js";

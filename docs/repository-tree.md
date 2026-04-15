@@ -214,6 +214,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 │       ├── tests/                      # RuleTester + node:test
 │       │   ├── index.test.mjs          # no-hardcoded-strings base assertions
 │       │   ├── no-hardcoded-strings-r1.test.mjs  # R1 remediation (M1 milestone / S-R1-*)
+│       │   ├── no-hardcoded-strings-call-sites.test.mjs  # callSiteExceptions (issue #6)
 │       │   ├── no-hardcoded-strings-secrets.test.mjs  # M4 / secretRemediationMode (safe defaults)
 │       │   ├── no-hardcoded-strings-r2.test.mjs  # R2 index / lintFiles multi-file
 │       │   └── r3-data-file-writers.test.mjs  # Deterministic JSON/YAML merge (R3)

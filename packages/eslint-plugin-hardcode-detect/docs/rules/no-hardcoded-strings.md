@@ -3,6 +3,7 @@
 Product rule (`problem`): discourages hardcoded string literals in code, except very short trivial strings.
 
 - On `Literal` nodes whose value is `string`, if `value.length >= 2`, the rule reports with the configured message (equivalent to: avoid string literal; move to constants or a catalog). Strings shorter than length 2 are ignored.
+- **`callSiteExceptions`** (optional, default `[]`): list of callee names in the same style as `loggers` in [`standardize-error-messages`](./standardize-error-messages.md) / [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md) — e.g. `console.log`, `console.debug`, `logger.warn`, or a bare identifier such as `debug`. When the list is non-empty, a string literal is **not** reported if it is the **first argument** of a `CallExpression` whose callee serializes to one of those names (non-computed member chain or simple identifier). Such literals are also excluded from the R2 cross-file index and from R3 data-file writes. Computed calls like `console["log"](...)` do not match.
 - **Messages**: `hardcoded`, `hardcodedEnvDefault`, and `hardcodedDuplicateCrossFile` emit content in three lines with `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, and `[HCD-ERR-OPS]`; `envDefaultLiteralPolicy: "report-separate"` still selects `hardcodedEnvDefault` for `process.env` *fallback* literals (see below).
 - Part of the plugin `recommended` preset (`hardcode-detect/recommended`).
 
@@ -85,6 +86,7 @@ Full semantics: *Secrets — `secretRemediationMode`* subsection in [`specs/plug
 
 - **R1 suite (scenarios S-R1-01 … S-R1-08 and secret):** [`tests/no-hardcoded-strings-r1.test.mjs`](../../tests/no-hardcoded-strings-r1.test.mjs).
 - **M4 suite (`secretRemediationMode`):** [`tests/no-hardcoded-strings-secrets.test.mjs`](../../tests/no-hardcoded-strings-secrets.test.mjs).
+- **Call site exceptions (`callSiteExceptions`):** [`tests/no-hardcoded-strings-call-sites.test.mjs`](../../tests/no-hardcoded-strings-call-sites.test.mjs) and R2 index behaviour in [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs).
 - **Canonical command (monorepo root):** `npm test -w eslint-plugin-hardcode-detect` — see also [`docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md`](../../../../docs/remediation-milestones/tasks/m1-remediation-r1/A2-architect-suggest-vs-fix-policy-ci-environment.md).
 
 ## Business traceability
