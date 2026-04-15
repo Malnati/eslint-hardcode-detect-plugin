@@ -96,3 +96,24 @@ _Nenhum ficheiro acumulado neste turno._
 - `packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L7
 - `packages/eslint-plugin-hardcode-detect/tests/no-hardcoded-strings-call-sites.test.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `specs/plugin-contract.md`: **OK** — contagens SENIOR/FIX/OPS = 3/3/3; linhas com prefixo: L72, L89, L189
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T01:00:22Z`
+- `conversation_id`: `f33efcb2-d04a-46bb-9798-fc99db3976ff`
+- `generation_id`: `e02efb46-c21c-4bd7-907e-5fc0fae43cc0`
+- `model`: `default`
+- `cursor_version`: `3.1.10`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/f33efcb2-d04a-46bb-9798-fc99db3976ff/f33efcb2-d04a-46bb-9798-fc99db3976ff.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/CHANGELOG.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L93
+- `packages/eslint-plugin-hardcode-detect/docs/rules/no-hardcoded-strings.md`: **OK** — contagens SENIOR/FIX/OPS = 1/1/1; linhas com prefixo: L7
+- `packages/eslint-plugin-hardcode-detect/src/rules/no-hardcoded-strings.ts`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
