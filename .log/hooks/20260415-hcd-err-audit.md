@@ -335,3 +335,32 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T12:42:15Z`
+- `conversation_id`: `f5575306-68a2-4547-8525-2296a1e16616`
+- `generation_id`: `f90d6fcd-9a94-479d-ab15-f2421d8e58a5`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/f5575306-68a2-4547-8525-2296a1e16616/f5575306-68a2-4547-8525-2296a1e16616.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/call-site-exceptions.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/options-matrix/auto/entry.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/options-matrix/env/entry.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/options-matrix/globs-exclude/src/excluded.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/options-matrix/globs/lib/outside.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/options-matrix/globs/src/included.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/options-matrix/secret/entry.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/fixtures/r3-fail-conflict/sample.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/helpers/copy-dir-recursive.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/options-matrix.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/r3-fail-conflict.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
