@@ -699,3 +699,21 @@ _Nenhum ficheiro acumulado neste turno._
 - `packages/eslint-plugin-hardcode-detect/e2e/run-e2e-with-registry.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `specs/e2e-fixture-nest.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
 - `specs/plugin-contract.md`: **OK** — contagens SENIOR/FIX/OPS = 3/3/3; linhas com prefixo: L72, L89, L193
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T18:01:39Z`
+- `conversation_id`: `ce1fcf20-d191-4f26-907d-de01cbcaeada`
+- `generation_id`: `8f064a39-3d49-4f0b-80c4-35b495ae8585`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/ce1fcf20-d191-4f26-907d-de01cbcaeada/ce1fcf20-d191-4f26-907d-de01cbcaeada.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+_Nenhum ficheiro acumulado neste turno._
