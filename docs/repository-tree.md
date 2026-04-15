@@ -209,7 +209,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 │       │   ├── r2-multi-file.e2e.mjs   # Cross-file duplicates (R2)
 │       │   ├── r3-data-files.e2e.mjs   # R3 data files
 │       │   └── nest-workspace.e2e.mjs  # Nest fixture (cwd on sibling workspace)
-│       ├── src/rules/                  # ESLint rule implementations
+│       ├── src/rules/                  # ESLint rule implementations (incl. no-hardcoded-strings.messages.json)
 │       ├── src/utils/                  # Utilities (e.g. r2-literal-index.ts, r3-data-file-writers.ts)
 │       ├── tests/                      # RuleTester + node:test
 │       │   ├── index.test.mjs          # no-hardcoded-strings base assertions

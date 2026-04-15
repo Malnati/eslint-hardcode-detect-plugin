@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Internal: `no-hardcoded-strings` loads `meta.messages` from [`src/rules/no-hardcoded-strings.messages.json`](src/rules/no-hardcoded-strings.messages.json) (copied beside the emitted rule under `dist/rules/` during build); report text and `messageId`s are unchanged.
 - Documentation: `specs/plugin-contract.md` and rule docs now match implementation for `callSiteExceptions` when the callee uses optional chaining (`console?.log` normalizes to `console.log`).
 
 ### Added

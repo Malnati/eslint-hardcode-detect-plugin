@@ -1,8 +1,10 @@
 import path from "node:path";
 import type { Rule } from "eslint";
+import ruleMessagesJson from "./no-hardcoded-strings.messages.json" with {
+  type: "json",
+};
 import type { SourceCode } from "eslint";
 // Tipos ESTree via `@types/estree` (resolução TypeScript; não é pacote runtime).
-// eslint-disable-next-line n/no-missing-import -- módulo de tipos only
 import type {
   CallExpression,
   Comment,
@@ -11,7 +13,7 @@ import type {
   Node,
   Program,
   Super,
-} from "estree";
+} from "estree"; // eslint-disable-line n/no-missing-import -- módulo de tipos only
 import { uniqueConstantName } from "../utils/constant-name.js";
 import { globMatch } from "../utils/glob-match.js";
 import {
@@ -600,14 +602,11 @@ const rule: Rule.RuleModule = {
     ],
     fixable: "code",
     hasSuggestions: true,
-    messages: {
-      hardcoded:
-        "[HCD-ERR-SENIOR] Literal de string hardcoded detectado no código.\n[HCD-ERR-FIX] Extraia para constante, catálogo ou mecanismo de configuração apropriado.\n[HCD-ERR-OPS] Enquanto a correção definitiva não entra, rastreie e documente ocorrências para evitar novas cópias.",
-      hardcodedEnvDefault:
-        "[HCD-ERR-SENIOR] Literal hardcoded usado como fallback de process.env (?? ou ||).\n[HCD-ERR-FIX] Mova o fallback para constante/catálogo e padronize a leitura de configuração.\n[HCD-ERR-OPS] Até corrigir, mantenha o fallback explicitamente documentado e sob revisão.",
-      hardcodedDuplicateCrossFile:
-        "[HCD-ERR-SENIOR] Mesmo valor normalizado já apareceu noutro ficheiro no mesmo lint (trilha R2).\n[HCD-ERR-FIX] Centralize em módulo partilhado ou catálogo único para eliminar duplicação.\n[HCD-ERR-OPS] Como contorno, rastreie os pontos duplicados e evite introduzir novos até a centralização.",
-    },
+    messages: ruleMessagesJson as NonNullable<
+      Rule.RuleModule["meta"]
+    > extends { messages?: infer M }
+      ? M
+      : Record<string, string>,
   },
 
   create(context) {
