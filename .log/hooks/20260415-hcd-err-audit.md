@@ -647,3 +647,34 @@ _Nenhum ficheiro acumulado neste turno._
 ### Ficheiros auditados
 
 _Nenhum ficheiro acumulado neste turno._
+
+---
+
+## stop (auditoria HCD-ERR)
+
+- `hook_event_name`: `stop`
+- `utc_time`: `2026-04-15T17:27:13Z`
+- `conversation_id`: `1d33e5d4-fae9-4c9b-8943-dd5784785826`
+- `generation_id`: `1c96f90c-fadb-4916-9003-378e52090b4d`
+- `model`: `default`
+- `cursor_version`: `3.1.14`
+- `transcript_path`: `/Users/mal/.cursor/projects/Users-mal-GitHub-malnati-eslint-hardcode-detect-plugin/agent-transcripts/1d33e5d4-fae9-4c9b-8943-dd5784785826/1d33e5d4-fae9-4c9b-8943-dd5784785826.jsonl`
+- `workspace_roots`: `['/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin']`
+- `project_root`: `/Users/mal/GitHub/malnati/eslint-hardcode-detect-plugin`
+
+### Ficheiros auditados
+
+- `.cursor/rules/e2e-nest-fixture.mdc`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `docs/repository-tree.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/e2e-fixture-nest/eslint.config.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/README.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/call-site-exceptions.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/helpers/registry-plugin.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/options-matrix.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/r2-multi-file.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/r3-data-files.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/r3-fail-conflict.e2e.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `packages/eslint-plugin-hardcode-detect/e2e/run-e2e-with-registry.mjs`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/agent-docker-compose.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/e2e-fixture-nest.md`: **skip (gate)** — sem sinal de relato de falha/mensagem de erro (regex)
+- `specs/plugin-contract.md`: **OK** — contagens SENIOR/FIX/OPS = 3/3/3; linhas com prefixo: L72, L89, L192
