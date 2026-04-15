@@ -207,9 +207,13 @@ Documentation of repository layout. **Update this file when you create, move, or
 │       │   ├── fixtures/call-site-baseline/     # Same shape, no callSiteExceptions
 │       │   ├── fixtures/call-site-exceptions-r2/ # R2 + callSiteExceptions (index)
 │       │   ├── fixtures/r3-data/      # R3 track: JSON/YAML merge (r3-out/ generated; see .gitignore)
+│       │   ├── fixtures/options-matrix/ # Matrix e2e: remediationMode auto, env policy, globs, secretRemediationMode
+│       │   ├── fixtures/r3-fail-conflict/ # R3 conflict fixture (fail-on-conflict)
 │       │   ├── r2-multi-file.e2e.mjs   # Cross-file duplicates (R2)
 │       │   ├── r3-data-files.e2e.mjs   # R3 data files
 │       │   ├── call-site-exceptions.e2e.mjs  # callSiteExceptions deep smoke
+│       │   ├── options-matrix.e2e.mjs  # Integration matrix for mode/options coverage gaps
+│       │   ├── r3-fail-conflict.e2e.mjs # R3 fail-on-conflict does not overwrite conflicting target
 │       │   └── nest-workspace.e2e.mjs  # Nest fixture (cwd on sibling workspace)
 │       ├── src/rules/                  # ESLint rule implementations (incl. no-hardcoded-strings.messages.json)
 │       ├── src/utils/                  # Utilities (e.g. r2-literal-index.ts, r3-data-file-writers.ts)

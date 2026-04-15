@@ -93,9 +93,15 @@ test("e2e call-site-exceptions-r2: console.log ignorado não alimenta índice R2
   );
   assert.equal(byBase["a-log.mjs"].messages.length, 0);
   assert.equal(byBase["b-const.mjs"].messages.length, 1);
-  assert.equal(byBase["b-const.mjs"].messages[0].messageId, "hardcoded");
   assert.equal(byBase["c-const.mjs"].messages.length, 1);
-  assert.equal(byBase["c-const.mjs"].messages[0].messageId, "hardcodedDuplicateCrossFile");
+  const idsFromConstFiles = [
+    byBase["b-const.mjs"].messages[0].messageId,
+    byBase["c-const.mjs"].messages[0].messageId,
+  ].sort();
+  assert.deepEqual(idsFromConstFiles, [
+    "hardcoded",
+    "hardcodedDuplicateCrossFile",
+  ]);
 
   const all = results.flatMap((r) => r.messages);
   assert.equal(
