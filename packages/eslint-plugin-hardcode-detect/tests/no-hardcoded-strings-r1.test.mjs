@@ -18,6 +18,9 @@ const ruleTester = new RuleTester({
 
 const SUGGEST_DESC = "Extrair para constante no topo do ficheiro";
 
+/** Evita estado do índice R2 partilhado entre casos RuleTester no mesmo processo. */
+const NO_CROSS_FILE = { crossFileDuplicateDetection: false };
+
 /** @param {string} output */
 function suggest(output) {
   return { desc: SUGGEST_DESC, output };
@@ -45,32 +48,40 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         {
           code: 'const x = process.env.FOO ?? "ab";',
           options: [
-            { remediationMode: "r1", envDefaultLiteralPolicy: "ignore" },
+            {
+              remediationMode: "r1",
+              envDefaultLiteralPolicy: "ignore",
+              ...NO_CROSS_FILE,
+            },
           ],
         },
         // S-R1-07 — envDefaultLiteralPolicy: ignore (||)
         {
           code: 'const x = process.env.FOO || "ab";',
           options: [
-            { remediationMode: "r1", envDefaultLiteralPolicy: "ignore" },
+            {
+              remediationMode: "r1",
+              envDefaultLiteralPolicy: "ignore",
+              ...NO_CROSS_FILE,
+            },
           ],
         },
       ],
       invalid: [
-        // S-R1-01 — happy path + dedupeWithinFile true
+        // S-R1-01 — happy path + dedupeWithinFile true (recorrência intra-ficheiro)
         {
           code: 'const s = "ab";\nconst t = "ab";',
-          options: [{ remediationMode: "r1" }],
+          options: [{ remediationMode: "r1", ...NO_CROSS_FILE }],
           errors: [
-            { messageId: "hardcoded" },
-            { messageId: "hardcoded" },
+            { messageId: "hardcodedDuplicateWithinFile" },
+            { messageId: "hardcodedDuplicateWithinFile" },
           ],
           output: 'const AB = "ab";\nconst s = AB;\nconst t = AB;',
         },
         // S-R1-01 — constantes após imports (ordem no topo)
         {
           code: 'import x from "y";\nconst s = "ab";',
-          options: [{ remediationMode: "r1" }],
+          options: [{ remediationMode: "r1", ...NO_CROSS_FILE }],
           errors: [{ messageId: "hardcoded" }],
           output:
             'import x from "y";\nconst AB = "ab";\n\nconst s = AB;',
@@ -78,7 +89,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         // S-R1-02 — UPPER_SNAKE_CASE derivado do literal (enum extra de convenção → A3 / contrato)
         {
           code: 'const s = "hello-world";',
-          options: [{ remediationMode: "r1" }],
+          options: [{ remediationMode: "r1", ...NO_CROSS_FILE }],
           errors: [{ messageId: "hardcoded" }],
           output:
             'const HELLO_WORLD = "hello-world";\nconst s = HELLO_WORLD;',
@@ -86,7 +97,9 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         // S-R1-03 — dedupeWithinFile: false (duas constantes por valor)
         {
           code: 'const s = "ab";\nconst t = "ab";',
-          options: [{ remediationMode: "r1", dedupeWithinFile: false }],
+          options: [
+            { remediationMode: "r1", dedupeWithinFile: false, ...NO_CROSS_FILE },
+          ],
           errors: [
             { messageId: "hardcoded" },
             { messageId: "hardcoded" },
@@ -97,7 +110,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         // S-R1-04 — remediationMode: off (só detecção)
         {
           code: 'const s = "ab";',
-          options: [{ remediationMode: "off" }],
+          options: [{ remediationMode: "off", ...NO_CROSS_FILE }],
           errors: [{ messageId: "hardcoded" }],
         },
         // S-R1-05 — exclude glob: sem autofix R1; reporte mantém-se; suggest disponível
@@ -108,6 +121,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
             {
               remediationMode: "r1",
               remediationExcludeGlobs: ["**/*.i18n.ts"],
+              ...NO_CROSS_FILE,
             },
           ],
           errors: [
@@ -127,6 +141,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
             {
               remediationMode: "r1",
               remediationIncludeGlobs: ["src/**/*.ts"],
+              ...NO_CROSS_FILE,
             },
           ],
           errors: [{ messageId: "hardcoded" }],
@@ -140,6 +155,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
             {
               remediationMode: "r1",
               remediationIncludeGlobs: ["src/**/*.ts"],
+              ...NO_CROSS_FILE,
             },
           ],
           errors: [
@@ -155,7 +171,11 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         {
           code: 'const x = process.env.FOO ?? "ab";',
           options: [
-            { remediationMode: "r1", envDefaultLiteralPolicy: "include" },
+            {
+              remediationMode: "r1",
+              envDefaultLiteralPolicy: "include",
+              ...NO_CROSS_FILE,
+            },
           ],
           errors: [{ messageId: "hardcoded" }],
           output: 'const AB = "ab";\nconst x = process.env.FOO ?? AB;',
@@ -167,6 +187,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
             {
               remediationMode: "r1",
               envDefaultLiteralPolicy: "report-separate",
+              ...NO_CROSS_FILE,
             },
           ],
           errors: [{ messageId: "hardcodedEnvDefault" }],
@@ -176,7 +197,11 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         {
           code: 'const x = process.env.FOO || "ab";',
           options: [
-            { remediationMode: "r1", envDefaultLiteralPolicy: "include" },
+            {
+              remediationMode: "r1",
+              envDefaultLiteralPolicy: "include",
+              ...NO_CROSS_FILE,
+            },
           ],
           errors: [{ messageId: "hardcoded" }],
           output: 'const AB = "ab";\nconst x = process.env.FOO || AB;',
@@ -185,7 +210,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         {
           code: 'const x = "ab";',
           filename: filePath("src", "foo.test.ts"),
-          options: [{ remediationMode: "r1" }],
+          options: [{ remediationMode: "r1", ...NO_CROSS_FILE }],
           errors: [
             {
               messageId: "hardcoded",
@@ -198,7 +223,7 @@ test("no-hardcoded-strings — remediação R1 (S-R1-01 … S-R1-08)", () => {
         // Segredo provável — sem fix automático nem suggestions
         {
           code: `const x = "${SECRET_LIKE_LITERAL}";`,
-          options: [{ remediationMode: "r1" }],
+          options: [{ remediationMode: "r1", ...NO_CROSS_FILE }],
           errors: [{ messageId: "hardcoded" }],
         },
       ],

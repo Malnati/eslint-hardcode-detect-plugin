@@ -4,19 +4,21 @@ Product rule (`problem`): discourages hardcoded string literals in code, except 
 
 - On `Literal` nodes whose value is `string`, if `value.length >= 2`, the rule reports with the configured message (equivalent to: avoid string literal; move to constants or a catalog). Strings shorter than length 2 are ignored.
 - **`callSiteExceptions`** (optional, default `[]`): list of callee names in the same style as `loggers` in [`standardize-error-messages`](./standardize-error-messages.md) / [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md) — e.g. `console.log`, `console.debug`, `logger.warn`, or a bare identifier such as `debug`. When the list is non-empty, a string literal is **not** reported if it is the **first argument** of a `CallExpression` whose callee serializes to one of those names (non-computed member chain or simple identifier; optional chaining on the callee is normalized, e.g. `console?.log` matches `console.log`). Such literals are also excluded from the R2 cross-file index and from R3 data-file writes. Computed calls like `console["log"](...)` do not match.
-- **Messages**: `hardcoded`, `hardcodedEnvDefault`, and `hardcodedDuplicateCrossFile` emit content in three lines with `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, and `[HCD-ERR-OPS]`; `envDefaultLiteralPolicy: "report-separate"` still selects `hardcodedEnvDefault` for `process.env` *fallback* literals (see below). The strings are maintained in [`src/rules/no-hardcoded-strings.messages.json`](../../src/rules/no-hardcoded-strings.messages.json) and published next to the compiled rule in `dist/rules/`.
+- **Messages**: `hardcoded`, `hardcodedEnvDefault`, `hardcodedDuplicateCrossFile`, `hardcodedDuplicateWithinFile`, and `hardcodedInSharedConstantsModule` emit content in three lines with `[HCD-ERR-SENIOR]`, `[HCD-ERR-FIX]`, and `[HCD-ERR-OPS]`; precedence and `envDefaultLiteralPolicy` are defined in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). The strings are maintained in [`src/rules/no-hardcoded-strings.messages.json`](../../src/rules/no-hardcoded-strings.messages.json) and published next to the compiled rule in `dist/rules/`.
 - Part of the plugin `recommended` preset (`hardcode-detect/recommended`).
 
 The full vocabulary of options planned in the repository (including R2/R3 tracks and `secretRemediationMode`) is in [`specs/plugin-contract.md`](../../../../specs/plugin-contract.md). **In this package**, the automatic remediation described below applies to the **R1** track with `remediationMode: "r1"` and the subset of options already supported in the rule (see schema in `src/rules/no-hardcoded-strings.ts`).
 
 ---
 
-## R2 detection (`remediationMode: "r2"`)
+## R2 detection (cross-file duplicate index)
 
-- **No R1 autofix** (same as `off` for remediation in the same file).
-- With the **same normalized value** (string value + env-fallback flag, aligned with R1) in **more than one file** in the same `lintFiles` invocation, files processed **after** the first with that value get `messageId` **`hardcodedDuplicateCrossFile`** instead of `hardcoded` / `hardcodedEnvDefault` (the first file keeps the base report up to that point).
+- **`crossFileDuplicateDetection`** (default **`true`**): maintains the normalized-literal index across files in the same `lintFiles` run. When the **same normalized value** (string value + env-fallback flag, aligned with R1) appears in **more than one file**, files processed **after** the first with that value get `messageId` **`hardcodedDuplicateCrossFile`** (precedence over intra-file and other ids). Set to **`false`** to disable the index and this message id.
+- **`remediationMode: "r2"`**: **no R1 autofix** (same as `off` for remediation in the same file); cross-file reporting follows `crossFileDuplicateDetection`, not `remediationMode` alone.
+- **Intra-file recurrence**: when the same normalized value appears **more than once** in the same file (with `dedupeWithinFile: true`), each occurrence is reported with **`hardcodedDuplicateWithinFile`** unless cross-file applies first.
+- **`sharedConstantsModule`**: optional glob (relative to ESLint `cwd`). When the current file path matches, literals use **`hardcodedInSharedConstantsModule`** (suggests moving to properties / config / env as appropriate), unless a higher-precedence id applies.
 - The shared index uses `settings.hardcodeDetect` (the `recommended` preset injects a mutable empty object). **ESLint parallelism:** see [`docs/adr-eslint-concurrency-r2.md`](../../../../docs/adr-eslint-concurrency-r2.md).
-- Tests: [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs), e2e [`e2e/r2-multi-file.e2e.mjs`](../../e2e/r2-multi-file.e2e.mjs).
+- Tests: [`tests/no-hardcoded-strings-r2.test.mjs`](../../tests/no-hardcoded-strings-r2.test.mjs), [`tests/no-hardcoded-strings-diagnostics.test.mjs`](../../tests/no-hardcoded-strings-diagnostics.test.mjs), e2e [`e2e/r2-multi-file.e2e.mjs`](../../e2e/r2-multi-file.e2e.mjs).
 
 ---
 

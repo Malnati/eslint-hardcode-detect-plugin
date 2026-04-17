@@ -33,6 +33,8 @@ test("no-hardcoded-strings: mensagens usam tripla HCD-ERR", () => {
     "hardcoded",
     "hardcodedEnvDefault",
     "hardcodedDuplicateCrossFile",
+    "hardcodedDuplicateWithinFile",
+    "hardcodedInSharedConstantsModule",
   ];
 
   for (const id of ids) {

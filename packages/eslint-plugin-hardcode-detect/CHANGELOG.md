@@ -4,6 +4,20 @@ All notable changes to this project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/) on the **0.y.z** line until the plugin’s public API stabilizes (see [`specs/plugin-contract.md`](../../specs/plugin-contract.md)).
 
+## [0.3.3] - 2026-04-16
+
+### Added
+
+- Option `crossFileDuplicateDetection` (default `true`): R2 cross-file literal index and `hardcodedDuplicateCrossFile` are independent of `remediationMode`; set to `false` to disable the index.
+- `messageId`s `hardcodedDuplicateWithinFile` (same literal repeated in one file) and `hardcodedInSharedConstantsModule` when the file matches glob `sharedConstantsModule`.
+- RuleTester coverage in [`tests/no-hardcoded-strings-diagnostics.test.mjs`](tests/no-hardcoded-strings-diagnostics.test.mjs).
+
+### Changed
+
+- `sharedConstantsModule` is documented and applied as a **glob** relative to ESLint `cwd` (for the dedicated message and future R2 autofix).
+- HCD-ERR triple text for `hardcoded`, `hardcodedDuplicateCrossFile`, and related messages (see [`src/rules/no-hardcoded-strings.messages.json`](src/rules/no-hardcoded-strings.messages.json)).
+- Contract and rule docs aligned in [`specs/plugin-contract.md`](../../specs/plugin-contract.md) and [`docs/rules/no-hardcoded-strings.md`](docs/rules/no-hardcoded-strings.md).
+
 ## [0.3.2] - 2026-04-15
 
 ### Changed

@@ -21,6 +21,7 @@ import {
   effectiveRemediationMode,
   getInsertPositionAfterImports,
   getRelativePath,
+  matchesSharedConstantsModule,
   isEnvDefaultLiteral,
   isExcludedByGlobs,
   isIncludedByGlobs,
@@ -86,8 +87,13 @@ const rule: Rule.RuleModule = {
           },
           sharedConstantsModule: {
             description:
-              "Caminho ou padrão do módulo partilhado para constantes R2 (futuro autofix).",
+              "Glob do caminho relativo ao cwd do módulo/ficheiro partilhado de constantes (mensagem dedicada; futuro autofix R2).",
             type: "string",
+          },
+          crossFileDuplicateDetection: {
+            description:
+              "Se true, índice de literais entre ficheiros na mesma execução lintFiles e relatório hardcodedDuplicateCrossFile quando aplicável.",
+            type: "boolean",
           },
           sharedModuleImportStyle: {
             description: "Estilo de import ao referenciar sharedConstantsModule.",
@@ -145,6 +151,8 @@ const rule: Rule.RuleModule = {
       {
         remediationMode: DEFAULT_OPTIONS.remediationMode,
         constantNamingConvention: DEFAULT_OPTIONS.constantNamingConvention,
+        crossFileDuplicateDetection:
+          DEFAULT_OPTIONS.crossFileDuplicateDetection,
         dedupeWithinFile: DEFAULT_OPTIONS.dedupeWithinFile,
         remediationIncludeGlobs: DEFAULT_OPTIONS.remediationIncludeGlobs,
         remediationExcludeGlobs: DEFAULT_OPTIONS.remediationExcludeGlobs,
@@ -297,17 +305,32 @@ const rule: Rule.RuleModule = {
 
         const insertPos = getInsertPositionAfterImports(program, sourceCode);
 
-        const crossFileIndex =
-          options.remediationMode === "r2"
-            ? getCrossFileLiteralIndex(context)
-            : null;
+        const crossFileIndex = options.crossFileDuplicateDetection
+          ? getCrossFileLiteralIndex(context)
+          : null;
+
+        const intraDupOccurrences = new Set<Occurrence>();
+        for (const g of groups) {
+          if (g.occurrences.length > 1) {
+            for (const o of g.occurrences) {
+              intraDupOccurrences.add(o);
+            }
+          }
+        }
+
+        const inSharedConstantsPath = matchesSharedConstantsModule(
+          relativePath,
+          options.sharedConstantsModule,
+        );
 
         const resolveMessageId = (
           occ: Occurrence,
         ):
           | "hardcoded"
           | "hardcodedEnvDefault"
-          | "hardcodedDuplicateCrossFile" => {
+          | "hardcodedDuplicateCrossFile"
+          | "hardcodedDuplicateWithinFile"
+          | "hardcodedInSharedConstantsModule" => {
           if (crossFileIndex) {
             const normKey = r2NormalizedLiteralKey(occ.value, occ.isEnvDefault);
             const filesFor = crossFileIndex.get(normKey);
@@ -317,6 +340,12 @@ const rule: Rule.RuleModule = {
             if (cross) {
               return "hardcodedDuplicateCrossFile";
             }
+          }
+          if (intraDupOccurrences.has(occ)) {
+            return "hardcodedDuplicateWithinFile";
+          }
+          if (inSharedConstantsPath) {
+            return "hardcodedInSharedConstantsModule";
           }
           if (
             occ.isEnvDefault &&

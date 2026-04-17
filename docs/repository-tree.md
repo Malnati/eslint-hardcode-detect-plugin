@@ -219,6 +219,7 @@ Documentation of repository layout. **Update this file when you create, move, or
 │       │   ├── no-hardcoded-strings-call-sites.test.mjs  # callSiteExceptions (issue #6)
 │       │   ├── no-hardcoded-strings-secrets.test.mjs  # M4 / secretRemediationMode (safe defaults)
 │       │   ├── no-hardcoded-strings-r2.test.mjs  # R2 index / lintFiles multi-file
+│       │   ├── no-hardcoded-strings-diagnostics.test.mjs  # intra-file, shared module, crossFileDuplicateDetection
 │       │   └── r3-data-file-writers.test.mjs  # Deterministic JSON/YAML merge (R3)
 │       └── eslint.config.mjs           # Lint of the plugin itself (flat config)
 ├── reference/                # Reference only; not a package dependency

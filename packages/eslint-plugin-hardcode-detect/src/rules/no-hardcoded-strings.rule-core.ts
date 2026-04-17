@@ -48,8 +48,13 @@ export type NoHardcodedStringsOptions = {
   remediationIncludeGlobs: string[];
   remediationExcludeGlobs: string[];
   envDefaultLiteralPolicy: EnvDefaultLiteralPolicy;
-  /** R2 — destino do módulo partilhado (futuro autofix); opcional na detecção por índice. */
+  /** R2 — glob do módulo partilhado (futuro autofix); usado também para mensagem `hardcodedInSharedConstantsModule`. */
   sharedConstantsModule?: string;
+  /**
+   * Quando `true`, mantém-se o índice de literais normalizados entre ficheiros na mesma execução
+   * `lintFiles` e emite `hardcodedDuplicateCrossFile` quando aplicável (independente de `remediationMode`).
+   */
+  crossFileDuplicateDetection: boolean;
   sharedModuleImportStyle: SharedModuleImportStyle;
   literalIndexRebuildPolicy: LiteralIndexRebuildPolicy;
   parallelLintingCompatibility: ParallelLintingCompatibility;
@@ -71,6 +76,7 @@ export type NoHardcodedStringsOptions = {
 export const DEFAULT_OPTIONS: NoHardcodedStringsOptions = {
   remediationMode: "off",
   constantNamingConvention: "UPPER_SNAKE_CASE",
+  crossFileDuplicateDetection: true,
   dedupeWithinFile: true,
   remediationIncludeGlobs: [],
   remediationExcludeGlobs: [],
@@ -137,6 +143,11 @@ export function normalizeNoHardcodedStringsOptions(
       ? o.sharedConstantsModule
       : undefined;
 
+  const crossFileDuplicateDetection =
+    typeof o.crossFileDuplicateDetection === "boolean"
+      ? o.crossFileDuplicateDetection
+      : DEFAULT_OPTIONS.crossFileDuplicateDetection;
+
   const sharedModuleImportStyle =
     o.sharedModuleImportStyle === "esm" ||
     o.sharedModuleImportStyle === "cjs" ||
@@ -189,6 +200,7 @@ export function normalizeNoHardcodedStringsOptions(
   return {
     remediationMode,
     constantNamingConvention,
+    crossFileDuplicateDetection,
     dedupeWithinFile,
     remediationIncludeGlobs,
     remediationExcludeGlobs,
@@ -240,6 +252,17 @@ export function isIncludedByGlobs(
     return true;
   }
   return patterns.some((p) => globMatch(relativePath, p));
+}
+
+/** Caminho relativo do ficheiro actual casa com o glob configurado em `sharedConstantsModule`. */
+export function matchesSharedConstantsModule(
+  relativePath: string,
+  pattern: string | undefined,
+): boolean {
+  if (!pattern || pattern.length === 0) {
+    return false;
+  }
+  return globMatch(relativePath, pattern);
 }
 
 export function looksRiskyFilePath(relativePath: string): boolean {
